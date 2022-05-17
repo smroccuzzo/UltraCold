@@ -113,13 +113,15 @@ Prerequisites and platforms</h1>
 <h1><a class="anchor" id="Installation"></a>
 Installation</h1>
 <p >Before getting UltraCold, be sure you have Intel oneAPI installed. <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a> is in fact built on top of Intel's Math Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with previous versions of Intel Parallel Studio, although we have never tried it.</p>
-<p >To get <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>, first clone it into your local machine</p>
+<p >To get <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>, first clone it into your machine</p>
 <div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/smroccuzzo/UltraCold.git</span></div>
-</div><!-- fragment --><p >Then, enter the directory UltraCold, and follow the usual steps required to build a project using <a href="https://cmake.org/">cmake </a>. By default, the build type is <em>Release</em>. So, all you have to do is </p><div class="fragment"><div class="line">mkdir build</div>
+</div><!-- fragment --><p >Then, enter the directory UltraCold, and follow the usual steps required to build a project using <a href="https://cmake.org/">cmake </a>. By default, the build type is <em>Release</em>. So, all you have to do is </p><div class="fragment"><div class="line">cd <a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a></div>
+<div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">cmake -DCMAKE_INSTALL_PREFIX=&lt;/your/install/path&gt; ..</div>
 <div class="line">make</div>
 <div class="line">make install</div>
+<div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="Examples"></a>
 Examples</h1>
 <p >UltraCold comes packed with several examples showing its basic functionality and also some physics. Such examples are meant to be used as templates for more complex applications, combining the functionality of the various solver classes to find some interesting physics. See the examples folder for details.</p>
