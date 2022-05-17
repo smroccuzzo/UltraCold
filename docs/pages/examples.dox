@@ -49,8 +49,11 @@ description available in the documentation.
 
 - \subpage example-1 Defined in file [example-1.cpp](./example-1/example-1.cpp) Ground state and simple dynamics of a
  three-dimensional, harmonically trapped Bose gas.
-- \subpage example-2 Defined in file [example-2.cpp](./example-2/example-2.cpp) A two-dimensional Bose gas in the
-presence of an optical lattice. Superfluidity.
-
+- \subpage example-2 Defined in file [example-2.cpp](./example-2/example-2.cpp) Elementary excitations via Bogolyubov
+equations in a two-dimensional, harmonically trapped Bose gas.
+- \subpage example-3 Defined in file [example-3.cpp](./example-3/example-3.cpp) Supersolid ground state of a trapped
+ dipolar Bose-Einstein condensate.
+- \subpage example-4 Defined in file [example-4.cpp](./example-4/example-4.cpp) Excitation spectrum of a trapped dipolar
+ Bose-Einstein condensate across the superfluid-supersolid phase transition.
 */
 

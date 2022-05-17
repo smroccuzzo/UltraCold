@@ -3,14 +3,12 @@
 \mainpage Introduction
 \tableofcontents
 
-\section Description What it is
+\section Description What is it
 
-An extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the
-context of Gross-Pitaevskii theory. \n
-%UltraCold allows for the solution of several flavors of Gross-Pitaevskii equations, used in particular for the
-description of ensembles of bosonic particles close to the absolute zero.
-Each flavor of Gross-Pitaevskii equation supported has its own solver class. In this list, you can find all the classes
-currently available.
+%UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic
+systems in the context of Gross-Pitaevskii theory. \n
+%UltraCold allows for the solution of several flavors of Gross-Pitaevskii and Bogolyubov equations, used in particular
+for the description of ensembles of bosonic particles close to the absolute zero. \n
 
 \section Required Prerequisites and platforms
 
@@ -18,9 +16,13 @@ currently available.
 and relies upon <a href="https://github.com/opencollab/arpack-ng"> arpack-ng </a> for the solution of Bogolyubov
 equations. Hence, in order to use %UltraCold, you first need to download and install a distribution of Intel's software.
 Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
-Parallel Studio. \n
-If you don't have arpack-ng installed, you can let UltraCold install it for you when you first configure UltraCold using
-cmake. See the next section.
+Parallel Studio. The Intel oneAPI package can be downloaded for free from
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html"> here </a>. In
+particular, %UltraCold relies on the
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html"> Intel oneAPI Base
+Toolkit </a> and on the
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html"> Intel oneAPI HPC
+Toolkit </a>   \n
 
 \section Installation
 
@@ -35,36 +37,20 @@ git clone https://github.com/smroccuzzo/UltraCold.git
 \endcode
 
 Then, enter the directory %UltraCold, and follow the usual steps required to build a project using
-<a href="https://cmake.org/"> cmake </a>. By default, the build type is *Release*. A few configuration options are
-available and can be selected by passing the right arguments to cmake.
-In particular, in order to build UltraCold with the bundled (and tested) version of arpack-ng, all you have to do is
-
+<a href="https://cmake.org/"> cmake </a>. By default, the build type is *Release*. So, all you have to do is
 \code
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=<path-where-you-want-to-install-UltraCold> \
-      -DULTRACOLD_WITH_BUNDLED_ARPACK=TRUE \
-      ..
+cmake -DCMAKE_INSTALL_PREFIX=</your/install/path> ..
+make
+make install
 \endcode
-
-or, if you already have installed arpack-ng
-
-\code
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=<path-where-you-want-to-install-UltraCold> \
-      -DARPACK_DIR=<your-path-to-arpack-ng> \
-      ..
-\endcode
-
-Notice that, if arpack-ng was not compiled with the Intel compilers and the MKL distribution of blas and lapack, as well
-as with iso-c-binding enabled, errors may occur when using the Bogolyubov solver classes. Actually, the distribution of
-arpack-ng bundled in UltraCold is quite small, so our advice is to use this one and let UltraCold compile and install
-it for you.
 
 \section Examples
 
-This is for running the tests. Always source the setvarsh.sh script
+%UltraCold comes packed with several examples showing its basic functionality and also some physics. Such examples are
+meant to be used as templates for more complex applications, combining the functionality  of the various solver classes
+to find some interesting physics. See the examples folder for details.
 
 \section License
 

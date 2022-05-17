@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#Description">What it is</a></li>
+<ul><li class="level1"><a href="#Description">What is it</a></li>
 <li class="level1"><a href="#Required">Prerequisites and platforms</a></li>
 <li class="level1"><a href="#Installation">Installation</a></li>
 <li class="level1"><a href="#Examples">Examples</a></li>
@@ -78,23 +78,21 @@ $(function() {
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="Description"></a>
-What it is</h1>
-<p>An extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the context of Gross-Pitaevskii theory. <br />
-UltraCold allows for the solution of several flavors of Gross-Pitaevskii equations, used in particular for the description of ensembles of bosonic particles close to the absolute zero. Each flavor of Gross-Pitaevskii equation supported has its own solver class. In this list, you can find all the classes currently available.</p>
+What is it</h1>
+<p>UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the context of Gross-Pitaevskii theory. <br />
+UltraCold allows for the solution of several flavors of Gross-Pitaevskii and Bogolyubov equations, used in particular for the description of ensembles of bosonic particles close to the absolute zero. <br />
+ </p>
 <h1><a class="anchor" id="Required"></a>
 Prerequisites and platforms</h1>
-<p>UltraCold has been tested only Linux machines. Moreover, it is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a> for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software. Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. <br />
-If you don't have arpack-ng installed, you can let <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> install it for you when you first configure <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> using cmake. See the next section.</p>
+<p>UltraCold has been tested only Linux machines. Moreover, it is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a> for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software. Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. The Intel oneAPI package can be downloaded for free from <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here </a>. In particular, UltraCold relies on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base Toolkit </a> and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC Toolkit </a> <br />
+ </p>
 <h1><a class="anchor" id="Installation"></a>
 Installation</h1>
 <p>Before getting UltraCold, be sure you have Intel oneAPI installed. <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> is in fact built on top of Intel's Math Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with previous versions of Intel Parallel Studio, although we have never tried it.</p>
 <p>To get <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a>, first clone it into your local machine</p>
-<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/smroccuzzo/UltraCold.git</span></div></div><!-- fragment --><p>Then, enter the directory UltraCold, and follow the usual steps required to build a project using <a href="https://cmake.org/">cmake </a>. By default, the build type is <em>Release</em>. A few configuration options are available and can be selected by passing the right arguments to cmake. In particular, in order to build <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> with the bundled (and tested) version of arpack-ng, all you have to do is</p>
-<div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DCMAKE_INSTALL_PREFIX=&lt;path-where-you-want-to-install-<a class="code" href="namespace_ultra_cold.html">UltraCold</a>&gt; \</div><div class="line">      -DULTRACOLD_WITH_BUNDLED_ARPACK=TRUE \</div><div class="line">      ..</div></div><!-- fragment --><p>or, if you already have installed arpack-ng</p>
-<div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DCMAKE_INSTALL_PREFIX=&lt;path-where-you-want-to-install-<a class="code" href="namespace_ultra_cold.html">UltraCold</a>&gt; \</div><div class="line">      -DARPACK_DIR=&lt;your-path-to-arpack-ng&gt; \</div><div class="line">      ..</div></div><!-- fragment --><p>Notice that, if arpack-ng was not compiled with the Intel compilers and the MKL distribution of blas and lapack, as well as with iso-c-binding enabled, errors may occur when using the Bogolyubov solver classes. Actually, the distribution of arpack-ng bundled in <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> is quite small, so our advice is to use this one and let <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> compile and install it for you.</p>
-<h1><a class="anchor" id="Examples"></a>
+<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/smroccuzzo/UltraCold.git</span></div></div><!-- fragment --><p>Then, enter the directory UltraCold, and follow the usual steps required to build a project using <a href="https://cmake.org/">cmake </a>. By default, the build type is <em>Release</em>. So, all you have to do is </p><div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DCMAKE_INSTALL_PREFIX=&lt;/your/install/path&gt; ..</div><div class="line">make</div><div class="line">make install</div></div><!-- fragment --><h1><a class="anchor" id="Examples"></a>
 Examples</h1>
-<p>This is for running the tests. Always source the setvarsh.sh script</p>
+<p>UltraCold comes packed with several examples showing its basic functionality and also some physics. Such examples are meant to be used as templates for more complex applications, combining the functionality of the various solver classes to find some interesting physics. See the examples folder for details.</p>
 <h1><a class="anchor" id="License"></a>
 License</h1>
 <p><a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold. ">UltraCold</a> is distributed as free software under the GPL3. See also the file LICENSE.md </p>

@@ -328,7 +328,7 @@ This is exactly what we calculated and output into some .vtk files with the last
 
 \code{.cpp}
 
-   RealSpaceOutput::DataOut                    output_fluctuations;
+    RealSpaceOutput::DataOut                    output_fluctuations;
     std::vector<Vector< std::complex<double>> > density_fluctuations(number_of_modes);
     std::vector<Vector< std::complex<double>> > phase_fluctuations(number_of_modes);
 
