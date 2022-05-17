@@ -1,3 +1,8 @@
-# Exclude fortran files from linguist counting
+# Exclude Fortran files from linguist counting
 
 *.f linguist-vendored 
+*.f90 linguist-vendored 
+
+# Mark documentation as linguist-documentation and exclude from stats
+
+docs/* linguist-documentation
