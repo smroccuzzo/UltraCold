@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['data',['data',['../class_ultra_cold_1_1_vector.html#ad862e1ab512afe101fab477922b166d7',1,'UltraCold::Vector']]],
+  ['dataout',['DataOut',['../class_ultra_cold_1_1_real_space_output_1_1_data_out.html',1,'UltraCold::RealSpaceOutput::DataOut'],['../class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html',1,'UltraCold::FourierSpaceOutput::DataOut']]],
+  ['dftcalculator',['DFtCalculator',['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html',1,'UltraCold::MKLWrappers::DFtCalculator'],['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html#a8e27c32ce6b1ad96b0a796deb546c8a4',1,'UltraCold::MKLWrappers::DFtCalculator::DFtCalculator(Vector&lt; std::complex&lt; double &gt;&gt; &amp;forward_domain_vector, Vector&lt; std::complex&lt; double &gt;&gt; &amp;backward_domain_vector)'],['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html#a0d1799b589ffb53282e448ba17365b96',1,'UltraCold::MKLWrappers::DFtCalculator::DFtCalculator(Vector&lt; double &gt; &amp;forward_domain_vector, Vector&lt; std::complex&lt; double &gt;&gt; &amp;backward_domain_vector)']]],
+  ['dipolargpsolver',['DipolarGPSolver',['../class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html',1,'UltraCold::GPSolvers::DipolarGPSolver'],['../class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#aba80a32b5fca87f2621ded992692f145',1,'UltraCold::GPSolvers::DipolarGPSolver::DipolarGPSolver()']]]
+];

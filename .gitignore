@@ -1,7 +1,6 @@
 .vscode
 *build*
 *bin*
-*html*
 *latex*
 *man*
 *lib*
