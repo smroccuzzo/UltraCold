@@ -168,8 +168,7 @@ final scattering length   = 90.0  # Final scattering length in units of the Bohr
 ramp duration             = 20.0  # Duration of the ramp of the scattering length, in milliseconds</pre><p >We will see shortly how to read this file inside our <code>main()</code> function, using the class <code><a class="el" href="class_ultra_cold_1_1_tools_1_1_input_parser.html" title="Class to read input parameters from files.">UltraCold::Tools::InputParser</a></code>.</p>
 <p >Let's take a look at the source code contained in the file <code>/examples/example-1/example-1.cpp</code>.</p>
 <p >The first line includes the header file <code>"UltraCold.hpp"</code>, which allows to import all the interfaces to classes and functions available in the library.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
-<div class="ttc" id="a_ultra_cold_8hpp_html"><div class="ttname"><a href="_ultra_cold_8hpp.html">UltraCold.hpp</a></div></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 </div><!-- fragment --><p >The second line imports the namespace <code><a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a></code>, which wraps all the namespaces available in the library.</p>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
@@ -258,10 +257,9 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i)</div>
-<div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*<a class="code hl_define" href="bogolyubov__solver_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>*current_scattering_length*std::norm(psi(i))));</div>
+<div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*PI*current_scattering_length*std::norm(psi(i))));</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="abogolyubov__solver_8cpp_html_a598a3330b3c21701223ee0ca14316eca"><div class="ttname"><a href="bogolyubov__solver_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a></div><div class="ttdeci">#define PI</div><div class="ttdef"><b>Definition:</b> bogolyubov_solver.cpp:20</div></div>
 </div><!-- fragment --><p >Finally, we override the member function that writes the output of the real-time simulation, in such a way that it will calculate the root mean-squared radius of the atomic cloud every hundred time steps, writing it to the output stream together with the current time. Once again, since we like to go fast, we add a <code>#pragma</code> to parallelize the triple loop using OpenMP. Notice that both the time and the root mean squared radius will be in harmonic units:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> myGPSolver::write_operator_splitting_output(<span class="keywordtype">size_t</span> iteration_number,</div>
 <div class="line">                                                 <span class="keywordtype">double</span> current_scattering_length,</div>
@@ -320,9 +318,9 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">omegaz *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">omegax *= TWOPI;</div>
+<div class="line">omegay *= TWOPI;</div>
+<div class="line">omegaz *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::cbrt(omegax*omegay*omegaz);</div>
 <div class="line"> </div>
@@ -341,7 +339,6 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line">xmax = xmax/a_ho;</div>
 <div class="line">ymax = ymax/a_ho;</div>
 <div class="line">zmax = zmax/a_ho;</div>
-<div class="ttc" id="abogolyubov__solver_8cpp_html_a4912c64aec0c943b7985db6cb61ff83a"><div class="ttname"><a href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a></div><div class="ttdeci">#define TWOPI</div><div class="ttdef"><b>Definition:</b> bogolyubov_solver.cpp:21</div></div>
 </div><!-- fragment --><p >We can now define the three-dimensional mesh on which the equation will be solved</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> x(nx);</div>
 <div class="line"><a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> y(ny);</div>
@@ -454,7 +451,7 @@ The plain program</h2>
 <div class="line"><span class="comment"> *</span></div>
 <div class="line"><span class="comment"> *--------------------------------------------------------------------------------*/</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
 <div class="line"> </div>
@@ -540,7 +537,7 @@ The plain program</h2>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i)</div>
-<div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*<a class="code hl_define" href="bogolyubov__solver_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>*current_scattering_length*std::norm(psi(i))));</div>
+<div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*PI*current_scattering_length*std::norm(psi(i))));</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -600,9 +597,9 @@ The plain program</h2>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">    omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegaz *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">    omegax *= TWOPI;</div>
+<div class="line">    omegay *= TWOPI;</div>
+<div class="line">    omegaz *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::cbrt(omegax*omegay*omegaz);</div>
 <div class="line"> </div>

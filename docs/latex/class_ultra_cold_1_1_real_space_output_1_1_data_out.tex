@@ -12,13 +12,11 @@ A class to output a data \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a40ba194d1e1a0651ed8598fa0c9b1b1b}{Data\+Out}} ()=default
-\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_aa8762a38223c9a9e96d8c910ca1dbbb2}{$\sim$\+Data\+Out}} ()=default
-\item 
-void \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\+\_\+output\+\_\+name}} (const std\+::string \&output\+\_\+file\+\_\+name)
+\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}} 
+void {\bfseries set\+\_\+output\+\_\+name} (const std\+::string \&output\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Set the name for the output data file, input as an std\+::string. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a38ada09fa0414ee49d2f0f608974eb70}{set\+\_\+output\+\_\+name}} (const char $\ast$output\+\_\+file\+\_\+name)
+\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_a38ada09fa0414ee49d2f0f608974eb70}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_a38ada09fa0414ee49d2f0f608974eb70}} 
+void {\bfseries set\+\_\+output\+\_\+name} (const char $\ast$output\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Set the name for the output data file, input as simple text. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a9a2b18471131e7139b42913d90211e69}{write\+\_\+csv}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x\+\_\+axis, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&real\+\_\+output\+\_\+vector)
 \begin{DoxyCompactList}\small\item\em Write an output data file in .csv format, for real 1D output. \end{DoxyCompactList}\item 
@@ -72,7 +70,7 @@ The class is used as follows\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a40ba194d1e1a0651ed8598fa0c9b1b1b}{DataOut}} data\_output\_writer();}
+\DoxyCodeLine{DataOut data\_output\_writer();}
 \DoxyCodeLine{data\_output\_writer.set\_output\_name(\textcolor{stringliteral}{"{}MyOutputFile"{}});}
 \DoxyCodeLine{data\_output\_writer.write\_csv(axis, Vector); \textcolor{comment}{// Or other appropriate member function}}
 
@@ -84,42 +82,7 @@ The second line sets the output file name to \char`\"{}\+My\+Output\+File\char`\
  The third line provides an example for writing a \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} in a simple .csv file, ready to be plotted for example with gnuplot. ~\newline
 See the member function documentation for details on the different ways to output your data. 
 
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_a40ba194d1e1a0651ed8598fa0c9b1b1b}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_a40ba194d1e1a0651ed8598fa0c9b1b1b}} 
-\index{UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}!DataOut@{DataOut}}
-\index{DataOut@{DataOut}!UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}}
-\doxysubsubsection{\texorpdfstring{DataOut()}{DataOut()}}
-{\footnotesize\ttfamily Ultra\+Cold\+::\+Real\+Space\+Output\+::\+Data\+Out\+::\+Data\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_aa8762a38223c9a9e96d8c910ca1dbbb2}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_aa8762a38223c9a9e96d8c910ca1dbbb2}} 
-\index{UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}!````~DataOut@{$\sim$DataOut}}
-\index{````~DataOut@{$\sim$DataOut}!UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}}
-\doxysubsubsection{\texorpdfstring{$\sim$DataOut()}{~DataOut()}}
-{\footnotesize\ttfamily Ultra\+Cold\+::\+Real\+Space\+Output\+::\+Data\+Out\+::$\sim$\+Data\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
-
-
-
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_a38ada09fa0414ee49d2f0f608974eb70}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_a38ada09fa0414ee49d2f0f608974eb70}} 
-\index{UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}!set\_output\_name@{set\_output\_name}}
-\index{set\_output\_name@{set\_output\_name}!UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}}
-\doxysubsubsection{\texorpdfstring{set\_output\_name()}{set\_output\_name()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Ultra\+Cold\+::\+Real\+Space\+Output\+::\+Data\+Out\+::set\+\_\+output\+\_\+name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{output\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Set the name for the output data file, input as simple text. 
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}} 
-\index{UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}!set\_output\_name@{set\_output\_name}}
-\index{set\_output\_name@{set\_output\_name}!UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}}
-\doxysubsubsection{\texorpdfstring{set\_output\_name()}{set\_output\_name()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Ultra\+Cold\+::\+Real\+Space\+Output\+::\+Data\+Out\+::set\+\_\+output\+\_\+name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-Set the name for the output data file, input as an std\+::string. 
-
 \mbox{\Hypertarget{class_ultra_cold_1_1_real_space_output_1_1_data_out_af5c41f325f27492626980adbd4fd8a3b}\label{class_ultra_cold_1_1_real_space_output_1_1_data_out_af5c41f325f27492626980adbd4fd8a3b}} 
 \index{UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}!stack1d\_csv@{stack1d\_csv}}
 \index{stack1d\_csv@{stack1d\_csv}!UltraCold::RealSpaceOutput::DataOut@{UltraCold::RealSpaceOutput::DataOut}}
@@ -535,8 +498,3 @@ Write an output data file in .vtk format, for complex 2D output.
 \hline
 \end{DoxyParams}
 The output file will be in standard .vtk format for structured data points. It can be readily visualized using programs like \href{https://www.paraview.org/}{\texttt{ Paraview }} or \href{https://visit-dav.github.io/visit-website/index.html}{\texttt{ Visit}}. 
-
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{data__out_8hpp}{data\+\_\+out.\+hpp}}\item 
-\mbox{\hyperlink{data__out_8cpp}{data\+\_\+out.\+cpp}}\end{DoxyCompactItemize}

@@ -215,10 +215,9 @@ calculate eigenvectors = true
 tolerance = 1.E-12
 maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at the source code contained in the file <code>/examples/example-2/example-2.cpp</code>.</p>
 <p >The first lines again includes the header file <code>"UltraCold.hpp"</code> and import the namespace <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a></p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
-<div class="ttc" id="a_ultra_cold_8hpp_html"><div class="ttname"><a href="_ultra_cold_8hpp.html">UltraCold.hpp</a></div></div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
 </div><!-- fragment --><p >As in example-1, we first calculate a ground-state solution of the GPe using the function <code> run_gradient_descent(...)</code> from the class <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a>. We don't go into much details here, since it is practically the same as in example-1</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> main() {</div>
@@ -252,8 +251,8 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">    omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">    omegax *= TWOPI;</div>
+<div class="line">    omegay *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::sqrt(omegax*omegay);</div>
 <div class="line"> </div>
@@ -314,7 +313,6 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html">RealSpaceOutput::DataOut</a> output_wave_function;</div>
 <div class="line">    output_wave_function.<a class="code hl_function" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#acb4c018af1f731035d492cdccdb49b45">set_output_name</a>(<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
 <div class="line">    output_wave_function.<a class="code hl_function" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#af8e7d71fa2f88a7405bbd24843125747">write_vtk</a>(x,y,psi,<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
-<div class="ttc" id="abogolyubov__solver_8cpp_html_a4912c64aec0c943b7985db6cb61ff83a"><div class="ttname"><a href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a></div><div class="ttdeci">#define TWOPI</div><div class="ttdef"><b>Definition:</b> bogolyubov_solver.cpp:21</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver_html"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">UltraCold::GPSolvers::GPSolver</a></div><div class="ttdoc">Class to solve the Gross-Pitaevskii equation.</div><div class="ttdef"><b>Definition:</b> gp_solvers.hpp:153</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html">UltraCold::RealSpaceOutput::DataOut</a></div><div class="ttdoc">A class to output a data Vector in real space.</div><div class="ttdef"><b>Definition:</b> data_out.hpp:70</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html_acb4c018af1f731035d492cdccdb49b45"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#acb4c018af1f731035d492cdccdb49b45">UltraCold::RealSpaceOutput::DataOut::set_output_name</a></div><div class="ttdeci">void set_output_name(const std::string &amp;output_file_name)</div><div class="ttdoc">Set the name for the output data file, input as an std::string.</div><div class="ttdef"><b>Definition:</b> data_out.cpp:30</div></div>
@@ -421,7 +419,7 @@ The plain program</h2>
 <div class="line"><span class="comment"> *</span></div>
 <div class="line"><span class="comment"> *--------------------------------------------------------------------------------*/</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
 <div class="line"> </div>
@@ -456,8 +454,8 @@ The plain program</h2>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">    omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">    omegax *= TWOPI;</div>
+<div class="line">    omegay *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::sqrt(omegax*omegay);</div>
 <div class="line"> </div>

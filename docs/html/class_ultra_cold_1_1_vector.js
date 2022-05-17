@@ -1,6 +1,5 @@
 var class_ultra_cold_1_1_vector =
 [
-    [ "Vector", "class_ultra_cold_1_1_vector.html#a06a14788e843ee99670d050f3648b342", null ],
     [ "Vector", "class_ultra_cold_1_1_vector.html#ab6c39be6dc7c50e281435cfc4f2685d1", null ],
     [ "Vector", "class_ultra_cold_1_1_vector.html#a97ea70b6304aea6a43f1308c386bdd24", null ],
     [ "Vector", "class_ultra_cold_1_1_vector.html#a027317b59203b22f5d67b6f280d89366", null ],

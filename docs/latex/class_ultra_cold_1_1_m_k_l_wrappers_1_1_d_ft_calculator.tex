@@ -16,9 +16,11 @@ Class to calculate Fourier transforms using Intel\textquotesingle{}s MKL DFT fun
 \begin{DoxyCompactList}\small\item\em Constructor for complex-\/complex transforms. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a4ce51bf8fe914b262ad34f4c9bde466c}{DFt\+Calculator}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&forward\+\_\+domain\+\_\+vector, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&backward\+\_\+domain\+\_\+vector)
 \begin{DoxyCompactList}\small\item\em Constructor for real-\/complex transforms. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_ae3d864634ebd8d2efb372ba7826ac1db}{$\sim$\+DFt\+Calculator}} ()
+\mbox{\Hypertarget{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_ae3d864634ebd8d2efb372ba7826ac1db}\label{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_ae3d864634ebd8d2efb372ba7826ac1db}} 
+{\bfseries $\sim$\+DFt\+Calculator} ()
 \begin{DoxyCompactList}\small\item\em Destructor, free the descriptor handler. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a8b71a9132a47b43189aad1c56f960d2f}{compute\+\_\+forward}} ()
+\mbox{\Hypertarget{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a8b71a9132a47b43189aad1c56f960d2f}\label{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a8b71a9132a47b43189aad1c56f960d2f}} 
+void {\bfseries compute\+\_\+forward} ()
 \begin{DoxyCompactList}\small\item\em Calculate a forward transform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_af91a0005c56f371f613c385c2f14732d}{compute\+\_\+backward}} ()
 \begin{DoxyCompactList}\small\item\em Calculate a backward transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -88,16 +90,6 @@ The constructor initializes the appropriate descriptor type.
 \begin{DoxyNote}{Note}
 Since the Fourier transform of a real function is conjugate symmetric, only half of the values needs to be stored. Using Intel\textquotesingle{}s MKL DFT functions, the halved dimension is the last one. 
 \end{DoxyNote}
-\mbox{\Hypertarget{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_ae3d864634ebd8d2efb372ba7826ac1db}\label{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_ae3d864634ebd8d2efb372ba7826ac1db}} 
-\index{UltraCold::MKLWrappers::DFtCalculator@{UltraCold::MKLWrappers::DFtCalculator}!````~DFtCalculator@{$\sim$DFtCalculator}}
-\index{````~DFtCalculator@{$\sim$DFtCalculator}!UltraCold::MKLWrappers::DFtCalculator@{UltraCold::MKLWrappers::DFtCalculator}}
-\doxysubsubsection{\texorpdfstring{$\sim$DFtCalculator()}{~DFtCalculator()}}
-{\footnotesize\ttfamily Ultra\+Cold\+::\+MKLWrappers\+::\+DFt\+Calculator\+::$\sim$\+DFt\+Calculator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Destructor, free the descriptor handler. 
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -111,19 +103,4 @@ Destructor, free the descriptor handler.
 
 Calculate a backward transform. 
 
-The transform is alreay normalized. \mbox{\Hypertarget{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a8b71a9132a47b43189aad1c56f960d2f}\label{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_a8b71a9132a47b43189aad1c56f960d2f}} 
-\index{UltraCold::MKLWrappers::DFtCalculator@{UltraCold::MKLWrappers::DFtCalculator}!compute\_forward@{compute\_forward}}
-\index{compute\_forward@{compute\_forward}!UltraCold::MKLWrappers::DFtCalculator@{UltraCold::MKLWrappers::DFtCalculator}}
-\doxysubsubsection{\texorpdfstring{compute\_forward()}{compute\_forward()}}
-{\footnotesize\ttfamily void Ultra\+Cold\+::\+MKLWrappers\+::\+DFt\+Calculator\+::compute\+\_\+forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Calculate a forward transform. 
-
-
-
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{dft_8hpp}{dft.\+hpp}}\item 
-\mbox{\hyperlink{dft_8cpp}{dft.\+cpp}}\end{DoxyCompactItemize}
+The transform is alreay normalized. 

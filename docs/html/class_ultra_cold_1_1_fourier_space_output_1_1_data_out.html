@@ -104,15 +104,13 @@ $(document).ready(function(){initNavTree('class_ultra_cold_1_1_fourier_space_out
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab40a7c766cef09ec9deffa88f615f4e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#ab40a7c766cef09ec9deffa88f615f4e0">DataOut</a> ()=default</td></tr>
-<tr class="separator:ab40a7c766cef09ec9deffa88f615f4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab656009bdd37b849d35bf2f89df2a767"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#ab656009bdd37b849d35bf2f89df2a767">~DataOut</a> ()=default</td></tr>
-<tr class="separator:ab656009bdd37b849d35bf2f89df2a767"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c80c5668d73d0bd8573c9f5eb18d661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a5c80c5668d73d0bd8573c9f5eb18d661">set_output_name</a> (const std::string &amp;output_file_name)</td></tr>
-<tr class="memdesc:a5c80c5668d73d0bd8573c9f5eb18d661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name for the output data file, input as an std::string.  <a href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a5c80c5668d73d0bd8573c9f5eb18d661">More...</a><br /></td></tr>
+<tr class="memitem:a5c80c5668d73d0bd8573c9f5eb18d661"><td class="memItemLeft" align="right" valign="top"><a id="a5c80c5668d73d0bd8573c9f5eb18d661" name="a5c80c5668d73d0bd8573c9f5eb18d661"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_output_name</b> (const std::string &amp;output_file_name)</td></tr>
+<tr class="memdesc:a5c80c5668d73d0bd8573c9f5eb18d661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name for the output data file, input as an std::string. <br /></td></tr>
 <tr class="separator:a5c80c5668d73d0bd8573c9f5eb18d661"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a506dcbfae06eb092db67bddd2a2031f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a506dcbfae06eb092db67bddd2a2031f5">set_output_name</a> (const char *output_file_name)</td></tr>
-<tr class="memdesc:a506dcbfae06eb092db67bddd2a2031f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name for the output data file, input as simple text.  <a href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a506dcbfae06eb092db67bddd2a2031f5">More...</a><br /></td></tr>
+<tr class="memitem:a506dcbfae06eb092db67bddd2a2031f5"><td class="memItemLeft" align="right" valign="top"><a id="a506dcbfae06eb092db67bddd2a2031f5" name="a506dcbfae06eb092db67bddd2a2031f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_output_name</b> (const char *output_file_name)</td></tr>
+<tr class="memdesc:a506dcbfae06eb092db67bddd2a2031f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name for the output data file, input as simple text. <br /></td></tr>
 <tr class="separator:a506dcbfae06eb092db67bddd2a2031f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03e37b661e706d82026b7e885feb75ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a03e37b661e706d82026b7e885feb75ea">write_csv</a> (<a class="el" href="class_ultra_cold_1_1_vector.html">Vector</a>&lt; double &gt; &amp;x_axis, <a class="el" href="class_ultra_cold_1_1_vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;output_vector)</td></tr>
 <tr class="memdesc:a03e37b661e706d82026b7e885feb75ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an output data file in .csv format, for complex 1D output in Fourier space.  <a href="class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a03e37b661e706d82026b7e885feb75ea">More...</a><br /></td></tr>
@@ -135,98 +133,7 @@ Public Member Functions</h2></td></tr>
 <li>.csv</li>
 </ul>
 <p >for a <a class="el" href="class_ultra_cold_1_1_vector.html" title="A class that represents arrays of numerical elements.">Vector</a> living in Fourier space, for example obtained from a Fourier transform calculated using the class DFtCalculator. The usage is exactly the same as the corresponding class for output of data files in real space, with the important difference that, in this case, the output <a class="el" href="class_ultra_cold_1_1_vector.html" title="A class that represents arrays of numerical elements.">Vector</a> is always of type complex. </p><dl class="section note"><dt>Note</dt><dd>For proper output, the axis in momentum space must have been generated by a call to the function generate_mesh_in_Fourier_space() </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab40a7c766cef09ec9deffa88f615f4e0" name="ab40a7c766cef09ec9deffa88f615f4e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab40a7c766cef09ec9deffa88f615f4e0">&#9670;&nbsp;</a></span>DataOut()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">UltraCold::FourierSpaceOutput::DataOut::DataOut </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab656009bdd37b849d35bf2f89df2a767" name="ab656009bdd37b849d35bf2f89df2a767"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab656009bdd37b849d35bf2f89df2a767">&#9670;&nbsp;</a></span>~DataOut()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">UltraCold::FourierSpaceOutput::DataOut::~DataOut </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a506dcbfae06eb092db67bddd2a2031f5" name="a506dcbfae06eb092db67bddd2a2031f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a506dcbfae06eb092db67bddd2a2031f5">&#9670;&nbsp;</a></span>set_output_name() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void UltraCold::FourierSpaceOutput::DataOut::set_output_name </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>output_file_name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the name for the output data file, input as simple text. </p>
-
-</div>
-</div>
-<a id="a5c80c5668d73d0bd8573c9f5eb18d661" name="a5c80c5668d73d0bd8573c9f5eb18d661"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c80c5668d73d0bd8573c9f5eb18d661">&#9670;&nbsp;</a></span>set_output_name() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void UltraCold::FourierSpaceOutput::DataOut::set_output_name </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>output_file_name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the name for the output data file, input as an std::string. </p>
-
-</div>
-</div>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a493101cf7d9313739f7c75533de7dfe2" name="a493101cf7d9313739f7c75533de7dfe2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a493101cf7d9313739f7c75533de7dfe2">&#9670;&nbsp;</a></span>write_csv() <span class="overload">[1/2]</span></h2>
 
@@ -409,10 +316,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="data__out_8hpp_source.html">data_out.hpp</a></li>
-<li><a class="el" href="data__out_8cpp.html">data_out.cpp</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

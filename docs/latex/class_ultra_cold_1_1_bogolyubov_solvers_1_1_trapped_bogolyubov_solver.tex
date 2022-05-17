@@ -12,90 +12,121 @@ Class to solve the Bogolyubov equations for a trapped Bose gas.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in one space dimension and real stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7c26d57074a9815699a10ad6f03bcff9}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7c26d57074a9815699a10ad6f03bcff9}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in two space dimensions and real stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4fb95174f1a0a176683c359e3da706c1}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4fb95174f1a0a176683c359e3da706c1}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&z, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in three space dimensions and real stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a19274dec468f33a6602b0d3012f3f86b}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a19274dec468f33a6602b0d3012f3f86b}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in one space dimension and complex stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a648367a8e04d027fccb15c86b28e8da7}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a648367a8e04d027fccb15c86b28e8da7}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in two space dimensions and complex stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ade0f1d0efc44a41f72b8720514e02cce}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}, \mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}, double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}})
+\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ade0f1d0efc44a41f72b8720514e02cce}{Trapped\+Bogolyubov\+Solver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&z, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&Vext, double scattering\+\_\+length, double chemical\+\_\+potential, \mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+modes, double tolerance, \mbox{\hyperlink{classint}{int}} maximum\+\_\+number\+\_\+arnoldi\+\_\+iterations, bool eigenvectors\+\_\+required)
 \begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{Trapped\+Bogolyubov\+Solver}} in three space dimensions and complex stationary condensate wave function. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a5c6b74910362178ed798f76472050112}{$\sim$\+Trapped\+Bogolyubov\+Solver}} ()=default
-\item 
 std\+::tuple$<$ std\+::vector$<$ std\+::complex$<$ double $>$ $>$, std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$, std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a08043e9363f1e71b8e93eafcae1ab7cd}{run}} ()
 \begin{DoxyCompactList}\small\item\em Solve the Bogolyubov equations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries Vext}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries x}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries y}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries z}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}{kx}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries kx}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}{ky}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries ky}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}{kz}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries kz}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}{kmod2}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ {\bfseries kmod2}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}{temp}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ {\bfseries temp}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}{temp2}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ {\bfseries temp2}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}{temp\+\_\+tilde}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ {\bfseries temp\+\_\+tilde}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}{temp2\+\_\+tilde}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ {\bfseries temp2\+\_\+tilde}
 \item 
-\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}} 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ {\bfseries psi0}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}{u}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}} 
+std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$ {\bfseries u}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}{v}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}} 
+std\+::vector$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ $>$ {\bfseries v}
 \item 
-\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}{nx}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}} 
+\mbox{\hyperlink{classint}{int}} {\bfseries nx}
 \item 
-\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}{ny}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}} 
+\mbox{\hyperlink{classint}{int}} {\bfseries ny}
 \item 
-\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}{nz}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}} 
+\mbox{\hyperlink{classint}{int}} {\bfseries nz}
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}{dx}} = 1.\+0
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}} 
+double {\bfseries dx} = 1.\+0
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}{dy}} = 1.\+0
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}} 
+double {\bfseries dy} = 1.\+0
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}{dz}} = 1.\+0
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}} 
+double {\bfseries dz} = 1.\+0
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}{dv}} = 1.\+0
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}} 
+double {\bfseries dv} = 1.\+0
 \item 
-\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\+\_\+of\+\_\+modes}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}} 
+\mbox{\hyperlink{classint}{int}} {\bfseries number\+\_\+of\+\_\+modes}
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\+\_\+potential}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}} 
+double {\bfseries chemical\+\_\+potential}
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\+\_\+length}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}} 
+double {\bfseries scattering\+\_\+length}
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}{problem\+\_\+is\+\_\+1d}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}} 
+bool {\bfseries problem\+\_\+is\+\_\+1d} =false
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}{problem\+\_\+is\+\_\+2d}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}} 
+bool {\bfseries problem\+\_\+is\+\_\+2d} =false
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}{problem\+\_\+is\+\_\+3d}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}} 
+bool {\bfseries problem\+\_\+is\+\_\+3d} =false
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\+\_\+required}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}} 
+bool {\bfseries eigenvectors\+\_\+required} =false
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}{problem\+\_\+is\+\_\+real}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}} 
+bool {\bfseries problem\+\_\+is\+\_\+real} =false
 \item 
-bool \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}{problem\+\_\+is\+\_\+complex}} =false
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}} 
+bool {\bfseries problem\+\_\+is\+\_\+complex} =false
 \item 
-double \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}} 
+double {\bfseries tolerance}
 \item 
-a\+\_\+int \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}{maximum\+\_\+number\+\_\+of\+\_\+arnoldi\+\_\+iterations}}
+\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}} 
+a\+\_\+int {\bfseries maximum\+\_\+number\+\_\+of\+\_\+arnoldi\+\_\+iterations}
 \end{DoxyCompactItemize}
 
 
@@ -317,12 +348,6 @@ Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_t
 {\em eigenvectors\+\_\+required} & {\itshape bool} specifies if also the eigenvectors are required. Default is false. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a5c6b74910362178ed798f76472050112}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a5c6b74910362178ed798f76472050112}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!````~TrappedBogolyubovSolver@{$\sim$TrappedBogolyubovSolver}}
-\index{````~TrappedBogolyubovSolver@{$\sim$TrappedBogolyubovSolver}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{$\sim$TrappedBogolyubovSolver()}{~TrappedBogolyubovSolver()}}
-{\footnotesize\ttfamily Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::$\sim$\+Trapped\+Bogolyubov\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -377,209 +402,3 @@ with
 If the eigenvectors are not required, this function will solve only the first equation, calculating the square of the energies of the eigen-\/modes, but {\itshape returning the energies} (i.\+e., it calculates the square root before returning). If the eigenvectors are also requested, the function will solve also the second eigenvalue problem, obtaining the Bogolyubov quasi-\/particle amplitudes $ u $ and $ v $ by taking (half) the sum and the difference between the eigenvectors of the two problems.
 
 In the case in which, instead, the wave-\/function passed to the constructor is complex, the function will solve, by brute force, the complete problem. 
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!chemical\_potential@{chemical\_potential}}
-\index{chemical\_potential@{chemical\_potential}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{chemical\_potential}{chemical\_potential}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::chemical\+\_\+potential\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!dv@{dv}}
-\index{dv@{dv}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{dv}{dv}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::dv = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!dx@{dx}}
-\index{dx@{dx}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{dx}{dx}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::dx = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!dy@{dy}}
-\index{dy@{dy}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{dy}{dy}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::dy = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!dz@{dz}}
-\index{dz@{dz}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{dz}{dz}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::dz = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!eigenvectors\_required@{eigenvectors\_required}}
-\index{eigenvectors\_required@{eigenvectors\_required}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{eigenvectors\_required}{eigenvectors\_required}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::eigenvectors\+\_\+required =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!kmod2@{kmod2}}
-\index{kmod2@{kmod2}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{kmod2}{kmod2}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::kmod2\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!kx@{kx}}
-\index{kx@{kx}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{kx}{kx}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::kx\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!ky@{ky}}
-\index{ky@{ky}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{ky}{ky}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::ky\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!kz@{kz}}
-\index{kz@{kz}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{kz}{kz}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::kz\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!maximum\_number\_of\_arnoldi\_iterations@{maximum\_number\_of\_arnoldi\_iterations}}
-\index{maximum\_number\_of\_arnoldi\_iterations@{maximum\_number\_of\_arnoldi\_iterations}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{maximum\_number\_of\_arnoldi\_iterations}{maximum\_number\_of\_arnoldi\_iterations}}
-{\footnotesize\ttfamily a\+\_\+int Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::maximum\+\_\+number\+\_\+of\+\_\+arnoldi\+\_\+iterations\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!number\_of\_modes@{number\_of\_modes}}
-\index{number\_of\_modes@{number\_of\_modes}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{number\_of\_modes}{number\_of\_modes}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::number\+\_\+of\+\_\+modes\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!nx@{nx}}
-\index{nx@{nx}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{nx}{nx}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::nx\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!ny@{ny}}
-\index{ny@{ny}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{ny}{ny}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::ny\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!nz@{nz}}
-\index{nz@{nz}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{nz}{nz}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::nz\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!problem\_is\_1d@{problem\_is\_1d}}
-\index{problem\_is\_1d@{problem\_is\_1d}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{problem\_is\_1d}{problem\_is\_1d}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::problem\+\_\+is\+\_\+1d =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!problem\_is\_2d@{problem\_is\_2d}}
-\index{problem\_is\_2d@{problem\_is\_2d}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{problem\_is\_2d}{problem\_is\_2d}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::problem\+\_\+is\+\_\+2d =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!problem\_is\_3d@{problem\_is\_3d}}
-\index{problem\_is\_3d@{problem\_is\_3d}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{problem\_is\_3d}{problem\_is\_3d}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::problem\+\_\+is\+\_\+3d =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!problem\_is\_complex@{problem\_is\_complex}}
-\index{problem\_is\_complex@{problem\_is\_complex}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{problem\_is\_complex}{problem\_is\_complex}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::problem\+\_\+is\+\_\+complex =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!problem\_is\_real@{problem\_is\_real}}
-\index{problem\_is\_real@{problem\_is\_real}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{problem\_is\_real}{problem\_is\_real}}
-{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::problem\+\_\+is\+\_\+real =false\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!psi0@{psi0}}
-\index{psi0@{psi0}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{psi0}{psi0}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::psi0\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!scattering\_length@{scattering\_length}}
-\index{scattering\_length@{scattering\_length}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{scattering\_length}{scattering\_length}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::scattering\+\_\+length\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!temp@{temp}}
-\index{temp@{temp}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{temp}{temp}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::temp\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!temp2@{temp2}}
-\index{temp2@{temp2}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{temp2}{temp2}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::temp2\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!temp2\_tilde@{temp2\_tilde}}
-\index{temp2\_tilde@{temp2\_tilde}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{temp2\_tilde}{temp2\_tilde}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::temp2\+\_\+tilde\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!temp\_tilde@{temp\_tilde}}
-\index{temp\_tilde@{temp\_tilde}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{temp\_tilde}{temp\_tilde}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::temp\+\_\+tilde\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!tolerance@{tolerance}}
-\index{tolerance@{tolerance}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{tolerance}{tolerance}}
-{\footnotesize\ttfamily double Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::tolerance\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!u@{u}}
-\index{u@{u}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{u}{u}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::u\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!v@{v}}
-\index{v@{v}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{v}{v}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ $>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::v\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!Vext@{Vext}}
-\index{Vext@{Vext}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{Vext}{Vext}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::\+Vext\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!x@{x}}
-\index{x@{x}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{x}{x}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::x\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!y@{y}}
-\index{y@{y}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{y}{y}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::y\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}\label{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}} 
-\index{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}!z@{z}}
-\index{z@{z}!UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver@{UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver}}
-\doxysubsubsection{\texorpdfstring{z}{z}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Bogolyubov\+Solver\+::z\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{bogolyubov__solvers_8hpp}{bogolyubov\+\_\+solvers.\+hpp}}\item 
-\mbox{\hyperlink{bogolyubov__solver_8cpp}{bogolyubov\+\_\+solver.\+cpp}}\end{DoxyCompactItemize}

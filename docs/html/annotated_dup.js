@@ -12,7 +12,7 @@ var annotated_dup =
         [ "DipolarGPSolver", "class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html", "class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver" ],
         [ "GPSolver", "class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html", "class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver" ]
       ] ],
-      [ "MKLWrappers", "namespace_ultra_cold_1_1_m_k_l_wrappers.html", [
+      [ "MKLWrappers", null, [
         [ "DFtCalculator", "class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html", "class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator" ]
       ] ],
       [ "RealSpaceOutput", "namespace_ultra_cold_1_1_real_space_output.html", [

@@ -1,7 +1,5 @@
 var class_ultra_cold_1_1_real_space_output_1_1_data_out =
 [
-    [ "DataOut", "class_ultra_cold_1_1_real_space_output_1_1_data_out.html#a40ba194d1e1a0651ed8598fa0c9b1b1b", null ],
-    [ "~DataOut", "class_ultra_cold_1_1_real_space_output_1_1_data_out.html#aa8762a38223c9a9e96d8c910ca1dbbb2", null ],
     [ "set_output_name", "class_ultra_cold_1_1_real_space_output_1_1_data_out.html#a38ada09fa0414ee49d2f0f608974eb70", null ],
     [ "set_output_name", "class_ultra_cold_1_1_real_space_output_1_1_data_out.html#acb4c018af1f731035d492cdccdb49b45", null ],
     [ "stack1d_csv", "class_ultra_cold_1_1_real_space_output_1_1_data_out.html#af5c41f325f27492626980adbd4fd8a3b", null ],

@@ -4,7 +4,7 @@
 
 \tableofcontents
 
-<code>UltraCold</code> come with several examples to illustrate how to use it to simulate ultra-cold atomic systems in
+%UltraCold come with several examples to illustrate how to use it to simulate ultra-cold atomic systems in
 the context of Gross-Pitaevskii theory.
 
 The <code>examples</code> folder contains several folders called <code>example-<n></code>, each containing
@@ -41,7 +41,7 @@ example
 The output of course will depend on the particular example, and is documented fully for each of them.
 
 \note Although a prior basic knowledge of C++ is highly recommended, to use these examples also a very basic one is more
- then sufficient. The documentation tries to be as pedantic as possible, so that extending these examples for user's
+ than sufficient. The documentation tries to be as pedantic as possible, so that extending these examples for user's
  need shouldn't be too difficult.
 
 Here is the complete list of all examples and a brief description of what each of them does. Refer to the detailed
@@ -55,5 +55,6 @@ equations in a two-dimensional, harmonically trapped Bose gas.
  dipolar Bose-Einstein condensate.
 - \subpage example-4 Defined in file [example-4.cpp](./example-4/example-4.cpp) Excitation spectrum of a trapped dipolar
  Bose-Einstein condensate across the superfluid-supersolid phase transition.
+
 */
 

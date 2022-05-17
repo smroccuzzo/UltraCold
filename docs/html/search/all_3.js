@@ -1,14 +1,7 @@
 var searchData=
 [
-  ['eigenvectors_5frequired_0',['eigenvectors_required',['../class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html#a6f58d071f4b005d12bfd98d2d428487c',1,'UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver::eigenvectors_required()'],['../class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver.html#a19a0f87a3914646a4358e225fda715c8',1,'UltraCold::BogolyubovSolvers::TrappedDipolarBogolyubovSolver::eigenvectors_required()']]],
-  ['epsilon_5fdd_1',['epsilon_dd',['../class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver.html#a51442e7cef5948d8ae036f23e393752e',1,'UltraCold::BogolyubovSolvers::TrappedDipolarBogolyubovSolver::epsilon_dd()'],['../class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#a33c9365784e3f333dca1a96089984f1b',1,'UltraCold::GPSolvers::DipolarGPSolver::epsilon_dd()']]],
-  ['example_2d1_2',['example-1',['../example-1.html',1,'']]],
-  ['example_2d1_2edox_3',['example-1.dox',['../example-1_8dox.html',1,'']]],
-  ['example_2d2_4',['example-2',['../example-2.html',1,'']]],
-  ['example_2d2_2edox_5',['example-2.dox',['../example-2_8dox.html',1,'']]],
-  ['example_2d3_6',['example-3',['../example-3.html',1,'']]],
-  ['example_2d3_2edox_7',['example-3.dox',['../example-3_8dox.html',1,'']]],
-  ['example_2d4_8',['example-4',['../example-4.html',1,'']]],
-  ['example_2d4_2edox_9',['example-4.dox',['../example-4_8dox.html',1,'']]],
-  ['extent_10',['extent',['../class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3',1,'UltraCold::Vector']]]
+  ['get_5fnumber_5fof_5favailable_5fprocessors_0',['get_number_of_available_processors',['../class_ultra_cold_1_1_tools_1_1_hardware_inspector.html#aa746912731133a729b1e57615421e96c',1,'UltraCold::Tools::HardwareInspector']]],
+  ['get_5fnumber_5fof_5fprocessors_1',['get_number_of_processors',['../class_ultra_cold_1_1_tools_1_1_hardware_inspector.html#a5f1e83f1c67784e15cf7748282bc4448',1,'UltraCold::Tools::HardwareInspector']]],
+  ['gnu_20general_20public_20license_2',['GNU GENERAL PUBLIC LICENSE',['../md__home_smroccuzzo_work__ultra_cold__l_i_c_e_n_s_e.html',1,'']]],
+  ['gpsolver_3',['GPSolver',['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a27e4ed4915c1e2bfcabb82c2d7d07af0',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a00ae80a9fb6fe441c455ddc7d1b45df5',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; double &gt; &amp;y, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#ada67b8cb4973130f71e25058f4225791',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; double &gt; &amp;y, Vector&lt; double &gt; &amp;z, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html',1,'UltraCold::GPSolvers::GPSolver']]]
 ];

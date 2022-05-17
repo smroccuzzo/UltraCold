@@ -1,7 +1,5 @@
 var class_ultra_cold_1_1_fourier_space_output_1_1_data_out =
 [
-    [ "DataOut", "class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#ab40a7c766cef09ec9deffa88f615f4e0", null ],
-    [ "~DataOut", "class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#ab656009bdd37b849d35bf2f89df2a767", null ],
     [ "set_output_name", "class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a506dcbfae06eb092db67bddd2a2031f5", null ],
     [ "set_output_name", "class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a5c80c5668d73d0bd8573c9f5eb18d661", null ],
     [ "write_csv", "class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html#a493101cf7d9313739f7c75533de7dfe2", null ],

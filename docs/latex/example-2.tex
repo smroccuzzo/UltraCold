@@ -119,7 +119,7 @@ The first lines again includes the header file {\ttfamily \char`\"{}\+Ultra\+Col
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
 
@@ -161,8 +161,8 @@ As in example-\/1, we first calculate a ground-\/state solution of the GPe using
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegax *= TWOPI;}
+\DoxyCodeLine{    omegay *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::sqrt(omegax*omegay);}
 \DoxyCodeLine{}
@@ -360,7 +360,7 @@ We see that most of the modes are surface modes with different angular momenta, 
 \DoxyCodeLine{\textcolor{comment}{ *}}
 \DoxyCodeLine{\textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
 \DoxyCodeLine{}
@@ -395,8 +395,8 @@ We see that most of the modes are surface modes with different angular momenta, 
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegax *= TWOPI;}
+\DoxyCodeLine{    omegay *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::sqrt(omegax*omegay);}
 \DoxyCodeLine{}

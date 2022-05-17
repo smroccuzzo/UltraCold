@@ -30,7 +30,7 @@ Before getting %UltraCold, be sure you have Intel oneAPI installed. UltraCold is
 Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with
 previous versions of Intel Parallel Studio, although we have never tried it.
 
-To get UltraCold, first clone it into your local machine
+To get UltraCold, first clone it into your machine
 
 \code
 git clone https://github.com/smroccuzzo/UltraCold.git
@@ -39,6 +39,7 @@ git clone https://github.com/smroccuzzo/UltraCold.git
 Then, enter the directory %UltraCold, and follow the usual steps required to build a project using
 <a href="https://cmake.org/"> cmake </a>. By default, the build type is *Release*. So, all you have to do is
 \code
+cd UltraCold
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=</your/install/path> ..

@@ -213,7 +213,7 @@ number of modes = 50
 calculate eigenvectors = true
 tolerance = 1.E-8
 maximum number of arnoldi iterations = 10000</pre><p >We read the input file as usual using the class <code> Tools::InputParser </code>, set harmonic units, create a mesh and set the initial wave function and external potential for the calculation of the stationary state of the system, on top of which we are going to calculate the elementary excitations. Using the parameters above, such ground state is going to be a supersolid state.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
@@ -254,9 +254,9 @@ maximum number of arnoldi iterations = 10000</pre><p >We read the input file as 
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">    omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegaz *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">    omegax *= TWOPI;</div>
+<div class="line">    omegay *= TWOPI;</div>
+<div class="line">    omegaz *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::cbrt(omegax*omegay*omegaz);</div>
 <div class="line"> </div>
@@ -282,7 +282,7 @@ maximum number of arnoldi iterations = 10000</pre><p >We read the input file as 
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nx; ++i) x[i] = -xmax + i * dx;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ny; ++i) y[i] = -ymax + i * dy;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nz; ++i) z[i] = -zmax + i * dz;</div>
-<div class="line">    <a class="code hl_function" href="namespace_ultra_cold.html#a49073b90537d0b230deb60941ed6f0b4">create_mesh_in_Fourier_space</a>(x, y, z, kx, ky, kz);</div>
+<div class="line">    create_mesh_in_Fourier_space(x, y, z, kx, ky, kz);</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;std::complex&lt;double&gt;</a>&gt; psi(nx, ny, nz);</div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> Vext(nx, ny, nz);</div>
@@ -313,15 +313,12 @@ maximum number of arnoldi iterations = 10000</pre><p >We read the input file as 
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html">UltraCold::RealSpaceOutput::DataOut</a> psi_out;</div>
 <div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#acb4c018af1f731035d492cdccdb49b45">set_output_name</a>(<span class="stringliteral">&quot;initial_wave_function&quot;</span>);</div>
 <div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#a8580f804548eaee31fb7e4d7388d30fd">write_slice2d_vtk</a>(x,y,psi,<span class="stringliteral">&quot;xy&quot;</span>,<span class="stringliteral">&quot;initial_wave_function&quot;</span>);</div>
-<div class="ttc" id="a_ultra_cold_8hpp_html"><div class="ttname"><a href="_ultra_cold_8hpp.html">UltraCold.hpp</a></div></div>
-<div class="ttc" id="abogolyubov__solver_8cpp_html_a4912c64aec0c943b7985db6cb61ff83a"><div class="ttname"><a href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a></div><div class="ttdeci">#define TWOPI</div><div class="ttdef"><b>Definition:</b> bogolyubov_solver.cpp:21</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html">UltraCold::RealSpaceOutput::DataOut</a></div><div class="ttdoc">A class to output a data Vector in real space.</div><div class="ttdef"><b>Definition:</b> data_out.hpp:70</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html_a8580f804548eaee31fb7e4d7388d30fd"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#a8580f804548eaee31fb7e4d7388d30fd">UltraCold::RealSpaceOutput::DataOut::write_slice2d_vtk</a></div><div class="ttdeci">void write_slice2d_vtk(Vector&lt; double &gt; &amp;x_axis, Vector&lt; double &gt; &amp;y_axis, Vector&lt; double &gt; &amp;real_output_vector, const char *vector_name, const char *plane)</div><div class="ttdoc">Write an output data file in .vtk format, for 2D slice of real 3D Vector.</div><div class="ttdef"><b>Definition:</b> data_out.cpp:1993</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html_acb4c018af1f731035d492cdccdb49b45"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#acb4c018af1f731035d492cdccdb49b45">UltraCold::RealSpaceOutput::DataOut::set_output_name</a></div><div class="ttdeci">void set_output_name(const std::string &amp;output_file_name)</div><div class="ttdoc">Set the name for the output data file, input as an std::string.</div><div class="ttdef"><b>Definition:</b> data_out.cpp:30</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_tools_1_1_input_parser_html"><div class="ttname"><a href="class_ultra_cold_1_1_tools_1_1_input_parser.html">UltraCold::Tools::InputParser</a></div><div class="ttdoc">Class to read input parameters from files.</div><div class="ttdef"><b>Definition:</b> input_parser.hpp:93</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_vector_html"><div class="ttname"><a href="class_ultra_cold_1_1_vector.html">UltraCold::Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
-<div class="ttc" id="anamespace_ultra_cold_html_a49073b90537d0b230deb60941ed6f0b4"><div class="ttname"><a href="namespace_ultra_cold.html#a49073b90537d0b230deb60941ed6f0b4">UltraCold::create_mesh_in_Fourier_space</a></div><div class="ttdeci">void create_mesh_in_Fourier_space(Vector&lt; double &gt; &amp;x, Vector&lt; double &gt; &amp;kx)</div><div class="ttdoc">Creation of a mesh in Fourier space for a one-dimensional problem.</div><div class="ttdef"><b>Definition:</b> mesh_fourier_space.cpp:30</div></div>
 </div><!-- fragment --><p >So, we calculate the ground state of the system using the class <code> GPSolvers::DipolarGPSolver </code> </p><div class="fragment"><div class="line"><a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html">GPSolvers::DipolarGPSolver</a> dipolar_gp_solver(x,</div>
 <div class="line">                                             y,</div>
 <div class="line">                                             z,</div>
@@ -481,7 +478,7 @@ The plain program</h2>
 <div class="line"><span class="comment"> *</span></div>
 <div class="line"><span class="comment"> *--------------------------------------------------------------------------------*/</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_ultra_cold_8hpp.html">UltraCold.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;UltraCold.hpp&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
@@ -522,9 +519,9 @@ The plain program</h2>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> hbar        = 0.6347*1.E5;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> bohr_radius = 5.292E-5;</div>
 <div class="line"> </div>
-<div class="line">    omegax *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegay *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
-<div class="line">    omegaz *= <a class="code hl_define" href="bogolyubov__solver_8cpp.html#a4912c64aec0c943b7985db6cb61ff83a">TWOPI</a>;</div>
+<div class="line">    omegax *= TWOPI;</div>
+<div class="line">    omegay *= TWOPI;</div>
+<div class="line">    omegaz *= TWOPI;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> omega_ho = std::cbrt(omegax*omegay*omegaz);</div>
 <div class="line"> </div>
@@ -550,7 +547,7 @@ The plain program</h2>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nx; ++i) x[i] = -xmax + i * dx;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ny; ++i) y[i] = -ymax + i * dy;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nz; ++i) z[i] = -zmax + i * dz;</div>
-<div class="line">    <a class="code hl_function" href="namespace_ultra_cold.html#a49073b90537d0b230deb60941ed6f0b4">create_mesh_in_Fourier_space</a>(x, y, z, kx, ky, kz);</div>
+<div class="line">    create_mesh_in_Fourier_space(x, y, z, kx, ky, kz);</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;std::complex&lt;double&gt;</a>&gt; psi(nx, ny, nz);</div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> Vext(nx, ny, nz);</div>

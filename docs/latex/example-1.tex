@@ -72,7 +72,7 @@ The first line includes the header file {\ttfamily \char`\"{}\+Ultra\+Cold.\+hpp
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 
 \end{DoxyCode}
 
@@ -186,7 +186,7 @@ Then, we also override the member function that solves the first step of the ope
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#pragma omp parallel for}}
 \DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i)}
-\DoxyCodeLine{            psi(i) *= std::exp(-\/ci*time\_step*(Vext(i)+ 4*\mbox{\hyperlink{bogolyubov__solver_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}}*current\_scattering\_length*std::norm(psi(i))));}
+\DoxyCodeLine{            psi(i) *= std::exp(-\/ci*time\_step*(Vext(i)+ 4*PI*current\_scattering\_length*std::norm(psi(i))));}
 \DoxyCodeLine{}
 \DoxyCodeLine{\}}
 
@@ -274,9 +274,9 @@ Since it is very useful for comparison with typical scales used in experiments, 
 \DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{omegax *= TWOPI;}
+\DoxyCodeLine{omegay *= TWOPI;}
+\DoxyCodeLine{omegaz *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
 \DoxyCodeLine{}
@@ -449,7 +449,7 @@ This program can be used as a template for studying the ground state and the dyn
 \DoxyCodeLine{\textcolor{comment}{ *}}
 \DoxyCodeLine{\textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
 \DoxyCodeLine{}
@@ -535,7 +535,7 @@ This program can be used as a template for studying the ground state and the dyn
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#pragma omp parallel for}}
 \DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i)}
-\DoxyCodeLine{            psi(i) *= std::exp(-\/ci*time\_step*(Vext(i)+ 4*\mbox{\hyperlink{bogolyubov__solver_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}}*current\_scattering\_length*std::norm(psi(i))));}
+\DoxyCodeLine{            psi(i) *= std::exp(-\/ci*time\_step*(Vext(i)+ 4*PI*current\_scattering\_length*std::norm(psi(i))));}
 \DoxyCodeLine{}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
@@ -595,9 +595,9 @@ This program can be used as a template for studying the ground state and the dyn
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegax *= TWOPI;}
+\DoxyCodeLine{    omegay *= TWOPI;}
+\DoxyCodeLine{    omegaz *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
 \DoxyCodeLine{}

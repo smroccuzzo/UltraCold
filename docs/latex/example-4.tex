@@ -114,7 +114,7 @@ We read the input file as usual using the class {\ttfamily  Tools\+::\+Input\+Pa
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <random>}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
@@ -155,9 +155,9 @@ We read the input file as usual using the class {\ttfamily  Tools\+::\+Input\+Pa
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegax *= TWOPI;}
+\DoxyCodeLine{    omegay *= TWOPI;}
+\DoxyCodeLine{    omegaz *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
 \DoxyCodeLine{}
@@ -418,7 +418,7 @@ One can use the calculated Bogolyubov amplitudes $u$ and $v$, as well as the cal
 \DoxyCodeLine{\textcolor{comment}{ *}}
 \DoxyCodeLine{\textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}UltraCold.hpp"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <random>}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
@@ -459,9 +459,9 @@ One can use the calculated Bogolyubov amplitudes $u$ and $v$, as well as the cal
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
-\DoxyCodeLine{    omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegax *= TWOPI;}
+\DoxyCodeLine{    omegay *= TWOPI;}
+\DoxyCodeLine{    omegaz *= TWOPI;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
 \DoxyCodeLine{}
