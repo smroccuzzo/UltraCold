@@ -1,11 +1,5 @@
-# Exclude Fortran files from linguist counting
-
-*.f linguist-vendored 
-*.f90 linguist-vendored 
-
-# Mark documentation as linguist-documentation and exclude from stats
-
-docs/* linguist-documentation
-
+# Exclude unwanted folders from Linguist counting
 
 bundled/* linguist-vendored
+bundled/arpack-ng/* linguist-vendored
+docs/* linguist-vendored
