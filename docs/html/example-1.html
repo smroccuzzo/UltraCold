@@ -172,31 +172,35 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 </div><!-- fragment --><p >The second line imports the namespace <code><a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a></code>, which wraps all the namespaces available in the library.</p>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
-</div><!-- fragment --><p >As said, we will solve the Gross-Pitaevskii equation using a class derived from the <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code> class, which uses, under the hood, functions from Intel's Math Kernel Library to perform some mathematical operations, in particular dynamic allocation of data arrays and Fast Fourier Transforms. In the derived solver class, it is possible, among other things, to override the member functions <code>run_operator_splitting(...)</code>, which solves the Gross-Pitaevskii equation using operator splitting, <code>solve_step_1_operator_splitting(...)</code>, which solves the first step in the operator splitting method and allows to add time-dependent terms in the Hamiltonian, and <code>write_operator_splitting_output(...)</code>, which writes the output during dynamic simulations. So, let's define a custom <code>myGPSolver</code> class, inheriting from <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code>, and overriding the member functions described above:</p>
-<div class="fragment"><div class="line"><span class="keyword">class </span>myGPSolver : <span class="keyword">public</span> <a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">GPSolvers::GPSolver</a></div>
+</div><!-- fragment --><p >As said, we will solve the Gross-Pitaevskii equation using a class derived from the <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code> class, which uses, under the hood, functions from Intel's Math Kernel Library to perform some mathematical operations, in particular dynamic allocation of data arrays and Fast Fourier Transforms. In the derived solver class, it is possible, among other things, to override the member functions <code>run_operator_splitting(...)</code>, which solves the Gross-Pitaevskii equation using operator splitting, <code>solve_step_1_operator_splitting(...)</code>, which solves the first step in the operator splitting method and allows to add time-dependent terms in the Hamiltonian, and <code>write_operator_splitting_output(...)</code>, which writes the output during dynamic simulations. So, let's define a custom <code><a class="el" href="classmy_g_p_solver.html">myGPSolver</a></code> class, inheriting from <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code>, and overriding the member functions described above:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="classmy_g_p_solver.html">myGPSolver</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">GPSolvers::GPSolver</a></div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">public</span>:</div>
 <div class="line"> </div>
 <div class="line">        <span class="keyword">using </span>GPSolver::GPSolver;</div>
-<div class="line">        <span class="keywordtype">void</span> run_operator_splitting(<span class="keywordtype">int</span> number_of_time_steps,</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#af19bbeea74599e536053aa471effb0bf">run_operator_splitting</a>(<span class="keywordtype">int</span> number_of_time_steps,</div>
 <div class="line">                                    <span class="keywordtype">double</span> time_step,</div>
 <div class="line">                                    <span class="keywordtype">double</span> ramp_duration,</div>
 <div class="line">                                    <span class="keywordtype">double</span> initial_scattering_length,</div>
 <div class="line">                                    <span class="keywordtype">double</span> final_scattering_length,</div>
 <div class="line">                                    std::ostream&amp; output_stream) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordtype">void</span> write_operator_splitting_output(<span class="keywordtype">size_t</span> iteration_number,</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">write_operator_splitting_output</a>(<span class="keywordtype">size_t</span> iteration_number,</div>
 <div class="line">                                             <span class="keywordtype">double</span> current_scattering_length,</div>
 <div class="line">                                             std::ostream&amp; output_stream) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">protected</span>:</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordtype">void</span> solve_step_1_operator_splitting(<span class="keywordtype">double</span> current_scattering_length) <span class="keyword">override</span>;</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">solve_step_1_operator_splitting</a>(<span class="keywordtype">double</span> current_scattering_length) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
 <div class="line">};</div>
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver_html"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">UltraCold::GPSolvers::GPSolver</a></div><div class="ttdoc">Class to solve the Gross-Pitaevskii equation.</div><div class="ttdef"><b>Definition:</b> gp_solvers.hpp:153</div></div>
+<div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver_html_a86695841c57f5a9a0eb05c9876babf15"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">UltraCold::GPSolvers::GPSolver::solve_step_1_operator_splitting</a></div><div class="ttdeci">virtual void solve_step_1_operator_splitting()</div><div class="ttdoc">Solve step-1 of operator splitting.</div><div class="ttdef"><b>Definition:</b> gp_solver.cpp:570</div></div>
+<div class="ttc" id="aclassmy_g_p_solver_html"><div class="ttname"><a href="classmy_g_p_solver.html">myGPSolver</a></div><div class="ttdef"><b>Definition:</b> example-1.cpp:30</div></div>
+<div class="ttc" id="aclassmy_g_p_solver_html_ad6c9b6b574baa6241531383bddecf1e5"><div class="ttname"><a href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">myGPSolver::write_operator_splitting_output</a></div><div class="ttdeci">void write_operator_splitting_output(size_t iteration_number, double current_scattering_length, std::ostream &amp;output_stream) override</div><div class="ttdoc">Useful possible overload.</div><div class="ttdef"><b>Definition:</b> example-1.cpp:115</div></div>
+<div class="ttc" id="aclassmy_g_p_solver_html_af19bbeea74599e536053aa471effb0bf"><div class="ttname"><a href="classmy_g_p_solver.html#af19bbeea74599e536053aa471effb0bf">myGPSolver::run_operator_splitting</a></div><div class="ttdeci">void run_operator_splitting(int number_of_time_steps, double time_step, double ramp_duration, double initial_scattering_length, double final_scattering_length, std::ostream &amp;output_stream) override</div><div class="ttdoc">Useful possible overload.</div><div class="ttdef"><b>Definition:</b> example-1.cpp:51</div></div>
 </div><!-- fragment --><p >First, we override <code>run_operator_splitting(...)</code> in such a way that it takes, as arguments, the duration of the ramp in the scattering length, as well as the values of the initial and final scattering lengths. The function will also perform a linear ramp in the scattering length during the real-time evolution of the system. Notice that the operator splitting procedure is here explicitly implemented, with the laplacian calculated using the Fast Fourier Transform routines from the Intel's Math Kernel Library, wrapped in the class <code>MKLWrappers::DFtCalculator</code>:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> myGPSolver::run_operator_splitting(<span class="keywordtype">int</span> number_of_time_steps,</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#af19bbeea74599e536053aa471effb0bf">myGPSolver::run_operator_splitting</a>(<span class="keywordtype">int</span> number_of_time_steps,</div>
 <div class="line">                                        <span class="keywordtype">double</span> time_step,</div>
 <div class="line">                                        <span class="keywordtype">double</span> ramp_duration,</div>
 <div class="line">                                        <span class="keywordtype">double</span> initial_scattering_length,</div>
@@ -225,7 +229,7 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Write outputs starting from the first time step</span></div>
 <div class="line"> </div>
-<div class="line">        write_operator_splitting_output(iteration_number,</div>
+<div class="line">        <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">write_operator_splitting_output</a>(iteration_number,</div>
 <div class="line">                                        current_scattering_length,</div>
 <div class="line">                                        output_stream);</div>
 <div class="line"> </div>
@@ -241,27 +245,29 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Solve step 1 of operator splitting</span></div>
 <div class="line"> </div>
-<div class="line">        solve_step_1_operator_splitting(current_scattering_length);</div>
+<div class="line">        <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">solve_step_1_operator_splitting</a>(current_scattering_length);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Solve step 2 of operator splitting</span></div>
 <div class="line"> </div>
-<div class="line">        solve_step_2_operator_splitting(dft_calculator_step_2);</div>
+<div class="line">        <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a89dd0f90d9f3db9cbee73b388389b9b4">solve_step_2_operator_splitting</a>(dft_calculator_step_2);</div>
 <div class="line"> </div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">}</div>
+<div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver_html_a89dd0f90d9f3db9cbee73b388389b9b4"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a89dd0f90d9f3db9cbee73b388389b9b4">UltraCold::GPSolvers::GPSolver::solve_step_2_operator_splitting</a></div><div class="ttdeci">void solve_step_2_operator_splitting(MKLWrappers::DFtCalculator &amp;)</div><div class="ttdoc">Solve step-2 of operator splitting.</div><div class="ttdef"><b>Definition:</b> gp_solver.cpp:602</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator_html"><div class="ttname"><a href="class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html">UltraCold::MKLWrappers::DFtCalculator</a></div><div class="ttdoc">Class to calculate Fourier transforms using Intel's MKL DFT functions.</div><div class="ttdef"><b>Definition:</b> dft.hpp:59</div></div>
 </div><!-- fragment --><p >Then, we also override the member function that solves the first step of the operator-splitting method in such a way that it uses the current value of the scattering length. Since we like to go fast, we also add a simple pre-processor directive instructing the compiler to parallelize the loop using OpenMP:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> myGPSolver::solve_step_1_operator_splitting(<span class="keywordtype">double</span> current_scattering_length)</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">myGPSolver::solve_step_1_operator_splitting</a>(<span class="keywordtype">double</span> current_scattering_length)</div>
 <div class="line">{</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i)</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a28432f7d508af676536782d2a34dca05">size</a>(); ++i)</div>
 <div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*PI*current_scattering_length*std::norm(psi(i))));</div>
 <div class="line"> </div>
 <div class="line">}</div>
+<div class="ttc" id="aclass_ultra_cold_1_1_vector_html_a28432f7d508af676536782d2a34dca05"><div class="ttname"><a href="class_ultra_cold_1_1_vector.html#a28432f7d508af676536782d2a34dca05">UltraCold::Vector::size</a></div><div class="ttdeci">int size()</div><div class="ttdoc">Get the total number of elements.</div><div class="ttdef"><b>Definition:</b> vector.cpp:266</div></div>
 </div><!-- fragment --><p >Finally, we override the member function that writes the output of the real-time simulation, in such a way that it will calculate the root mean-squared radius of the atomic cloud every hundred time steps, writing it to the output stream together with the current time. Once again, since we like to go fast, we add a <code>#pragma</code> to parallelize the triple loop using OpenMP. Notice that both the time and the root mean squared radius will be in harmonic units:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> myGPSolver::write_operator_splitting_output(<span class="keywordtype">size_t</span> iteration_number,</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">myGPSolver::write_operator_splitting_output</a>(<span class="keywordtype">size_t</span> iteration_number,</div>
 <div class="line">                                                 <span class="keywordtype">double</span> current_scattering_length,</div>
 <div class="line">                                                 std::ostream &amp;output_stream)</div>
 <div class="line">{</div>
@@ -271,9 +277,9 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line">        <span class="keywordtype">double</span> norm = 0.0;</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for reduction(+: r2m,norm) collapse(3)</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.extent(0); ++i)</div>
-<div class="line">            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0; j &lt; psi.extent(1); ++j)</div>
-<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; psi.extent(2); ++k)</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(0); ++i)</div>
+<div class="line">            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0; j &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(1); ++j)</div>
+<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(2); ++k)</div>
 <div class="line">                {</div>
 <div class="line">                    r2m += (std::pow(x[i],2)+std::pow(y[j],2)+std::pow(z[k],2))*std::norm(psi(i,j,k));</div>
 <div class="line">                    norm += std::norm(psi(i,j,k));</div>
@@ -282,6 +288,7 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line">        output_stream &lt;&lt; iteration_number*time_step &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; current_scattering_length &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; r2m &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
+<div class="ttc" id="aclass_ultra_cold_1_1_vector_html_a255ce5c3acc5afceb2052d9eb3f338a3"><div class="ttname"><a href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">UltraCold::Vector::extent</a></div><div class="ttdeci">int extent(int)</div><div class="ttdoc">Get the extent of the Vector along a certain direction.</div><div class="ttdef"><b>Definition:</b> vector.cpp:291</div></div>
 </div><!-- fragment --><p >Now, we can define our main function.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> main() {</div>
 </div><!-- fragment --><p >The first thing that main does is to define an object ot type <code><a class="el" href="class_ultra_cold_1_1_tools_1_1_input_parser.html" title="Class to read input parameters from files.">UltraCold::Tools::InputParser</a></code>, which allows to read the parameters defined in the file <code>example-1.prm</code> as follows:</p>
@@ -375,8 +382,8 @@ ramp duration             = 20.0  # Duration of the ramp of the scattering lengt
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i) norm += std::norm(psi[i]);</div>
 <div class="line">norm *= dv;</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);</div>
-</div><!-- fragment --><p >Finally, we initialize the <code>myGPSolver</code> class, and run the <code>run_gradient_descent(...)</code> member function in order to calculate a ground state solution on the defined mesh and for this external potential and physical parameters:</p>
-<div class="fragment"><div class="line">myGPSolver gp_solver(x,y,z,psi,Vext,initial_scattering_length);</div>
+</div><!-- fragment --><p >Finally, we initialize the <code><a class="el" href="classmy_g_p_solver.html">myGPSolver</a></code> class, and run the <code>run_gradient_descent(...)</code> member function in order to calculate a ground state solution on the defined mesh and for this external potential and physical parameters:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classmy_g_p_solver.html">myGPSolver</a> gp_solver(x,y,z,psi,Vext,initial_scattering_length);</div>
 <div class="line"> </div>
 <div class="line">std::fstream gradient_descent_output_stream;</div>
 <div class="line">gradient_descent_output_stream.open(<span class="stringliteral">&quot;gradient_descent_output.csv&quot;</span>,std::ios::out);</div>
@@ -455,29 +462,29 @@ The plain program</h2>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a>;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">class </span>myGPSolver : <span class="keyword">public</span> <a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">GPSolvers::GPSolver</a></div>
+<div class="line"><span class="keyword">class </span><a class="code hl_class" href="classmy_g_p_solver.html">myGPSolver</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">GPSolvers::GPSolver</a></div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">public</span>:</div>
 <div class="line"> </div>
 <div class="line">        <span class="keyword">using </span>GPSolver::GPSolver;</div>
-<div class="line">        <span class="keywordtype">void</span> run_operator_splitting(<span class="keywordtype">int</span> number_of_time_steps,</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#af19bbeea74599e536053aa471effb0bf">run_operator_splitting</a>(<span class="keywordtype">int</span> number_of_time_steps,</div>
 <div class="line">                                    <span class="keywordtype">double</span> time_step,</div>
 <div class="line">                                    <span class="keywordtype">double</span> ramp_duration,</div>
 <div class="line">                                    <span class="keywordtype">double</span> initial_scattering_length,</div>
 <div class="line">                                    <span class="keywordtype">double</span> final_scattering_length,</div>
 <div class="line">                                    std::ostream&amp; output_stream) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordtype">void</span> write_operator_splitting_output(<span class="keywordtype">size_t</span> iteration_number,</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">write_operator_splitting_output</a>(<span class="keywordtype">size_t</span> iteration_number,</div>
 <div class="line">                                             <span class="keywordtype">double</span> current_scattering_length,</div>
 <div class="line">                                             std::ostream&amp; output_stream) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">protected</span>:</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordtype">void</span> solve_step_1_operator_splitting(<span class="keywordtype">double</span> current_scattering_length) <span class="keyword">override</span>;</div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">solve_step_1_operator_splitting</a>(<span class="keywordtype">double</span> current_scattering_length) <span class="keyword">override</span>;</div>
 <div class="line"> </div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> myGPSolver::run_operator_splitting(<span class="keywordtype">int</span> number_of_time_steps,</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#af19bbeea74599e536053aa471effb0bf">myGPSolver::run_operator_splitting</a>(<span class="keywordtype">int</span> number_of_time_steps,</div>
 <div class="line">                                        <span class="keywordtype">double</span> time_step,</div>
 <div class="line">                                        <span class="keywordtype">double</span> ramp_duration,</div>
 <div class="line">                                        <span class="keywordtype">double</span> initial_scattering_length,</div>
@@ -506,7 +513,7 @@ The plain program</h2>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Write outputs starting from the first time step</span></div>
 <div class="line"> </div>
-<div class="line">        write_operator_splitting_output(iteration_number,</div>
+<div class="line">        <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">write_operator_splitting_output</a>(iteration_number,</div>
 <div class="line">                                        current_scattering_length,</div>
 <div class="line">                                        output_stream);</div>
 <div class="line"> </div>
@@ -522,26 +529,26 @@ The plain program</h2>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Solve step 1 of operator splitting</span></div>
 <div class="line"> </div>
-<div class="line">        solve_step_1_operator_splitting(current_scattering_length);</div>
+<div class="line">        <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">solve_step_1_operator_splitting</a>(current_scattering_length);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Solve step 2 of operator splitting</span></div>
 <div class="line"> </div>
-<div class="line">        solve_step_2_operator_splitting(dft_calculator_step_2);</div>
+<div class="line">        <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a89dd0f90d9f3db9cbee73b388389b9b4">solve_step_2_operator_splitting</a>(dft_calculator_step_2);</div>
 <div class="line"> </div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> myGPSolver::solve_step_1_operator_splitting(<span class="keywordtype">double</span> current_scattering_length)</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a86695841c57f5a9a0eb05c9876babf15">myGPSolver::solve_step_1_operator_splitting</a>(<span class="keywordtype">double</span> current_scattering_length)</div>
 <div class="line">{</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i)</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a28432f7d508af676536782d2a34dca05">size</a>(); ++i)</div>
 <div class="line">            psi(i) *= std::exp(-ci*time_step*(Vext(i)+ 4*PI*current_scattering_length*std::norm(psi(i))));</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> myGPSolver::write_operator_splitting_output(<span class="keywordtype">size_t</span> iteration_number,</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="classmy_g_p_solver.html#ad6c9b6b574baa6241531383bddecf1e5">myGPSolver::write_operator_splitting_output</a>(<span class="keywordtype">size_t</span> iteration_number,</div>
 <div class="line">                                                 <span class="keywordtype">double</span> current_scattering_length,</div>
 <div class="line">                                                 std::ostream &amp;output_stream)</div>
 <div class="line">{</div>
@@ -551,9 +558,9 @@ The plain program</h2>
 <div class="line">        <span class="keywordtype">double</span> norm = 0.0;</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#pragma omp parallel for reduction(+: r2m,norm) collapse(3)</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.extent(0); ++i)</div>
-<div class="line">            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0; j &lt; psi.extent(1); ++j)</div>
-<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; psi.extent(2); ++k)</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(0); ++i)</div>
+<div class="line">            <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0; j &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(1); ++j)</div>
+<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; psi.<a class="code hl_function" href="class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3">extent</a>(2); ++k)</div>
 <div class="line">                {</div>
 <div class="line">                    r2m += (std::pow(x[i],2)+std::pow(y[j],2)+std::pow(z[k],2))*std::norm(psi(i,j,k));</div>
 <div class="line">                    norm += std::norm(psi(i,j,k));</div>
@@ -654,7 +661,7 @@ The plain program</h2>
 <div class="line">    norm *= dv;</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);</div>
 <div class="line"> </div>
-<div class="line">    myGPSolver gp_solver(x,y,z,psi,Vext,initial_scattering_length);</div>
+<div class="line">    <a class="code hl_class" href="classmy_g_p_solver.html">myGPSolver</a> gp_solver(x,y,z,psi,Vext,initial_scattering_length);</div>
 <div class="line"> </div>
 <div class="line">    std::fstream gradient_descent_output_stream;</div>
 <div class="line">    gradient_descent_output_stream.open(<span class="stringliteral">&quot;gradient_descent_output.csv&quot;</span>,std::ios::out);</div>
@@ -695,6 +702,7 @@ The plain program</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="examples.html">Examples</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>

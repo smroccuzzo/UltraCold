@@ -23,5 +23,6 @@ var annotated_dup =
         [ "InputParser", "class_ultra_cold_1_1_tools_1_1_input_parser.html", "class_ultra_cold_1_1_tools_1_1_input_parser" ]
       ] ],
       [ "Vector", "class_ultra_cold_1_1_vector.html", "class_ultra_cold_1_1_vector" ]
-    ] ]
+    ] ],
+    [ "myGPSolver", "classmy_g_p_solver.html", "classmy_g_p_solver" ]
 ];

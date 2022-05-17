@@ -1,6 +1,6 @@
 # README
 
-%UltraCold is a modular and extensible collection of C++ libraries for the study of ultra-cold atomic systems in the 
+UltraCold is a modular and extensible collection of C++ libraries for the study of ultra-cold atomic systems in the 
 context of Gross-Pitaevskii theory. 
 
 ## What UltraCold can do
@@ -63,7 +63,6 @@ The [examples](./examples) folder contains several folders called *example-n*, e
 To run the examples, follow the usual steps required to build a project using *cmake*, namely, open a
 terminal in the folder containing the example you are interested in and type
 
-
     mkdir build
     cd build
     cmake -DULTRACOLD_DIR=/path/to/the/directory/where/you/installed/UltraCold ..
@@ -72,10 +71,8 @@ terminal in the folder containing the example you are interested in and type
 This will create an executable called example-n, which (if everything went fine) should be ready to be
 executed. Now you can just copy the eventual file example-n.prm from the parent folder and run the example
 
-
     cp ../example-n.prm .
     ./example-n
-
 
 The output of course will depend on the particular example, and is documented fully for each of them.
 
@@ -94,6 +91,7 @@ description available in the documentation.
   ground state of a trapped dipolar Bose-Einstein condensate.
 - [example-4](./examples/example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp)) Excitation 
 spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
+- 
 ## License 
 
 UltraCold is distributed as free software under the GPL3. See the file LICENSE.md
