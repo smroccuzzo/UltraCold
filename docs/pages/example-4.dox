@@ -4,8 +4,7 @@
 \tableofcontents
 \author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
 
-\section Title-4  Excitation spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid
-phase transition.
+\section Title-4  Excitation spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
 
 *******************************************************
 \subsection Introduction-4 Introduction
@@ -19,10 +18,10 @@ transition.
 As explained in example-2, in order to calculate the spectrum of elementary excitations on top of a certain stationary
 solution of the GPe, it is necessary to search for solutions of the time-dependent GPe of the form
 
-\f[
+\begin{equation}
   \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
  + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
-\f]
+\end{equation}
 
 and solve the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle
 amplitudes \f$ u \f$ and \f$ v \f$. In the case of a **dipolar** Bose gas, taking also into account the
