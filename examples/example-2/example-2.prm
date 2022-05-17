@@ -1,0 +1,29 @@
+# Mesh parameters
+
+xmax = 15.0 # Size of the mesh along the x-axis, in micrometers. The mesh will extend from -xmax to xmax
+ymax = 15.0 # Size of the mesh along the y-axis, in micrometers. The mesh will extend from -ymax to ymax
+
+nx = 128 # Number of points along the x-axis
+ny = 128 # Number of points along the y-axis
+
+# Physical parameters
+
+scattering length   = 100.9  # Initial scattering length in units of the Bohr radius
+number of particles = 40000  # Total number of atoms
+atomic mass         = 87     # Atomic mass, in atomic mass units
+omegax              = 100 # Harmonic frequency along the x-axis, in units of (2pi)Hz
+omegay              = 100 # Harmonic frequency along the y-axis, in units of (2pi)Hz
+
+# Run parameters for gradient descent
+
+number of gradient descent steps = 500000 # maximum number of gradient descent steps
+residual                         = 1.E-8 # Threshold on the norm of the residual
+alpha                            = 1.E-4 # gradient descent step
+beta                             = 0.9   # step for the heavy-ball acceleration method
+
+# Run parameters for Bogolyubov equations
+
+number of modes = 100
+calculate eigenvectors = true
+tolerance = 1.E-12
+maximum number of arnoldi iterations = 1000

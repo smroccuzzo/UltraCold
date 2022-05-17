@@ -1,0 +1,73 @@
+/**
+
+\mainpage Introduction
+\tableofcontents
+
+\section Description What it is
+
+An extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the
+context of Gross-Pitaevskii theory. \n
+%UltraCold allows for the solution of several flavors of Gross-Pitaevskii equations, used in particular for the
+description of ensembles of bosonic particles close to the absolute zero.
+Each flavor of Gross-Pitaevskii equation supported has its own solver class. In this list, you can find all the classes
+currently available.
+
+\section Required Prerequisites and platforms
+
+%UltraCold has been tested only Linux machines. Moreover, it is built on top of Intel's Math Kernel Library,
+and relies upon <a href="https://github.com/opencollab/arpack-ng"> arpack-ng </a> for the solution of Bogolyubov
+equations. Hence, in order to use %UltraCold, you first need to download and install a distribution of Intel's software.
+Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
+Parallel Studio. \n
+If you don't have arpack-ng installed, you can let UltraCold install it for you when you first configure UltraCold using
+cmake. See the next section.
+
+\section Installation
+
+Before getting %UltraCold, be sure you have Intel oneAPI installed. UltraCold is in fact built on top of Intel's Math
+Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with
+previous versions of Intel Parallel Studio, although we have never tried it.
+
+To get UltraCold, first clone it into your local machine
+
+\code
+git clone https://github.com/smroccuzzo/UltraCold.git
+\endcode
+
+Then, enter the directory %UltraCold, and follow the usual steps required to build a project using
+<a href="https://cmake.org/"> cmake </a>. By default, the build type is *Release*. A few configuration options are
+available and can be selected by passing the right arguments to cmake.
+In particular, in order to build UltraCold with the bundled (and tested) version of arpack-ng, all you have to do is
+
+\code
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=<path-where-you-want-to-install-UltraCold> \
+      -DULTRACOLD_WITH_BUNDLED_ARPACK=TRUE \
+      ..
+\endcode
+
+or, if you already have installed arpack-ng
+
+\code
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=<path-where-you-want-to-install-UltraCold> \
+      -DARPACK_DIR=<your-path-to-arpack-ng> \
+      ..
+\endcode
+
+Notice that, if arpack-ng was not compiled with the Intel compilers and the MKL distribution of blas and lapack, as well
+as with iso-c-binding enabled, errors may occur when using the Bogolyubov solver classes. Actually, the distribution of
+arpack-ng bundled in UltraCold is quite small, so our advice is to use this one and let UltraCold compile and install
+it for you.
+
+\section Examples
+
+This is for running the tests. Always source the setvarsh.sh script
+
+\section License
+
+UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md
+
+*/

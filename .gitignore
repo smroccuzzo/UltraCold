@@ -1,0 +1,10 @@
+.vscode
+*build*
+*bin*
+*html*
+*latex*
+*man*
+*lib*
+TODOs*
+.idea
+/bundled/arpack-ng/
