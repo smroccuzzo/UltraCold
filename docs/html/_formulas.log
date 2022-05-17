@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2022.3.21)  17 MAY 2022 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2022.3.21)  17 MAY 2022 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,7 +770,7 @@ l.145 \]
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
+[23] [24] [25] [26] [27] [28] [29] [30] [31]
 
 ! Package amsmath Error: Erroneous nesting of equation structures;
 (amsmath)                trying to recover with `aligned'.
@@ -779,12 +779,12 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.184 \end{align}
+l.179 \end{align}
                  
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[33] [34]
+[32] [33]
 
 ! Package amsmath Error: Erroneous nesting of equation structures;
 (amsmath)                trying to recover with `aligned'.
@@ -793,16 +793,16 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.196  \end{align}
+l.191  \end{align}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[35] [36] [37] [38] [39] [40] [41] [42]
+[34] [35] [36] [37] [38] [39] [40] [41]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.228 
+l.223 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -810,10 +810,29 @@ you left one out. Proceed, with fingers crossed.
 ! Display math should end with $$.
 <to be read again> 
                    \par 
-l.228 
+l.223 
       
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.224  \begin{bmatrix}
+                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.227  \end{bmatrix}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 ! Missing $ inserted.
 <inserted text> 
@@ -837,7 +856,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234  \begin{bmatrix}
+l.233  \begin{bmatrix}
                       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -845,26 +864,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.237  \end{bmatrix}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.238  \begin{bmatrix}
-                      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.241  \end{bmatrix}
+l.236  \end{bmatrix}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -879,7 +879,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.243 \]
+l.238 \]
         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -888,7 +888,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.243 \]
+l.238 \]
         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -899,16 +899,16 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.243 \]
+l.238 \]
         
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[43]
+[42]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.247 
+l.242 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -916,7 +916,7 @@ you left one out. Proceed, with fingers crossed.
 ! Display math should end with $$.
 <to be read again> 
                    \par 
-l.247 
+l.242 
       
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -928,7 +928,7 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.248 \hat{X}
+l.243 \hat{X}
              f({\bf r}) = \psi_0({\bf r})\int d{\bf r}' V_{dd}({\bf r}-{\bf ...
 
 You're in trouble here.  Try typing  <return>  to proceed.
@@ -937,7 +937,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.248 \hat{X}f({\bf r}) = \psi
+l.243 \hat{X}f({\bf r}) = \psi
                               _0({\bf r})\int d{\bf r}' V_{dd}({\bf r}-{\bf ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -945,7 +945,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.250 
+l.245 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -957,7 +957,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.251 \]
+l.246 \]
         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -966,7 +966,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.251 \]
+l.246 \]
         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -977,12 +977,12 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.251 \]
+l.246 \]
         
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[44] [45] [46] [47]
+[43] [44] [45] [46]
 
 ! Package amsmath Error: Erroneous nesting of equation structures;
 (amsmath)                trying to recover with `aligned'.
@@ -991,12 +991,12 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.270   \end{align}
+l.265   \end{align}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[48] [49] [50]
+[47] [48] [49] [50]
 ! Missing $ inserted.
 <inserted text> 
                 $

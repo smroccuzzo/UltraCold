@@ -22,7 +22,7 @@ MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
 });
 </script>
-<script type="text/javascript" async="async" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML/MathJax.js"></script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -110,11 +110,7 @@ A three-dimensional dipolar Bose gas in a harmonic trap.</h1>
 Introduction</h2>
 <p >In this example, we are going to use UltraCold to study the ground state of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of \( ^{164}Dy \) atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code>.</p>
 <p >Bose-Einstein condensates have been obtained in atomic species, like <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.210401">Erbium </a> or <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.107.190401">Dysprosium </a>, possessing a strong magnetic dipole moment in their ground state. This implies that, in order to describe the physics of such BECs, it is necessary to take into account the effect of magnetic interactions between the atoms. In the typical setup, atoms are aligned along a certain direction (say, the x-axis) by an external magnetic field, and their dipole-dipole interaction potential has the form</p>
-<p class="formulaDsp">
-\[
-    V_{dd}({\bf r}-{\bf r}&#39;) = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}&#39;|^3}
-\]
-</p>
+<p >$$ V_{dd}({\bf r}-{\bf r}') = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}'|^3} $$</p>
 <p >with \( \mu_0 \) the magnetic permeability in vacuum, \( \mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, i.e. in this case the \( x \)-axis. A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently, the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field correction to the ground-state energy of the system in the local density approximation. Such <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction for a uniform system is given by</p>
 <p class="formulaDsp">
 \[

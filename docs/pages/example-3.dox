@@ -22,9 +22,9 @@ necessary to take into account the effect of magnetic interactions between the a
 are aligned along a certain direction (say, the x-axis) by an external magnetic field, and their dipole-dipole
 interaction potential has the form
 
-\f[
+$$
     V_{dd}({\bf r}-{\bf r}') = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}'|^3}
-\f]
+$$
 
 with \f$ \mu_0 \f$ the magnetic permeability in vacuum, \f$ \mu \f$ the magnetic dipole moment and \f$ \theta \f$ the
 angle between the vector distance between dipoles and the polarization direction, i.e. in this case the \f$ x \f$-axis.
