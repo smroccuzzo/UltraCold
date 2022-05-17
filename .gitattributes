@@ -6,3 +6,6 @@
 # Mark documentation as linguist-documentation and exclude from stats
 
 docs/* linguist-documentation
+
+
+bundled/* linguist-vendored
