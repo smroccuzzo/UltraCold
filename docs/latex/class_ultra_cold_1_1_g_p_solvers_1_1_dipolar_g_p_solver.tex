@@ -1,0 +1,660 @@
+\hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}{}\doxysection{Ultra\+Cold\+::GPSolvers\+::Dipolar\+GPSolver Class Reference}
+\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+
+
+Class to solve the Gross-\/\+Pitaevskii equation for a dipolar Bose gas with the Lee-\/\+Huang-\/\+Yang correction.  
+
+
+
+
+{\ttfamily \#include $<$gp\+\_\+solvers.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af2c3172e22994c0dc6d40aada41a3233}{Dipolar\+GPSolver}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaa3571641bb228faf2da0a844273144b}{x}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64bf7ac1b7ef73078e29f271b8ea47ec}{y}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2ab1ee95c26b0ab732d0065c6aa9b6ff}{z}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&psi0, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}{Vext}}, double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adc6cd9a3bb84db316fd6f1aa06041e3a}{scattering\+\_\+length}}, double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af7662fd53d45a209748490330b1addee}{dipolar\+\_\+length}})
+\begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}{Dipolar\+GPSolver}} in three space dimensions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0977ca9ddf75c3abfac8a2bb2c6befe1}{reinit}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}{Vext}}, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5e39709f5c5ee1075039a4e112a9f488}{psi}})
+\begin{DoxyCompactList}\small\item\em Reinitialize the solver with new external potential and initial condition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad24bfbdc003185f998097439b28cf98c}{$\sim$\+Dipolar\+GPSolver}} ()=default
+\item 
+std\+::tuple$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$, double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4aa22af85b8fd803e97982ef0da0b386}{run\+\_\+gradient\+\_\+descent}} (\mbox{\hyperlink{classint}{int}} max\+\_\+num\+\_\+iter, double tolerance, double alpha, double beta, std\+::ostream \&output\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Calculates a ground-\/state solution to the stationary, extended Gross-\/\+Pitaevskii equation with Lee-\/\+Huang-\/\+Yang correction. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a788bf4fde150e9f4e985c2461b216f63}{run\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{classint}{int}} number\+\_\+of\+\_\+time\+\_\+steps, double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7b293cd05a5d018ef0ace817dba7705c}{time\+\_\+step}}, std\+::ostream \&output\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Solve the extended Gross-\/\+Pitaevskii equation using simple operator splitting. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4307fc7e459acfcffbfe425a3d68e2cc}{run\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{classint}{int}}, double, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a819c0c4679c05ebf9975449ea26dc1e5}{run\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{classint}{int}}, double, double, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5ff48d01a4d11800f2bee9f0d3864ef2}{run\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{classint}{int}}, double, double, double, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6664b51bb0e80a00eb01c41ac7f34ffd}{write\+\_\+gradient\+\_\+descent\+\_\+output}} (size\+\_\+t iteration\+\_\+number, std\+::ostream \&output\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Write output at each step of the gradient descent iterations. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_afc640ef9b5401ec69ccb9157e95974c7}{write\+\_\+operator\+\_\+splitting\+\_\+output}} (size\+\_\+t iteration\+\_\+number, std\+::ostream \&output\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Write some output at each time step. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7a0e427e6aced4c94f095529ec3987f2}{write\+\_\+operator\+\_\+splitting\+\_\+output}} (size\+\_\+t, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a43886039e0cc77da57d988bf56c07cd0}{write\+\_\+operator\+\_\+splitting\+\_\+output}} (size\+\_\+t, double, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae0b84c52193c2975a526f5256f1b5f02}{write\+\_\+operator\+\_\+splitting\+\_\+output}} (size\+\_\+t, double, double, double, std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aeb9768d22156ae88261a39f7a0dea599}{solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&)
+\begin{DoxyCompactList}\small\item\em Solve step-\/1 of operator splitting. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae3e963ea4528511a666afeaf3659ca21}{solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&, double)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a9338990fe04e8c837159985960a51320}{solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&, double, double)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33310d63232b75b92cc5c0e93f8aa3e4}{solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&, double, double, double)
+\begin{DoxyCompactList}\small\item\em Useful possible overload. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6918ef2832beebd120cf33b0f7bdebfb}{solve\+\_\+step\+\_\+2\+\_\+operator\+\_\+splitting}} (\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&)
+\begin{DoxyCompactList}\small\item\em Solve step-\/2 of operator splitting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5e39709f5c5ee1075039a4e112a9f488}{psi}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}{Vext}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaa3571641bb228faf2da0a844273144b}{x}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64bf7ac1b7ef73078e29f271b8ea47ec}{y}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2ab1ee95c26b0ab732d0065c6aa9b6ff}{z}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adfb8ea1b6fd8105251042f0f1ba39c61}{kx}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a79a83b07ad22016a2989dc04e468ab7f}{ky}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a317f66962778bdbdb6bbeca4ab2ef4fc}{kz}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a075b17498bfa603853d27320649f2521}{kmod2}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a20767732e6fe7934c659f87e4d4d2b08}{psitilde}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0cf8e5c7647d470474edd97d2252eb0e}{hpsi}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2a1637910c5efab14af036260f30bfa6}{Vtilde}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad8368b8a48c9c193f79243fcda376ab2}{Phi\+\_\+dd}}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6e21cf0d3b649a1925c839688e835cc3}{Phi\+\_\+tilde}}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a60b8e94eada0a12acf6e090e4d385fd0}{nx}}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aed60035f1fad32270895cfc64a263b8a}{ny}}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a93f4b09dda64cfbdca2665b5bfe17218}{nz}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64c753839c31a9c39f1c41ab56589568}{dx}} = 1.\+0
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a39dee6649e75d0d595db4b6defd1e08b}{dy}} = 1.\+0
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a74406bc6e5dd750ebf1bba2aa150818f}{dz}} = 1.\+0
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaea5e844aaf69c043ed7aae733996a4a}{dv}} = 1.\+0
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7898fc028175d47db6b1ecf1de593088}{chemical\+\_\+potential}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adc6cd9a3bb84db316fd6f1aa06041e3a}{scattering\+\_\+length}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af7662fd53d45a209748490330b1addee}{dipolar\+\_\+length}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33c9365784e3f333dca1a96089984f1b}{epsilon\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_abe70ad5a1d4710436f8f26add1837661}{gamma\+\_\+epsilon\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a441a275c64ae173781649f84eaeb4833}{residual}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a65deacefdafd0254607120c19770e7c3}{initial\+\_\+norm}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a452978726c909789332f4ba6f728b01c}{norm}}
+\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7b293cd05a5d018ef0ace817dba7705c}{time\+\_\+step}}
+\item 
+std\+::complex$<$ double $>$ \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aa9cb9bdb695b8852ddad6816e58825c0}{ci}} =\{0.\+0,1.\+0\}
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0516efe1cc60845d92281309432803f8}{last\+\_\+iteration\+\_\+number}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to solve the Gross-\/\+Pitaevskii equation for a dipolar Bose gas with the Lee-\/\+Huang-\/\+Yang correction. 
+
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+This class allows to solve the extended Gross-\/\+Pitaevskii equation for a dipolar Bose gas
+
+\[
+\begin{align}
+ &i\hbar\frac{\partial}{\partial t}  \Psi({\bf r},t)= \mathcal{H}({\bf r})\,\Psi({\bf r},t)\,,
+\end{align}
+\]
+
+where the Hamiltonian $ H $ is
+
+\[
+\begin{align}
+ \mathcal{H}({\bf r})=-&\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
+ (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
+ +& \int d{\bf r\textnormal{\textquotesingle}}V_{dd}({\bf r}-{\bf r\textnormal{\textquotesingle}})|\Psi({\bf r\textnormal{\textquotesingle}},t)|^2\,,
+\end{align}
+\]
+
+with $ g=4\pi\hbar^2a/m $ the coupling constant fixed by the $ s $-\/wave scattering length $ a $ and $ V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
+r}_{j}|^3} $ the dipole-\/dipole potential, being $ \mu_0 $ the magnetic permeability in vacuum, $
+\mu $ the magnetic dipole moment and $ \theta $ the angle between the vector distance between dipoles and the polarization direction, which we choose as the $ x $-\/axis. In the absence of trapping, the system can be fully characterised by the single parameter $ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $, i.\+e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length $ a_{dd} $ and the scattering length $ a $. The third term of the Hamiltonian corresponds to the local density approximation of the beyond-\/mean-\/field \href{https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609}{\texttt{ Lee-\/\+Huang-\/\+Yang }} (LHY) correction with
+
+\[
+\gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
+\!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
+\]
+
+Experimental measurements and microscopic Monte Carlo calculations have confirmed that the LHY term is an accurate correction to the mean-\/field theory given by the Gross-\/\+Pitaevskii equation in dipolar gases. ~\newline
+This class can be used to solve the extended Gross-\/\+Pitaevskii equation both for ground-\/state configurations as well as for the dynamics, on a cartesian mesh with periodic boundary conditions. The basic usage of the class is as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af2c3172e22994c0dc6d40aada41a3233}{DipolarGPSolver}} dipolar\_gp\_solver(\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaa3571641bb228faf2da0a844273144b}{x}},}
+\DoxyCodeLine{                                  \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64bf7ac1b7ef73078e29f271b8ea47ec}{y}},}
+\DoxyCodeLine{                                  \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2ab1ee95c26b0ab732d0065c6aa9b6ff}{z}},}
+\DoxyCodeLine{                                  psi0,}
+\DoxyCodeLine{                                  \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}{Vext}},}
+\DoxyCodeLine{                                  \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adc6cd9a3bb84db316fd6f1aa06041e3a}{scattering\_length}},}
+\DoxyCodeLine{                                  \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af7662fd53d45a209748490330b1addee}{dipolar\_length}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// for ground state calculations}}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::tie(\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5e39709f5c5ee1075039a4e112a9f488}{psi}},\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7898fc028175d47db6b1ecf1de593088}{chemical\_potential}}) = dipolar\_gp\_solver.run\_gradient\_descent(maximum\_number\_of\_iterations,}
+\DoxyCodeLine{                                                                          tolerance,}
+\DoxyCodeLine{                                                                          alpha,}
+\DoxyCodeLine{                                                                          beta,}
+\DoxyCodeLine{                                                                          std::cout);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// or}}
+\DoxyCodeLine{}
+\DoxyCodeLine{dipolar\_gp\_solver.run\_operator\_splitting(number\_of\_time\_steps,\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7b293cd05a5d018ef0ace817dba7705c}{time\_step}}); \textcolor{comment}{// for the dynamics}}
+
+\end{DoxyCode}
+
+
+In the constructor, you need to provide the three cartesian axis defining the mesh on which the equation is going to be solved, the initial wave function (all the methods are iterative), the external potential, the s-\/wave scattering length $ a $ and the dipolar length $ a_{dd} $, both in appropriate units. ~\newline
+The algorithms used and their working principles are the same as those used for a non-\/dipolar Bose gas, described in the documentation of the \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver}{GPSolver}} class. See that documentation for details. \begin{DoxyNote}{Note}
+Several member functions of this class take advantage of \href{https://www.openmp.org/}{\texttt{ Open\+MP }} parallelization. For optimal performance, be sure to run 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ export OMP\_NUM\_THREADS=<number of physical cores on the machine used>}
+
+\end{DoxyCode}
+ on the shell before the program execution. 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+The extended Gross-\/\+Pitaevskii equation is solved in its a-\/dimensional form, which, in the case of, for example, harmonic trapping, is given by
+\end{DoxyWarning}
+\[
+ i\frac{\partial \psi({\bf r},t)}{\partial t} = \left[ -\frac{\nabla^2}{2}
+ + \left( \frac{1}{2} \left( \frac{x}{a_x^2} \right)^2 + \frac{1}{2} \left( \frac{y}{a_y^2} \right)^2 +
+ \frac{1}{2} \left( \frac{z}{a_z^2} \right)^2  \right)
+ + 4\pi a |\psi({\bf r},t)|^2
+ + 3 a_{dd} \int d{\bf r\textnormal{\textquotesingle}}\frac{1-3\cos^2\theta}{|{\bf r}-{\bf r}\textnormal{\textquotesingle}|^3}|\psi({\bf r\textnormal{\textquotesingle}},t)|^2
+ + \frac{64\sqrt{\pi}}{3}a^{5/2} \mbox{Re}\bigg[\!\int_0^{\pi}
+\!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\, |\psi({\bf r},t)|^3
+ \right]\psi({\bf r},t)
+\]
+
+where $ a_{x,y,z}=\sqrt{\frac{\hbar}{m\omega_{x,y,z}}} $ and all the lengths (including the s-\/wave and the dipolar length) are in units of the harmonic oscillator length $ a_{ho} = (a_xa_ya_z)^{1/3} $ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af2c3172e22994c0dc6d40aada41a3233}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af2c3172e22994c0dc6d40aada41a3233}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!DipolarGPSolver@{DipolarGPSolver}}
+\index{DipolarGPSolver@{DipolarGPSolver}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{DipolarGPSolver()}{DipolarGPSolver()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::\+Dipolar\+GPSolver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{y,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{z,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&}]{psi\+\_\+0,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{Vext,  }\item[{double}]{scattering\+\_\+length,  }\item[{double}]{dipolar\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Constructor for a \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}{Dipolar\+GPSolver}} in three space dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the x-\/axis of the Cartesian frame on which the Gross-\/\+Pitaevskii equation in two space dimensions will be solved \\
+\hline
+{\em y} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the y-\/axis of the Cartesian frame on which the Gross-\/\+Pitaevskii equation in two space dimensions will be solved \\
+\hline
+{\em z} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the z-\/axis of the Cartesian frame on which the Gross-\/\+Pitaevskii equation in two space dimensions will be solved \\
+\hline
+{\em psi\+\_\+0} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$std\+::complex$<$double$>$$>$}}} representing the initial wave function \\
+\hline
+{\em Vext} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the external potential. \\
+\hline
+{\em scattering\+\_\+length} & {\itshape double} the scattering length in appropriate units \\
+\hline
+{\em epsilon\+\_\+dd} & {\itshape double} ratio between scattering and dipolar length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad24bfbdc003185f998097439b28cf98c}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad24bfbdc003185f998097439b28cf98c}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!````~DipolarGPSolver@{$\sim$DipolarGPSolver}}
+\index{````~DipolarGPSolver@{$\sim$DipolarGPSolver}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{$\sim$DipolarGPSolver()}{~DipolarGPSolver()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::$\sim$\+Dipolar\+GPSolver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0977ca9ddf75c3abfac8a2bb2c6befe1}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0977ca9ddf75c3abfac8a2bb2c6befe1}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!reinit@{reinit}}
+\index{reinit@{reinit}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{reinit()}{reinit()}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::reinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{Vext,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$ \&}]{psi\+\_\+0 }\end{DoxyParamCaption})}
+
+
+
+Reinitialize the solver with new external potential and initial condition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vext} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} the new external potential. \\
+\hline
+{\em psi\+\_\+0} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$std\+::complex$<$double$>$$>$}}} the new initial wave function.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function does not perform any bound check, hence you must be careful to pass Vectors with the same dimensionality and extents as those passed to the constructor. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4aa22af85b8fd803e97982ef0da0b386}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4aa22af85b8fd803e97982ef0da0b386}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!run\_gradient\_descent@{run\_gradient\_descent}}
+\index{run\_gradient\_descent@{run\_gradient\_descent}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{run\_gradient\_descent()}{run\_gradient\_descent()}}
+{\footnotesize\ttfamily std\+::tuple$<$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ std\+::complex$<$ double $>$ $>$, double $>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::run\+\_\+gradient\+\_\+descent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{max\+\_\+num\+\_\+iter,  }\item[{double}]{tolerance,  }\item[{double}]{alpha,  }\item[{double}]{beta,  }\item[{std\+::ostream \&}]{output\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Calculates a ground-\/state solution to the stationary, extended Gross-\/\+Pitaevskii equation with Lee-\/\+Huang-\/\+Yang correction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+num\+\_\+iter} & {\itshape int} the maximum number of gradient descent iterations \\
+\hline
+{\em tolerance} & {\itshape double} the maximum norm of the residual, below which the algorithm is considered as converged \\
+\hline
+{\em alpha} & {\itshape double} the step-\/length of the gradient-\/descent iterations. \\
+\hline
+{\em beta} & {\itshape double} acceleration step for the heavy-\/ball method. \\
+\hline
+{\em output\+\_\+stream} & {\itshape std\+::ostream} stream to which eventual text output can be passed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple\texorpdfstring{$<$}{<}\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$std\+::complex$<$double$>$$>$}},double\texorpdfstring{$>$}{>} representing the calculated ground-\/state wave function and chemical potential. Can be recovered by using std\+::tie(psi,chemical\+\_\+potential).
+\end{DoxyReturn}
+This member function allows to solve the extended Gross-\/\+Pitaevskii equation describing a dipolar Bose gas, with the addition of the Lee-\/\+Huang-\/\+Yang correction, using the same gradient-\/descend algorithm, accelerated via the heavy-\/ball method, used in the corresponding member function of the class \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver}{GPSolver}}. See that documentation for more details. \mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a788bf4fde150e9f4e985c2461b216f63}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a788bf4fde150e9f4e985c2461b216f63}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!run\_operator\_splitting@{run\_operator\_splitting}}
+\index{run\_operator\_splitting@{run\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{run\_operator\_splitting()}{run\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::run\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{number\+\_\+of\+\_\+time\+\_\+steps,  }\item[{double}]{time\+\_\+step,  }\item[{std\+::ostream \&}]{output\+\_\+stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Solve the extended Gross-\/\+Pitaevskii equation using simple operator splitting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+of\+\_\+time\+\_\+steps} & {\itshape int} The total number of time-\/steps to be performed \\
+\hline
+{\em time\+\_\+step} & {\itshape double} time step in appropriate units \\
+\hline
+{\em output\+\_\+stream} & {\itshape std\+::ostream} stream to which eventual text output can be passed\\
+\hline
+\end{DoxyParams}
+This member function solves the (a-\/dimensional) time-\/dependent extended Gross-\/\+Pitaevskii equation \[
+i \frac{\partial \psi}{\partial t} = \left[ \frac{-\nabla^2}{2}+V_{ext}({\bf r})+g|\psi|^2 \right]\psi
+\] for the description of a dipolar Bose gas using the classic operator splitting technique. The idea is the same as the corresponding member class of \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver}{GPSolver}}. See that documentation for details. \mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5ff48d01a4d11800f2bee9f0d3864ef2}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5ff48d01a4d11800f2bee9f0d3864ef2}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!run\_operator\_splitting@{run\_operator\_splitting}}
+\index{run\_operator\_splitting@{run\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{run\_operator\_splitting()}{run\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::run\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a819c0c4679c05ebf9975449ea26dc1e5}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a819c0c4679c05ebf9975449ea26dc1e5}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!run\_operator\_splitting@{run\_operator\_splitting}}
+\index{run\_operator\_splitting@{run\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{run\_operator\_splitting()}{run\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::run\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4307fc7e459acfcffbfe425a3d68e2cc}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a4307fc7e459acfcffbfe425a3d68e2cc}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!run\_operator\_splitting@{run\_operator\_splitting}}
+\index{run\_operator\_splitting@{run\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{run\_operator\_splitting()}{run\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::run\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aeb9768d22156ae88261a39f7a0dea599}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aeb9768d22156ae88261a39f7a0dea599}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}}
+\index{solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{solve\_step\_1\_operator\_splitting()}{solve\_step\_1\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&}]{dft\+\_\+dd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Solve step-\/1 of operator splitting. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae3e963ea4528511a666afeaf3659ca21}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae3e963ea4528511a666afeaf3659ca21}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}}
+\index{solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{solve\_step\_1\_operator\_splitting()}{solve\_step\_1\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&}]{,  }\item[{double}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a9338990fe04e8c837159985960a51320}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a9338990fe04e8c837159985960a51320}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}}
+\index{solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{solve\_step\_1\_operator\_splitting()}{solve\_step\_1\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&}]{,  }\item[{double}]{,  }\item[{double}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33310d63232b75b92cc5c0e93f8aa3e4}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33310d63232b75b92cc5c0e93f8aa3e4}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}}
+\index{solve\_step\_1\_operator\_splitting@{solve\_step\_1\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{solve\_step\_1\_operator\_splitting()}{solve\_step\_1\_operator\_splitting()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::solve\+\_\+step\+\_\+1\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6918ef2832beebd120cf33b0f7bdebfb}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6918ef2832beebd120cf33b0f7bdebfb}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!solve\_step\_2\_operator\_splitting@{solve\_step\_2\_operator\_splitting}}
+\index{solve\_step\_2\_operator\_splitting@{solve\_step\_2\_operator\_splitting}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{solve\_step\_2\_operator\_splitting()}{solve\_step\_2\_operator\_splitting()}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::solve\+\_\+step\+\_\+2\+\_\+operator\+\_\+splitting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator}{MKLWrappers\+::\+DFt\+Calculator}} \&}]{dft\+\_\+calculator\+\_\+step\+\_\+2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Solve step-\/2 of operator splitting. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6664b51bb0e80a00eb01c41ac7f34ffd}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6664b51bb0e80a00eb01c41ac7f34ffd}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!write\_gradient\_descent\_output@{write\_gradient\_descent\_output}}
+\index{write\_gradient\_descent\_output@{write\_gradient\_descent\_output}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{write\_gradient\_descent\_output()}{write\_gradient\_descent\_output()}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::write\+\_\+gradient\+\_\+descent\+\_\+output (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{iteration\+\_\+number,  }\item[{std\+::ostream \&}]{output\+\_\+stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Write output at each step of the gradient descent iterations. 
+
+This function can (and should) be overridden in derived classes. 
+\begin{DoxyParams}{Parameters}
+{\em iteration\+\_\+number} & {\itshape size\+\_\+t} current iteration number \\
+\hline
+{\em output\+\_\+stream} & {\itshape std\+::ostream} stream to which eventual text output can be passed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Writing output data files at each gradient descent step may be useful, but it is also very expensive. Override this member function with care! 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_afc640ef9b5401ec69ccb9157e95974c7}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_afc640ef9b5401ec69ccb9157e95974c7}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!write\_operator\_splitting\_output@{write\_operator\_splitting\_output}}
+\index{write\_operator\_splitting\_output@{write\_operator\_splitting\_output}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{write\_operator\_splitting\_output()}{write\_operator\_splitting\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::write\+\_\+operator\+\_\+splitting\+\_\+output (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{iteration\+\_\+number,  }\item[{std\+::ostream \&}]{output\+\_\+stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Write some output at each time step. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iteration\+\_\+number} & {\itshape size\+\_\+t} current iteration number \\
+\hline
+{\em output\+\_\+stream} & {\itshape std\+::ostream} stream to which eventual text output can be passed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae0b84c52193c2975a526f5256f1b5f02}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae0b84c52193c2975a526f5256f1b5f02}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!write\_operator\_splitting\_output@{write\_operator\_splitting\_output}}
+\index{write\_operator\_splitting\_output@{write\_operator\_splitting\_output}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{write\_operator\_splitting\_output()}{write\_operator\_splitting\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::write\+\_\+operator\+\_\+splitting\+\_\+output (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a43886039e0cc77da57d988bf56c07cd0}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a43886039e0cc77da57d988bf56c07cd0}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!write\_operator\_splitting\_output@{write\_operator\_splitting\_output}}
+\index{write\_operator\_splitting\_output@{write\_operator\_splitting\_output}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{write\_operator\_splitting\_output()}{write\_operator\_splitting\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::write\+\_\+operator\+\_\+splitting\+\_\+output (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{,  }\item[{double}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7a0e427e6aced4c94f095529ec3987f2}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7a0e427e6aced4c94f095529ec3987f2}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!write\_operator\_splitting\_output@{write\_operator\_splitting\_output}}
+\index{write\_operator\_splitting\_output@{write\_operator\_splitting\_output}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{write\_operator\_splitting\_output()}{write\_operator\_splitting\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::write\+\_\+operator\+\_\+splitting\+\_\+output (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{,  }\item[{double}]{,  }\item[{std\+::ostream \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Useful possible overload. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7898fc028175d47db6b1ecf1de593088}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7898fc028175d47db6b1ecf1de593088}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!chemical\_potential@{chemical\_potential}}
+\index{chemical\_potential@{chemical\_potential}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{chemical\_potential}{chemical\_potential}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::chemical\+\_\+potential\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aa9cb9bdb695b8852ddad6816e58825c0}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aa9cb9bdb695b8852ddad6816e58825c0}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!ci@{ci}}
+\index{ci@{ci}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{ci}{ci}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::ci =\{0.\+0,1.\+0\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af7662fd53d45a209748490330b1addee}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_af7662fd53d45a209748490330b1addee}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!dipolar\_length@{dipolar\_length}}
+\index{dipolar\_length@{dipolar\_length}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{dipolar\_length}{dipolar\_length}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::dipolar\+\_\+length\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaea5e844aaf69c043ed7aae733996a4a}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaea5e844aaf69c043ed7aae733996a4a}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!dv@{dv}}
+\index{dv@{dv}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{dv}{dv}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::dv = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64c753839c31a9c39f1c41ab56589568}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64c753839c31a9c39f1c41ab56589568}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!dx@{dx}}
+\index{dx@{dx}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{dx}{dx}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::dx = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a39dee6649e75d0d595db4b6defd1e08b}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a39dee6649e75d0d595db4b6defd1e08b}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!dy@{dy}}
+\index{dy@{dy}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{dy}{dy}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::dy = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a74406bc6e5dd750ebf1bba2aa150818f}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a74406bc6e5dd750ebf1bba2aa150818f}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!dz@{dz}}
+\index{dz@{dz}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{dz}{dz}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::dz = 1.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33c9365784e3f333dca1a96089984f1b}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a33c9365784e3f333dca1a96089984f1b}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!epsilon\_dd@{epsilon\_dd}}
+\index{epsilon\_dd@{epsilon\_dd}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{epsilon\_dd}{epsilon\_dd}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::epsilon\+\_\+dd\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_abe70ad5a1d4710436f8f26add1837661}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_abe70ad5a1d4710436f8f26add1837661}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!gamma\_epsilon\_dd@{gamma\_epsilon\_dd}}
+\index{gamma\_epsilon\_dd@{gamma\_epsilon\_dd}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{gamma\_epsilon\_dd}{gamma\_epsilon\_dd}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::gamma\+\_\+epsilon\+\_\+dd\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0cf8e5c7647d470474edd97d2252eb0e}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0cf8e5c7647d470474edd97d2252eb0e}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!hpsi@{hpsi}}
+\index{hpsi@{hpsi}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{hpsi}{hpsi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::hpsi\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a65deacefdafd0254607120c19770e7c3}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a65deacefdafd0254607120c19770e7c3}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!initial\_norm@{initial\_norm}}
+\index{initial\_norm@{initial\_norm}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{initial\_norm}{initial\_norm}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::initial\+\_\+norm\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a075b17498bfa603853d27320649f2521}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a075b17498bfa603853d27320649f2521}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!kmod2@{kmod2}}
+\index{kmod2@{kmod2}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{kmod2}{kmod2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::kmod2\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adfb8ea1b6fd8105251042f0f1ba39c61}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adfb8ea1b6fd8105251042f0f1ba39c61}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!kx@{kx}}
+\index{kx@{kx}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{kx}{kx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::kx\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a79a83b07ad22016a2989dc04e468ab7f}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a79a83b07ad22016a2989dc04e468ab7f}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!ky@{ky}}
+\index{ky@{ky}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{ky}{ky}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::ky\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a317f66962778bdbdb6bbeca4ab2ef4fc}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a317f66962778bdbdb6bbeca4ab2ef4fc}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!kz@{kz}}
+\index{kz@{kz}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{kz}{kz}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::kz\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0516efe1cc60845d92281309432803f8}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a0516efe1cc60845d92281309432803f8}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!last\_iteration\_number@{last\_iteration\_number}}
+\index{last\_iteration\_number@{last\_iteration\_number}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{last\_iteration\_number}{last\_iteration\_number}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::last\+\_\+iteration\+\_\+number\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a452978726c909789332f4ba6f728b01c}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a452978726c909789332f4ba6f728b01c}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!norm@{norm}}
+\index{norm@{norm}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{norm}{norm}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::norm\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a60b8e94eada0a12acf6e090e4d385fd0}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a60b8e94eada0a12acf6e090e4d385fd0}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!nx@{nx}}
+\index{nx@{nx}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{nx}{nx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::nx\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aed60035f1fad32270895cfc64a263b8a}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aed60035f1fad32270895cfc64a263b8a}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!ny@{ny}}
+\index{ny@{ny}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{ny}{ny}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::ny\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a93f4b09dda64cfbdca2665b5bfe17218}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a93f4b09dda64cfbdca2665b5bfe17218}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!nz@{nz}}
+\index{nz@{nz}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{nz}{nz}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::nz\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad8368b8a48c9c193f79243fcda376ab2}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ad8368b8a48c9c193f79243fcda376ab2}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!Phi\_dd@{Phi\_dd}}
+\index{Phi\_dd@{Phi\_dd}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{Phi\_dd}{Phi\_dd}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::\+Phi\+\_\+dd\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6e21cf0d3b649a1925c839688e835cc3}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a6e21cf0d3b649a1925c839688e835cc3}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!Phi\_tilde@{Phi\_tilde}}
+\index{Phi\_tilde@{Phi\_tilde}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{Phi\_tilde}{Phi\_tilde}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::\+Phi\+\_\+tilde\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5e39709f5c5ee1075039a4e112a9f488}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a5e39709f5c5ee1075039a4e112a9f488}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!psi@{psi}}
+\index{psi@{psi}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{psi}{psi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::psi\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a20767732e6fe7934c659f87e4d4d2b08}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a20767732e6fe7934c659f87e4d4d2b08}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!psitilde@{psitilde}}
+\index{psitilde@{psitilde}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{psitilde}{psitilde}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$std\+::complex$<$double$>$ $>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::psitilde\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a441a275c64ae173781649f84eaeb4833}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a441a275c64ae173781649f84eaeb4833}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!residual@{residual}}
+\index{residual@{residual}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{residual}{residual}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::residual\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adc6cd9a3bb84db316fd6f1aa06041e3a}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_adc6cd9a3bb84db316fd6f1aa06041e3a}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!scattering\_length@{scattering\_length}}
+\index{scattering\_length@{scattering\_length}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{scattering\_length}{scattering\_length}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::scattering\+\_\+length\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7b293cd05a5d018ef0ace817dba7705c}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a7b293cd05a5d018ef0ace817dba7705c}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!time\_step@{time\_step}}
+\index{time\_step@{time\_step}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{time\_step}{time\_step}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::time\+\_\+step\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_ae1a196c4c8a35de58ff251c0469f19e5}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!Vext@{Vext}}
+\index{Vext@{Vext}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{Vext}{Vext}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::\+Vext\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2a1637910c5efab14af036260f30bfa6}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2a1637910c5efab14af036260f30bfa6}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!Vtilde@{Vtilde}}
+\index{Vtilde@{Vtilde}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{Vtilde}{Vtilde}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::\+Vtilde\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaa3571641bb228faf2da0a844273144b}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_aaa3571641bb228faf2da0a844273144b}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!x@{x}}
+\index{x@{x}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::x\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64bf7ac1b7ef73078e29f271b8ea47ec}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a64bf7ac1b7ef73078e29f271b8ea47ec}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!y@{y}}
+\index{y@{y}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::y\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2ab1ee95c26b0ab732d0065c6aa9b6ff}\label{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_a2ab1ee95c26b0ab732d0065c6aa9b6ff}} 
+\index{UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}!z@{z}}
+\index{z@{z}!UltraCold::GPSolvers::DipolarGPSolver@{UltraCold::GPSolvers::DipolarGPSolver}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$double$>$ Ultra\+Cold\+::\+GPSolvers\+::\+Dipolar\+GPSolver\+::z\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gp__solvers_8hpp}{gp\+\_\+solvers.\+hpp}}\item 
+\mbox{\hyperlink{dipolar__gp__solver_8cpp}{dipolar\+\_\+gp\+\_\+solver.\+cpp}}\end{DoxyCompactItemize}

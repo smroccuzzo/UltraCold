@@ -1,0 +1,602 @@
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+\hypertarget{example-4_Title-4}{}\doxysection{Excitation spectrum of a trapped dipolar Bose-\/\+Einstein condensate across the superfluid-\/supersolid phase transition.}\label{example-4_Title-4}
+\hypertarget{example-4_Introduction-4}{}\doxysubsection{Introduction}\label{example-4_Introduction-4}
+In this example, we are going to use Ultra\+Cold to study the elementary excitations of a three-\/dimensional, harmonically trapped {\bfseries{dipolar}} Bose gas of $ ^{164}Dy $ atoms, using the solver class {\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Dipolar\+Bogolyubov\+Solver}}}, and across the superfluid-\/supersolid phase transition.
+
+As explained in example-\/2, in order to calculate the spectrum of elementary excitations on top of a certain stationary solution of the GPe, it is necessary to search for solutions of the time-\/dependent GPe of the form
+
+\[
+  \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
+ + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
+\]
+
+and solve the eigenvalue problem that comes out by keeping only terms linear in the quasi-\/particle amplitudes $ u $ and $ v $. In the case of a {\bfseries{dipolar}} Bose gas, taking also into account the effects of quantum fluctuations via the \href{https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609}{\texttt{ Lee-\/\+Huang-\/\+Yang }} (LHY) correction, this amounts to solving the following eigenvalue problem
+
+\[
+
+ \begin{bmatrix}
+     u \\
+     v
+ \end{bmatrix}
+     =
+ \begin{bmatrix}
+     \hat{H}-\mu+\hat{X} & \hat{X}^\dagger \\
+     -\hat{X} & -(\hat{H}-\mu+\hat{X}^\dagger)
+ \end{bmatrix}
+ \begin{bmatrix}
+     u \\
+     v
+ \end{bmatrix}
+
+\]
+
+with
+
+\[
+ \begin{align}
+  \mathcal{H}({\bf r})=-&\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
+  (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
+  +& \int d{\bf r\textnormal{\textquotesingle}}V_{dd}({\bf r}-{\bf r\textnormal{\textquotesingle}})|\Psi({\bf r\textnormal{\textquotesingle}},t)|^2\,,
+ \end{align}
+\] and
+
+\[
+
+\hat{X}f({\bf r}) = \psi_0({\bf r})\int d{\bf r}\textnormal{\textquotesingle} V_{dd}({\bf r}-{\bf r}\textnormal{\textquotesingle})f({\bf r}\textnormal{\textquotesingle})\psi_0^*({\bf r}\textnormal{\textquotesingle}) +
+\frac{3}{2}\gamma(\varepsilon_{dd})|\psi_0({\bf r})|^3f({\bf r})
+
+\]
+
+and finally
+
+\[
+ \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
+ \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
+\]
+
+with $ g=4\pi\hbar^2a/m $ the coupling constant fixed by the $ s $-\/wave scattering length $ a
+$, $ V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
+r}_{j}|^3} $ the dipole-\/dipole potential, being $ \mu_0 $ the magnetic permeability in vacuum, $
+\mu $ the magnetic dipole moment and $ \theta $ the angle between the vector distance between dipoles and the polarization direction, which we choose as the $ x $-\/axis, and $ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $ the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length $ a_{dd} $ and the scattering length $ a $.
+
+In the case in which the condensate wave function is real (e.\+g., in absence of vortices, solitons...) the problem can be recast in a more convenient form. In fact, taking the sum and the difference between the two equations, one easily finds
+
+\[
+  \begin{align}
+      & (\hat{H}-\mu)(\hat{H}-\mu+2\hat{X}) (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
+      & (\hat{H}-\mu+2\hat{X})(\hat{H}-\mu) (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
+  \end{align}
+ \]
+
+Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to $(u+v)$ and $(u-v)$ respectively, so that if one is interested in finding the Bogolyubov quasi-\/particle amplitudes $ u $ and $ v $, one also needs to solve the second problem, and then set $ u = 0.5 \left( (u+v) + (u-v) \right)$ and $ v = 0.5 \left( (u+v) - (u-v) \right)$
+
+This class solves the eigenvalue problem using the matrix-\/free routines provided as part of the package \href{https://github.com/opencollab/arpack-ng}{\texttt{ arpack-\/ng }}, which is distributed as a bundled package with \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}}.\hypertarget{example-4_What-4}{}\doxysubsection{Program description}\label{example-4_What-4}
+As always, we first create an input file containing our mesh and physical parameters, as well as other parameters determining the run-\/time behavior of the system. Such input file will be called {\ttfamily example-\/4.\+prm} and contain the following text
+
+\begin{DoxyVerb}# Mesh parameters
+
+xmax = 20.0 # Size of the mesh along the x-axis, in micrometers. The mesh will extend from -xmax to xmax
+ymax = 10.0 # Size of the mesh along the y-axis, in micrometers. The mesh will extend from -ymax to ymax
+zmax = 20.0 # Size of the mesh along the z-axis, in micrometers. The mesh will extend from -zmax to zmax
+
+nx = 48  # Number of points along the x-axis
+ny = 48  # Number of points along the y-axis
+nz = 256 # Number of points along the z-axis
+
+# Physical parameters
+
+scattering length = 95.0
+dipolar_length      = 132.0 # Dipolar length in units of the Bohr radius
+number of particles = 40000  # Total number of atoms
+atomic mass         = 164    # Atomic mass, in atomic mass units
+omegax = 110 # Harmonic frequency along the x-axis, in units of (2pi)Hz
+omegay = 90 # Harmonic frequency along the y-axis, in units of (2pi)Hz
+omegaz = 30 # Harmonic frequency along the z-axis, in units of (2pi)Hz
+
+# Run parameters for gradient descent
+
+number of gradient descent steps = 200000 # maximum number of gradient descent steps
+residual                         = 1.E-12 # Threshold on the norm of the residual
+alpha                            = 1.E-3 # gradient descent step
+beta                             = 0.9   # step for the heavy-ball acceleration method
+
+# Run parameters for Bogolyubov equations
+
+number of modes = 50
+calculate eigenvectors = true
+tolerance = 1.E-8
+maximum number of arnoldi iterations = 10000\end{DoxyVerb}
+
+
+We read the input file as usual using the class {\ttfamily  Tools\+::\+Input\+Parser }, set harmonic units, create a mesh and set the initial wave function and external potential for the calculation of the stationary state of the system, on top of which we are going to calculate the elementary excitations. Using the parameters above, such ground state is going to be a supersolid state.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{Tools::InputParser}} ip(\textcolor{stringliteral}{"{}example-\/4.prm"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    ip.read\_input\_file();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} xmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}xmax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} ymax = ip.retrieve\_double(\textcolor{stringliteral}{"{}ymax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} zmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}zmax"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} nx = ip.retrieve\_int(\textcolor{stringliteral}{"{}nx"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} ny = ip.retrieve\_int(\textcolor{stringliteral}{"{}ny"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} nz = ip.retrieve\_int(\textcolor{stringliteral}{"{}nz"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} scattering\_length         = ip.retrieve\_double(\textcolor{stringliteral}{"{}scattering length"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dipolar\_length            = ip.retrieve\_double(\textcolor{stringliteral}{"{}dipolar\_length"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int}    number\_of\_particles = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of particles"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} atomic\_mass         = ip.retrieve\_double(\textcolor{stringliteral}{"{}atomic mass"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegax                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegay                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegay"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegaz                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegaz"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int}    number\_of\_gradient\_descent\_steps = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of gradient descent steps"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} residual                         = ip.retrieve\_double(\textcolor{stringliteral}{"{}residual"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} alpha                            = ip.retrieve\_double(\textcolor{stringliteral}{"{}alpha"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} beta                             = ip.retrieve\_double(\textcolor{stringliteral}{"{}beta"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} number\_of\_modes = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of modes"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations = ip.retrieve\_int(\textcolor{stringliteral}{"{}maximum number of arnoldi iterations"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} tolerance = ip.retrieve\_double(\textcolor{stringliteral}{"{}tolerance"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{bool} calculate\_eigenvectors = ip.retrieve\_bool(\textcolor{stringliteral}{"{}calculate eigenvectors"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    omegax = omegax/omega\_ho;}
+\DoxyCodeLine{    omegay = omegay/omega\_ho;}
+\DoxyCodeLine{    omegaz = omegaz/omega\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} a\_ho = std::sqrt(hbar/(atomic\_mass*omega\_ho));}
+\DoxyCodeLine{}
+\DoxyCodeLine{    scattering\_length *= bohr\_radius/a\_ho;}
+\DoxyCodeLine{    dipolar\_length *= bohr\_radius/a\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    xmax = xmax/a\_ho;}
+\DoxyCodeLine{    ymax = ymax/a\_ho;}
+\DoxyCodeLine{    zmax = zmax/a\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dx = 2 * xmax / nx;}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dy = 2 * ymax / ny;}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dz = 2 * zmax / nz;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} x(nx), y(ny), z(nz), kx(nx), ky(ny), kz(nz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx; ++i) x[i] = -\/xmax + i * dx;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ny; ++i) y[i] = -\/ymax + i * dy;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nz; ++i) z[i] = -\/zmax + i * dz;}
+\DoxyCodeLine{    \mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\_mesh\_in\_Fourier\_space}}(x, y, z, kx, ky, kz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> psi(nx, ny, nz);}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} Vext(nx, ny, nz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::default\_random\_engine generator;}
+\DoxyCodeLine{    std::uniform\_real\_distribution<double> distribution(0,1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx; ++i)}
+\DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < ny; ++j)}
+\DoxyCodeLine{            \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < nz; ++k)}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{keywordtype}{double} random\_number = distribution(generator);}
+\DoxyCodeLine{                psi(i,j,k)  = (1.0+0.1*random\_number)*}
+\DoxyCodeLine{                              std::exp(-\/0.1*(pow(x(i),2) +}
+\DoxyCodeLine{                                             pow(y(j),2) +}
+\DoxyCodeLine{                                             pow(z(k),2)) );}
+\DoxyCodeLine{}
+\DoxyCodeLine{                Vext(i,j,k) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +}
+\DoxyCodeLine{                                    std::pow(omegay,2)*pow(y(j),2) +}
+\DoxyCodeLine{                                    std::pow(omegaz,2)*pow(z(k),2) );}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} norm = 0.0;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);}
+\DoxyCodeLine{    norm *= (dx * dy * dz);}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number\_of\_particles / norm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out}{UltraCold::RealSpaceOutput::DataOut}} psi\_out;}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}initial\_wave\_function"{}});}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a8580f804548eaee31fb7e4d7388d30fd}{write\_slice2d\_vtk}}(x,y,psi,\textcolor{stringliteral}{"{}xy"{}},\textcolor{stringliteral}{"{}initial\_wave\_function"{}});}
+
+\end{DoxyCode}
+
+
+So, we calculate the ground state of the system using the class {\ttfamily  GPSolvers\+::\+Dipolar\+GPSolver } 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}{GPSolvers::DipolarGPSolver}} dipolar\_gp\_solver(x,}
+\DoxyCodeLine{                                             y,}
+\DoxyCodeLine{                                             z,}
+\DoxyCodeLine{                                             psi,}
+\DoxyCodeLine{                                             Vext,}
+\DoxyCodeLine{                                             scattering\_length,}
+\DoxyCodeLine{                                             dipolar\_length);}
+\DoxyCodeLine{\textcolor{keywordtype}{double} chemical\_potential;}
+\DoxyCodeLine{std::tie(psi, chemical\_potential) = dipolar\_gp\_solver.run\_gradient\_descent(number\_of\_gradient\_descent\_steps,}
+\DoxyCodeLine{                                                                           residual,}
+\DoxyCodeLine{                                                                           alpha,}
+\DoxyCodeLine{                                                                           beta,}
+\DoxyCodeLine{                                                                           std::cout);}
+\DoxyCodeLine{}
+\DoxyCodeLine{psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}ground\_state\_wave\_function"{}});}
+\DoxyCodeLine{psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,psi,\textcolor{stringliteral}{"{}ground\_state\_wave\_function"{}});}
+
+\end{DoxyCode}
+
+
+We can now plug the calculated ground-\/state solution $ \psi_0 $ to the class \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Dipolar\+Bogolyubov\+Solver}}, which will calculate for us the energies of the elementary excitations of the system as well as the Bogolyubov amplitudes $ u $ and $ v $. Since we are considering a simple solution of the GPe, without any topological defect like solitons or vortices, the ground-\/state wave function, despite being defined as a complex Vector, will have only a non-\/zero real part. We can thus simplify the Bogolyubov equations solving only eigen-\/problems of halved dimensionality. The class {\ttfamily \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{Ultra\+Cold\+::\+Bogolyubov\+Solvers\+::\+Trapped\+Dipolar\+Bogolyubov\+Solver}}} will do this automatically for us, provided that we feed a real Vector, representing the ground-\/state wave function, to its constructor. We thus first copy the calculated ground-\/state wave-\/function into a real-\/valued Vector
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} psi\_real(nx,ny,nz);}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx * ny * nz; ++i)}
+\DoxyCodeLine{    psi\_real[i] = psi[i].real();}
+
+\end{DoxyCode}
+
+
+then initialize the data structures that will contain the solutions of the Bogolyubov equations
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<std::complex<double>> eigenvalues(number\_of\_modes);}
+\DoxyCodeLine{std::vector<Vector<std::complex<double>>> u(number\_of\_modes),v(number\_of\_modes);}
+
+\end{DoxyCode}
+
+
+and, finally, create our solver class and run the solver
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{BogolyubovSolvers::TrappedDipolarBogolyubovSolver}} dipolar\_bogolyubov\_solver(x,}
+\DoxyCodeLine{                                                                            y,}
+\DoxyCodeLine{                                                                            z,}
+\DoxyCodeLine{                                                                            psi\_real,}
+\DoxyCodeLine{                                                                            Vext,}
+\DoxyCodeLine{                                                                            scattering\_length,}
+\DoxyCodeLine{                                                                            dipolar\_length,}
+\DoxyCodeLine{                                                                            chemical\_potential,}
+\DoxyCodeLine{                                                                            number\_of\_modes,}
+\DoxyCodeLine{                                                                            tolerance,}
+\DoxyCodeLine{                                                                            maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{                                                                            calculate\_eigenvectors);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::tie(eigenvalues,u,v) = dipolar\_bogolyubov\_solver.run();}
+
+\end{DoxyCode}
+
+
+In the context of Bogolyubov theory, several interesting properties can be extracted from the knowledge of $ u $ and $ v $. For example, one can see the density and phase fluctuations associated with each eigen-\/mode, by looking, respectively, at the quantities
+
+\[
+
+\begin{align}
+
+    & \delta n({\bf r}) = (u({\bf r}) + v({\bf r}))\psi_0({\bf r}) \nonumber \\
+    & \delta \phi({\bf r}) = (u({\bf r}) - v({\bf r}))/\psi_0({\bf r}) \nonumber \\
+
+\end{align}
+
+\]
+
+This is exactly what we calculate and output into some .vtk files with the last lines of the example. Notice that we also print to the screen the expected frequencies of the center-\/of-\/mass oscillations of the system, which in the case of harmonic trapping coincide with the harmonic frequencies of the trap (they will, of course, be printed in units of their geometric average). This is a useful test of the accuracy of the calculation. If the calculations were accurate, one must find such three frequencies in the calculated energy spectrum.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out}{RealSpaceOutput::DataOut}}                    output\_fluctuations;}
+\DoxyCodeLine{    std::vector<Vector< std::complex<double> >> density\_fluctuations(number\_of\_modes);}
+\DoxyCodeLine{    std::vector<Vector< std::complex<double> >> phase\_fluctuations(number\_of\_modes);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}     << std::endl;}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}Expected dipole mode frequencies: "{}}     << std::endl;}
+\DoxyCodeLine{    std::cout << omegax << \textcolor{stringliteral}{"{} "{}} << omegay << \textcolor{stringliteral}{"{} "{}} << omegaz << std::endl;}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}     << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < number\_of\_modes; ++i)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{        std::cout << eigenvalues[i].real() << \textcolor{stringliteral}{"{} "{}} << eigenvalues[i].imag() << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordflow}{if}(calculate\_eigenvectors)}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{                density\_fluctuations[i].reinit(nx,ny,nz);}
+\DoxyCodeLine{                phase\_fluctuations[i].reinit(nx,ny,nz);}
+\DoxyCodeLine{                \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < nx*ny*nz; ++j)}
+\DoxyCodeLine{                \{}
+\DoxyCodeLine{                        density\_fluctuations[i](j) = (u[i](j) + v[i](j)) * psi\_real(j);}
+\DoxyCodeLine{                        phase\_fluctuations[i](j)   = (u[i](j) -\/ v[i](j)) / psi\_real(j);}
+\DoxyCodeLine{                \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}density\_fluctuations\_mode\_"{}} + std::to\_string(i));}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,density\_fluctuations[i], \textcolor{stringliteral}{"{}density\_fluctuations"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}phase\_fluctuations\_mode\_"{}} + std::to\_string(i));}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,phase\_fluctuations[i], \textcolor{stringliteral}{"{}phase\_fluctuations"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{example-4_Results-4}{}\doxysubsection{Results}\label{example-4_Results-4}
+It is first interesting to get a look at the calculated ground-\/state wave function. As said, with the parameters used here, it corresponds to a supersolid state, as we can see from the three-\/dimensional density contours
+
+ 
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{example-4-density-contours.png}}
+\end{DoxyImageNoCaption}
+
+
+The output of the program related to the (first) calculated eigenvalues, corresponding to the energies of the Bogolyubov modes in units of $ \hbar \omega_{ho} $, is the following\+:
+
+\begin{DoxyVerb}--------------------------------------
+Expected dipole-mode frequencies:
+1.6487 1.34893 0.449644
+--------------------------------------
+7.35959e-06 0
+0.0990846 0
+0.290267 0
+0.388278 0
+0.449645 0
+0.564145 0
+0.569203 0
+0.772583 0
+0.993786 0
+1.01476 0
+1.01743 0
+1.08948 0
+1.09409 0
+1.18436 0
+1.2107 0
+1.30721 0
+1.31027 0
+1.34772 0
+1.5384 0
+1.54054 0
+1.58407 0
+1.60403 0
+1.61188 0
+1.62087 0
+1.66431 0
+1.66592 0
+1.67126 0
+1.6948 0\end{DoxyVerb}
+
+
+Notice that we catch well the two lowest dipole frequencies, and a little less well the higher energy one. This is not too much surprising, however, since at high energies even the dipole mode can be slightly affected by the other modes of comparable energy. It is also interesting to have a look at how the excitation spectrum changes when we tune the dipolar parameter $ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $. The results look like the following
+
+ 
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{example-4-spectrum.png}}
+\end{DoxyImageNoCaption}
+
+
+\begin{DoxyNote}{Note}
+Since Bogolyubov calculations in three space dimensions are numerically very demanding, most of the calculations required to obtain the results presented in this example have been done on the High Performance Computing cluster Galileo100 of the Italian supercomputing consortium \href{https://www.cineca.it/en}{\texttt{ CINECA }}.
+\end{DoxyNote}
+\hypertarget{example-4_Possibilities-4}{}\doxysubsection{Possible extensions}\label{example-4_Possibilities-4}
+One can use the calculated Bogolyubov amplitudes $u$ and $v$, as well as the calculated density and phase fluctuations, to study for example the dynamic structure factor of the system, which describes the response of the system to small density probes, or the \char`\"{}character\char`\"{} of the modes, i.\+e. if a certain mode has mainly a density or a phase character. These kind of studies have led, in recent years, to several interesting publications, see for example \href{https://www.nature.com/articles/s41586-019-1568-6}{\texttt{ Nature volume 574, pages 382–385 (2019) }}, \href{https://www.nature.com/articles/s41586-019-1569-5}{\texttt{ Nature volume 574, pages 386–389 (2019) }}, and \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.123.050402}{\texttt{ Phys. Rev. Lett. 123, 050402 (2019) }}\hypertarget{example-4_Uncommented-4}{}\doxysubsection{The plain program}\label{example-4_Uncommented-4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ *    This file is part of the UltraCold project.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ *    UltraCold is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{\textcolor{comment}{ *    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\textcolor{comment}{ *    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{\textcolor{comment}{ *    any later version.}}
+\DoxyCodeLine{\textcolor{comment}{ *    UltraCold is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\textcolor{comment}{ *    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\textcolor{comment}{ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\textcolor{comment}{ *    GNU General Public License for more details.}}
+\DoxyCodeLine{\textcolor{comment}{ *    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\textcolor{comment}{ *    along with UltraCold.  If not, see <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ultra_cold_8hpp}{UltraCold.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{Tools::InputParser}} ip(\textcolor{stringliteral}{"{}example-\/4.prm"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    ip.read\_input\_file();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} xmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}xmax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} ymax = ip.retrieve\_double(\textcolor{stringliteral}{"{}ymax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} zmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}zmax"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} nx = ip.retrieve\_int(\textcolor{stringliteral}{"{}nx"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} ny = ip.retrieve\_int(\textcolor{stringliteral}{"{}ny"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} nz = ip.retrieve\_int(\textcolor{stringliteral}{"{}nz"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} scattering\_length         = ip.retrieve\_double(\textcolor{stringliteral}{"{}scattering length"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dipolar\_length            = ip.retrieve\_double(\textcolor{stringliteral}{"{}dipolar\_length"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int}    number\_of\_particles = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of particles"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} atomic\_mass         = ip.retrieve\_double(\textcolor{stringliteral}{"{}atomic mass"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegax                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegax"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegay                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegay"{}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} omegaz                    = ip.retrieve\_double(\textcolor{stringliteral}{"{}omegaz"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int}    number\_of\_gradient\_descent\_steps = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of gradient descent steps"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} residual                         = ip.retrieve\_double(\textcolor{stringliteral}{"{}residual"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} alpha                            = ip.retrieve\_double(\textcolor{stringliteral}{"{}alpha"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} beta                             = ip.retrieve\_double(\textcolor{stringliteral}{"{}beta"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} number\_of\_modes = ip.retrieve\_int(\textcolor{stringliteral}{"{}number of modes"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations = ip.retrieve\_int(\textcolor{stringliteral}{"{}maximum number of arnoldi iterations"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} tolerance = ip.retrieve\_double(\textcolor{stringliteral}{"{}tolerance"{}});}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{bool} calculate\_eigenvectors = ip.retrieve\_bool(\textcolor{stringliteral}{"{}calculate eigenvectors"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} hbar        = 0.6347*1.E5;}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} bohr\_radius = 5.292E-\/5;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    omegax *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegay *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{    omegaz *= \mbox{\hyperlink{bogolyubov__solver_8cpp_a4912c64aec0c943b7985db6cb61ff83a}{TWOPI}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} omega\_ho = std::cbrt(omegax*omegay*omegaz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    omegax = omegax/omega\_ho;}
+\DoxyCodeLine{    omegay = omegay/omega\_ho;}
+\DoxyCodeLine{    omegaz = omegaz/omega\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} \textcolor{keywordtype}{double} a\_ho = std::sqrt(hbar/(atomic\_mass*omega\_ho));}
+\DoxyCodeLine{}
+\DoxyCodeLine{    scattering\_length *= bohr\_radius/a\_ho;}
+\DoxyCodeLine{    dipolar\_length *= bohr\_radius/a\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    xmax = xmax/a\_ho;}
+\DoxyCodeLine{    ymax = ymax/a\_ho;}
+\DoxyCodeLine{    zmax = zmax/a\_ho;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dx = 2 * xmax / nx;}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dy = 2 * ymax / ny;}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} dz = 2 * zmax / nz;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} x(nx), y(ny), z(nz), kx(nx), ky(ny), kz(nz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx; ++i) x[i] = -\/xmax + i * dx;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ny; ++i) y[i] = -\/ymax + i * dy;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nz; ++i) z[i] = -\/zmax + i * dz;}
+\DoxyCodeLine{    \mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\_mesh\_in\_Fourier\_space}}(x, y, z, kx, ky, kz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> psi(nx, ny, nz);}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} Vext(nx, ny, nz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::default\_random\_engine generator;}
+\DoxyCodeLine{    std::uniform\_real\_distribution<double> distribution(0,1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx; ++i)}
+\DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < ny; ++j)}
+\DoxyCodeLine{            \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < nz; ++k)}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{keywordtype}{double} random\_number = distribution(generator);}
+\DoxyCodeLine{                psi(i,j,k)  = (1.0+0.1*random\_number)*}
+\DoxyCodeLine{                              std::exp(-\/0.1*(pow(x(i),2) +}
+\DoxyCodeLine{                                             pow(y(j),2) +}
+\DoxyCodeLine{                                             pow(z(k),2)) );}
+\DoxyCodeLine{}
+\DoxyCodeLine{                Vext(i,j,k) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +}
+\DoxyCodeLine{                                    std::pow(omegay,2)*pow(y(j),2) +}
+\DoxyCodeLine{                                    std::pow(omegaz,2)*pow(z(k),2) );}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} norm = 0.0;}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);}
+\DoxyCodeLine{    norm *= (dx * dy * dz);}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number\_of\_particles / norm);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out}{UltraCold::RealSpaceOutput::DataOut}} psi\_out;}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}initial\_wave\_function"{}});}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_a8580f804548eaee31fb7e4d7388d30fd}{write\_slice2d\_vtk}}(x,y,psi,\textcolor{stringliteral}{"{}xy"{}},\textcolor{stringliteral}{"{}initial\_wave\_function"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver}{GPSolvers::DipolarGPSolver}} dipolar\_gp\_solver(x,}
+\DoxyCodeLine{                                                 y,}
+\DoxyCodeLine{                                                 z,}
+\DoxyCodeLine{                                                 psi,}
+\DoxyCodeLine{                                                 Vext,}
+\DoxyCodeLine{                                                 scattering\_length,}
+\DoxyCodeLine{                                                 dipolar\_length);}
+\DoxyCodeLine{    \textcolor{keywordtype}{double} chemical\_potential;}
+\DoxyCodeLine{    std::tie(psi, chemical\_potential) = dipolar\_gp\_solver.run\_gradient\_descent(number\_of\_gradient\_descent\_steps,}
+\DoxyCodeLine{                                                                               residual,}
+\DoxyCodeLine{                                                                               alpha,}
+\DoxyCodeLine{                                                                               beta,}
+\DoxyCodeLine{                                                                               std::cout);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}ground\_state\_wave\_function"{}});}
+\DoxyCodeLine{    psi\_out.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,psi,\textcolor{stringliteral}{"{}ground\_state\_wave\_function"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} psi\_real(nx,ny,nz);}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nx * ny * nz; ++i)}
+\DoxyCodeLine{        psi\_real[i] = psi[i].real();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::vector<std::complex<double>> eigenvalues(number\_of\_modes);}
+\DoxyCodeLine{    std::vector<Vector<std::complex<double>>> u(number\_of\_modes),v(number\_of\_modes);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{BogolyubovSolvers::TrappedDipolarBogolyubovSolver}} dipolar\_bogolyubov\_solver(x,}
+\DoxyCodeLine{                                                                                y,}
+\DoxyCodeLine{                                                                                z,}
+\DoxyCodeLine{                                                                                psi\_real,}
+\DoxyCodeLine{                                                                                Vext,}
+\DoxyCodeLine{                                                                                scattering\_length,}
+\DoxyCodeLine{                                                                                dipolar\_length,}
+\DoxyCodeLine{                                                                                chemical\_potential,}
+\DoxyCodeLine{                                                                                number\_of\_modes,}
+\DoxyCodeLine{                                                                                tolerance,}
+\DoxyCodeLine{                                                                                maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{                                                                                calculate\_eigenvectors);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::tie(eigenvalues,u,v) = dipolar\_bogolyubov\_solver.run();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out}{RealSpaceOutput::DataOut}}                    output\_fluctuations;}
+\DoxyCodeLine{    std::vector<Vector< std::complex<double> >> density\_fluctuations(number\_of\_modes);}
+\DoxyCodeLine{    std::vector<Vector< std::complex<double> >> phase\_fluctuations(number\_of\_modes);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}     << std::endl;}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}Expected dipole mode frequencies: "{}}     << std::endl;}
+\DoxyCodeLine{    std::cout << omegax << \textcolor{stringliteral}{"{} "{}} << omegay << \textcolor{stringliteral}{"{} "{}} << omegaz << std::endl;}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}     << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < number\_of\_modes; ++i)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{        std::cout << eigenvalues[i].real() << \textcolor{stringliteral}{"{} "{}} << eigenvalues[i].imag() << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keywordflow}{if}(calculate\_eigenvectors)}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{                density\_fluctuations[i].reinit(nx,ny,nz);}
+\DoxyCodeLine{                phase\_fluctuations[i].reinit(nx,ny,nz);}
+\DoxyCodeLine{                \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < nx*ny*nz; ++j)}
+\DoxyCodeLine{                \{}
+\DoxyCodeLine{                        density\_fluctuations[i](j) = (u[i](j) + v[i](j)) * psi\_real(j);}
+\DoxyCodeLine{                        phase\_fluctuations[i](j)   = (u[i](j) -\/ v[i](j)) / psi\_real(j);}
+\DoxyCodeLine{                \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}density\_fluctuations\_mode\_"{}} + std::to\_string(i));}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,density\_fluctuations[i], \textcolor{stringliteral}{"{}density\_fluctuations"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_acb4c018af1f731035d492cdccdb49b45}{set\_output\_name}}(\textcolor{stringliteral}{"{}phase\_fluctuations\_mode\_"{}} + std::to\_string(i));}
+\DoxyCodeLine{                output\_fluctuations.\mbox{\hyperlink{class_ultra_cold_1_1_real_space_output_1_1_data_out_af8e7d71fa2f88a7405bbd24843125747}{write\_vtk}}(x,y,z,phase\_fluctuations[i], \textcolor{stringliteral}{"{}phase\_fluctuations"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

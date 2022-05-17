@@ -1,0 +1,363 @@
+\hypertarget{class_ultra_cold_1_1_vector}{}\doxysection{Ultra\+Cold\+::Vector\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_ultra_cold_1_1_vector}\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+
+
+A class that represents arrays of numerical elements.  
+
+
+
+
+{\ttfamily \#include $<$vector.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_a06a14788e843ee99670d050f3648b342}{Vector}} ()=default
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_ab6c39be6dc7c50e281435cfc4f2685d1}{Vector}} (\mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Constructor for a one-\/dimensional array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_a97ea70b6304aea6a43f1308c386bdd24}{Vector}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Constructor for a two-\/dimensional array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_a027317b59203b22f5d67b6f280d89366}{Vector}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Constructor for a two-\/dimensional array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_a66bf212e23cfdda196a34148cff00222}{Vector}} (const \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_a533ebe2f76c5314ef8d677f11d84b0a8}{operator=}} (const \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_abdd61329ac99c0f0ade98fb99b78237e}{Vector}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&\&)
+\begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_af9ad9bc4d79304086f0987833097a6f7}{operator=}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&\&)
+\begin{DoxyCompactList}\small\item\em Move assignment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_vector_ae787c49c837699d3d1d0e4dc653d8b64}{$\sim$\+Vector}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, releases the memory allocated by mkl\+\_\+calloc. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector_ab815d29b1c62bf50c666e52766e78c6a}{reinit}} (\mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Reinitialize a one-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector_a25e23ea2048a946350df9c8cc7afbb22}{reinit}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Reinitialize a two-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector_a0a7e98ca9e79328be1d4d9810e4a2836}{reinit}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Reinitialize a three-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector_a28432f7d508af676536782d2a34dca05}{size}} ()
+\begin{DoxyCompactList}\small\item\em Get the total number of elements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector_a165e09151a67e992f6beff0aad838d12}{order}} ()
+\begin{DoxyCompactList}\small\item\em Get the total number of dimensions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector_a255ce5c3acc5afceb2052d9eb3f338a3}{extent}} (\mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Get the extent of the \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} along a certain direction. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{class_ultra_cold_1_1_vector_ad862e1ab512afe101fab477922b166d7}{data}} ()
+\begin{DoxyCompactList}\small\item\em Get the pointer to the first array element. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_a2955818046528435520cdfd802628e08}{operator()}} (\mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Member access operators in Fortran style for a one-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_a29401096fff48eed723e117beba809c9}{operator()}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Member access operators in Fortran style for a two-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_afb7982067a5006a530abb16c6b86e8a2}{operator()}} (\mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}}, \mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Member access operators in Fortran style for a three-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector_a2b891317de8ccfbe08797f43d7a90b53}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{classint}{int}})
+\begin{DoxyCompactList}\small\item\em Plain and simple member access operators in C-\/style. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Ultra\+Cold\+::\+Vector$<$ T $>$}
+A class that represents arrays of numerical elements. 
+
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+The purpose of this class is to provide a useful way to store arrays of numerical elements in contiguous memory spaces and to use optimized mathematical operations acting on them. ~\newline
+These include\+:
+
+
+\begin{DoxyItemize}
+\item Optimized memory allocation through Intel\textquotesingle{}s MKL memry functions,
+\item Fourier transforms (both forward and backward),
+\item Fortran-\/style access to the array elements
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Explicit instantiations are provided only for types types {\ttfamily double} and {\ttfamily std\+::complex$<$double$>$}, which is equivalent to the C complex type defined in {\ttfamily complex.\+h}. 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a06a14788e843ee99670d050f3648b342}\label{class_ultra_cold_1_1_vector_a06a14788e843ee99670d050f3648b342}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_ab6c39be6dc7c50e281435cfc4f2685d1}\label{class_ultra_cold_1_1_vector_ab6c39be6dc7c50e281435cfc4f2685d1}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1 }\end{DoxyParamCaption})}
+
+
+
+Constructor for a one-\/dimensional array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & {\itshape int} The extent of the array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a97ea70b6304aea6a43f1308c386bdd24}\label{class_ultra_cold_1_1_vector_a97ea70b6304aea6a43f1308c386bdd24}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n2 }\end{DoxyParamCaption})}
+
+
+
+Constructor for a two-\/dimensional array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & {\itshape int} The extent of the array along the first dimension \\
+\hline
+{\em n2} & {\itshape int} The extent of the array along the second dimension \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a027317b59203b22f5d67b6f280d89366}\label{class_ultra_cold_1_1_vector_a027317b59203b22f5d67b6f280d89366}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n2,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n3 }\end{DoxyParamCaption})}
+
+
+
+Constructor for a two-\/dimensional array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & {\itshape int} The extent of the array along the first dimension \\
+\hline
+{\em n2} & {\itshape int} The extent of the array along the second dimension \\
+\hline
+{\em n3} & {\itshape int} The extent of the array along the third dimension \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a66bf212e23cfdda196a34148cff00222}\label{class_ultra_cold_1_1_vector_a66bf212e23cfdda196a34148cff00222}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&}]{w }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_abdd61329ac99c0f0ade98fb99b78237e}\label{class_ultra_cold_1_1_vector_abdd61329ac99c0f0ade98fb99b78237e}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&\&}]{w }\end{DoxyParamCaption})}
+
+
+
+Move constructor. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_ae787c49c837699d3d1d0e4dc653d8b64}\label{class_ultra_cold_1_1_vector_ae787c49c837699d3d1d0e4dc653d8b64}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!````~Vector@{$\sim$Vector}}
+\index{````~Vector@{$\sim$Vector}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Vector()}{~Vector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}}
+
+
+
+Destructor, releases the memory allocated by mkl\+\_\+calloc. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_ad862e1ab512afe101fab477922b166d7}\label{class_ultra_cold_1_1_vector_ad862e1ab512afe101fab477922b166d7}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!data@{data}}
+\index{data@{data}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::data}
+
+
+
+Get the pointer to the first array element. 
+
+Use it with care! \mbox{\Hypertarget{class_ultra_cold_1_1_vector_a255ce5c3acc5afceb2052d9eb3f338a3}\label{class_ultra_cold_1_1_vector_a255ce5c3acc5afceb2052d9eb3f338a3}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!extent@{extent}}
+\index{extent@{extent}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{extent()}{extent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::extent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{i }\end{DoxyParamCaption})}
+
+
+
+Get the extent of the \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} along a certain direction. 
+
+If a wrong index is given, returns -\/1. 
+\begin{DoxyParams}{Parameters}
+{\em i} & {\itshape int} direction along which we want to get the extent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a2955818046528435520cdfd802628e08}\label{class_ultra_cold_1_1_vector_a2955818046528435520cdfd802628e08}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{i }\end{DoxyParamCaption})}
+
+
+
+Member access operators in Fortran style for a one-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & {\itshape int} the index of the requested element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a29401096fff48eed723e117beba809c9}\label{class_ultra_cold_1_1_vector_a29401096fff48eed723e117beba809c9}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{i,  }\item[{\mbox{\hyperlink{classint}{int}}}]{j }\end{DoxyParamCaption})}
+
+
+
+Member access operators in Fortran style for a two-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & {\itshape int} first index of the requested element \\
+\hline
+{\em j} & {\itshape int} second index of the requested element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Only the {\itshape syntax} is Fortran-\/style, while the elements are accessed in C-\/style row-\/major order. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_afb7982067a5006a530abb16c6b86e8a2}\label{class_ultra_cold_1_1_vector_afb7982067a5006a530abb16c6b86e8a2}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{i,  }\item[{\mbox{\hyperlink{classint}{int}}}]{j,  }\item[{\mbox{\hyperlink{classint}{int}}}]{k }\end{DoxyParamCaption})}
+
+
+
+Member access operators in Fortran style for a three-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & {\itshape int} first index of the requested element \\
+\hline
+{\em j} & {\itshape int} second index of the requested element \\
+\hline
+{\em k} & {\itshape int} third index of the requested element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Only the {\itshape syntax} is Fortran-\/style, while the elements are accessed in C-\/style row-\/major order. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a533ebe2f76c5314ef8d677f11d84b0a8}\label{class_ultra_cold_1_1_vector_a533ebe2f76c5314ef8d677f11d84b0a8}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&}]{w }\end{DoxyParamCaption})}
+
+
+
+Copy assignment. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_af9ad9bc4d79304086f0987833097a6f7}\label{class_ultra_cold_1_1_vector_af9ad9bc4d79304086f0987833097a6f7}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ T $>$ \&\&}]{w }\end{DoxyParamCaption})}
+
+
+
+Move assignment. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a2b891317de8ccfbe08797f43d7a90b53}\label{class_ultra_cold_1_1_vector_a2b891317de8ccfbe08797f43d7a90b53}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{i }\end{DoxyParamCaption})}
+
+
+
+Plain and simple member access operators in C-\/style. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & {\itshape int} the index of the requested element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a165e09151a67e992f6beff0aad838d12}\label{class_ultra_cold_1_1_vector_a165e09151a67e992f6beff0aad838d12}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!order@{order}}
+\index{order@{order}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{order()}{order()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::order}
+
+
+
+Get the total number of dimensions. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_ab815d29b1c62bf50c666e52766e78c6a}\label{class_ultra_cold_1_1_vector_ab815d29b1c62bf50c666e52766e78c6a}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!reinit@{reinit}}
+\index{reinit@{reinit}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reinit()}{reinit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::reinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1 }\end{DoxyParamCaption})}
+
+
+
+Reinitialize a one-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a25e23ea2048a946350df9c8cc7afbb22}\label{class_ultra_cold_1_1_vector_a25e23ea2048a946350df9c8cc7afbb22}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!reinit@{reinit}}
+\index{reinit@{reinit}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reinit()}{reinit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::reinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n2 }\end{DoxyParamCaption})}
+
+
+
+Reinitialize a two-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a0a7e98ca9e79328be1d4d9810e4a2836}\label{class_ultra_cold_1_1_vector_a0a7e98ca9e79328be1d4d9810e4a2836}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!reinit@{reinit}}
+\index{reinit@{reinit}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reinit()}{reinit()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::reinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classint}{int}}}]{n1,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n2,  }\item[{\mbox{\hyperlink{classint}{int}}}]{n3 }\end{DoxyParamCaption})}
+
+
+
+Reinitialize a three-\/dimensional \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. 
+
+\mbox{\Hypertarget{class_ultra_cold_1_1_vector_a28432f7d508af676536782d2a34dca05}\label{class_ultra_cold_1_1_vector_a28432f7d508af676536782d2a34dca05}} 
+\index{UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}!size@{size}}
+\index{size@{size}!UltraCold::Vector$<$ T $>$@{UltraCold::Vector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Ultra\+Cold\+::\+Vector}}$<$ T $>$\+::size}
+
+
+
+Get the total number of elements. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{vector_8hpp}{vector.\+hpp}}\item 
+\mbox{\hyperlink{vector_8cpp}{vector.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,29 @@
+\hypertarget{index_Description}{}\doxysection{What is it}\label{index_Description}
+Ultra\+Cold is an extensible and modular collection of C++ classes and libraries for the study of ultra-\/cold atomic systems in the context of Gross-\/\+Pitaevskii theory. ~\newline
+Ultra\+Cold allows for the solution of several flavors of Gross-\/\+Pitaevskii and Bogolyubov equations, used in particular for the description of ensembles of bosonic particles close to the absolute zero. ~\newline
+ \hypertarget{index_Required}{}\doxysection{Prerequisites and platforms}\label{index_Required}
+Ultra\+Cold has been tested only Linux machines. Moreover, it is built on top of Intel\textquotesingle{}s Math Kernel Library, and relies upon \href{https://github.com/opencollab/arpack-ng}{\texttt{ arpack-\/ng }} for the solution of Bogolyubov equations. Hence, in order to use Ultra\+Cold, you first need to download and install a distribution of Intel\textquotesingle{}s software. Right now, it has been only tested with Intel one\+API, although it should also work with previous versions of Intel Parallel Studio. The Intel one\+API package can be downloaded for free from \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html}{\texttt{ here }}. In particular, Ultra\+Cold relies on the \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html}{\texttt{ Intel one\+API Base Toolkit }} and on the \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html}{\texttt{ Intel one\+API HPC Toolkit }} ~\newline
+ \hypertarget{index_Installation}{}\doxysection{Installation}\label{index_Installation}
+Before getting Ultra\+Cold, be sure you have Intel one\+API installed. \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}} is in fact built on top of Intel\textquotesingle{}s Math Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with previous versions of Intel Parallel Studio, although we have never tried it.
+
+To get \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}}, first clone it into your local machine
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https:\textcolor{comment}{//github.com/smroccuzzo/UltraCold.git}}
+
+\end{DoxyCode}
+
+
+Then, enter the directory Ultra\+Cold, and follow the usual steps required to build a project using \href{https://cmake.org/}{\texttt{ cmake }}. By default, the build type is {\itshape Release}. So, all you have to do is 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake -\/DCMAKE\_INSTALL\_PREFIX=</your/install/path> ..}
+\DoxyCodeLine{make}
+\DoxyCodeLine{make install}
+
+\end{DoxyCode}
+\hypertarget{index_Examples}{}\doxysection{Examples}\label{index_Examples}
+Ultra\+Cold comes packed with several examples showing its basic functionality and also some physics. Such examples are meant to be used as templates for more complex applications, combining the functionality of the various solver classes to find some interesting physics. See the examples folder for details.\hypertarget{index_License}{}\doxysection{License}\label{index_License}
+\mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}} is distributed as free software under the GPL3. See also the file \mbox{\hyperlink{_l_i_c_e_n_s_e_8md}{LICENSE.\+md}} 

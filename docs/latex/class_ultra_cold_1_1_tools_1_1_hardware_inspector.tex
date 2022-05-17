@@ -1,0 +1,100 @@
+\hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector}{}\doxysection{Ultra\+Cold\+::Tools\+::Hardware\+Inspector Class Reference}
+\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector}\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+
+
+Class to detect hardware capabilities.  
+
+
+
+
+{\ttfamily \#include $<$hardware\+\_\+inspector.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aade3f312c3f8ffa3579eaee78a936958}{Hardware\+Inspector}} ()
+\begin{DoxyCompactList}\small\item\em Constructor of class \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector}{Hardware\+Inspector}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a374bf70a507593420581882cc5c54bf2}{$\sim$\+Hardware\+Inspector}} ()=default
+\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a5f1e83f1c67784e15cf7748282bc4448}{get\+\_\+number\+\_\+of\+\_\+processors}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total number of processors present in the machines. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa746912731133a729b1e57615421e96c}{get\+\_\+number\+\_\+of\+\_\+available\+\_\+processors}} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of available processors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa55dabaecc46fb521c43e0e67ce8c888}{print\+\_\+cpu\+\_\+information}} ()
+\begin{DoxyCompactList}\small\item\em Print all available hardware information on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to detect hardware capabilities. 
+
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+The \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector}{Hardware\+Inspector}} class provides methods to check hardware information on the current machine, such as the number of available cores, or the total amount of available memory. It also helps in tuning the performance of \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aade3f312c3f8ffa3579eaee78a936958}\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aade3f312c3f8ffa3579eaee78a936958}} 
+\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}!HardwareInspector@{HardwareInspector}}
+\index{HardwareInspector@{HardwareInspector}!UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+\doxysubsubsection{\texorpdfstring{HardwareInspector()}{HardwareInspector()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+Tools\+::\+Hardware\+Inspector\+::\+Hardware\+Inspector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor of class \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_hardware_inspector}{Hardware\+Inspector}}. 
+
+The constructor actually retrieves the hardware information on the machines and initializes the corresponding member variables. \mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a374bf70a507593420581882cc5c54bf2}\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a374bf70a507593420581882cc5c54bf2}} 
+\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}!````~HardwareInspector@{$\sim$HardwareInspector}}
+\index{````~HardwareInspector@{$\sim$HardwareInspector}!UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+\doxysubsubsection{\texorpdfstring{$\sim$HardwareInspector()}{~HardwareInspector()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+Tools\+::\+Hardware\+Inspector\+::$\sim$\+Hardware\+Inspector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa746912731133a729b1e57615421e96c}\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa746912731133a729b1e57615421e96c}} 
+\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}!get\_number\_of\_available\_processors@{get\_number\_of\_available\_processors}}
+\index{get\_number\_of\_available\_processors@{get\_number\_of\_available\_processors}!UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+\doxysubsubsection{\texorpdfstring{get\_number\_of\_available\_processors()}{get\_number\_of\_available\_processors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Tools\+::\+Hardware\+Inspector\+::get\+\_\+number\+\_\+of\+\_\+available\+\_\+processors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the number of available processors. 
+
+Notice that this number may be different from the total number of processors present on the machine.
+
+\begin{DoxyReturn}{Returns}
+the number of available processors 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a5f1e83f1c67784e15cf7748282bc4448}\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector_a5f1e83f1c67784e15cf7748282bc4448}} 
+\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}!get\_number\_of\_processors@{get\_number\_of\_processors}}
+\index{get\_number\_of\_processors@{get\_number\_of\_processors}!UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+\doxysubsubsection{\texorpdfstring{get\_number\_of\_processors()}{get\_number\_of\_processors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Tools\+::\+Hardware\+Inspector\+::get\+\_\+number\+\_\+of\+\_\+processors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total number of processors present in the machines. 
+
+Notice that this number may be different from the actual number of processors available for the program.
+
+\begin{DoxyReturn}{Returns}
+the total number of processors present on the machine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa55dabaecc46fb521c43e0e67ce8c888}\label{class_ultra_cold_1_1_tools_1_1_hardware_inspector_aa55dabaecc46fb521c43e0e67ce8c888}} 
+\index{UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}!print\_cpu\_information@{print\_cpu\_information}}
+\index{print\_cpu\_information@{print\_cpu\_information}!UltraCold::Tools::HardwareInspector@{UltraCold::Tools::HardwareInspector}}
+\doxysubsubsection{\texorpdfstring{print\_cpu\_information()}{print\_cpu\_information()}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+Tools\+::\+Hardware\+Inspector\+::print\+\_\+cpu\+\_\+information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print all available hardware information on the screen. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{hardware__inspector_8hpp}{hardware\+\_\+inspector.\+hpp}}\item 
+\mbox{\hyperlink{hardware__inspector_8cpp}{hardware\+\_\+inspector.\+cpp}}\end{DoxyCompactItemize}

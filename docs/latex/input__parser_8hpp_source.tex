@@ -1,0 +1,74 @@
+\hypertarget{input__parser_8hpp_source}{}\doxysection{input\+\_\+parser.\+hpp}
+\label{input__parser_8hpp_source}\index{input\_parser.hpp@{input\_parser.hpp}}
+\mbox{\hyperlink{input__parser_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{ *}}
+\DoxyCodeLine{3 \textcolor{comment}{ *    This file is part of the UltraCold project.}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ *    UltraCols is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{6 \textcolor{comment}{ *    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{7 \textcolor{comment}{ *    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{8 \textcolor{comment}{ *    any later version.}}
+\DoxyCodeLine{9 \textcolor{comment}{ *    UltraCold is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{10 \textcolor{comment}{ *    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{11 \textcolor{comment}{ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{12 \textcolor{comment}{ *    GNU General Public License for more details.}}
+\DoxyCodeLine{13 \textcolor{comment}{ *    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{14 \textcolor{comment}{ *    along with UltraCold.  If not, see <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{15 \textcolor{comment}{ *}}
+\DoxyCodeLine{16 \textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#ifndef ULTRACOLD\_INPUT\_PARSER}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ULTRACOLD\_INPUT\_PARSER}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <string>}    }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <map>}  }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{namespace }Tools}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{92         \textcolor{keyword}{class }\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{InputParser}}}
+\DoxyCodeLine{93         \{}
+\DoxyCodeLine{94             \textcolor{keyword}{public}:  }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96                 \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_afbe7f21e0f5ba6ba9e8b1065b940e188}{InputParser}}(\textcolor{keywordtype}{char}* input\_file\_name);}
+\DoxyCodeLine{97                 \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a0b461bb4f7fae0b2464745cca7070de1}{\string~InputParser}}();}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99                 \textcolor{comment}{// Read input file and initialize the input\_list map }}
+\DoxyCodeLine{100                 }
+\DoxyCodeLine{101                 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a8b171dd7033dd331e3b00fcc16cae299}{read\_input\_file}}();}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103                 \textcolor{comment}{// Retrieve inputs casting to the appropriate type}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105                 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a0137f1ad7d9c11ff59afabda96d1725a}{retrieve\_int}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* variable\_name);}
+\DoxyCodeLine{106                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a7feaf1119a28ba6b355689e813c6c496}{retrieve\_double}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* variable\_name);}
+\DoxyCodeLine{107                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a16b1406d0724ab6bb72ac190e2e8759c}{retrieve\_bool}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* variable\_name);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109             \textcolor{keyword}{private}:}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111                 \textcolor{comment}{// Retrieve values from the input\_list map, cast as string}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113                 std::string retrieve\_input(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115                 \textcolor{comment}{// Internal variable members }}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117                 \textcolor{keywordtype}{char}* input\_file\_name;}
+\DoxyCodeLine{118                 std::ifstream ifs;}
+\DoxyCodeLine{119                 std::map<std::string,std::string> input\_list;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121         \};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \} \textcolor{comment}{// namespace Tools}}
+\DoxyCodeLine{124     }
+\DoxyCodeLine{125 \} \textcolor{comment}{// namespace UltraCold}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ULTRACOLD\_INPUT\_PARSER}}
+
+\end{DoxyCode}

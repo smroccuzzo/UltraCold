@@ -1,0 +1,179 @@
+\hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser}{}\doxysection{Ultra\+Cold\+::Tools\+::Input\+Parser Class Reference}
+\label{class_ultra_cold_1_1_tools_1_1_input_parser}\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+
+
+Class to read input parameters from files.  
+
+
+
+
+{\ttfamily \#include $<$input\+\_\+parser.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_afbe7f21e0f5ba6ba9e8b1065b940e188}{Input\+Parser}} (char $\ast$input\+\_\+file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Constructor of class \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{Input\+Parser}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a0b461bb4f7fae0b2464745cca7070de1}{$\sim$\+Input\+Parser}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a8b171dd7033dd331e3b00fcc16cae299}{read\+\_\+input\+\_\+file}} ()
+\begin{DoxyCompactList}\small\item\em Member function to parse the input file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classint}{int}} \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a0137f1ad7d9c11ff59afabda96d1725a}{retrieve\+\_\+int}} (const char $\ast$variable\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Cast an element retrieved to int. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a7feaf1119a28ba6b355689e813c6c496}{retrieve\+\_\+double}} (const char $\ast$variable\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Cast an element retrieved to double. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_a16b1406d0724ab6bb72ac190e2e8759c}{retrieve\+\_\+bool}} (const char $\ast$variable\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Cast an element retrieved to bool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to read input parameters from files. 
+
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+The \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{Input\+Parser}} class provides an interface to input parameter files. The class can be used as follows. ~\newline
+ Suppose you have a file input\+\_\+file.\+prm containing the following text
+
+\begin{DoxyVerb}  # Define the mesh parameters
+
+  xmax = 10.0 # Size of the mesh along the x-axis, in micrometers.
+  ymax = 10.0 # Size of the mesh along the y-axis, in micrometers.
+  zmax = 10.0 # Size of the mesh along the z-axis, in micrometers.
+
+  nx = 100 # number of points along the x-axis
+  ny = 100 # number of points along the y-axis
+  nz = 100 # number of points along the z-axis
+
+  # Define interaction parameters
+
+  scattering length = 100.0 # Scattering length in micrometers
+
+  # Define the run mode
+
+  calculate ground state = true # If true, calculate a ground state solution of the eGPE\end{DoxyVerb}
+
+
+Comments are defined by an hashtag (\#) and ignored by the class. ~\newline
+Every line containing an equal (=) sign is interpreted as a line defining an input. Every character on the left of the equal sign is interpreted as the name of the variable (without blanks), while what follows the equal sign on the right is interpreted as the value of the defined variable. ~\newline
+In order to retrieve the value of these variables and use them in the code, it is necessary to use the appropriate member function {\ttfamily $<$variable type$>$ Input\+Parser\+::retrieve\+\_\+$<$type$>$(\char`\"{}variable name\char`\"{}) }, which will cast the retrieved variable (which is first interpreted as an {\ttfamily std\+::string}) to the desired {\ttfamily  $<$type$>$ }. ~\newline
+So, an example code block that reads the input file defined above and initializes the variables {\itshape xmax}, {\itshape ymax}, {\itshape zmax}, {\itshape scattering length}, and {\itshape run in imaginary time}, is the following
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser_afbe7f21e0f5ba6ba9e8b1065b940e188}{InputParser}} ip(\textcolor{stringliteral}{"{}input\_file.prm"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{ip.read\_input\_file();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} xmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}xmax"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} ymax = ip.retrieve\_double(\textcolor{stringliteral}{"{}ymax"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} zmax = ip.retrieve\_double(\textcolor{stringliteral}{"{}zmax"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{int} nx = ip.retrieve\_int(\textcolor{stringliteral}{"{}nx"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{int} ny = ip.retrieve\_int(\textcolor{stringliteral}{"{}ny"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{int} nz = ip.retrieve\_int(\textcolor{stringliteral}{"{}nz"{}});}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{double} scattering\_length = ip.retrieve\_double(\textcolor{stringliteral}{"{}scattering length"{}}));}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{bool} calc\_ground\_state = ip.retrieve\_bool(\textcolor{stringliteral}{"{}calculate ground state"{}});}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_afbe7f21e0f5ba6ba9e8b1065b940e188}\label{class_ultra_cold_1_1_tools_1_1_input_parser_afbe7f21e0f5ba6ba9e8b1065b940e188}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!InputParser@{InputParser}}
+\index{InputParser@{InputParser}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{InputParser()}{InputParser()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::\+Input\+Parser (\begin{DoxyParamCaption}\item[{char $\ast$}]{input\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Constructor of class \mbox{\hyperlink{class_ultra_cold_1_1_tools_1_1_input_parser}{Input\+Parser}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file\+\_\+name} & {\itshape char} the name of the input file\\
+\hline
+\end{DoxyParams}
+The constructor tries to open the file {\ttfamily  input\+\_\+file\+\_\+name }. If the file is not found, it will print an error message an terminate the execution of the program. If instead the file is found, the constructor initializes an {\ttfamily std\+::ifstream} through which the file can be read. \mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_a0b461bb4f7fae0b2464745cca7070de1}\label{class_ultra_cold_1_1_tools_1_1_input_parser_a0b461bb4f7fae0b2464745cca7070de1}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!````~InputParser@{$\sim$InputParser}}
+\index{````~InputParser@{$\sim$InputParser}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{$\sim$InputParser()}{~InputParser()}}
+{\footnotesize\ttfamily Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::$\sim$\+Input\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+The destructor simply closes the {\ttfamily std\+::ifstream} used to read the input file. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_a8b171dd7033dd331e3b00fcc16cae299}\label{class_ultra_cold_1_1_tools_1_1_input_parser_a8b171dd7033dd331e3b00fcc16cae299}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!read\_input\_file@{read\_input\_file}}
+\index{read\_input\_file@{read\_input\_file}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{read\_input\_file()}{read\_input\_file()}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::read\+\_\+input\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Member function to parse the input file. 
+
+This function parses the input file, ignoring all comments (i.\+e., everything coming after an hashtag (\#)), and filling an {\ttfamily std\+::map$<$std\+::string,std\+::string$>$} with the pairs name=value defined by lines containing an equal (=) sign. ~\newline
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_a16b1406d0724ab6bb72ac190e2e8759c}\label{class_ultra_cold_1_1_tools_1_1_input_parser_a16b1406d0724ab6bb72ac190e2e8759c}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!retrieve\_bool@{retrieve\_bool}}
+\index{retrieve\_bool@{retrieve\_bool}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{retrieve\_bool()}{retrieve\_bool()}}
+{\footnotesize\ttfamily bool Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::retrieve\+\_\+bool (\begin{DoxyParamCaption}\item[{const char $\ast$}]{requested\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Cast an element retrieved to bool. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em requested\+\_\+element} & $\ast$char$\ast$$\ast$ Name of the element to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the requested element, cast to bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_a7feaf1119a28ba6b355689e813c6c496}\label{class_ultra_cold_1_1_tools_1_1_input_parser_a7feaf1119a28ba6b355689e813c6c496}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!retrieve\_double@{retrieve\_double}}
+\index{retrieve\_double@{retrieve\_double}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{retrieve\_double()}{retrieve\_double()}}
+{\footnotesize\ttfamily double Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::retrieve\+\_\+double (\begin{DoxyParamCaption}\item[{const char $\ast$}]{requested\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Cast an element retrieved to double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em requested\+\_\+element} & $\ast$char$\ast$$\ast$ Name of the element to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the requested element, cast to double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ultra_cold_1_1_tools_1_1_input_parser_a0137f1ad7d9c11ff59afabda96d1725a}\label{class_ultra_cold_1_1_tools_1_1_input_parser_a0137f1ad7d9c11ff59afabda96d1725a}} 
+\index{UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}!retrieve\_int@{retrieve\_int}}
+\index{retrieve\_int@{retrieve\_int}!UltraCold::Tools::InputParser@{UltraCold::Tools::InputParser}}
+\doxysubsubsection{\texorpdfstring{retrieve\_int()}{retrieve\_int()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classint}{int}} Ultra\+Cold\+::\+Tools\+::\+Input\+Parser\+::retrieve\+\_\+int (\begin{DoxyParamCaption}\item[{const char $\ast$}]{requested\+\_\+element }\end{DoxyParamCaption})}
+
+
+
+Cast an element retrieved to int. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em requested\+\_\+element} & $\ast$char$\ast$$\ast$ Name of the element to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the requested element, cast to int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{input__parser_8hpp}{input\+\_\+parser.\+hpp}}\item 
+\mbox{\hyperlink{input__parser_8cpp}{input\+\_\+parser.\+cpp}}\end{DoxyCompactItemize}

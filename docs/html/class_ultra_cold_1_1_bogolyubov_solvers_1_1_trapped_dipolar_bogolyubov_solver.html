@@ -16,13 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX","output/SVG"],
-});
-</script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -192,14 +185,14 @@ Protected Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Santo Maria Roccuzzo (<a href="#" onclick="location.href='mai'+'lto:'+'san'+'to'+'m.r'+'oc'+'cuz'+'zo'+'@gm'+'ai'+'l.c'+'om'; return false;">santo<span class="obfuscator">.nosp@m.</span>m.ro<span class="obfuscator">.nosp@m.</span>ccuzz<span class="obfuscator">.nosp@m.</span>o@gm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>)</dd></dl>
 <p>Studying the elementary excitations of a trapped <b>dipolar</b> Bose gas in the condensate phase on top of a certain ground (or stationary) state, means searching for solutions of the time-dependent extended Gross-Pitaevskii equation of the form</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
  + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
-\]
+\]" src="form_52.png"/>
 </p>
-<p >and solving the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle amplitudes \( u \) and \( v \). In the case of a <b>dipolar</b> Bose gas, taking also into account the effects of quantum fluctuations via the <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction, this amounts to solving the following eigenvalue problem</p>
+<p >and solving the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>. In the case of a <b>dipolar</b> Bose gas, taking also into account the effects of quantum fluctuations via the <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction, this amounts to solving the following eigenvalue problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
  \begin{bmatrix}
      u \\
@@ -215,48 +208,48 @@ Protected Attributes</h2></td></tr>
      v
  \end{bmatrix}
 
-\]
+\]" src="form_42.png"/>
 </p>
 <p >with</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
   \mathcal{H}({\bf r})=-&amp;\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
   (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
-  +&amp; \int d{\bf r&#39;}V_{dd}({\bf r}-{\bf r&#39;})|\Psi({\bf r&#39;},t)|^2\,,
+  +&amp; \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
  \end{align}
-\]
+\]" src="form_34.png"/>
 </p>
 <p >and</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
-\hat{X}f({\bf r}) = \psi_0({\bf r})\int d{\bf r}&#39; V_{dd}({\bf r}-{\bf r}&#39;)f({\bf r}&#39;)\psi_0^*({\bf r}&#39;) +
+\hat{X}f({\bf r}) = \psi_0({\bf r})\int d{\bf r}' V_{dd}({\bf r}-{\bf r}')f({\bf r}')\psi_0^*({\bf r}') +
 \frac{3}{2}\gamma(\varepsilon_{dd})|\psi_0({\bf r})|^3f({\bf r})
 
-\]
+\]" src="form_43.png"/>
 </p>
 <p >and finally</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
 \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
-\]
+\]" src="form_57.png"/>
 </p>
-<p >with \( g=4\pi\hbar^2a/m \) the coupling constant fixed by the \( s \)-wave scattering length \( a
-\), \( V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
-r}_{j}|^3} \) the dipole-dipole potential, being \( \mu_0 \) the magnetic permeability in vacuum, \(
-\mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, which we choose as the \( x \)-axis, and \( \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \) the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length \( a_{dd} \) and the scattering length \( a \).</p>
+<p >with <img class="formulaInl" alt="$ g=4\pi\hbar^2a/m $" src="form_35.png"/> the coupling constant fixed by the <img class="formulaInl" alt="$ s $" src="form_36.png"/>-wave scattering length <img class="formulaInl" alt="$ a
+$" src="form_44.png"/>, <img class="formulaInl" alt="$ V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
+r}_{j}|^3} $" src="form_45.png"/> the dipole-dipole potential, being <img class="formulaInl" alt="$ \mu_0 $" src="form_27.png"/> the magnetic permeability in vacuum, <img class="formulaInl" alt="$
+\mu $" src="form_46.png"/> the magnetic dipole moment and <img class="formulaInl" alt="$ \theta $" src="form_28.png"/> the angle between the vector distance between dipoles and the polarization direction, which we choose as the <img class="formulaInl" alt="$ x $" src="form_29.png"/>-axis, and <img class="formulaInl" alt="$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $" src="form_39.png"/> the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/> and the scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/>.</p>
 <p >In the case in which the condensate wave function is real (e.g., in absence of vortices, solitons...) the problem can be recast in a more convenient form. In fact, taking the sum and the difference between the two equations, one easily finds</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; (\hat{H}-\mu)(\hat{H}-\mu+2\hat{X}) (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
      &amp; (\hat{H}-\mu+2\hat{X})(\hat{H}-\mu) (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
  \end{align}
-\]
+\]" src="form_58.png"/>
 </p>
-<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to \((u+v)\) and \((u-v)\) respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes \( u \) and \( v \), one also needs to solve the second problem, and then set \( u = 0.5 \left( (u+v) + (u-v) \right)\) and \( v = 0.5 \left( (u+v) - (u-v) \right)\)</p>
+<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to <img class="formulaInl" alt="$(u+v)$" src="form_18.png"/> and <img class="formulaInl" alt="$(u-v)$" src="form_19.png"/> respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>, one also needs to solve the second problem, and then set <img class="formulaInl" alt="$ u = 0.5 \left( (u+v) + (u-v) \right)$" src="form_20.png"/> and <img class="formulaInl" alt="$ v = 0.5 \left( (u+v) - (u-v) \right)$" src="form_21.png"/></p>
 <p >This class solves the eigenvalue problem using the matrix-free routines provided as part of the package <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a>, which is distributed as a bundled package with <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8d7f23d18b7970db1eb935728a6a8009" name="a8d7f23d18b7970db1eb935728a6a8009"></a>
@@ -489,7 +482,7 @@ r}_{j}|^3} \) the dipole-dipole potential, being \( \mu_0 \) the magnetic permea
 <p>Solve the Bogolyubov equations. </p>
 <p >This member function actually solves the Bogolyubov equations for a trapped dipolar condensate. In the case in which a real wave-function was passed to the constructor, the function will use the following useful recast of the problem in one of halved dimensionality. Starting from</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
  \begin{bmatrix}
      u \\
@@ -505,48 +498,48 @@ r}_{j}|^3} \) the dipole-dipole potential, being \( \mu_0 \) the magnetic permea
      v
  \end{bmatrix}
 
-\]
+\]" src="form_42.png"/>
 </p>
 <p >and taking the sum and the difference between two equations, one obtain the following equivalent formulation of the problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; (\hat{H}-\mu)(\hat{H}-\mu+2\hat{X}) (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
      &amp; (\hat{H}-\mu+2\hat{X})(\hat{H}-\mu) (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
  \end{align}
-\]
+\]" src="form_58.png"/>
 </p>
 <p >with</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
   \mathcal{H}({\bf r})=-&amp;\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
   (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
-  +&amp; \int d{\bf r&#39;}V_{dd}({\bf r}-{\bf r&#39;})|\Psi({\bf r&#39;},t)|^2\,,
+  +&amp; \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
  \end{align}
-\]
+\]" src="form_34.png"/>
 </p>
 <p >and</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
-\hat{X}f({\bf r}) = \psi_0({\bf r})\int d{\bf r}&#39; V_{dd}({\bf r}-{\bf r}&#39;)f({\bf r}&#39;)\psi_0^*({\bf r}&#39;) +
+\hat{X}f({\bf r}) = \psi_0({\bf r})\int d{\bf r}' V_{dd}({\bf r}-{\bf r}')f({\bf r}')\psi_0^*({\bf r}') +
 \frac{3}{2}\gamma(\varepsilon_{dd})|\psi_0({\bf r})|^3f({\bf r})
 
-\]
+\]" src="form_43.png"/>
 </p>
 <p >and finally</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
 \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
-\]
+\]" src="form_57.png"/>
 </p>
-<p >with \( g=4\pi\hbar^2a/m \) the coupling constant fixed by the \( s \)-wave scattering length \( a
-\), \( V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
-r}_{j}|^3} \) the dipole-dipole potential, being \( \mu_0 \) the magnetic permeability in vacuum, \(
-\mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, which we choose as the \( x \)-axis, and \( \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \) the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length \( a_{dd} \) and the scattering length \( a \).</p>
-<p >If the eigenvectors are not required, this function will solve only the first equation, calculating the square of the energies of the eigen-modes, but <em>returning the energies</em> (i.e., it calculates the square root before returning). If the eigenvectors are also requested, the function will solve also the second eigenvalue problem, obtaining the Bogolyubov quasi-particle amplitudes \( u \) and \( v \) by taking (half) the sum and the difference between the eigenvectors of the two problems.</p>
+<p >with <img class="formulaInl" alt="$ g=4\pi\hbar^2a/m $" src="form_35.png"/> the coupling constant fixed by the <img class="formulaInl" alt="$ s $" src="form_36.png"/>-wave scattering length <img class="formulaInl" alt="$ a
+$" src="form_44.png"/>, <img class="formulaInl" alt="$ V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
+r}_{j}|^3} $" src="form_45.png"/> the dipole-dipole potential, being <img class="formulaInl" alt="$ \mu_0 $" src="form_27.png"/> the magnetic permeability in vacuum, <img class="formulaInl" alt="$
+\mu $" src="form_46.png"/> the magnetic dipole moment and <img class="formulaInl" alt="$ \theta $" src="form_28.png"/> the angle between the vector distance between dipoles and the polarization direction, which we choose as the <img class="formulaInl" alt="$ x $" src="form_29.png"/>-axis, and <img class="formulaInl" alt="$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $" src="form_39.png"/> the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/> and the scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/>.</p>
+<p >If the eigenvectors are not required, this function will solve only the first equation, calculating the square of the energies of the eigen-modes, but <em>returning the energies</em> (i.e., it calculates the square root before returning). If the eigenvectors are also requested, the function will solve also the second eigenvalue problem, obtaining the Bogolyubov quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/> by taking (half) the sum and the difference between the eigenvectors of the two problems.</p>
 <p >In the case in which, instead, the wave-function passed to the constructor is complex, the function will solve, by brute force, the complete problem. </p>
 
 </div>

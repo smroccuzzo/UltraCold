@@ -16,13 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX","output/SVG"],
-});
-</script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -229,10 +222,10 @@ Protected Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Santo Maria Roccuzzo (<a href="#" onclick="location.href='mai'+'lto:'+'san'+'to'+'m.r'+'oc'+'cuz'+'zo'+'@gm'+'ai'+'l.c'+'om'; return false;">santo<span class="obfuscator">.nosp@m.</span>m.ro<span class="obfuscator">.nosp@m.</span>ccuzz<span class="obfuscator">.nosp@m.</span>o@gm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>)</dd></dl>
 <p>This class allows to solve the Gross-Pitaevskii equation</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  i\hbar\frac{\partial \psi}{\partial t} = \left[ \frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})+g|\psi|^2
 \right]\psi
-\]
+\]" src="form_109.png"/>
 </p>
 <p >both for ground-state configurations as well as for the dynamics, on a cartesian mesh with periodic boundary conditions. The basic usage of the class is as follows:</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html">GPSolver</a> gp_solver(<a class="code hl_variable" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a3a552caa2b0539f887366f4482cfc95b">x</a>,<a class="code hl_variable" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#aee6e71813f59a2913093f8a4953b2941">y</a>,<a class="code hl_variable" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#ae7cd95d4d0720058bab9eb03141d37d9">z</a>,psi0,<a class="code hl_variable" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a9db02467eaa8220c1fcb38b1e244fe80">Vext</a>,<a class="code hl_variable" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a248f4e22f4341cf8b4881b6adcaf6d24">scattering_length</a>);</div>
@@ -262,12 +255,12 @@ A similar behavior is the default also for dynamics calculations, i.e. for the m
 </div><!-- fragment --> on the shell before the program execution. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The Gross-Pitaevskii equation is solved in its a-dimensional form. In the case of a harmonic potential in one space dimension it has the form</dd></dl>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  i\frac{\partial \psi}{\partial t} = \left[ -\frac{1}{2}\frac{\partial^2}{\partial x^2}+\frac{1}{2}x^2
  +4\pi a|\psi|^2 \right]\psi
-\]
+\]" src="form_115.png"/>
 </p>
-<p> where \( a \) is the scattering length, which here must be given in harmonic units. Be sure to provide the axis, initial wave function, and external potential initialized properly. See the examples in the examples folder. </p>
+<p> where <img class="formulaInl" alt="$ a $" src="form_37.png"/> is the scattering length, which here must be given in harmonic units. Be sure to provide the axis, initial wave function, and external potential initialized properly. See the examples in the examples folder. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27e4ed4915c1e2bfcabb82c2d7d07af0" name="a27e4ed4915c1e2bfcabb82c2d7d07af0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27e4ed4915c1e2bfcabb82c2d7d07af0">&#9670;&nbsp;</a></span>GPSolver() <span class="overload">[1/3]</span></h2>
@@ -563,42 +556,42 @@ A similar behavior is the default also for dynamics calculations, i.e. for the m
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::tuple&lt;<a class="el" href="class_ultra_cold_1_1_vector.html">Vector&lt;std::complex&lt;double&gt;&gt;</a>,double&gt; representing the calculated ground-state wave function and chemical potential. Can be recovered by using std::tie(psi,chemical_potential).</dd></dl>
-<p>The Gross-Pitaevskii equation allows to obtain information on the ground-state properties of an ultra-cold bosonic system by searching for stationary solutions of the form \( \psi({\bf r},t)=\psi_0({\bf r})e^{-i\mu t/\hbar} \), obtaining the stationary Gross-Pitaevskii equation </p><p class="formulaDsp">
-\[
+<p>The Gross-Pitaevskii equation allows to obtain information on the ground-state properties of an ultra-cold bosonic system by searching for stationary solutions of the form <img class="formulaInl" alt="$ \psi({\bf r},t)=\psi_0({\bf r})e^{-i\mu t/\hbar} $" src="form_60.png"/>, obtaining the stationary Gross-Pitaevskii equation </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \mu \psi_0 = \left[ \frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})+ g|\psi_0|^2 \right]\psi_0
-\]
+\]" src="form_61.png"/>
 </p>
-<p> where \( g \) is related to the s-wave scattering length \( a \) by \( g=\frac{4\pi\hbar^2 a}{2m} \). Solving this for the smallest eigenvalue \( \mu \), which represents the chemical potential, gives access to the ground-state configuration of the system. <br  />
+<p> where <img class="formulaInl" alt="$ g $" src="form_62.png"/> is related to the s-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> by <img class="formulaInl" alt="$ g=\frac{4\pi\hbar^2 a}{2m} $" src="form_63.png"/>. Solving this for the smallest eigenvalue <img class="formulaInl" alt="$ \mu $" src="form_11.png"/>, which represents the chemical potential, gives access to the ground-state configuration of the system. <br  />
 In order to solve this equation, one can notice that it can be obtained from a constrained minimization formulation of the problem, in particular by requiring that the ground-state order parameter of the system is the exact minimizer of the mean-field energy functional </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 E[\psi] = \int d{\bf r} \left[ \psi^*({\bf r})\left(\frac{-\hbar^2\nabla^2}{2m}+
 V_{ext}({\bf r})\right)\psi({\bf r}) \right] +\frac{g}{2}\int d{\bf r} |\psi({\bf r})|^4
-\]
+\]" src="form_64.png"/>
 </p>
-<p> under the constraint of a fixed number of particles \( \int d{\bf r}|\psi({\bf r})|^2=N \). This allows also to introduce the chemical potential \( \mu \) as the Lagrange multiplier fixing the total number of particles. One can hence find the ground state order parameter and chemical potential using, for example, a <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient descent </a> method, which is the one implemented in this function. <br  />
-The idea is to start from a guess solution \(\psi_0\) and generate a sequence of iterates \( \{\psi_n\}_{\{n=0,...,\infty\}} \) that terminates when one is sufficiently confident to have reached a (hopefully global) minimizer of the mean-field energy functional with good accuracy. In particular, a good stopping criterion consists in fixing a tolerance threshold \(\epsilon\) (which, for this function, is a user-defined input parameter) for the norm of the residual, i.e. \( || \hat{H}\psi_n − \mu_n \psi_n ||^2 \leq \epsilon \), where \(\hat{H}\) is the mean-field Hamiltonian of the system and the estimate \( \mu_n \) of the chemical potential \( \mu \) at iteration \( n \) can be calculated as \( \mu_n = \langle \psi_n | \hat{H} | \psi_n \rangle /  \langle \psi_n | \psi_n \rangle \). <br  />
-In deciding how to move from one iterate \( \psi_n \) to the next \( \psi_{n+1} \), line search algorithms like the gradient descent method use information about the functional \( E[\psi] \) at \( \psi_n \), and possibly also from earlier iterates \( \psi_0, \psi_1, \dots, \psi_{n-1} \). The update criterion should be that the energy functional is smaller in \( \psi_{n+1} \) then in \( \psi_n \). One thus generates a sequence \( \psi_{n+1} = \psi_n + \alpha \chi_n \) such that \( E[\psi_{n+1}]
-&lt; E[\psi_n] &lt; \dots &lt; E[ \psi_0 ] \) until the stopping criterion is satisfied. The update ”direction” \( \chi_n \) must thus be chosen to be a descent direction, i.e. a direction along which the functional \( E[\psi] \) decreases. The step-length \( \alpha \) should instead be (ideally) chosen in such a way that the decrease in the energy functional is, at each iteration step, the maximum possible. Since this is not, in general, an easy task, in this function we accept the compromise to choose the step length \( \alpha \) empirically as an input parameter at the beginning of the iteration procedure. This also implies that the user may need to run the function a few times before finding an optimal value for \( \alpha \). <br  />
-Coming back to the choice of \( \chi_n \), the gradient descent method consists in choosing such descent direction as the opposite of the gradient of the functional \( E[\psi] \) calculated in \( \psi_n \) . So, in this case, the descent direction is (minus) the functional derivative of the energy functional with respect to \( \psi^* \) evaluated at \( \psi_n \) , i.e. </p><p class="formulaDsp">
-\[
+<p> under the constraint of a fixed number of particles <img class="formulaInl" alt="$ \int d{\bf r}|\psi({\bf r})|^2=N $" src="form_65.png"/>. This allows also to introduce the chemical potential <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> as the Lagrange multiplier fixing the total number of particles. One can hence find the ground state order parameter and chemical potential using, for example, a <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient descent </a> method, which is the one implemented in this function. <br  />
+The idea is to start from a guess solution <img class="formulaInl" alt="$\psi_0$" src="form_66.png"/> and generate a sequence of iterates <img class="formulaInl" alt="$ \{\psi_n\}_{\{n=0,...,\infty\}} $" src="form_67.png"/> that terminates when one is sufficiently confident to have reached a (hopefully global) minimizer of the mean-field energy functional with good accuracy. In particular, a good stopping criterion consists in fixing a tolerance threshold <img class="formulaInl" alt="$\epsilon$" src="form_68.png"/> (which, for this function, is a user-defined input parameter) for the norm of the residual, i.e. <img class="formulaInl" alt="$ || \hat{H}\psi_n − \mu_n \psi_n ||^2 \leq \epsilon $" src="form_69.png"/>, where <img class="formulaInl" alt="$\hat{H}$" src="form_70.png"/> is the mean-field Hamiltonian of the system and the estimate <img class="formulaInl" alt="$ \mu_n $" src="form_71.png"/> of the chemical potential <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> at iteration <img class="formulaInl" alt="$ n $" src="form_72.png"/> can be calculated as <img class="formulaInl" alt="$ \mu_n = \langle \psi_n | \hat{H} | \psi_n \rangle /  \langle \psi_n | \psi_n \rangle $" src="form_73.png"/>. <br  />
+In deciding how to move from one iterate <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/> to the next <img class="formulaInl" alt="$ \psi_{n+1} $" src="form_75.png"/>, line search algorithms like the gradient descent method use information about the functional <img class="formulaInl" alt="$ E[\psi] $" src="form_76.png"/> at <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/>, and possibly also from earlier iterates <img class="formulaInl" alt="$ \psi_0, \psi_1, \dots, \psi_{n-1} $" src="form_77.png"/>. The update criterion should be that the energy functional is smaller in <img class="formulaInl" alt="$ \psi_{n+1} $" src="form_75.png"/> then in <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/>. One thus generates a sequence <img class="formulaInl" alt="$ \psi_{n+1} = \psi_n + \alpha \chi_n $" src="form_78.png"/> such that <img class="formulaInl" alt="$ E[\psi_{n+1}]
+&lt; E[\psi_n] &lt; \dots &lt; E[ \psi_0 ] $" src="form_79.png"/> until the stopping criterion is satisfied. The update ”direction” <img class="formulaInl" alt="$ \chi_n $" src="form_80.png"/> must thus be chosen to be a descent direction, i.e. a direction along which the functional <img class="formulaInl" alt="$ E[\psi] $" src="form_76.png"/> decreases. The step-length <img class="formulaInl" alt="$ \alpha $" src="form_81.png"/> should instead be (ideally) chosen in such a way that the decrease in the energy functional is, at each iteration step, the maximum possible. Since this is not, in general, an easy task, in this function we accept the compromise to choose the step length <img class="formulaInl" alt="$ \alpha $" src="form_81.png"/> empirically as an input parameter at the beginning of the iteration procedure. This also implies that the user may need to run the function a few times before finding an optimal value for <img class="formulaInl" alt="$ \alpha $" src="form_81.png"/>. <br  />
+Coming back to the choice of <img class="formulaInl" alt="$ \chi_n $" src="form_80.png"/>, the gradient descent method consists in choosing such descent direction as the opposite of the gradient of the functional <img class="formulaInl" alt="$ E[\psi] $" src="form_76.png"/> calculated in <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/> . So, in this case, the descent direction is (minus) the functional derivative of the energy functional with respect to <img class="formulaInl" alt="$ \psi^* $" src="form_82.png"/> evaluated at <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/> , i.e. </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 
 \chi_n = - \frac{\delta E[\psi_n]}{\delta \psi^*} =
 - \left[ \frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})+g|\psi_n|^2 \right] \psi_n
 
-\]
+\]" src="form_83.png"/>
 </p>
-<p> The ground state wave function obtained from this algorithm is normalized in such a way to preserve the initial norm, i.e. the norm of the initial wave function provided. Such normalization condition, fixing the \( L^2 \) norm of the ground-state wave-function \( \psi \) should be included in the iteration procedure by introducing a Lagrange multiplier and minimizing the corresponding lagrangian functional. In practice, it is much cheaper to normalize ”by hand” each \( \psi_n \) obtained via the gradient descent iteration, by fixing </p><p class="formulaDsp">
-\[
+<p> The ground state wave function obtained from this algorithm is normalized in such a way to preserve the initial norm, i.e. the norm of the initial wave function provided. Such normalization condition, fixing the <img class="formulaInl" alt="$ L^2 $" src="form_84.png"/> norm of the ground-state wave-function <img class="formulaInl" alt="$ \psi $" src="form_85.png"/> should be included in the iteration procedure by introducing a Lagrange multiplier and minimizing the corresponding lagrangian functional. In practice, it is much cheaper to normalize ”by hand” each <img class="formulaInl" alt="$ \psi_n $" src="form_74.png"/> obtained via the gradient descent iteration, by fixing </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
  \psi_{n+1}^{(1)} = \psi_n + \alpha \chi_n
-\]
+\]" src="form_86.png"/>
 </p>
  <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 \psi_{n+1} = \sqrt{\frac{N}{\int d{\bf r}|\psi_{n+1}^{(1)}|^2}}\psi_{n+1}^{(1)}
-\]
+\]" src="form_87.png"/>
 </p>
-<p> where \( N \) is the initial norm. Notice that, physically, this represents the total number of particles in the system, and as such must be an integer. Hence, the initial wave function must be properly normalized before the gradient-descent iterations start. <br  />
-Finally, this function employs an acceleration algorithm, known as the <a href="https://www.worldscientific.com/doi/abs/10.1142/S0219199700000025">heavy ball method </a>, in order to speed up the convergence of the sequence \( {\psi_n} \). The method consists in adding a ”momentum” term into the gradient-descent iterations, in order to make larger steps if the descent direction does not change very much, and smaller steps if it changes a lot. In practice, what one does is just to modify the gradient-descent expression in \( \psi_{n+1} = \psi_n + \alpha \chi_n + \beta(\psi_n-\psi_{n-1}) \) where, again, \( \beta \) is a parameter chosen empirically and given to this function as input. </p>
+<p> where <img class="formulaInl" alt="$ N $" src="form_88.png"/> is the initial norm. Notice that, physically, this represents the total number of particles in the system, and as such must be an integer. Hence, the initial wave function must be properly normalized before the gradient-descent iterations start. <br  />
+Finally, this function employs an acceleration algorithm, known as the <a href="https://www.worldscientific.com/doi/abs/10.1142/S0219199700000025">heavy ball method </a>, in order to speed up the convergence of the sequence <img class="formulaInl" alt="$ {\psi_n} $" src="form_89.png"/>. The method consists in adding a ”momentum” term into the gradient-descent iterations, in order to make larger steps if the descent direction does not change very much, and smaller steps if it changes a lot. In practice, what one does is just to modify the gradient-descent expression in <img class="formulaInl" alt="$ \psi_{n+1} = \psi_n + \alpha \chi_n + \beta(\psi_n-\psi_{n-1}) $" src="form_90.png"/> where, again, <img class="formulaInl" alt="$ \beta $" src="form_91.png"/> is a parameter chosen empirically and given to this function as input. </p>
 
 </div>
 </div>
@@ -652,74 +645,74 @@ Finally, this function employs an acceleration algorithm, known as the <a href="
   </dd>
 </dl>
 <p>This member function solves the (a-dimensional) time-dependent Gross-Pitaevskii equation </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 i \frac{\partial \psi}{\partial t} = \left[ \frac{-\nabla^2}{2}+V_{ext}({\bf r})+g|\psi|^2 \right]\psi
-\]
+\]" src="form_59.png"/>
 </p>
 <p> using the classic operator splitting technique.<br  />
 The general idea of operator-splitting methods is to consider an initial value problem </p><p class="formulaDsp">
-\[
-y&#39; = \text{A} y + \text{B} y
-\]
+<img class="formulaDsp" alt="\[
+y' = \text{A} y + \text{B} y
+\]" src="form_92.png"/>
 </p>
-<p> where \( A \) and \( B \) are differential operators, and solve the equation considering the actions of the two operators separately. There is a vast literature on operator-splitting approaches for the solution of differential equations, and different methods with a higher or lower level of accuracy. In the case of the Gross-Pitaevskii equation, things are even more simplified by the fact that part of the method implies steps that can be solved <em>exactly</em>. <br  />
-After choosing a time-step \( \Delta t \), the operator spltting scheme consists in the following steps </p><p class="formulaDsp">
-\[
+<p> where <img class="formulaInl" alt="$ A $" src="form_93.png"/> and <img class="formulaInl" alt="$ B $" src="form_94.png"/> are differential operators, and solve the equation considering the actions of the two operators separately. There is a vast literature on operator-splitting approaches for the solution of differential equations, and different methods with a higher or lower level of accuracy. In the case of the Gross-Pitaevskii equation, things are even more simplified by the fact that part of the method implies steps that can be solved <em>exactly</em>. <br  />
+After choosing a time-step <img class="formulaInl" alt="$ \Delta t $" src="form_95.png"/>, the operator spltting scheme consists in the following steps </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \begin{align}
 &amp; \text{For}   \quad n=0,1,\dots,\text{number_of_time_steps} \nonumber \\
-&amp; \text{Step 1: solve} \quad y&#39;_1 = \text{A}y_1 \quad \text{in} \quad [t_n,t_n+\Delta t]
+&amp; \text{Step 1: solve} \quad y'_1 = \text{A}y_1 \quad \text{in} \quad [t_n,t_n+\Delta t]
 \quad \text{for} \quad y_1(0)=y(t_n) \nonumber \\
-&amp; \text{Step 2: solve} \quad y&#39;_2 = \text{B}y_2 \quad \text{in} \quad [t_n,t_n+\Delta t]
+&amp; \text{Step 2: solve} \quad y'_2 = \text{B}y_2 \quad \text{in} \quad [t_n,t_n+\Delta t]
 \quad \text{for} \quad y_2(0)=y_1(t_n+\Delta t) \nonumber \\
 &amp; \text{Set} \quad y(t_{n+1}) = y_2(t_n+\Delta t) \nonumber \\
 \end{align}
-\]
+\]" src="form_96.png"/>
 </p>
-<p> The steps imply the solution of an ordinary differential equation. In the case of the Gross-Pitaevskii equation, a good choice of the operators \( A \) and \( B \) is the following </p><p class="formulaDsp">
-\[
+<p> The steps imply the solution of an ordinary differential equation. In the case of the Gross-Pitaevskii equation, a good choice of the operators <img class="formulaInl" alt="$ A $" src="form_93.png"/> and <img class="formulaInl" alt="$ B $" src="form_94.png"/> is the following </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \begin{align}
  &amp; A = V_{ext} + g |\psi(t)|^2 \nonumber \\
  &amp; B = \frac{-\nabla^2}{2} \nonumber \\
 \end{align}
-\]
+\]" src="form_97.png"/>
 </p>
 <p >In this case, step 1, although involve the solution of a non-linear differential equation, can be solved <b>analytically</b>. In fact, it is easy to show that the equation </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  i\frac{d}{dt}\psi(t) = V_{ext} + g |\psi(t)|^2
-\]
+\]" src="form_98.png"/>
 </p>
-<p> preserves the norm \( \psi \) in time, and hence an explicit solution of this equation is </p><p class="formulaDsp">
-\[
+<p> preserves the norm <img class="formulaInl" alt="$ \psi $" src="form_85.png"/> in time, and hence an explicit solution of this equation is </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \psi(t+\Delta t) = e^{-i\Delta t\left( V_{ext} + g |\psi(t)|^2 \right)}\psi(t)
-\]
+\]" src="form_99.png"/>
 </p>
 <p> Moreover, also the second step of the method can be solved analytically, provided that one imposes <em>periodic boundary conditions</em>. In fact, given the equation </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 i\frac{d}{dt}\psi(t) = \frac{-\nabla^2}{2}\psi(t)
-\]
+\]" src="form_100.png"/>
 </p>
 <p> and taking the Fourier transform (in space) at both sides, one finds </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 i\frac{d}{dt}\tilde{\psi}(t) = \frac{k^2}{2}\tilde{\psi}(t)
-\]
+\]" src="form_101.png"/>
 </p>
 <p> which can again be solved exactly as </p><p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 \tilde{\psi}(t+\Delta t) = e^{-i\Delta t\frac{k^2}{2}}\tilde{\psi}(t)
-\]
+\]" src="form_102.png"/>
 </p>
 <p> Finally, an inverse Fourier transform allows to recover the solution back in real space, ready to take another time step. <br  />
 To summarize, this member function solves the Gross-Pitaevskii equation using classic operator splitting via the following steps</p><ul>
-<li>Step 1) Set \( \psi(t_n + \Delta t) =
- e^{-i\Delta t\left( V_{ext} + g |\psi(t_n)|^2 \right)}\psi(t_n) \);</li>
+<li>Step 1) Set <img class="formulaInl" alt="$ \psi(t_n + \Delta t) =
+ e^{-i\Delta t\left( V_{ext} + g |\psi(t_n)|^2 \right)}\psi(t_n) $" src="form_103.png"/>;</li>
 <li>Step 2)<ul>
-<li>2.1) Take the Fourier transform of \( \psi(t_n + \Delta t) \), and call it \( \tilde{\psi}(t_n) \);</li>
-<li>2.2) Set \( \tilde{\psi}(t_n+\Delta t) = e^{-i\Delta t\frac{k^2}{2}}\tilde{\psi}(t_n) \)</li>
-<li>2.3) Take the inverse Fourier transform of \( \tilde{\psi}(t_n+\Delta t) \), and obtain \( \psi(t_n+\Delta t) \)</li>
+<li>2.1) Take the Fourier transform of <img class="formulaInl" alt="$ \psi(t_n + \Delta t) $" src="form_104.png"/>, and call it <img class="formulaInl" alt="$ \tilde{\psi}(t_n) $" src="form_105.png"/>;</li>
+<li>2.2) Set <img class="formulaInl" alt="$ \tilde{\psi}(t_n+\Delta t) = e^{-i\Delta t\frac{k^2}{2}}\tilde{\psi}(t_n) $" src="form_106.png"/></li>
+<li>2.3) Take the inverse Fourier transform of <img class="formulaInl" alt="$ \tilde{\psi}(t_n+\Delta t) $" src="form_107.png"/>, and obtain <img class="formulaInl" alt="$ \psi(t_n+\Delta t) $" src="form_108.png"/></li>
 </ul>
 </li>
 </ul>
-<p >Notice that all these steps can be computed <em>locally</em>, meaning that we don't need additional vectors to store intermediate values of \( \psi \). </p>
+<p >Notice that all these steps can be computed <em>locally</em>, meaning that we don't need additional vectors to store intermediate values of <img class="formulaInl" alt="$ \psi $" src="form_85.png"/>. </p>
 
 </div>
 </div>

@@ -16,13 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX","output/SVG"],
-});
-</script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -203,14 +196,14 @@ Protected Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Santo Maria Roccuzzo (<a href="#" onclick="location.href='mai'+'lto:'+'san'+'to'+'m.r'+'oc'+'cuz'+'zo'+'@gm'+'ai'+'l.c'+'om'; return false;">santo<span class="obfuscator">.nosp@m.</span>m.ro<span class="obfuscator">.nosp@m.</span>ccuzz<span class="obfuscator">.nosp@m.</span>o@gm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>)</dd></dl>
 <p>Studying the elementary excitations of a trapped Bose gas in the condensate phase on top of a certain ground (or stationary) state, means searching for solutions of the time-dependent Gross-Pitaevskii equation of the form</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
  + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
-\]
+\]" src="form_52.png"/>
 </p>
-<p >and solving the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle amplitudes \( u \) and \( v \). In the case of the ordinary Bose gas (i.e., an ensemble of bosonic particles at very low temperature interacting only via a contact interaction), this amounts to solving the following eigenvalue problem</p>
+<p >and solving the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>. In the case of the ordinary Bose gas (i.e., an ensemble of bosonic particles at very low temperature interacting only via a contact interaction), this amounts to solving the following eigenvalue problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
  \begin{bmatrix}
      u \\
@@ -226,27 +219,27 @@ Protected Attributes</h2></td></tr>
      v
  \end{bmatrix}
 
-\]
+\]" src="form_56.png"/>
 </p>
 <p >In the case in which the condensate wave function is real (e.g., in absence of vortices, solitons...) the problem can be recast in a more convenient form. In fact, taking the sum and the difference between the two equations, one easily finds</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H}\hat{X} (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
      &amp; \hat{X}\hat{H} (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
  \end{align}
-\]
+\]" src="form_16.png"/>
 </p>
 <p >with</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H} = -\frac{\hbar^2}{2m}\nabla^2 + V_{ext}({\bf r}) + g |\psi_0|^2 - \mu\nonumber \\
      &amp; \hat{X} = -\frac{\hbar^2}{2m}\nabla^2 + V_{ext}({\bf r}) + 3 g |\psi_0|^2 - \mu \nonumber \\
  \end{align}
-\]
+\]" src="form_51.png"/>
 </p>
-<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to \((u+v)\) and \((u-v)\) respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes \( u \) and \( v \), one also needs to solve the second problem, and then set \( u = 0.5 \left( (u+v) + (u-v) \right)\) and \( v = 0.5 \left( (u+v) - (u-v) \right)\)</p>
+<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to <img class="formulaInl" alt="$(u+v)$" src="form_18.png"/> and <img class="formulaInl" alt="$(u-v)$" src="form_19.png"/> respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>, one also needs to solve the second problem, and then set <img class="formulaInl" alt="$ u = 0.5 \left( (u+v) + (u-v) \right)$" src="form_20.png"/> and <img class="formulaInl" alt="$ v = 0.5 \left( (u+v) - (u-v) \right)$" src="form_21.png"/></p>
 <p >This class solves the eigenvalue problem using the matrix-free routines provided as part of the package <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a>, which is distributed as a bundled package with <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8549814bc6d716af302913f8f4e196ca" name="a8549814bc6d716af302913f8f4e196ca"></a>
@@ -833,7 +826,7 @@ Protected Attributes</h2></td></tr>
 <p>Solve the Bogolyubov equations. </p>
 <p >This member function actually solves the Bogolyubov equations for a trapped condensate. In the case in which a real wave-function was passed to the constructor, the function will use the following useful recast of the problem in one of halved dimensionality. Starting from</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
  \begin{bmatrix}
      u \\
@@ -849,27 +842,27 @@ Protected Attributes</h2></td></tr>
      v
  \end{bmatrix}
 
-\]
+\]" src="form_50.png"/>
 </p>
 <p >and taking the sum and the difference between two equations, one obtain the following equivalent formulation of the problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H}\hat{X} (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
      &amp; \hat{X}\hat{H} (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
  \end{align}
-\]
+\]" src="form_16.png"/>
 </p>
 <p >with</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H} = -\frac{\hbar^2}{2m}\nabla^2 + V_{ext}({\bf r}) + g |\psi_0|^2 - \mu\nonumber \\
      &amp; \hat{X} = -\frac{\hbar^2}{2m}\nabla^2 + V_{ext}({\bf r}) + 3 g |\psi_0|^2 - \mu \nonumber \\
  \end{align}
-\]
+\]" src="form_51.png"/>
 </p>
-<p >If the eigenvectors are not required, this function will solve only the first equation, calculating the square of the energies of the eigen-modes, but <em>returning the energies</em> (i.e., it calculates the square root before returning). If the eigenvectors are also requested, the function will solve also the second eigenvalue problem, obtaining the Bogolyubov quasi-particle amplitudes \( u \) and \( v \) by taking (half) the sum and the difference between the eigenvectors of the two problems.</p>
+<p >If the eigenvectors are not required, this function will solve only the first equation, calculating the square of the energies of the eigen-modes, but <em>returning the energies</em> (i.e., it calculates the square root before returning). If the eigenvectors are also requested, the function will solve also the second eigenvalue problem, obtaining the Bogolyubov quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/> by taking (half) the sum and the difference between the eigenvectors of the two problems.</p>
 <p >In the case in which, instead, the wave-function passed to the constructor is complex, the function will solve, by brute force, the complete problem. </p>
 
 </div>

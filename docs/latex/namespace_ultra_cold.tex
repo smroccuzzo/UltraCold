@@ -1,0 +1,123 @@
+\hypertarget{namespace_ultra_cold}{}\doxysection{Ultra\+Cold Namespace Reference}
+\label{namespace_ultra_cold}\index{UltraCold@{UltraCold}}
+
+
+All the classes and functions necessary to work with \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}}.  
+
+
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_bogolyubov_solvers}{Bogolyubov\+Solvers}}
+\begin{DoxyCompactList}\small\item\em This namespace contains solver classes for several flavours of Bogolyubov equations. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_fourier_space_output}{Fourier\+Space\+Output}}
+\begin{DoxyCompactList}\small\item\em Classes and functions to output a data \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} in Fourier space. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_g_p_solvers}{GPSolvers}}
+\begin{DoxyCompactList}\small\item\em This namespace contains several solver classes for various flavors of Non-\/\+Linear Schrodinger equations. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_m_k_l_wrappers}{MKLWrappers}}
+\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_real_space_output}{Real\+Space\+Output}}
+\begin{DoxyCompactList}\small\item\em Classes and functions to output a data \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}} in real space. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_ultra_cold_1_1_tools}{Tools}}
+\begin{DoxyCompactList}\small\item\em Classes and functions of general utility, from input parsers to hardware inspectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}
+\begin{DoxyCompactList}\small\item\em A class that represents arrays of numerical elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&kx)
+\begin{DoxyCompactList}\small\item\em Creation of a mesh in Fourier space for a one-\/dimensional problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ultra_cold_adddc7fabaeb8d67b46e26ce1ce21146e}{create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&kx, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&ky)
+\begin{DoxyCompactList}\small\item\em Creation of a mesh in Fourier space for a two-\/dimensional problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ultra_cold_a445022a2c2b850349abe40a7bfcb2109}{create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space}} (\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&x, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&y, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&z, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&kx, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&ky, \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&kz)
+\begin{DoxyCompactList}\small\item\em Creation of a mesh in Fourier space for a three-\/dimensional problem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All the classes and functions necessary to work with \mbox{\hyperlink{namespace_ultra_cold}{Ultra\+Cold}}. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}\label{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}} 
+\index{UltraCold@{UltraCold}!create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}}
+\index{create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}!UltraCold@{UltraCold}}
+\doxysubsubsection{\texorpdfstring{create\_mesh\_in\_Fourier\_space()}{create\_mesh\_in\_Fourier\_space()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{kx }\end{DoxyParamCaption})}
+
+
+
+Creation of a mesh in Fourier space for a one-\/dimensional problem. 
+
+Function to create a mesh in Fourier space.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the x-\/axis of a cartesian reference frame \\
+\hline
+{\em kx} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the kx-\/axis of the corresponding Fourier space\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Santo Maria Roccuzzo (\href{mailto:santom.roccuzzo@gmail.com}{\texttt{ santom.\+roccuzzo@gmail.\+com}})
+\end{DoxyAuthor}
+This function allows to generate a mesh in Fourier space, starting from a corresponding mesh in real, cartesian space. It is also useful to plot the Fourier transform of a \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}. ~\newline
+The function is used as follows
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\_mesh\_in\_Fourier\_space}}(x,kx);          \textcolor{comment}{// for a 1D problem}}
+\DoxyCodeLine{\mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\_mesh\_in\_Fourier\_space}}(x,y,kx,ky);     \textcolor{comment}{// for a 2D problem}}
+\DoxyCodeLine{\mbox{\hyperlink{namespace_ultra_cold_a49073b90537d0b230deb60941ed6f0b4}{create\_mesh\_in\_Fourier\_space}}(x,y,z,kx,ky,kz) \textcolor{comment}{// for a 3D problem}}
+
+\end{DoxyCode}
+
+
+This will take the three Vectors x,y and z, representing a mesh in real space, and use them to generate the corresponding mesh in Fourier space. ~\newline
+\mbox{\Hypertarget{namespace_ultra_cold_adddc7fabaeb8d67b46e26ce1ce21146e}\label{namespace_ultra_cold_adddc7fabaeb8d67b46e26ce1ce21146e}} 
+\index{UltraCold@{UltraCold}!create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}}
+\index{create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}!UltraCold@{UltraCold}}
+\doxysubsubsection{\texorpdfstring{create\_mesh\_in\_Fourier\_space()}{create\_mesh\_in\_Fourier\_space()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{y,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{kx,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{ky }\end{DoxyParamCaption})}
+
+
+
+Creation of a mesh in Fourier space for a two-\/dimensional problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the x-\/axis of a cartesian reference frame \\
+\hline
+{\em y} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the y-\/axis of a cartesian reference frame \\
+\hline
+{\em kx} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the kx-\/axis of the corresponding Fourier space \\
+\hline
+{\em ky} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the ky-\/axis of the corresponding Fourier space \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ultra_cold_a445022a2c2b850349abe40a7bfcb2109}\label{namespace_ultra_cold_a445022a2c2b850349abe40a7bfcb2109}} 
+\index{UltraCold@{UltraCold}!create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}}
+\index{create\_mesh\_in\_Fourier\_space@{create\_mesh\_in\_Fourier\_space}!UltraCold@{UltraCold}}
+\doxysubsubsection{\texorpdfstring{create\_mesh\_in\_Fourier\_space()}{create\_mesh\_in\_Fourier\_space()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Ultra\+Cold\+::create\+\_\+mesh\+\_\+in\+\_\+\+Fourier\+\_\+space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{y,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{z,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{kx,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{ky,  }\item[{\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}$<$ double $>$ \&}]{kz }\end{DoxyParamCaption})}
+
+
+
+Creation of a mesh in Fourier space for a three-\/dimensional problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the x-\/axis of a cartesian reference frame \\
+\hline
+{\em y} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the y-\/axis of a cartesian reference frame \\
+\hline
+{\em z} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the z-\/axis of a cartesian reference frame \\
+\hline
+{\em kx} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the kx-\/axis of the corresponding Fourier space \\
+\hline
+{\em ky} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the ky-\/axis of the corresponding Fourier space \\
+\hline
+{\em kz} & {\itshape \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector$<$double$>$}}} representing the kz-\/axis of the corresponding Fourier space \\
+\hline
+\end{DoxyParams}

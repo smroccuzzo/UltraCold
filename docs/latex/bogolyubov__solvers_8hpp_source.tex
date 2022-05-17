@@ -1,0 +1,273 @@
+\hypertarget{bogolyubov__solvers_8hpp_source}{}\doxysection{bogolyubov\+\_\+solvers.\+hpp}
+\label{bogolyubov__solvers_8hpp_source}\index{bogolyubov\_solvers.hpp@{bogolyubov\_solvers.hpp}}
+\mbox{\hyperlink{bogolyubov__solvers_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{*}}
+\DoxyCodeLine{3 \textcolor{comment}{*    This file is part of the UltraCold project.}}
+\DoxyCodeLine{4 \textcolor{comment}{*}}
+\DoxyCodeLine{5 \textcolor{comment}{*    UltraCold is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{6 \textcolor{comment}{*    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{7 \textcolor{comment}{*    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{8 \textcolor{comment}{*    any later version.}}
+\DoxyCodeLine{9 \textcolor{comment}{*    UltraCold is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{10 \textcolor{comment}{*    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{11 \textcolor{comment}{*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{12 \textcolor{comment}{*    GNU General Public License for more details.}}
+\DoxyCodeLine{13 \textcolor{comment}{*    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{14 \textcolor{comment}{*    along with UltraCold.  If not, see <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{15 \textcolor{comment}{*}}
+\DoxyCodeLine{16 \textcolor{comment}{*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#ifndef ULTRACOLD\_BOGOLYUBOV\_SOLVERS}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ULTRACOLD\_BOGOLYUBOV\_SOLVERS}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <omp.h>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <complex>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector_8hpp}{vector.hpp}}"{}}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{dft_8hpp}{dft.hpp}}"{}}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data__out_8hpp}{data\_out.hpp}}"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mesh__fourier__space_8hpp}{mesh\_fourier\_space.hpp}}"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{gp__solvers_8hpp}{gp\_solvers.hpp}}"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}arpack.hpp"{}}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_ultra_cold}{UltraCold}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{62     \textcolor{keyword}{namespace }BogolyubovSolvers}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{134         \textcolor{keyword}{class }\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver}{TrappedBogolyubovSolver}}}
+\DoxyCodeLine{135         \{}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137             \textcolor{keyword}{public}:}
+\DoxyCodeLine{138     }
+\DoxyCodeLine{139                 \textcolor{comment}{// Constructors for real problems}}
+\DoxyCodeLine{140     }
+\DoxyCodeLine{141                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{142                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{143                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{144                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{145                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{146                                         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{147                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{148                                         \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{149                                         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 1D problems}}
+\DoxyCodeLine{150                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{151                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}},}
+\DoxyCodeLine{152                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{153                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{154                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{155                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{156                                         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{157                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{158                                         \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{159                                         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 2D problems}}
+\DoxyCodeLine{160                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{161                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}},}
+\DoxyCodeLine{162                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}},}
+\DoxyCodeLine{163                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{164                                         \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{165                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{166                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{167                                         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{168                                         \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{169                                         \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{170                                         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 3D problems}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172             \textcolor{comment}{// Constructors for complex problems}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174             \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{175                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}<std::complex<double>>\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{176                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{177                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{178                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{179                                     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{180                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{181                                     \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{182                                     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 1D problems}}
+\DoxyCodeLine{183             \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{184                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}},}
+\DoxyCodeLine{185                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}<std::complex<double>>\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{186                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{187                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{188                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{189                                     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{190                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{191                                     \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{192                                     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 2D problems}}
+\DoxyCodeLine{193             \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8549814bc6d716af302913f8f4e196ca}{TrappedBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}},}
+\DoxyCodeLine{194                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}},}
+\DoxyCodeLine{195                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}},}
+\DoxyCodeLine{196                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector}}<std::complex<double>>\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}},}
+\DoxyCodeLine{197                                     \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}},}
+\DoxyCodeLine{198                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}},}
+\DoxyCodeLine{199                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}},}
+\DoxyCodeLine{200                                     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}},}
+\DoxyCodeLine{201                                     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}},}
+\DoxyCodeLine{202                                     \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{203                                     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}});             \textcolor{comment}{// 3D problems}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206                 \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a5c6b74910362178ed798f76472050112}{\string~TrappedBogolyubovSolver}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210                 \textcolor{comment}{// Runner}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212                 std::tuple< std::vector<std::complex<double>>,}
+\DoxyCodeLine{213                             std::vector< Vector<std::complex<double>> >,}
+\DoxyCodeLine{214                             std::vector< Vector<std::complex<double>> > > \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a08043e9363f1e71b8e93eafcae1ab7cd}{run}}();}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216             \textcolor{keyword}{protected}:}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218                 \textcolor{comment}{// Vector data members, needed for the calculations}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a3465db0baadddd5abe6c574c1fe4cf1e}{Vext}};}
+\DoxyCodeLine{221                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a360ce5daa1bbd64ac51787c3344eb34b}{x}};}
+\DoxyCodeLine{222                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a71f4f8fa6043cff63718aeb180229351}{y}};}
+\DoxyCodeLine{223                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a449a3cee89efe120ea364d3e558790b4}{z}};}
+\DoxyCodeLine{224                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a923a95923f469adf18c21bd3c809c96e}{kx}};}
+\DoxyCodeLine{225                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a0056c13db9e9db1ccaa37253565f2685}{ky}};}
+\DoxyCodeLine{226                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4ba8763f3f5e436f8987b1da8a9da7ec}{kz}};}
+\DoxyCodeLine{227                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6c5a54f379f7aeace58edd868ed5ced6}{kmod2}};}
+\DoxyCodeLine{228                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aee58261ae4448ce968cf0be937c8b6b6}{temp}};}
+\DoxyCodeLine{229                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a93f5d06b8677336fca25f349c3620c42}{temp2}};}
+\DoxyCodeLine{230                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a11a7738e17e15cd50040771a679bdaeb}{temp\_tilde}};}
+\DoxyCodeLine{231                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2714e0f9c143bb42ad4e9747e305fca4}{temp2\_tilde}};}
+\DoxyCodeLine{232                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aedcba9f1a21486a33ac1e9fe68b9d062}{psi0}};}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234                 std::vector<Vector<std::complex<double>>> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_af81d9e944154d2afdeb2255b30e9dcd7}{u}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a7a95eeeb0c188467718a64fa41433fd1}{v}};}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236                 \textcolor{comment}{// Number of points along each space dimension}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238                 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a4c237f6a9ac254f08570f0d7e92a0912}{nx}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a955bedb5bfa8ba716cc852c184caa43a}{ny}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a2e796005abf59218c2cec1e680209473}{nz}};}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240                 \textcolor{comment}{// Other mesh parameter}}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a00724647bd692ea9ede03a81b90a7567}{dx}} = 1.0;}
+\DoxyCodeLine{243                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a72774276c1d4b96ac030d1f21e73eb8b}{dy}} = 1.0;}
+\DoxyCodeLine{244                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a88eeb8b34f829b63664741ef5daf9e7f}{dz}} = 1.0;}
+\DoxyCodeLine{245                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a96dfdb17b520f4b9ef43e352bdd14ab8}{dv}} = 1.0;}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247                 \textcolor{comment}{// Other useful parameters}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249                 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a86f76704e7be209290b22ddeec037886}{number\_of\_modes}};}
+\DoxyCodeLine{250                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad710e49459c7b44ebcffa1bcd908b139}{chemical\_potential}};}
+\DoxyCodeLine{251                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a141da323d381a9e65055f70112e09826}{scattering\_length}};}
+\DoxyCodeLine{252                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ac5cf41113566a8df955120f814e6d97e}{problem\_is\_1d}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{253                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a9606145e2ce613e6dc7025745969ff97}{problem\_is\_2d}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{254                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a60af3efbbba8a6f89bdecb4d60985537}{problem\_is\_3d}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{255                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a6f58d071f4b005d12bfd98d2d428487c}{eigenvectors\_required}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{256                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_ad293dd18a654691bc8b9b351eceeb51b}{problem\_is\_real}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{257                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_a8465f897ecbf29de1217c5ebe25310bf}{problem\_is\_complex}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{258                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_aaf04d6c52f6510e4c87e8338a1b9d865}{tolerance}};}
+\DoxyCodeLine{259                 a\_int \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_acb3c42efb1a7d53757ecded22163f20b}{maximum\_number\_of\_arnoldi\_iterations}};}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261         \};}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{359         \textcolor{keyword}{class }\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver}{TrappedDipolarBogolyubovSolver}}}
+\DoxyCodeLine{360         \{}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362             \textcolor{keyword}{public}:}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364                 \textcolor{comment}{// Constructors for real problems}}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a8d7f23d18b7970db1eb935728a6a8009}{TrappedDipolarBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a2459bacc9b07bdeb38e6fd516cb45d7b}{x}},}
+\DoxyCodeLine{367                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1f59aac9269bae61c768f8e75148d85f}{y}},}
+\DoxyCodeLine{368                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a59d10fd46986a55aa9c2476c15e43e50}{psi0}},}
+\DoxyCodeLine{369                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab5e641ee0155d8cd183a09831fa0c469}{Vext}},}
+\DoxyCodeLine{370                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab8eca126d7ce5f3af55061d1a7b650a9}{scattering\_length}},}
+\DoxyCodeLine{371                                                \textcolor{keywordtype}{double} dipolar\_length,}
+\DoxyCodeLine{372                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af5c0cb3e13dd6598ee5fb4f9e425dd76}{chemical\_potential}},}
+\DoxyCodeLine{373                                                \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1001d4b9b9108c961629fea833822295}{number\_of\_modes}},}
+\DoxyCodeLine{374                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a088aedf0869f94389b3cad8a352ba230}{tolerance}},}
+\DoxyCodeLine{375                                                \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{376                                                \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a19a0f87a3914646a4358e225fda715c8}{eigenvectors\_required}}); \textcolor{comment}{// 2D problems}}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{378                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a8d7f23d18b7970db1eb935728a6a8009}{TrappedDipolarBogolyubovSolver}}(\mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a2459bacc9b07bdeb38e6fd516cb45d7b}{x}},}
+\DoxyCodeLine{379                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1f59aac9269bae61c768f8e75148d85f}{y}},}
+\DoxyCodeLine{380                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af98e7afa43241b7ad9e282e15d8890b4}{z}},}
+\DoxyCodeLine{381                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a59d10fd46986a55aa9c2476c15e43e50}{psi0}},}
+\DoxyCodeLine{382                                                \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}}\& \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab5e641ee0155d8cd183a09831fa0c469}{Vext}},}
+\DoxyCodeLine{383                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab8eca126d7ce5f3af55061d1a7b650a9}{scattering\_length}},}
+\DoxyCodeLine{384                                                \textcolor{keywordtype}{double} dipolar\_length,}
+\DoxyCodeLine{385                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af5c0cb3e13dd6598ee5fb4f9e425dd76}{chemical\_potential}},}
+\DoxyCodeLine{386                                                \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1001d4b9b9108c961629fea833822295}{number\_of\_modes}},}
+\DoxyCodeLine{387                                                \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a088aedf0869f94389b3cad8a352ba230}{tolerance}},}
+\DoxyCodeLine{388                                                \textcolor{keywordtype}{int} maximum\_number\_arnoldi\_iterations,}
+\DoxyCodeLine{389                                                \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a19a0f87a3914646a4358e225fda715c8}{eigenvectors\_required}}); \textcolor{comment}{// 3D problems}}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{391                 \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393                 \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af1510c93f827a44328b090366dd9db55}{\string~TrappedDipolarBogolyubovSolver}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395                 \textcolor{comment}{// Runner}}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{397                 std::tuple<std::vector<std::complex<double>>,}
+\DoxyCodeLine{398                         std::vector<Vector<std::complex<double>>>,}
+\DoxyCodeLine{399                         std::vector<Vector<std::complex<double>>>> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a5b3908a7bf6c23b0235d68c356463f26}{run}}();}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401             \textcolor{keyword}{protected}:}
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403                 \textcolor{comment}{// Vector data members, needed for the calculations}}
+\DoxyCodeLine{404 }
+\DoxyCodeLine{405                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab5e641ee0155d8cd183a09831fa0c469}{Vext}};}
+\DoxyCodeLine{406                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a2459bacc9b07bdeb38e6fd516cb45d7b}{x}};}
+\DoxyCodeLine{407                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1f59aac9269bae61c768f8e75148d85f}{y}};}
+\DoxyCodeLine{408                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af98e7afa43241b7ad9e282e15d8890b4}{z}};}
+\DoxyCodeLine{409                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1f4d35dcd8227f00f48f19a8897aecb1}{kx}};}
+\DoxyCodeLine{410                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a79248086a9cc6b804c14dfa9493f10d6}{ky}};}
+\DoxyCodeLine{411                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ae13faa9564ce9875c5adab7871990fbf}{kz}};}
+\DoxyCodeLine{412                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<double>}} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a7a99d61216766e74f1bbb29d9c87cf3d}{kmod2}};}
+\DoxyCodeLine{413                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a8c43232283ad06ad508c81a1396888c4}{temp}};}
+\DoxyCodeLine{414                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_aeae5089a01af269fc32ff6ea76052f18}{temp2}};}
+\DoxyCodeLine{415                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a2fa38a645a3d5e33f51679ee3107cd13}{temp\_tilde}};}
+\DoxyCodeLine{416                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a71ba4d912269a7d202ee0bfc27cd6f1b}{temp2\_tilde}};}
+\DoxyCodeLine{417                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a59d10fd46986a55aa9c2476c15e43e50}{psi0}};}
+\DoxyCodeLine{418                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a78f445c7d73609e02d4197e19224604f}{Vtilde}};   \textcolor{comment}{// This contains the Fourier transform of the dipolar potential}}
+\DoxyCodeLine{419                 \mbox{\hyperlink{class_ultra_cold_1_1_vector}{Vector<std::complex<double>}}> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a3ea1a89d98bbdc0ef4d0c5123f3f5ef1}{Phi\_dd}};   \textcolor{comment}{// This will contain the full dipolar potential}}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{421                 std::vector<Vector<std::complex<double>>> \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a3e76a0632f5999722889a5ebbdfc8643}{u}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ad9f26091dfa2c1185f13895db8c56338}{v}};}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423                 \textcolor{comment}{// Number of points along each space dimension}}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425                 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a80ec0766f2aa07a9c89eb8fd645201e2}{nx}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a777028035f64671f90719001ef04b5b5}{ny}},\mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a9a780fe525792e1e2f9a4005794b7e0d}{nz}};}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{427                 \textcolor{comment}{// Other mesh parameter}}
+\DoxyCodeLine{428 }
+\DoxyCodeLine{429                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af7789ef97aaed7b2aef98d2970029e2d}{dx}} = 1.0;}
+\DoxyCodeLine{430                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a5b97dc5b44bc9bcd60d89c0b607ddf93}{dy}} = 1.0;}
+\DoxyCodeLine{431                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ae0b471960bae0fac3ef9b36b928540ff}{dz}} = 1.0;}
+\DoxyCodeLine{432                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a3d14dada98ca75f6b7eda0c0a9b664b4}{dv}} = 1.0;}
+\DoxyCodeLine{433 }
+\DoxyCodeLine{434                 \textcolor{comment}{// Other useful parameters}}
+\DoxyCodeLine{435 }
+\DoxyCodeLine{436                 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a1001d4b9b9108c961629fea833822295}{number\_of\_modes}};}
+\DoxyCodeLine{437                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_af5c0cb3e13dd6598ee5fb4f9e425dd76}{chemical\_potential}};}
+\DoxyCodeLine{438                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab8eca126d7ce5f3af55061d1a7b650a9}{scattering\_length}};}
+\DoxyCodeLine{439                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a51442e7cef5948d8ae036f23e393752e}{epsilon\_dd}};}
+\DoxyCodeLine{440                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a853840a449402945edeb1847b1204703}{gamma\_epsilon\_dd}};}
+\DoxyCodeLine{441                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a19a0f87a3914646a4358e225fda715c8}{eigenvectors\_required}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{442                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a3198ee06c88fd3753459f46e3b3bf905}{problem\_is\_real}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{443                 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a065a1131bca31af9543834e27b805a80}{problem\_is\_complex}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{444 }
+\DoxyCodeLine{445                 \textcolor{keywordtype}{double} \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_a088aedf0869f94389b3cad8a352ba230}{tolerance}};}
+\DoxyCodeLine{446                 a\_int \mbox{\hyperlink{class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver_ab8b3404305474312af0882bb3036367d}{maximum\_number\_of\_arnoldi\_iterations}};}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{448         \};}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{450     \} \textcolor{comment}{// namespace BogolyubovSolvers}}
+\DoxyCodeLine{451 \} \textcolor{comment}{// namespace UltraCold}}
+\DoxyCodeLine{452 }
+\DoxyCodeLine{453 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//ULTRACOLD\_BOGOLYUBOV\_SOLVERS}}
+
+\end{DoxyCode}

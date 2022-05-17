@@ -1,8 +1,6 @@
 .vscode
 *build*
 *bin*
-*latex*
-*man*
 *lib*
 TODOs*
 .idea

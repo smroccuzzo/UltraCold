@@ -16,13 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX","output/SVG"],
-});
-</script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -110,41 +103,41 @@ Introduction</h2>
 <p >In the second example, we are going to use UltraCold to study the elementary excitations on top of the ground state of a two-dimensional, harmonically trapped Bose gas, by solving the so-called <em>Bogolyubov equations</em>. We will use the solver class <code><a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped Bose gas.">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a></code>, which allows in fact to solve Bogolyubov equations for a simple Bose gas in the presence of an arbitrary external potential.</p>
 <p >Starting from the a-dimensional Gross-Pitaevskii equation (GPe) in two space dimensions (assume we have already done some dimensional reduction integrating away the z-coordinate. This should lead to a renormalization of the scattering length, which we do not implement here because of laziness and because it does not affect, at least qualitatively, the physics) in the presence of an external harmonic potential</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
     i\frac{\partial \psi(x,y,t)}{\partial t} =
     \left[
         \frac{-\nabla^2}{2}+\frac{1}{2}(\omega_x^2 x^2+\omega^2_y y^2)
         + 4\pi a  |\psi(x,y,t)|^2
     \right]\psi(x,y,z,t)
-\]
+\]" src="form_7.png"/>
 </p>
 <p >one first searches for stationary solutions of the form</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
     \psi({\bf r},t) = \psi({\bf r})e^{-i\frac{\mu}{\hbar}t}
-\]
+\]" src="form_8.png"/>
 </p>
 <p >obtaining the time-independent eigenvalue problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
    \mu \psi({\bf r}) =
     \left[
         \frac{-\nabla^2}{2}+\frac{1}{2}(\omega_x^2 x^2+\omega^2_y y^2)
         + 4\pi a  |\psi({\bf r})|^2
     \right]\psi({\bf r})
-\]
+\]" src="form_9.png"/>
 </p>
-<p >The solution \( \psi_0 \) corresponding to the smallest eigenvalue \( \mu \) is interpreted as the ground-state of the system, and the corresponding eigenvalue \( \mu \) as the chemical potential. <br  />
+<p >The solution <img class="formulaInl" alt="$ \psi_0 $" src="form_10.png"/> corresponding to the smallest eigenvalue <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> is interpreted as the ground-state of the system, and the corresponding eigenvalue <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> as the chemical potential. <br  />
  In order to study the elementary excitations of the system on top of a certain ground-state solution, it is common to search for solutions of the time-dependent GPe of the form</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
   \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
    + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
-\]
+\]" src="form_12.png"/>
 </p>
-<p >Plugging this ansatz into the GPe and keeping only terms linear in the functions \( u \) and \( v \), one obtains the following eigenvalue problem</p>
+<p >Plugging this ansatz into the GPe and keeping only terms linear in the functions <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>, one obtains the following eigenvalue problem</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
  \begin{bmatrix}
      u \\
@@ -160,28 +153,28 @@ Introduction</h2>
      v
  \end{bmatrix}
 
-\]
+\]" src="form_15.png"/>
 </p>
 <p >which defines the so-called <em>Bogolyubov equations</em>. The solutions of these equations allows to study the energy of the elementary excitations of the system (<em>Bogolyubov modes</em>), as well as several interesting properties relative to the linear response of the system to external perturbations (see any book on Bose-Einstein condensation).</p>
 <p >In the case in which the condensate ground-state wave function is real (e.g., in absence of vortices, solitons...) the problem can be recast in a more convenient form. In fact, taking the sum and the difference between the two equations, one easily finds</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H}\hat{X} (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
      &amp; \hat{X}\hat{H} (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
  \end{align}
-\]
+\]" src="form_16.png"/>
 </p>
 <p >with</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
  \begin{align}
      &amp; \hat{H} = -\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 4  \pi a |\psi_0|^2 - \mu\nonumber \\
      &amp; \hat{X} = -\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 12 \pi a |\psi_0|^2 - \mu \nonumber \\
  \end{align}
-\]
+\]" src="form_17.png"/>
 </p>
-<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to \((u+v)\) and \((u-v)\) respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes \( u \) and \( v \), one also needs to solve the second problem, and then set \( u = 0.5 \left( (u+v) + (u-v) \right)\) and \( v = 0.5 \left( (u+v) - (u-v) \right)\)</p>
+<p >Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system of half the dimensionality of the original problem. This typically allows a great saving of computational time. The eigenvectors of the two problems correspond to <img class="formulaInl" alt="$(u+v)$" src="form_18.png"/> and <img class="formulaInl" alt="$(u-v)$" src="form_19.png"/> respectively, so that if one is interested in finding the Bogolyubov quasi-particle amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>, one also needs to solve the second problem, and then set <img class="formulaInl" alt="$ u = 0.5 \left( (u+v) + (u-v) \right)$" src="form_20.png"/> and <img class="formulaInl" alt="$ v = 0.5 \left( (u+v) - (u-v) \right)$" src="form_21.png"/></p>
 <h2><a class="anchor" id="What-2"></a>
 Program description</h2>
 <p >For this example, we first need to calculate a ground state solution of the GPe for a certain set of physical and mesh parameter. Differently from example-1, we do not need anything special from this calculation, so we don't need to derive any class for our <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code> base class. Nonetheless, the input parameters describing the physics and the mesh can be practically the same as in example-1, except that we remove any reference to the z-axis. Our input file, called <code>example-2.prm</code>, will thus contain the following text</p>
@@ -321,7 +314,7 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 <div class="ttc" id="aclass_ultra_cold_1_1_real_space_output_1_1_data_out_html_af8e7d71fa2f88a7405bbd24843125747"><div class="ttname"><a href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html#af8e7d71fa2f88a7405bbd24843125747">UltraCold::RealSpaceOutput::DataOut::write_vtk</a></div><div class="ttdeci">void write_vtk(Vector&lt; double &gt; &amp;x_axis, Vector&lt; double &gt; &amp;y_axis, Vector&lt; double &gt; &amp;real_output_vector, const char *vector_name)</div><div class="ttdoc">Write an output data file in .vtk format, for real 2D output.</div><div class="ttdef"><b>Definition:</b> data_out.cpp:1498</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_tools_1_1_input_parser_html"><div class="ttname"><a href="class_ultra_cold_1_1_tools_1_1_input_parser.html">UltraCold::Tools::InputParser</a></div><div class="ttdoc">Class to read input parameters from files.</div><div class="ttdef"><b>Definition:</b> input_parser.hpp:93</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_vector_html"><div class="ttname"><a href="class_ultra_cold_1_1_vector.html">UltraCold::Vector&lt; double &gt;</a></div></div>
-</div><!-- fragment --><p >We can now plug the calculated ground-state solution \( \psi_0 \) to the class <a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped Bose gas.">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a>, which will calculate for us the energies of the eigen-modes of the system as well as the Bogolyubov amplitudes \( u \) and \( v \). Since we are considering a simple solution of the GPe, without any topological defect like solitons or vortices, the ground-state wave function, despite being defined as a complex Vector, will have only a non-zero real part. We can thus simplify the Bogolyubov equations solving only eigen-problems of halved dimensionality. The class <code><a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped Bose gas.">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a></code> will do this automatically for us, provided that we feed a real Vector, representing the ground-state wave function, to its constructor. We thus first copy the calculated ground-state wave-function into a real-valued Vector</p>
+</div><!-- fragment --><p >We can now plug the calculated ground-state solution <img class="formulaInl" alt="$ \psi_0 $" src="form_10.png"/> to the class <a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped Bose gas.">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a>, which will calculate for us the energies of the eigen-modes of the system as well as the Bogolyubov amplitudes <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>. Since we are considering a simple solution of the GPe, without any topological defect like solitons or vortices, the ground-state wave function, despite being defined as a complex Vector, will have only a non-zero real part. We can thus simplify the Bogolyubov equations solving only eigen-problems of halved dimensionality. The class <code><a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped Bose gas.">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a></code> will do this automatically for us, provided that we feed a real Vector, representing the ground-state wave function, to its constructor. We thus first copy the calculated ground-state wave-function into a real-valued Vector</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> psi0_real(nx,ny);</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; psi.size() ; ++i) psi0_real[i] = psi[i].real();</div>
 </div><!-- fragment --><p >then initialize the data structures that will contain the solutions of the Bogolyubov equations</p>
@@ -341,9 +334,9 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 <div class="line"> </div>
 <div class="line">std::tie(eigenvalues,u,v) =  bdg_solver.run();</div>
 <div class="ttc" id="aclass_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver_html"><div class="ttname"><a href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_bogolyubov_solver.html">UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</a></div><div class="ttdoc">Class to solve the Bogolyubov equations for a trapped Bose gas.</div><div class="ttdef"><b>Definition:</b> bogolyubov_solvers.hpp:135</div></div>
-</div><!-- fragment --><p >In the context of Bogolyubov theory, several interesting properties can be extracted from the knowledge of \( u \) and \( v \). For example, one can see the density and phase fluctuations associated with each eigen-mode, by looking, respectively, at the quantities</p>
+</div><!-- fragment --><p >In the context of Bogolyubov theory, several interesting properties can be extracted from the knowledge of <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>. For example, one can see the density and phase fluctuations associated with each eigen-mode, by looking, respectively, at the quantities</p>
 <p class="formulaDsp">
-\[
+<img class="formulaDsp" alt="\[
 
 \begin{align}
 
@@ -352,7 +345,7 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 
 \end{align}
 
-\]
+\]" src="form_22.png"/>
 </p>
 <p >This is exactly what we calculated and output into some .vtk files with the last lines of the example</p>
 <div class="fragment"><div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_real_space_output_1_1_data_out.html">RealSpaceOutput::DataOut</a>                    output_fluctuations;</div>
@@ -384,7 +377,7 @@ maximum number of arnoldi iterations = 1000</pre><p >Let's now take a look at th
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="Results-2"></a>
 Results</h2>
-<p >The output of the program related to the (first) calculated eigenvalues, corresponding to the energies of the Bogolyubov modes in units of \( \hbar \omega_{ho} \), is the following:</p>
+<p >The output of the program related to the (first) calculated eigenvalues, corresponding to the energies of the Bogolyubov modes in units of <img class="formulaInl" alt="$ \hbar \omega_{ho} $" src="form_23.png"/>, is the following:</p>
 <pre class="fragment">1.6365e-06 0
 0.999999 0
 0.999999 0
@@ -396,12 +389,12 @@ Results</h2>
 2.03118 0
 2.03118 0
 2.29579 0
-2.29579 0</pre><p >Notice the presence of the two dipole modes, with a frequency approximately equal to one, representing the "sloshing" oscillations of the center of mass of the cloud along the x and y directions, and <b>always</b> present in the presence of harmonic trapping, as well as the presence of the characteristic <em>breathing</em> oscillation which, for this type of gas, has a frequency equal to \( 2\omega_{ho} \). Notice also that all the modes are twice degenerate.</p>
+2.29579 0</pre><p >Notice the presence of the two dipole modes, with a frequency approximately equal to one, representing the "sloshing" oscillations of the center of mass of the cloud along the x and y directions, and <b>always</b> present in the presence of harmonic trapping, as well as the presence of the characteristic <em>breathing</em> oscillation which, for this type of gas, has a frequency equal to <img class="formulaInl" alt="$ 2\omega_{ho} $" src="form_24.png"/>. Notice also that all the modes are twice degenerate.</p>
 <p >We can also have a look at the ground-state density profile, as well as the density and phase fluctuations, plotted from the .vtk output using again Paraview:</p>
 <div class="image">
 <img src="example-2-fig.png" alt="" width="50%"/>
 </div>
- <p >We see that most of the modes are surface modes with different angular momenta, while the breathing mode (the fifth mode in order from top to bottom, with the frequency of \( 2\omega_{ho} \)) has clearly a compressional character.</p>
+ <p >We see that most of the modes are surface modes with different angular momenta, while the breathing mode (the fifth mode in order from top to bottom, with the frequency of <img class="formulaInl" alt="$ 2\omega_{ho} $" src="form_24.png"/>) has clearly a compressional character.</p>
 <h2><a class="anchor" id="Uncommented-2"></a>
 The plain program</h2>
 <div class="fragment"><div class="line"><span class="comment">/*--------------------------------------------------------------------------------</span></div>
