@@ -2,6 +2,7 @@
 *build*
 *bin*
 *lib*
+*latex*
 TODOs*
 .idea
 /bundled/arpack-ng/build
