@@ -107,9 +107,9 @@ Excitation spectrum of a trapped dipolar Bose-Einstein condensate across the sup
 Introduction</h2>
 <p>In this example, we are going to use UltraCold to study the elementary excitations of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of \( ^{164}Dy \) atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped dipolar Bose gas. ">UltraCold::BogolyubovSolvers::TrappedDipolarBogolyubovSolver</a></code>, and across the superfluid-supersolid phase transition.</p>
 <p>As explained in example-2, in order to calculate the spectrum of elementary excitations on top of a certain stationary solution of the GPe, it is necessary to search for solutions of the time-dependent GPe of the form</p>
-<p>{equation} ({ r},t) = e^{-i{}{}t}[ ({ r})</p><ul>
-<li>{n=0}^{} ( u_n({ r})e^{-i t} + v^*_n({ r})e^{i t} ) ] {equation}</li>
-</ul>
+<p class="formulaDsp">
+\[ \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r}) + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right] \]
+</p>
 <p>and solve the eigenvalue problem that comes out by keeping only terms linear in the quasi-particle amplitudes \( u \) and \( v \). In the case of a <b>dipolar</b> Bose gas, taking also into account the effects of quantum fluctuations via the <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction, this amounts to solving the following eigenvalue problem</p>
 <p class="formulaDsp">
 \[ \begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} \hat{H}-\mu+\hat{X} &amp; \hat{X}^\dagger \\ -\hat{X} &amp; -(\hat{H}-\mu+\hat{X}^\dagger) \end{bmatrix} \begin{bmatrix} u \\ v \end{bmatrix} \]
