@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/SVG"],
+});
+</script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -103,14 +110,14 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This namespace contains solver classes for several flavours of Bogolyubov equations. </p>
-<p >While the GPSolver class and related classes allows to study the ground state and the dynamics of Bose-Einstein condensates, the elementary excitations on top of a certain state can be studied by solving the so-called <em>Bogolyubov equations</em>. The idea is to consider a certain configuration, described a condensate wave-function <img class="formulaInl" alt="$ \psi_0 $" src="form_10.png"/>, and with chemical potential <img class="formulaInl" alt="$ \mu $" src="form_11.png"/>, and to study small oscillations on top of it by searching for solutions of the Gross-Pitaevskii equation of the form</p>
+<p >While the GPSolver class and related classes allows to study the ground state and the dynamics of Bose-Einstein condensates, the elementary excitations on top of a certain state can be studied by solving the so-called <em>Bogolyubov equations</em>. The idea is to consider a certain configuration, described a condensate wave-function \( \psi_0 \), and with chemical potential \( \mu \), and to study small oscillations on top of it by searching for solutions of the Gross-Pitaevskii equation of the form</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
  + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
-\]" src="form_52.png"/>
+\]
 </p>
-<p >Keeping only terms linear the functions <img class="formulaInl" alt="$ u $" src="form_13.png"/> and <img class="formulaInl" alt="$ v $" src="form_14.png"/>, one finds that the <em>quasi-particle amplitudes</em> <img class="formulaInl" alt="$ u_n $" src="form_53.png"/> and <img class="formulaInl" alt="$ v_n $" src="form_54.png"/> and their energies <img class="formulaInl" alt="$ \hbar\omega_n $" src="form_55.png"/> are given by the solutions of a certain eigenvalue problem. The form depends on the "flavour" of Gross-Pitaevskii equation one is considering (ordinary, dipolar, mixtures...) and is described in the documentation of the specific solver classes. </p>
+<p >Keeping only terms linear the functions \( u \) and \( v \), one finds that the <em>quasi-particle amplitudes</em> \( u_n \) and \( v_n \) and their energies \( \hbar\omega_n \) are given by the solutions of a certain eigenvalue problem. The form depends on the "flavour" of Gross-Pitaevskii equation one is considering (ordinary, dipolar, mixtures...) and is described in the documentation of the specific solver classes. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

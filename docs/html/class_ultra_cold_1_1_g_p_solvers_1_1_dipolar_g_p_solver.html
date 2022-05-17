@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/SVG"],
+});
+</script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -228,30 +235,30 @@ Protected Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Santo Maria Roccuzzo (<a href="#" onclick="location.href='mai'+'lto:'+'san'+'to'+'m.r'+'oc'+'cuz'+'zo'+'@gm'+'ai'+'l.c'+'om'; return false;">santo<span class="obfuscator">.nosp@m.</span>m.ro<span class="obfuscator">.nosp@m.</span>ccuzz<span class="obfuscator">.nosp@m.</span>o@gm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>)</dd></dl>
 <p>This class allows to solve the extended Gross-Pitaevskii equation for a dipolar Bose gas</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 \begin{align}
  &amp;i\hbar\frac{\partial}{\partial t}  \Psi({\bf r},t)= \mathcal{H}({\bf r})\,\Psi({\bf r},t)\,,
 \end{align}
-\]" src="form_32.png"/>
+\]
 </p>
-<p >where the Hamiltonian <img class="formulaInl" alt="$ H $" src="form_33.png"/> is</p>
+<p >where the Hamiltonian \( H \) is</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 \begin{align}
  \mathcal{H}({\bf r})=-&amp;\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
  (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
- +&amp; \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
+ +&amp; \int d{\bf r&#39;}V_{dd}({\bf r}-{\bf r&#39;})|\Psi({\bf r&#39;},t)|^2\,,
 \end{align}
-\]" src="form_116.png"/>
+\]
 </p>
-<p >with <img class="formulaInl" alt="$ g=4\pi\hbar^2a/m $" src="form_35.png"/> the coupling constant fixed by the <img class="formulaInl" alt="$ s $" src="form_36.png"/>-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> and <img class="formulaInl" alt="$ V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
-r}_{j}|^3} $" src="form_45.png"/> the dipole-dipole potential, being <img class="formulaInl" alt="$ \mu_0 $" src="form_27.png"/> the magnetic permeability in vacuum, <img class="formulaInl" alt="$
-\mu $" src="form_46.png"/> the magnetic dipole moment and <img class="formulaInl" alt="$ \theta $" src="form_28.png"/> the angle between the vector distance between dipoles and the polarization direction, which we choose as the <img class="formulaInl" alt="$ x $" src="form_29.png"/>-axis. In the absence of trapping, the system can be fully characterised by the single parameter <img class="formulaInl" alt="$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $" src="form_39.png"/>, i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/> and the scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/>. The third term of the Hamiltonian corresponds to the local density approximation of the beyond-mean-field <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction with</p>
+<p >with \( g=4\pi\hbar^2a/m \) the coupling constant fixed by the \( s \)-wave scattering length \( a \) and \( V_{dd}({\bf r}_{i}-{\bf r}_{j})=\frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2\theta}{|{\bf r}_{i}-{\bf
+r}_{j}|^3} \) the dipole-dipole potential, being \( \mu_0 \) the magnetic permeability in vacuum, \(
+\mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, which we choose as the \( x \)-axis. In the absence of trapping, the system can be fully characterised by the single parameter \( \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \), i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length \( a_{dd} \) and the scattering length \( a \). The third term of the Hamiltonian corresponds to the local density approximation of the beyond-mean-field <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction with</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
 \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
-\]" src="form_57.png"/>
+\]
 </p>
 <p >Experimental measurements and microscopic Monte Carlo calculations have confirmed that the LHY term is an accurate correction to the mean-field theory given by the Gross-Pitaevskii equation in dipolar gases. <br  />
 This class can be used to solve the extended Gross-Pitaevskii equation both for ground-state configurations as well as for the dynamics, on a cartesian mesh with periodic boundary conditions. The basic usage of the class is as follows:</p>
@@ -284,23 +291,23 @@ This class can be used to solve the extended Gross-Pitaevskii equation both for 
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_html_adc6cd9a3bb84db316fd6f1aa06041e3a"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#adc6cd9a3bb84db316fd6f1aa06041e3a">UltraCold::GPSolvers::DipolarGPSolver::scattering_length</a></div><div class="ttdeci">double scattering_length</div><div class="ttdef"><b>Definition:</b> gp_solvers.hpp:469</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_html_ae1a196c4c8a35de58ff251c0469f19e5"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#ae1a196c4c8a35de58ff251c0469f19e5">UltraCold::GPSolvers::DipolarGPSolver::Vext</a></div><div class="ttdeci">Vector&lt; double &gt; Vext</div><div class="ttdef"><b>Definition:</b> gp_solvers.hpp:441</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_html_af7662fd53d45a209748490330b1addee"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#af7662fd53d45a209748490330b1addee">UltraCold::GPSolvers::DipolarGPSolver::dipolar_length</a></div><div class="ttdeci">double dipolar_length</div><div class="ttdef"><b>Definition:</b> gp_solvers.hpp:470</div></div>
-</div><!-- fragment --><p >In the constructor, you need to provide the three cartesian axis defining the mesh on which the equation is going to be solved, the initial wave function (all the methods are iterative), the external potential, the s-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> and the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/>, both in appropriate units. <br  />
+</div><!-- fragment --><p >In the constructor, you need to provide the three cartesian axis defining the mesh on which the equation is going to be solved, the initial wave function (all the methods are iterative), the external potential, the s-wave scattering length \( a \) and the dipolar length \( a_{dd} \), both in appropriate units. <br  />
 The algorithms used and their working principles are the same as those used for a non-dipolar Bose gas, described in the documentation of the <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">GPSolver</a> class. See that documentation for details. </p><dl class="section note"><dt>Note</dt><dd>Several member functions of this class take advantage of <a href="https://www.openmp.org/">OpenMP </a> parallelization. For optimal performance, be sure to run <div class="fragment"><div class="line">$ export OMP_NUM_THREADS=&lt;number of physical cores on the machine used&gt;</div>
 </div><!-- fragment --> on the shell before the program execution. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The extended Gross-Pitaevskii equation is solved in its a-dimensional form, which, in the case of, for example, harmonic trapping, is given by</dd></dl>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  i\frac{\partial \psi({\bf r},t)}{\partial t} = \left[ -\frac{\nabla^2}{2}
  + \left( \frac{1}{2} \left( \frac{x}{a_x^2} \right)^2 + \frac{1}{2} \left( \frac{y}{a_y^2} \right)^2 +
  \frac{1}{2} \left( \frac{z}{a_z^2} \right)^2  \right)
  + 4\pi a |\psi({\bf r},t)|^2
- + 3 a_{dd} \int d{\bf r'}\frac{1-3\cos^2\theta}{|{\bf r}-{\bf r}'|^3}|\psi({\bf r'},t)|^2
+ + 3 a_{dd} \int d{\bf r&#39;}\frac{1-3\cos^2\theta}{|{\bf r}-{\bf r}&#39;|^3}|\psi({\bf r&#39;},t)|^2
  + \frac{64\sqrt{\pi}}{3}a^{5/2} \mbox{Re}\bigg[\!\int_0^{\pi}
 \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\, |\psi({\bf r},t)|^3
  \right]\psi({\bf r},t)
-\]" src="form_117.png"/>
+\]
 </p>
-<p >where <img class="formulaInl" alt="$ a_{x,y,z}=\sqrt{\frac{\hbar}{m\omega_{x,y,z}}} $" src="form_118.png"/> and all the lengths (including the s-wave and the dipolar length) are in units of the harmonic oscillator length <img class="formulaInl" alt="$ a_{ho} = (a_xa_ya_z)^{1/3} $" src="form_119.png"/> </p>
+<p >where \( a_{x,y,z}=\sqrt{\frac{\hbar}{m\omega_{x,y,z}}} \) and all the lengths (including the s-wave and the dipolar length) are in units of the harmonic oscillator length \( a_{ho} = (a_xa_ya_z)^{1/3} \) </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af2c3172e22994c0dc6d40aada41a3233" name="af2c3172e22994c0dc6d40aada41a3233"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2c3172e22994c0dc6d40aada41a3233">&#9670;&nbsp;</a></span>DipolarGPSolver()</h2>
@@ -548,9 +555,9 @@ The algorithms used and their working principles are the same as those used for 
   </dd>
 </dl>
 <p>This member function solves the (a-dimensional) time-dependent extended Gross-Pitaevskii equation </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 i \frac{\partial \psi}{\partial t} = \left[ \frac{-\nabla^2}{2}+V_{ext}({\bf r})+g|\psi|^2 \right]\psi
-\]" src="form_59.png"/>
+\]
 </p>
 <p> for the description of a dipolar Bose gas using the classic operator splitting technique. The idea is the same as the corresponding member class of <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">GPSolver</a>. See that documentation for details. </p>
 

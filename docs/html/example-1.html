@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/SVG"],
+});
+</script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -102,26 +109,26 @@ A three-dimensional Bose gas in a harmonic trap.</h1>
 <h2><a class="anchor" id="Introduction-1"></a>
 Introduction</h2>
 <p >In the first example, we are going to use UltraCold to study the ground state and a simple dynamics of a three-dimensional, harmonically trapped Bose gas of Rubidium atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">UltraCold::GPSolvers::GPSolver</a></code>, or, better, <b>extending</b> this class for customizing the runtime behavior of real-time simulations. All the solver classes delivered with UltraCold can, in fact, be partially extended according to possible different needs, in particular for customizing the output of dynamic simulations or adding time-dependent terms to the Hamiltonian of the system to simulate, e.g., a ramp in the scattering length.</p>
-<p >We will, in particular, solve the Gross-Pitaevskii equation on a three-dimensional, homogeneous mesh, calculating first the ground state of the system in the presence of an isotropic harmonic trap, using the member function <code>run_gradient_descent</code>, and then running a real-time dynamic simulation of an experiment for the measurement of the frequency of the so-called <em>breathing mode</em>, using the member function <code>run_operator_splitting</code>. The frequency of this collective oscillation can be calculated analytically in the Thomas-Fermi approximation, and is equal to <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.2360"><img class="formulaInl" alt="$ \omega_{breathing}=\sqrt{5}\omega_{ho}$" src="form_0.png"/></a>. The breathing oscillation can be excited, for example, via a sudden isotropic shrinking of the harmonic trap. For the sake of illustration, however, we will use another procedure, namely a linear ramp in the scattering length, with a fixed time duration. This procedure, being isotropic in space, will still excite only the breathing mode we are interested in. It will also give us the opportunity to show how to derive a class from the base class <code> GPSolver </code> in order to introduce a time-dependent term in the Hamiltonian.</p>
+<p >We will, in particular, solve the Gross-Pitaevskii equation on a three-dimensional, homogeneous mesh, calculating first the ground state of the system in the presence of an isotropic harmonic trap, using the member function <code>run_gradient_descent</code>, and then running a real-time dynamic simulation of an experiment for the measurement of the frequency of the so-called <em>breathing mode</em>, using the member function <code>run_operator_splitting</code>. The frequency of this collective oscillation can be calculated analytically in the Thomas-Fermi approximation, and is equal to <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.2360">\( \omega_{breathing}=\sqrt{5}\omega_{ho}\)</a>. The breathing oscillation can be excited, for example, via a sudden isotropic shrinking of the harmonic trap. For the sake of illustration, however, we will use another procedure, namely a linear ramp in the scattering length, with a fixed time duration. This procedure, being isotropic in space, will still excite only the breathing mode we are interested in. It will also give us the opportunity to show how to derive a class from the base class <code> GPSolver </code> in order to introduce a time-dependent term in the Hamiltonian.</p>
 <p >So, let's start from the Gross-Pitaevskii equation in three space dimensions, in the presence of an external harmonic potential</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
     i\hbar\frac{\partial \psi(x,y,z,t)}{\partial t} =
     \left[
         \frac{-\hbar^2\nabla^2}{2m}+\frac{1}{2}m(\omega^2_x x^2+\omega^2_y y^2 +\omega_z^2 z^2)
         + \frac{4\pi a\hbar^2}{m}|\psi(x,y,z,t)|^2
     \right]\psi(x,y,z,t)
-\]" src="form_1.png"/>
+\]
 </p>
-<p >Measuring frequencies in units of the average harmonic frequency <img class="formulaInl" alt="$ \omega_{ho} = (\omega_x\omega_y\omega_z)^{\frac{1}{3}} $" src="form_2.png"/>, lengths in units of the harmonic oscillator length <img class="formulaInl" alt="$ a_{ho} = \sqrt{\frac{\hbar}{m\omega_{ho}}} $" src="form_3.png"/>, and times in units of <img class="formulaInl" alt="$ \omega_{ho}^{-1} $" src="form_4.png"/>, the equation can be recast in a-dimensional form as</p>
+<p >Measuring frequencies in units of the average harmonic frequency \( \omega_{ho} = (\omega_x\omega_y\omega_z)^{\frac{1}{3}} \), lengths in units of the harmonic oscillator length \( a_{ho} = \sqrt{\frac{\hbar}{m\omega_{ho}}} \), and times in units of \( \omega_{ho}^{-1} \), the equation can be recast in a-dimensional form as</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
     i\frac{\partial \psi(x,y,z,t)}{\partial t} =
     \left[
         \frac{-\nabla^2}{2}+\frac{1}{2}(\omega_x^2 x^2+\omega^2_y y^2+\omega_z^2 z^2)
         + 4\pi a  |\psi(x,y,z,t)|^2
     \right]\psi(x,y,z,t)
-\]" src="form_5.png"/>
+\]
 </p>
 <p >We will now see how to solve this equation for our needs using tools provided by UltraCold.</p>
 <h2><a class="anchor" id="What-1"></a>
@@ -424,7 +431,7 @@ Results</h2>
 <div class="image">
 <img src="example-1-ft.png" alt=""/>
 </div>
- <p >In this image, we also report the value of the frequency of the breathing mode calculated analytically, and corresponding, for this case, to <img class="formulaInl" alt="$ \sqrt{5}\omega_{ho} $" src="form_6.png"/>. Such frequency is reported in the orange vertical line, and, as we can see, corresponds very well with the one extracted from the real time simulation.</p>
+ <p >In this image, we also report the value of the frequency of the breathing mode calculated analytically, and corresponding, for this case, to \( \sqrt{5}\omega_{ho} \). Such frequency is reported in the orange vertical line, and, as we can see, corresponds very well with the one extracted from the real time simulation.</p>
 <h2><a class="anchor" id="Possibilities-1"></a>
 Possible extensions</h2>
 <p >This program can be used as a template for studying the ground state and the dynamics of a simple BEC in different meshes and external potentials, or by exciting different collective oscillations, as e.g. the quadrupole mode.</p>

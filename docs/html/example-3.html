@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/SVG"],
+});
+</script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -101,50 +108,50 @@ $(document).ready(function(){initNavTree('example-3.html',''); initResizable(); 
 A three-dimensional dipolar Bose gas in a harmonic trap.</h1>
 <h2><a class="anchor" id="Introduction-3"></a>
 Introduction</h2>
-<p >In this example, we are going to use UltraCold to study the ground state of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of <img class="formulaInl" alt="$ ^{164}Dy $" src="form_25.png"/> atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code>.</p>
+<p >In this example, we are going to use UltraCold to study the ground state of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of \( ^{164}Dy \) atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code>.</p>
 <p >Bose-Einstein condensates have been obtained in atomic species, like <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.210401">Erbium </a> or <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.107.190401">Dysprosium </a>, possessing a strong magnetic dipole moment in their ground state. This implies that, in order to describe the physics of such BECs, it is necessary to take into account the effect of magnetic interactions between the atoms. In the typical setup, atoms are aligned along a certain direction (say, the x-axis) by an external magnetic field, and their dipole-dipole interaction potential has the form</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
-    V_{dd}({\bf r}-{\bf r}') = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}'|^3}
-\]" src="form_26.png"/>
+\[
+    V_{dd}({\bf r}-{\bf r}&#39;) = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}&#39;|^3}
+\]
 </p>
-<p >with <img class="formulaInl" alt="$ \mu_0 $" src="form_27.png"/> the magnetic permeability in vacuum, <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> the magnetic dipole moment and <img class="formulaInl" alt="$ \theta $" src="form_28.png"/> the angle between the vector distance between dipoles and the polarization direction, i.e. in this case the <img class="formulaInl" alt="$ x $" src="form_29.png"/>-axis. A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently, the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field correction to the ground-state energy of the system in the local density approximation. Such <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction for a uniform system is given by</p>
+<p >with \( \mu_0 \) the magnetic permeability in vacuum, \( \mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, i.e. in this case the \( x \)-axis. A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently, the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field correction to the ground-state energy of the system in the local density approximation. Such <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction for a uniform system is given by</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \frac{E_0}{V}=\frac{1}{2}gn^2\left[1+\frac{128}{15\sqrt{\pi}}\sqrt{na^3}F(\epsilon_{dd})\right]
-\]" src="form_30.png"/>
+\]
 </p>
 <p> with </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  F(\epsilon_{dd})=\frac{1}{2}\int_0^{\pi}d\theta sin\theta[1+\epsilon_{dd}(3cos^2\theta-1)]^{\frac{5}{2}}
-\]" src="form_31.png"/>
+\]
 </p>
 <p >Inserting this correction in the local density approximation in a mean-field model, we obtain the extended Gross-Pitaevskii equation</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 \begin{align}
  &amp;i\hbar\frac{\partial}{\partial t}  \Psi({\bf r},t)= \mathcal{H}({\bf r})\,\Psi({\bf r},t)\,,
 \end{align}
-\]" src="form_32.png"/>
+\]
 </p>
-<p >where the Hamiltonian <img class="formulaInl" alt="$ H $" src="form_33.png"/> is</p>
+<p >where the Hamiltonian \( H \) is</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \begin{align}
   \mathcal{H}({\bf r})=-&amp;\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
   (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
-  +&amp; \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
+  +&amp; \int d{\bf r&#39;}V_{dd}({\bf r}-{\bf r&#39;})|\Psi({\bf r&#39;},t)|^2\,,
  \end{align}
-\]" src="form_34.png"/>
+\]
 </p>
-<p >with <img class="formulaInl" alt="$ g=4\pi\hbar^2a/m $" src="form_35.png"/> the coupling constant fixed by the <img class="formulaInl" alt="$ s $" src="form_36.png"/>-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> and</p>
+<p >with \( g=4\pi\hbar^2a/m \) the coupling constant fixed by the \( s \)-wave scattering length \( a \) and</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
  \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
-\]" src="form_38.png"/>
+\]
 </p>
-<p >In the absence of trapping, the system can be fully characterised by the single parameter <img class="formulaInl" alt="$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $" src="form_39.png"/>, i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/> and the scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/>.</p>
+<p >In the absence of trapping, the system can be fully characterised by the single parameter \( \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \), i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length \( a_{dd} \) and the scattering length \( a \).</p>
 <p >Among the peculiar effects described by this model, we mention the possibility of describing the so-called <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.93.061603">quantum droplets </a>, i.e. ultra-dilute, self-bound, liquid-like droplets in the Bose-Einstein condensed phase, and <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.041601">supersolids </a>, i.e. phase-coherent systems spontaneously breaking translational invariance, developing spatial periodicity.</p>
 <p >In this example, we will use the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code> to describe a simple supersolid state of a dipolar gas in a cigar-shaped harmonic trap.</p>
 <h2><a class="anchor" id="What-3"></a>
@@ -462,50 +469,50 @@ The plain program</h2>
 A three-dimensional dipolar Bose gas in a harmonic trap.</h1>
 <h2><a class="anchor" id="Introduction-3"></a>
 Introduction</h2>
-<p >In this example, we are going to use UltraCold to study the ground state and of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of <img class="formulaInl" alt="$ ^{164}Dy $" src="form_25.png"/> atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code>.</p>
+<p >In this example, we are going to use UltraCold to study the ground state and of a three-dimensional, harmonically trapped <b>dipolar</b> Bose gas of \( ^{164}Dy \) atoms, using the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code>.</p>
 <p >Bose-Einstein condensates have been obtained in atomic species, like <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.210401">Erbium </a> or <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.107.190401">Dysprosium </a>, possessing a strong magnetic dipole moment in their ground state. This implies that, in order to describe the physics of such BECs, it is necessary to take into account the effect of magnetic interactions between the atoms. In the typical setup, atoms are aligned along a certain direction (say, the x-axis) by an external magnetic field, and their dipole-dipole interaction potential has the form</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
-    V_{dd}({\bf r}-{\bf r}') = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}'|^3}
-\]" src="form_26.png"/>
+\[
+    V_{dd}({\bf r}-{\bf r}&#39;) = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}&#39;|^3}
+\]
 </p>
-<p >with <img class="formulaInl" alt="$ \mu_0 $" src="form_27.png"/> the magnetic permeability in vacuum, <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> the magnetic dipole moment and <img class="formulaInl" alt="$ \theta $" src="form_28.png"/> the angle between the vector distance between dipoles and the polarization direction, i.e. in this case the <img class="formulaInl" alt="$ x $" src="form_29.png"/>-axis. A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently, the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field correction to the ground-state energy of the system in the local density approximation. Such <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction for a uniform system is given by</p>
+<p >with \( \mu_0 \) the magnetic permeability in vacuum, \( \mu \) the magnetic dipole moment and \( \theta \) the angle between the vector distance between dipoles and the polarization direction, i.e. in this case the \( x \)-axis. A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently, the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field correction to the ground-state energy of the system in the local density approximation. Such <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609">Lee-Huang-Yang </a> (LHY) correction for a uniform system is given by</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \frac{E_0}{V}=\frac{1}{2}gn^2\left[1+\frac{128}{15\sqrt{\pi}}\sqrt{na^3}F(\epsilon_{dd})\right]
-\]" src="form_30.png"/>
+\]
 </p>
 <p> with </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  F(\epsilon_{dd})=\frac{1}{2}\int_0^{\pi}d\theta sin\theta[1+\epsilon_{dd}(3cos^2\theta-1)]^{\frac{5}{2}}
-\]" src="form_31.png"/>
+\]
 </p>
 <p >Inserting this correction in the local density approximation in a mean-field model, we obtain the extended Gross-Pitaevskii equation</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
 \begin{align}
  &amp;i\hbar\frac{\partial}{\partial t}  \Psi({\bf r},t)= \mathcal{H}({\bf r})\,\Psi({\bf r},t)\,,
 \end{align}
-\]" src="form_32.png"/>
+\]
 </p>
-<p >where the Hamiltonian <img class="formulaInl" alt="$ H $" src="form_33.png"/> is</p>
+<p >where the Hamiltonian \( H \) is</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \begin{align}
   \mathcal{H}({\bf r})=-&amp;\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
   (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
-  +&amp; \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
+  +&amp; \int d{\bf r&#39;}V_{dd}({\bf r}-{\bf r&#39;})|\Psi({\bf r&#39;},t)|^2\,,
  \end{align}
-\]" src="form_34.png"/>
+\]
 </p>
-<p >with <img class="formulaInl" alt="$ g=4\pi\hbar^2a/m $" src="form_35.png"/> the coupling constant fixed by the <img class="formulaInl" alt="$ s $" src="form_36.png"/>-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> and</p>
+<p >with \( g=4\pi\hbar^2a/m \) the coupling constant fixed by the \( s \)-wave scattering length \( a \) and</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
  \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
-\]" src="form_38.png"/>
+\]
 </p>
-<p >In the absence of trapping, the system can be fully characterised by the single parameter <img class="formulaInl" alt="$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a $" src="form_39.png"/>, i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length <img class="formulaInl" alt="$ a_{dd} $" src="form_40.png"/> and the scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/>.</p>
+<p >In the absence of trapping, the system can be fully characterised by the single parameter \( \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \), i.e., the ratio between the strength of the dipolar and the contact interaction, eventually written in terms of the dipolar length \( a_{dd} \) and the scattering length \( a \).</p>
 <p >Among the peculiar effects described by this model, we mention the possibility of describing the so-called <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.93.061603">quantum droplets </a>, i.e. ultra-dilute, self-bound, liquid-like droplets in the Bose-Einstein condensed phase, and <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.041601">supersolids </a>, i.e. phase-coherent systems spontaneously breaking translational invariance, developing spatial periodicity.</p>
 <p >In this example, we will use the solver class <code><a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas with the Lee-Huang-Yang correctio...">UltraCold::GPSolvers::DipolarGPSolver</a></code> to describe a simple supersolid state of a dipolar gas in a cigar-shaped harmonic trap.</p>
 <h2><a class="anchor" id="What-3"></a>

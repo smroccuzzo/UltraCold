@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/SVG"],
+});
+</script>
+<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -103,33 +110,33 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This namespace contains several solver classes for various flavors of Non-Linear Schrodinger equations. </p>
-<p >Ultra-cold bosonic systems are very often described in terms of the so-called <a href="https://en.wikipedia.org/wiki/Gross%E2%80%93Pitaevskii_equation">Gross-Pitaevskii equation </a>, which is a non-linear Schrodinger equation arising from a mean-field description of the system, valid when the particles are very weakly interacting and the temperature is close to the absolute zero. In these conditions, an ultra-cold gas of weakly interacting bosonic atoms is described by a complex order parameter <img class="formulaInl" alt="$ \psi $" src="form_85.png"/>, whose square modulus gives the local density of atoms, and satisfying the following Gross-Pitaevskii equation </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+<p >Ultra-cold bosonic systems are very often described in terms of the so-called <a href="https://en.wikipedia.org/wiki/Gross%E2%80%93Pitaevskii_equation">Gross-Pitaevskii equation </a>, which is a non-linear Schrodinger equation arising from a mean-field description of the system, valid when the particles are very weakly interacting and the temperature is close to the absolute zero. In these conditions, an ultra-cold gas of weakly interacting bosonic atoms is described by a complex order parameter \( \psi \), whose square modulus gives the local density of atoms, and satisfying the following Gross-Pitaevskii equation </p><p class="formulaDsp">
+\[
  i\hbar\frac{\partial \psi}{\partial t} = \left[ \frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})+g|\psi|^2
 \right]\psi
-\]" src="form_109.png"/>
+\]
 </p>
-<p> Here <img class="formulaInl" alt="$ V_{ext} $" src="form_110.png"/> is some external trapping potential, and <img class="formulaInl" alt="$ g $" src="form_62.png"/> is related to the s-wave scattering length <img class="formulaInl" alt="$ a $" src="form_37.png"/> by <img class="formulaInl" alt="$ g = \frac{4\pi\hbar^2a}{m} $" src="form_111.png"/>. This model is valid as long as the two-body interaction between the atoms can be modeled by a contact interaction of the form <img class="formulaInl" alt="$ V({\bf r}-{\bf r'})=g\delta({\bf r}-{\bf r'}) $" src="form_112.png"/>. Other models (including, for example, a dipole-dipole interaction and the effects of quantum fluctuations) have a similar form, as it is discussed in other solver classes belonging to this namespace. <br  />
+<p> Here \( V_{ext} \) is some external trapping potential, and \( g \) is related to the s-wave scattering length \( a \) by \( g = \frac{4\pi\hbar^2a}{m} \). This model is valid as long as the two-body interaction between the atoms can be modeled by a contact interaction of the form \( V({\bf r}-{\bf r&#39;})=g\delta({\bf r}-{\bf r&#39;}) \). Other models (including, for example, a dipole-dipole interaction and the effects of quantum fluctuations) have a similar form, as it is discussed in other solver classes belonging to this namespace. <br  />
 There are two kinds of information we can derive from the solution of the Gross-Pitaevskii equation:</p><ul>
-<li><em>Ground-state properties</em>: these are obtained by searching for stationary solutions of the form <img class="formulaInl" alt="$ \psi({\bf r},t)=\psi_0({\bf r})e^{-i\mu t/\hbar} $" src="form_60.png"/>, obtaining the stationary Gross-Pitaevskii equation</li>
+<li><em>Ground-state properties</em>: these are obtained by searching for stationary solutions of the form \( \psi({\bf r},t)=\psi_0({\bf r})e^{-i\mu t/\hbar} \), obtaining the stationary Gross-Pitaevskii equation</li>
 </ul>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  \mu \psi_0 = \left[ \frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})+g|\psi_0|^2 \right]\psi_0
-\]" src="form_113.png"/>
+\]
 </p>
-<p >Solving this for the smallest eigenvalue <img class="formulaInl" alt="$ \mu $" src="form_11.png"/>, which represents the chemical potential, gives access to the ground-state configuration of the system.</p><ul>
+<p >Solving this for the smallest eigenvalue \( \mu \), which represents the chemical potential, gives access to the ground-state configuration of the system.</p><ul>
 <li><em>Dynamics</em>: solving the Gross-Pitaevskii equation for appropriate initial conditions allows to simulate the dynamical behavior of the system and to compare the results of the model with experiments.</li>
 </ul>
 <p >In order to solve these equations, there are several possibilities. <br  />
 For what concern the stationary Gross-Pitaevskii equation, one possibility comes from noticing that such equation can be obtained from a constrained minimization formulation of the problem, in particular by requiring that the ground-state order parameter of the system is the exact minimizer of the mean-field energy functional</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[
+\[
  E[\psi] = \int d{\bf r} \left[ \psi^*({\bf r})\left(\frac{-\hbar^2\nabla^2}{2m}+V_{ext}({\bf r})\right)
  \psi({\bf r}) \right]+\frac{g}{2}\int d{\bf r} |\psi({\bf r})|^4
-\]" src="form_114.png"/>
+\]
 </p>
-<p >under the constraint of a fixed number of particles <img class="formulaInl" alt="$ \int d{\bf r}|\psi({\bf r})|^2=N $" src="form_65.png"/>. This allows also to introduce the chemical potential <img class="formulaInl" alt="$ \mu $" src="form_11.png"/> as the Lagrange multiplier fixing the total number of particles. One can hence find the ground state order parameter and chemical potential using, for example, a <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient descent </a> method, as implemented in the class <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">GPSolver</a> (see the related documentation). <br  />
+<p >under the constraint of a fixed number of particles \( \int d{\bf r}|\psi({\bf r})|^2=N \). This allows also to introduce the chemical potential \( \mu \) as the Lagrange multiplier fixing the total number of particles. One can hence find the ground state order parameter and chemical potential using, for example, a <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient descent </a> method, as implemented in the class <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">GPSolver</a> (see the related documentation). <br  />
 For what concern instead the full Gross-Pitaevskii equation, this is solved using a classical operator-splitting method. See again the full documentation of the <a class="el" href="class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html" title="Class to solve the Gross-Pitaevskii equation.">GPSolver</a> class for more details. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
