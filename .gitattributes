@@ -1,0 +1,3 @@
+# Exclude fortran files from linguist counting
+
+*.f linguist-vendored 
