@@ -27,7 +27,7 @@ var examples =
       ] ]
     ] ],
     [ "example-4", "example-4.html", [
-      [ "Excitation spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.", "example-4.html#Title-4", [
+      [ "Excitation spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid", "example-4.html#Title-4", [
         [ "Introduction", "example-4.html#Introduction-4", null ],
         [ "Program description", "example-4.html#What-4", null ],
         [ "Results", "example-4.html#Results-4", null ],
