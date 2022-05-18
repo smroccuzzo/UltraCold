@@ -4,13 +4,13 @@
 
 \tableofcontents
 
-The %UltraCold package contains with several examples to illustrate how to use it to simulate ultra-cold atomic systems
+The %UltraCold package contains several examples to illustrate how to use it to simulate ultra-cold atomic systems
 in the context of Gross-Pitaevskii theory.
 
 The <code>examples</code> folder contains different folders called <code>example-<n></code>, each containing
 
  - a source file called <code>example-<n>.cpp</code>, containing an example on how to write an executable that uses the
-  <code>UltraCold</code> library,
+  <code>%UltraCold</code> library,
  - a <code>CMakeLists.txt</code> containing instructions on how to configure and build an executable based on
   <code>UltraCold</code>,
  - an eventual parameter file, called <code>example-<n>.prm</code>,

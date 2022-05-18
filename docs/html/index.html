@@ -16,6 +16,11 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
@@ -36,6 +41,21 @@ MathJax.Hub.Config({
    </div>
    <div id="projectbrief">Collection of C++ libraries for the study of ultra-cold systems in the context of Gross-Pitaevskii theory</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -47,17 +67,6 @@ MathJax.Hub.Config({
 var searchBox = new SearchBox("searchBox", "search",'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -97,23 +106,25 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <ul><li class="level1"><a href="#About">About</a></li>
 <li class="level1"><a href="#Required">Prerequisites and platforms</a></li>
 <li class="level1"><a href="#Installation">Installation</a></li>
-<li class="level1"><a href="#Usage">Usage</a></li>
+<li class="level1"><a href="#Usage">Usage and examples</a></li>
+<li class="level1"><a href="#Contributing">Contributing</a></li>
 <li class="level1"><a href="#License">License</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="About"></a>
 About</h1>
-<p >UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the context of Gross-Pitaevskii theory. <br  />
+<p >UltraCold is a modular and extensible collection of C++ libraries for the study of ultra-cold atomic systems in the context of Gross-Pitaevskii theory. <br  />
  The package contains several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov equations, allowing for the description of ultra-cold systems of bosons at the mean-field level, studying their ground-state properties, the dynamics, and elementary excitations.</p>
-<p >Right now, all the solver classes in the package take advantage of OpenMP parallelization.</p>
+<p >Right now, all the solver classes take advantage of OpenMP parallelization.</p>
 <h1><a class="anchor" id="Required"></a>
 Prerequisites and platforms</h1>
-<p >UltraCold has been tested only Linux machines, including the High Performance Computing cluster <a href="https://www.hpc.cineca.it/hardware/galileo100">Galileo100 </a> from the italian supercomputing consortium <a href="https://www.cineca.it">CINECA</a>. Moreover, it is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a> for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software. Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. The Intel oneAPI package can be downloaded for free from <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here </a>. In particular, UltraCold relies on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base Toolkit </a> and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC Toolkit </a> <br  />
+<p >UltraCold is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng</a> (which is provided as a bundled package) for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software.</p>
+<p >Right now, the package has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. The Intel oneAPI package can be downloaded <b>for free</b> from <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here</a>. In particular, UltraCold relies on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base Toolkit</a> and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC Toolkit</a>.</p>
+<p >The package has been tested only on Linux machines, including the High Performance Computing cluster <a href="https://www.hpc.cineca.it/hardware/galileo100">Galileo100</a> from the italian supercomputing consortium <a href="https://www.cineca.it/">CINECA</a>. <br  />
  </p>
 <h1><a class="anchor" id="Installation"></a>
 Installation</h1>
-<p >Before getting UltraCold, be sure you have Intel oneAPI installed. <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a> is in fact built on top of Intel's Math Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with previous versions of Intel Parallel Studio, although we have never tried it.</p>
-<p >To get <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>, first clone it into your machine</p>
+<p >To get UltraCold, first clone it into your machine</p>
 <div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/smroccuzzo/UltraCold.git</span></div>
 </div><!-- fragment --><p >Then, enter the directory UltraCold, and follow the usual steps required to build a project using <a href="https://cmake.org/">cmake </a>. By default, the build type is <em>Release</em>. So, all you have to do is </p><div class="fragment"><div class="line">cd <a class="code hl_namespace" href="namespace_ultra_cold.html">UltraCold</a></div>
 <div class="line">mkdir build</div>
@@ -123,9 +134,23 @@ Installation</h1>
 <div class="line">make install</div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="Usage"></a>
-Usage</h1>
+Usage and examples</h1>
 <p >UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is available under the namespace <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>. <br  />
  The Examples section provides several examples of usage of the basic functionalities of the package (as well as some physics). Such examples are meant to be used as templates for more complex applications, combining the functionality of the package to develop some interesting physics.</p>
+<h1><a class="anchor" id="Contributing"></a>
+Contributing</h1>
+<p >UltraCold is developed using <a href="https://git-scm.com/">Git </a> as a version control tool, and <a href="https://github.com">GitHub</a> as the central host of the source code.</p>
+<p >If you find some issue, and/or have suggestions for additions and/or improvements, please open a <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues">GitHub issue</a>.</p>
+<p >If you want to actively contribute, after opening an issue, follow this (pretty standard) workflow, based on the <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">fork and pull model</a>:</p>
+<ul>
+<li>If you already have a GitHub account, <a href="https://github.com/login">sign in</a>. Otherwise, <a href="https://github.com/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F&amp;source=header-home">create one </a> (it's free, and we are pretty confident that it will always be).</li>
+<li>Fork the UltraCold project.</li>
+<li>Make a local clone of your fork to your own computer.</li>
+<li>Create a new branch on which you will be making changes. This marks the point from which your copy of the project starts to differ from that of the main development branch.</li>
+<li>Start to make your changes, for example by modifying existing files and/or creating new ones. Once you are satisfied with your changes, you can commit each change, in such a way that Git can keep track of them. With each commit, write a short message describing what your particular set of changes does.</li>
+<li>When you're finished committing all of your changes to your local repository, you can push them all upstream to your GitHub repository.</li>
+<li>Finally, open a pull request on GitHub to the main development repository (i.e., by now, <a href="https://github.com/smroccuzzo/UltraCold">this</a> one).</li>
+</ul>
 <h1><a class="anchor" id="License"></a>
 License</h1>
 <p >UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md </p>

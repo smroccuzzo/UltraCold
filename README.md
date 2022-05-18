@@ -17,10 +17,12 @@ The complete documentation is available either in [html](https://smroccuzzo.gith
 ## Prerequisites and platforms
 
 UltraCold is built on top of Intel's Math Kernel Library, and relies
-upon [arpack-ng](https://github.com/opencollab/arpack-ng) for the solution of Bogolyubov
-equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software.
-Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
-Parallel Studio. The Intel oneAPI package can be downloaded for free from
+upon [arpack-ng](https://github.com/opencollab/arpack-ng) (which is provided as a bundled package) for the solution of 
+Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's
+software.
+
+Right now, the package has been only tested with Intel oneAPI, although it should also work with previous versions 
+of Intel Parallel Studio. The Intel oneAPI package can be downloaded **for free** from
 [here](https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html). 
 In particular, UltraCold relies on the
 [Intel oneAPI Base Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html) 
@@ -33,7 +35,7 @@ consortium [CINECA](https://www.cineca.it/).
 
 ## Installation
 
-To get UltraCold, first clone it into your machine
+To get UltraCold, clone it into your machine
 
     git clone https://github.com/smroccuzzo/UltraCold.git
 
@@ -47,7 +49,7 @@ Then, enter the directory UltraCold, and follow the usual steps required to buil
     make
     make install
 
-##  Usage
+##  Usage and examples
 
 UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov
 equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
@@ -92,6 +94,32 @@ description available in the documentation.
   ground state of a trapped dipolar Bose-Einstein condensate.
 - [example-4](./examples/example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp) Excitation 
 spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
+
+## Contributing
+
+UltraCold is developed using [Git](https://git-scm.com/) as a version control tool, and [GitHub](https://github.com) as
+the central host of the source code.
+
+If you find some issue, and/or have suggestions for additions and/or improvements, please open a 
+[GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues).
+
+If you want to actively contribute, after opening an issue, follow this (pretty standard) workflow, based on the 
+[fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models):
+
+- If you already have a GitHub account, [sign in](https://github.com/login). Otherwise, 
+[create one](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)
+(it's free, and we are pretty confident that it will always be).
+- Fork the UltraCold project.
+- Make a local clone of your fork to your own computer.
+- Create a new branch on which you will be making changes. This marks the point from which your copy of the project
+starts to differ from that of the main development branch. 
+- Start to make your changes, for example by modifying existing files and/or creating new ones. Once you are
+satisfied with your changes, you can commit each change, in such a way that Git can keep track of them. With each commit,
+write a short message describing what your particular set of changes does.
+- When you're finished committing all of your changes to your local repository, you can push them all upstream to your
+GitHub repository.
+- Finally, open a pull request on GitHub to the main development repository (i.e., by now,
+[this](https://github.com/smroccuzzo/UltraCold) one). 
 
 ## License 
 

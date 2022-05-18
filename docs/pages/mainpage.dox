@@ -6,38 +6,38 @@
 
 \section About
 
-%UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic
-systems in the context of Gross-Pitaevskii theory. \n
+%UltraCold is a modular and extensible collection of C++ libraries for the study of ultra-cold atomic systems in the
+ context of Gross-Pitaevskii theory. \n
 
 The package contains several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov equations, allowing
 for the description of ultra-cold systems of bosons at the mean-field level, studying their ground-state properties,
 the dynamics, and elementary excitations.
 
-Right now, all the solver classes in the package take advantage of OpenMP parallelization.
+Right now, all the solver classes take advantage of OpenMP parallelization.
 
 \section Required Prerequisites and platforms
 
-%UltraCold has been tested only Linux machines, including the High Performance Computing cluster
-<a href="https://www.hpc.cineca.it/hardware/galileo100"> Galileo100 </a> from the italian supercomputing consortium
-<a href="https://www.cineca.it">CINECA</a>.  Moreover, it is built on top of Intel's Math Kernel Library,
-and relies upon <a href="https://github.com/opencollab/arpack-ng"> arpack-ng </a> for the solution of Bogolyubov
-equations. Hence, in order to use %UltraCold, you first need to download and install a distribution of Intel's software.
-Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
-Parallel Studio. The Intel oneAPI package can be downloaded for free from
-<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html"> here </a>. In
-particular, %UltraCold relies on the
-<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html"> Intel oneAPI Base
-Toolkit </a> and on the
-<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html"> Intel oneAPI HPC
-Toolkit </a>   \n
+%UltraCold is built on top of Intel's Math Kernel Library, and relies upon
+<a href="https://github.com/opencollab/arpack-ng">arpack-ng</a> (which is provided as a bundled package) for the
+solution of Bogolyubov equations. Hence, in order to use %UltraCold, you first need to download and install a
+distribution of Intel's software.
+
+Right now, the package has been only tested with Intel oneAPI, although it should also work with previous versions
+of Intel Parallel Studio. The Intel oneAPI package can be downloaded **for free** from
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here</a>.
+In particular, %UltraCold relies on the
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base
+Toolkit</a> and on the
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC
+Toolkit</a>.
+
+The package has been tested only on Linux machines, including the High Performance Computing cluster
+<a href="https://www.hpc.cineca.it/hardware/galileo100">Galileo100</a> from the italian supercomputing consortium
+<a href="https://www.cineca.it/">CINECA</a>.   \n
 
 \section Installation
 
-Before getting %UltraCold, be sure you have Intel oneAPI installed. UltraCold is in fact built on top of Intel's Math
-Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with
-previous versions of Intel Parallel Studio, although we have never tried it.
-
-To get UltraCold, first clone it into your machine
+To get %UltraCold, first clone it into your machine
 
 \code
 git clone https://github.com/smroccuzzo/UltraCold.git
@@ -54,7 +54,7 @@ make
 make install
 \endcode
 
-\section Usage
+\section Usage Usage and examples
 
 %UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
 equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
@@ -63,6 +63,33 @@ available under the namespace UltraCold. \n
 The \subpage Examples section provides several examples of usage of the basic functionalities of the package (as well as
 some physics). Such examples are meant to be used as templates for more complex applications, combining the
 functionality of the package to develop some interesting physics.
+
+\section Contributing
+
+%UltraCold is developed using <a href="https://git-scm.com/"> Git </a> as a version control tool, and
+<a href="https://github.com">GitHub</a> as the central host of the source code.
+
+If you find some issue, and/or have suggestions for additions and/or improvements, please open a
+<a href="https://docs.github.com/en/issues/tracking-your-work-with-issues">GitHub issue</a>.
+
+If you want to actively contribute, after opening an issue, follow this (pretty standard) workflow, based on the
+<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">
+fork and pull model</a>:
+
+- If you already have a GitHub account, <a href="https://github.com/login">sign in</a>. Otherwise,
+<a href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home">create
+one </a> (it's free, and we are pretty confident that it will always be).
+- Fork the %UltraCold project.
+- Make a local clone of your fork to your own computer.
+- Create a new branch on which you will be making changes. This marks the point from which your copy of the project
+starts to differ from that of the main development branch.
+- Start to make your changes, for example by modifying existing files and/or creating new ones. Once you are
+satisfied with your changes, you can commit each change, in such a way that Git can keep track of them. With each commit,
+write a short message describing what your particular set of changes does.
+- When you're finished committing all of your changes to your local repository, you can push them all upstream to your
+GitHub repository.
+- Finally, open a pull request on GitHub to the main development repository (i.e., by now,
+<a href="https://github.com/smroccuzzo/UltraCold">this</a> one).
 
 \section License
 
