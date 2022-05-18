@@ -17,8 +17,8 @@ The complete documentation is available either in [html](https://smroccuzzo.gith
 ## Prerequisites and platforms
 
 UltraCold has been tested only on Linux machines, including the High Performance Computing cluster 
-[Galileo100](https://www.hpc.cineca.it/hardware/galileo100) from the italian supercomputing consortium  
-[CINECA](https://www.cineca.it/). Moreover, it is built on top of Intel's Math Kernel Library,
+[Galileo100](https://www.hpc.cineca.it/hardware/galileo100) from the italian supercomputing 
+consortium [CINECA](https://www.cineca.it/). Moreover, it is built on top of Intel's Math Kernel Library,
 and relies upon [arpack-ng](https://github.com/opencollab/arpack-ng) for the solution of Bogolyubov
 equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software.
 Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
