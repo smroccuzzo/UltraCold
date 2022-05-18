@@ -22,7 +22,7 @@ executed. Now you can just copy the eventual file *example-n.prm* from the paren
 
 The output of course will depend on the particular example, and is documented fully for each of them.
 
-Although a prior basic knowledge of C++ is highly recommended, to use these examples also very basic knowledge is more
+Although a prior knowledge of C++ is highly recommended, to use these examples also very basic knowledge is more
 than sufficient. The documentation tries to be as pedantic as possible, so that extending these examples for user's
 need shouldn't be too difficult.
 
