@@ -39,7 +39,7 @@ namespace UltraCold
 {
 
     /**
-     * @brief This namespace contains solver classes for several flavours of Bogolyubov equations.
+     * @brief Solver classes for several flavours of Bogolyubov equations.
      *
      * While the GPSolver class and related classes allows to study the ground state and the dynamics of
      * Bose-Einstein condensates, the elementary excitations on top of a certain state can be studied by solving the

@@ -25,13 +25,11 @@
 var NAVTREE =
 [
   [ "UltraCold", "index.html", [
-    [ "Introduction", "index.html", [
-      [ "What is it", "index.html#Description", null ],
-      [ "Prerequisites and platforms", "index.html#Required", null ],
-      [ "Installation", "index.html#Installation", null ],
-      [ "Examples", "index.html#Examples", null ],
-      [ "License", "index.html#License", null ]
-    ] ],
+    [ "About", "index.html#About", null ],
+    [ "Prerequisites and platforms", "index.html#Required", null ],
+    [ "Installation", "index.html#Installation", null ],
+    [ "Usage", "index.html#Usage", null ],
+    [ "License", "index.html#License", null ],
     [ "Examples", "examples.html", "examples" ],
     [ "GNU GENERAL PUBLIC LICENSE", "md__home_smroccuzzo_work__ultra_cold__l_i_c_e_n_s_e.html", null ],
     [ "Namespaces", "namespaces.html", [

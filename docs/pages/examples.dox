@@ -4,10 +4,10 @@
 
 \tableofcontents
 
-%UltraCold come with several examples to illustrate how to use it to simulate ultra-cold atomic systems in
-the context of Gross-Pitaevskii theory.
+The %UltraCold package contains with several examples to illustrate how to use it to simulate ultra-cold atomic systems
+in the context of Gross-Pitaevskii theory.
 
-The <code>examples</code> folder contains several folders called <code>example-<n></code>, each containing
+The <code>examples</code> folder contains different folders called <code>example-<n></code>, each containing
 
  - a source file called <code>example-<n>.cpp</code>, containing an example on how to write an executable that uses the
   <code>UltraCold</code> library,

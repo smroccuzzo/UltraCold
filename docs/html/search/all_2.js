@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['example_2d1_0',['example-1',['../example-1.html',1,'examples']]],
-  ['example_2d2_1',['example-2',['../example-2.html',1,'examples']]],
-  ['example_2d3_2',['example-3',['../example-3.html',1,'examples']]],
-  ['example_2d4_3',['example-4',['../example-4.html',1,'examples']]],
-  ['examples_4',['Examples',['../examples.html',1,'']]],
-  ['extent_5',['extent',['../class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3',1,'UltraCold::Vector']]]
+  ['data_0',['data',['../class_ultra_cold_1_1_vector.html#ad862e1ab512afe101fab477922b166d7',1,'UltraCold::Vector']]],
+  ['dataout_1',['DataOut',['../class_ultra_cold_1_1_fourier_space_output_1_1_data_out.html',1,'UltraCold::FourierSpaceOutput::DataOut'],['../class_ultra_cold_1_1_real_space_output_1_1_data_out.html',1,'UltraCold::RealSpaceOutput::DataOut']]],
+  ['dftcalculator_2',['DFtCalculator',['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html#af9385bf7ed44e51259763f71350ff2c9',1,'UltraCold::MKLWrappers::DFtCalculator::DFtCalculator(Vector&lt; std::complex&lt; double &gt; &gt; &amp;forward_domain_vector, Vector&lt; std::complex&lt; double &gt; &gt; &amp;backward_domain_vector)'],['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html#a4ce51bf8fe914b262ad34f4c9bde466c',1,'UltraCold::MKLWrappers::DFtCalculator::DFtCalculator(Vector&lt; double &gt; &amp;forward_domain_vector, Vector&lt; std::complex&lt; double &gt; &gt; &amp;backward_domain_vector)'],['../class_ultra_cold_1_1_m_k_l_wrappers_1_1_d_ft_calculator.html',1,'UltraCold::MKLWrappers::DFtCalculator']]],
+  ['dipolargpsolver_3',['DipolarGPSolver',['../class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html#af2c3172e22994c0dc6d40aada41a3233',1,'UltraCold::GPSolvers::DipolarGPSolver::DipolarGPSolver()'],['../class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html',1,'UltraCold::GPSolvers::DipolarGPSolver']]]
 ];

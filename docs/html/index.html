@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>UltraCold: Introduction</title>
+<title>UltraCold: UltraCold</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,25 +90,24 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Introduction </div></div>
+  <div class="headertitle"><div class="title">UltraCold </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#Description">What is it</a></li>
+<ul><li class="level1"><a href="#About">About</a></li>
 <li class="level1"><a href="#Required">Prerequisites and platforms</a></li>
 <li class="level1"><a href="#Installation">Installation</a></li>
-<li class="level1"><a href="#Examples">Examples</a></li>
+<li class="level1"><a href="#Usage">Usage</a></li>
 <li class="level1"><a href="#License">License</a></li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="Description"></a>
-What is it</h1>
+<div class="textblock"><h1><a class="anchor" id="About"></a>
+About</h1>
 <p >UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic systems in the context of Gross-Pitaevskii theory. <br  />
-UltraCold allows for the solution of several flavors of Gross-Pitaevskii and Bogolyubov equations, used in particular for the description of ensembles of bosonic particles close to the absolute zero. <br  />
- </p>
+ UltraCold contains several solver classes for different flavors of Gross-Pitaevskii-like equations, allowing to describe ultra-cold systems of bosons at the mean-field level and to study both their ground-state configuration and the dynamics. <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a> also offers several solver classes for Bogolyubov equations, allowing to study the elementary excitations on top of stationary states. Right now, all the solver classes take advantage of OpenMP parallelization.</p>
 <h1><a class="anchor" id="Required"></a>
 Prerequisites and platforms</h1>
-<p >UltraCold has been tested only Linux machines. Moreover, it is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a> for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software. Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. The Intel oneAPI package can be downloaded for free from <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here </a>. In particular, UltraCold relies on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base Toolkit </a> and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC Toolkit </a> <br  />
+<p >UltraCold has been tested only Linux machines, including the High Performance Computing cluster <a href="https://www.hpc.cineca.it/hardware/galileo100">Galileo100 </a> from the italian supercomputing consortium <a href="https://www.cineca.it">CINECA</a>. Moreover, it is built on top of Intel's Math Kernel Library, and relies upon <a href="https://github.com/opencollab/arpack-ng">arpack-ng </a> for the solution of Bogolyubov equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software. Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel Parallel Studio. The Intel oneAPI package can be downloaded for free from <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">here </a>. In particular, UltraCold relies on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">Intel oneAPI Base Toolkit </a> and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">Intel oneAPI HPC Toolkit </a> <br  />
  </p>
 <h1><a class="anchor" id="Installation"></a>
 Installation</h1>
@@ -122,12 +121,13 @@ Installation</h1>
 <div class="line">make</div>
 <div class="line">make install</div>
 <div class="ttc" id="anamespace_ultra_cold_html"><div class="ttname"><a href="namespace_ultra_cold.html">UltraCold</a></div><div class="ttdoc">All the classes and functions necessary to work with UltraCold.</div><div class="ttdef"><b>Definition:</b> dft.cpp:23</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="Examples"></a>
-Examples</h1>
-<p >UltraCold comes packed with several examples showing its basic functionality and also some physics. Such examples are meant to be used as templates for more complex applications, combining the functionality of the various solver classes to find some interesting physics. See the examples folder for details.</p>
+</div><!-- fragment --><h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<p >UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is available under the namespace <a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a>. <br  />
+ The Examples section provides several examples of usage of the basic functionalities of the package (as well as some physics). Such examples are meant to be used as templates for more complex applications, combining the functionality of the package to develop some interesting physics.</p>
 <h1><a class="anchor" id="License"></a>
 License</h1>
-<p ><a class="el" href="namespace_ultra_cold.html" title="All the classes and functions necessary to work with UltraCold.">UltraCold</a> is distributed as free software under the GPL3. See also the file LICENSE.md </p>
+<p >UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,18 +1,25 @@
 /**
 
-\mainpage Introduction
+\mainpage %UltraCold
+
 \tableofcontents
 
-\section Description What is it
+\section About
 
 %UltraCold is an extensible and modular collection of C++ classes and libraries for the study of ultra-cold atomic
 systems in the context of Gross-Pitaevskii theory. \n
-%UltraCold allows for the solution of several flavors of Gross-Pitaevskii and Bogolyubov equations, used in particular
-for the description of ensembles of bosonic particles close to the absolute zero. \n
+
+The package contains several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov equations, allowing
+for the description of ultra-cold systems of bosons at the mean-field level, studying their ground-state properties,
+the dynamics, and elementary excitations.
+
+Right now, all the solver classes in the package take advantage of OpenMP parallelization.
 
 \section Required Prerequisites and platforms
 
-%UltraCold has been tested only Linux machines. Moreover, it is built on top of Intel's Math Kernel Library,
+%UltraCold has been tested only Linux machines, including the High Performance Computing cluster
+<a href="https://www.hpc.cineca.it/hardware/galileo100"> Galileo100 </a> from the italian supercomputing consortium
+<a href="https://www.cineca.it">CINECA</a>.  Moreover, it is built on top of Intel's Math Kernel Library,
 and relies upon <a href="https://github.com/opencollab/arpack-ng"> arpack-ng </a> for the solution of Bogolyubov
 equations. Hence, in order to use %UltraCold, you first need to download and install a distribution of Intel's software.
 Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
@@ -47,14 +54,18 @@ make
 make install
 \endcode
 
-\section Examples
+\section Usage
 
-%UltraCold comes packed with several examples showing its basic functionality and also some physics. Such examples are
-meant to be used as templates for more complex applications, combining the functionality  of the various solver classes
-to find some interesting physics. See the examples folder for details.
+%UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
+equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
+available under the namespace UltraCold. \n
+
+The \subpage Examples section provides several examples of usage of the basic functionalities of the package (as well as
+some physics). Such examples are meant to be used as templates for more complex applications, combining the
+functionality of the package to develop some interesting physics.
 
 \section License
 
-UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md
+%UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md
 
 */

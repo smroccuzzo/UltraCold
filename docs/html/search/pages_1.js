@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['gnu_20general_20public_20license_0',['GNU GENERAL PUBLIC LICENSE',['../md__home_smroccuzzo_work__ultra_cold__l_i_c_e_n_s_e.html',1,'']]]
+  ['example_2d1_0',['example-1',['../example-1.html',1,'examples']]],
+  ['example_2d2_1',['example-2',['../example-2.html',1,'examples']]],
+  ['example_2d3_2',['example-3',['../example-3.html',1,'examples']]],
+  ['example_2d4_3',['example-4',['../example-4.html',1,'examples']]],
+  ['examples_4',['Examples',['../examples.html',1,'']]]
 ];

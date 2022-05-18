@@ -34,7 +34,7 @@ namespace UltraCold
 {
 
     /**
-     * @brief This namespace contains several solver classes for various flavors of Non-Linear Schrodinger equations.
+     * @brief Solver classes for various flavors of Gross-Pitaveskii equations.
      *
      * Ultra-cold bosonic systems are very often described in terms of the so-called
      * <a href="https://en.wikipedia.org/wiki/Gross%E2%80%93Pitaevskii_equation"> Gross-Pitaevskii equation </a>, which

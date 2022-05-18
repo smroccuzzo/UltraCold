@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['get_5fnumber_5fof_5favailable_5fprocessors_0',['get_number_of_available_processors',['../class_ultra_cold_1_1_tools_1_1_hardware_inspector.html#aa746912731133a729b1e57615421e96c',1,'UltraCold::Tools::HardwareInspector']]],
-  ['get_5fnumber_5fof_5fprocessors_1',['get_number_of_processors',['../class_ultra_cold_1_1_tools_1_1_hardware_inspector.html#a5f1e83f1c67784e15cf7748282bc4448',1,'UltraCold::Tools::HardwareInspector']]],
-  ['gnu_20general_20public_20license_2',['GNU GENERAL PUBLIC LICENSE',['../md__home_smroccuzzo_work__ultra_cold__l_i_c_e_n_s_e.html',1,'']]],
-  ['gpsolver_3',['GPSolver',['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a27e4ed4915c1e2bfcabb82c2d7d07af0',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#a00ae80a9fb6fe441c455ddc7d1b45df5',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; double &gt; &amp;y, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html#ada67b8cb4973130f71e25058f4225791',1,'UltraCold::GPSolvers::GPSolver::GPSolver(Vector&lt; double &gt; &amp;x, Vector&lt; double &gt; &amp;y, Vector&lt; double &gt; &amp;z, Vector&lt; std::complex&lt; double &gt; &gt; &amp;psi_0, Vector&lt; double &gt; &amp;Vext, double scattering_length)'],['../class_ultra_cold_1_1_g_p_solvers_1_1_g_p_solver.html',1,'UltraCold::GPSolvers::GPSolver']]]
+  ['example_2d1_0',['example-1',['../example-1.html',1,'examples']]],
+  ['example_2d2_1',['example-2',['../example-2.html',1,'examples']]],
+  ['example_2d3_2',['example-3',['../example-3.html',1,'examples']]],
+  ['example_2d4_3',['example-4',['../example-4.html',1,'examples']]],
+  ['examples_4',['Examples',['../examples.html',1,'']]],
+  ['extent_5',['extent',['../class_ultra_cold_1_1_vector.html#a255ce5c3acc5afceb2052d9eb3f338a3',1,'UltraCold::Vector']]]
 ];

@@ -5,10 +5,12 @@ context of Gross-Pitaevskii theory.
 
 ## What UltraCold can do
 
-UltraCold contains several solver classes for different flavors of Gross-Pitaevskii-like equations, allowing to 
-describe ultra-cold systems of bosons at the mean-field level and to study both their ground-state configuration and 
-the dynamics. UltraCold also offers several solver classes for Bogolyubov equations, allowing to study the elementary 
-excitations on top of stationary states. Right now, all the solver classes take advantage of OpenMP parallelization.
+UltraCold contains several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov equations, allowing
+for the description of ultra-cold systems of bosons at the mean-field level, studying their ground-state properties,
+the dynamics, and elementary excitations.
+
+Right now, all the solver classes take advantage of OpenMP parallelization.
+
 The complete documentation is available either [html](https://smroccuzzo.github.io/UltraCold) or
 [pdf](./docs/manual.pdf).   
 
@@ -47,10 +49,11 @@ Then, enter the directory UltraCold, and follow the usual steps required to buil
     make
     make install
 
-## Examples
+##  Usage
 
-UltraCold come with several examples to illustrate how to use it to simulate ultra-cold atomic systems in the context of
-Gross-Pitaevskii theory.
+UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
+equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
+available under the namespace [UltraCold](./docs/html/_ultra_cold_8hpp.html). 
 
 The [examples](./examples) folder contains several folders called *example-n*, each containing
 
@@ -91,7 +94,7 @@ description available in the documentation.
   ground state of a trapped dipolar Bose-Einstein condensate.
 - [example-4](./examples/example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp)) Excitation 
 spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
-- 
+
 ## License 
 
 UltraCold is distributed as free software under the GPL3. See the file LICENSE.md
