@@ -1,4 +1,4 @@
-The [examples](./examples) folder contains several folders called *example-n*, each containing
+This folder contains several folders called *example-n*, each containing
 
 - a source file called *example-n.cpp*, containing an example on how to write an executable that uses UltraCold
   libraries,
@@ -29,11 +29,11 @@ need shouldn't be too difficult.
 Here is the complete list of all examples and a brief description of what each of them does. Refer to the detailed
 description available in the documentation.
 
-- [example-1](./example-1) Defined in file [example-1.cpp](./examples/example-1/example-1.cpp) Ground state
+- [example-1](./example-1) Defined in file [example-1.cpp](./example-1/example-1.cpp) Ground state
   and simple dynamics of a three-dimensional, harmonically trapped Bose gas.
-- [example-2](./example-2) Defined in file [example-2.cpp](./examples/example-2/example-2.cpp) Elementary
+- [example-2](./example-2) Defined in file [example-2.cpp](./example-2/example-2.cpp) Elementary
   excitations via Bogolyubov equations in a two-dimensional, harmonically trapped Bose gas.
-- [example-3](./example-3) Defined in file [example-3.cpp](./examples/example-3/example-3.cpp) Supersolid
+- [example-3](./example-3) Defined in file [example-3.cpp](./example-3/example-3.cpp) Supersolid
   ground state of a trapped dipolar Bose-Einstein condensate.
-- [example-4](./example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp)) Excitation
+- [example-4](./example-4) Defined in file [example-4.cpp](./example-4/example-4.cpp) Excitation
   spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
