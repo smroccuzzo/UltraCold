@@ -60,7 +60,7 @@ make install
 equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
 available under the namespace UltraCold. \n
 
-The \subpage Examples section provides several examples of usage of the basic functionalities of the package (as well as
+The \subpage examples section provides several examples of usage of the basic functionalities of the package (as well as
 some physics). Such examples are meant to be used as templates for more complex applications, combining the
 functionality of the package to develop some interesting physics.
 
