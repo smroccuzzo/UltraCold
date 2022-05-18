@@ -33,10 +33,6 @@ consortium [CINECA](https://www.cineca.it/).
 
 ## Installation
 
-We stress again that before getting UltraCold, you need to be sure that you have Intel oneAPI installed. UltraCold is in
-fact built on top of Intel's Math Kernel Library, and rely entirely on it for the basic mathematical operations.
-The program should work also with previous versions of Intel Parallel Studio, although we have never tested it.
-
 To get UltraCold, first clone it into your machine
 
     git clone https://github.com/smroccuzzo/UltraCold.git
