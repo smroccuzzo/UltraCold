@@ -11,7 +11,7 @@ the dynamics, and elementary excitations.
 
 Right now, all the solver classes take advantage of OpenMP parallelization.
 
-The complete documentation is available either [html](https://smroccuzzo.github.io/UltraCold) or
+The complete documentation is available either in [html](https://smroccuzzo.github.io/UltraCold) or
 [pdf](./docs/manual.pdf).   
 
 ## Prerequisites and platforms
@@ -23,17 +23,17 @@ and relies upon [arpack-ng](https://github.com/opencollab/arpack-ng) for the sol
 equations. Hence, in order to use UltraCold, you first need to download and install a distribution of Intel's software.
 Right now, it has been only tested with Intel oneAPI, although it should also work with previous versions of Intel
 Parallel Studio. The Intel oneAPI package can be downloaded for free from
-[here](https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html). In particular, UltraCold relies on
-the
+[here](https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html). 
+In particular, UltraCold relies on the
 [Intel oneAPI Base Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html) 
 and on the
 [Intel oneAPI HPC Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html).
 
 ## Installation
 
-Before getting UltraCold, be sure you have Intel oneAPI installed. UltraCold is in fact built on top of Intel's Math
-Kernel Library, and rely entirely on it for the basic mathematical operations. The program should work also with
-previous versions of Intel Parallel Studio, although we have never tried it.
+We stress again that before getting UltraCold, you need to be sure that you have Intel oneAPI installed. UltraCold is in
+fact built on top of Intel's Math Kernel Library, and rely entirely on it for the basic mathematical operations.
+The program should work also with previous versions of Intel Parallel Studio, although we have never tested it.
 
 To get UltraCold, first clone it into your machine
 
@@ -72,14 +72,14 @@ terminal in the folder containing the example you are interested in and type
     make
 
 This will create an executable called example-n, which (if everything went fine) should be ready to be
-executed. Now you can just copy the eventual file example-n.prm from the parent folder and run the example
+executed. Now you can just copy the eventual file *example-n.prm* from the parent folder and run the example
 
     cp ../example-n.prm .
     ./example-n
 
 The output of course will depend on the particular example, and is documented fully for each of them.
 
-Although a prior basic knowledge of C++ is highly recommended, to use these examples also a very basic one is more
+Although a prior basic knowledge of C++ is highly recommended, to use these examples also very basic knowledge is more
 than sufficient. The documentation tries to be as pedantic as possible, so that extending these examples for user's
 need shouldn't be too difficult.
 
