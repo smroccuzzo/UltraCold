@@ -53,7 +53,7 @@ Then, enter the directory UltraCold, and follow the usual steps required to buil
 
 UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
 equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
-available under the namespace [UltraCold](./docs/html/_ultra_cold_8hpp.html). 
+available under the namespace [UltraCold](https://smroccuzzo.github.io/UltraCold/html/namespace_ultra_cold.html). 
 
 The [examples](./examples) folder contains several folders called *example-n*, each containing
 
