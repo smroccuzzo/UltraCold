@@ -49,7 +49,7 @@ Then, enter the directory UltraCold, and follow the usual steps required to buil
 
 ##  Usage
 
-UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
+UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov
 equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
 available under the namespace [UltraCold](https://smroccuzzo.github.io/UltraCold/html/namespace_ultra_cold.html). 
 
@@ -69,7 +69,7 @@ terminal in the folder containing the example you are interested in and type
     cmake -DULTRACOLD_DIR=/path/to/the/directory/where/you/installed/UltraCold ..
     make
 
-This will create an executable called example-n, which (if everything went fine) should be ready to be
+This will create an executable called *example-n*, which (if everything went fine) should be ready to be
 executed. Now you can just copy the eventual file *example-n.prm* from the parent folder and run the example
 
     cp ../example-n.prm .
@@ -77,7 +77,7 @@ executed. Now you can just copy the eventual file *example-n.prm* from the paren
 
 The output of course will depend on the particular example, and is documented fully for each of them.
 
-Although a prior basic knowledge of C++ is highly recommended, to use these examples also very basic knowledge is more
+Although a prior knowledge of C++ is highly recommended, to use these examples also very basic knowledge is more
 than sufficient. The documentation tries to be as pedantic as possible, so that extending these examples for user's
 need shouldn't be too difficult.
 
@@ -90,9 +90,9 @@ description available in the documentation.
   excitations via Bogolyubov equations in a two-dimensional, harmonically trapped Bose gas.
 - [example-3](./examples/example-3) Defined in file [example-3.cpp](./examples/example-3/example-3.cpp) Supersolid 
   ground state of a trapped dipolar Bose-Einstein condensate.
-- [example-4](./examples/example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp)) Excitation 
+- [example-4](./examples/example-4) Defined in file [example-4.cpp](./examples/example-4/example-4.cpp) Excitation 
 spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
 
 ## License 
 
-UltraCold is distributed as free software under the GPL3. See the file LICENSE.md
+UltraCold is distributed as free software under the GPL3. See the file [LICENSE.md](./LICENSE.md).
