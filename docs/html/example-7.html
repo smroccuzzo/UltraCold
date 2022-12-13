@@ -210,7 +210,7 @@ kcut = 1</pre><p >At the beginning of the program, we define our solver class wi
 <div class="line">    <a class="code hl_function" href="class_ultra_cold_1_1cuda_solvers_1_1_dipolar_g_p_solver.html#a25c8821931fa4b1ea9f9c5858289c9bd">calculate_vortex_tangle_length</a>(density_threshold);</div>
 <div class="line">    GraphicOutput::DataWriter quasi_condensate_out;</div>
 <div class="line">    quasi_condensate_out.set_output_name(<span class="stringliteral">&quot;vortex_tangle&quot;</span>+std::to_string(iteration_number/write_output_every));</div>
-<div class="line">    quasi_condensate_out.write_vtk(x_axis,y_axis,z_axis,vortex_tangle_density,<span class="stringliteral">&quot;psi&quot;</span>);</div>
+<div class="line">    quasi_condensate_out.write_vtk(x_axis,y_axis,z_axis,vortex_tangle_density,<span class="stringliteral">&quot;psi&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_dipoles3d_html"><div class="ttname"><a href="class_dipoles3d.html">Dipoles3d</a></div><div class="ttdef"><b>Definition:</b> example-7.cpp:36</div></div>
@@ -292,7 +292,7 @@ The plain program</h2>
 <div class="line">    <a class="code hl_function" href="class_ultra_cold_1_1cuda_solvers_1_1_dipolar_g_p_solver.html#a25c8821931fa4b1ea9f9c5858289c9bd">calculate_vortex_tangle_length</a>(density_threshold);</div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html">GraphicOutput::DataWriter</a> quasi_condensate_out;</div>
 <div class="line">    quasi_condensate_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;vortex_tangle&quot;</span>+std::to_string(iteration_number/write_output_every));</div>
-<div class="line">    quasi_condensate_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x_axis,y_axis,z_axis,vortex_tangle_density,<span class="stringliteral">&quot;psi&quot;</span>);</div>
+<div class="line">    quasi_condensate_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x_axis,y_axis,z_axis,vortex_tangle_density,<span class="stringliteral">&quot;psi&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
