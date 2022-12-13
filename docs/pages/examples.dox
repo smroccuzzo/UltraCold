@@ -39,13 +39,6 @@ and run the example
     ./example-n
 \endcode
 
-\code{.sh}
-
-    cp ../example-<n>.prm .
-    ./example-<n>
-
-\endcode
-
 The output of course will depend on the particular example, and is documented fully for each of them.
 
 \note Although a prior basic knowledge of C++ is highly recommended, to use these examples also a very basic one is more
