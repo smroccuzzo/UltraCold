@@ -121,6 +121,10 @@ description available in the documentation.
 spectrum of a trapped dipolar Bose-Einstein condensate across the superfluid-supersolid phase transition.
 - [example-5](./examples/example-5) Defined in file [example-5.cpp](./examples/example-5/example-5.cpp) Simple dynamics 
 of two vortices in a two-dimensional dipolar Bose gas, **using GPU acceleration**.
+- [example-6](./examples/example-6) Defined in file [example-6.cpp](./examples/example-6/example-6.cpp) Far from equilibrium 
+dynamics in a two-dimensional dipolar Bose gas, **using GPU acceleration**.
+- [example-7](./examples/example-7) Defined in file [example-7.cpp](./examples/example-7/example-7.cpp) Far from equilibrium 
+dynamics in a three-dimensional dipolar Bose gas, **using GPU acceleration**.
 
 ## Contributing
 
