@@ -92,11 +92,15 @@ terminal in the folder containing the example you are interested in and type
     mkdir build
     cd build
     cmake -DULTRACOLD_DIR=/path/to/the/directory/where/you/installed/UltraCold \
-          -DCMAKE_BUILD_TYPE=Release ..
+          -DCMAKE_BUILD_TYPE=Release .. \
+	  -DCMAKE_CXX_COMPILER=icpc
     make
 
 This will create an executable called *example-n*, which (if everything went fine) should be ready to be
-executed. Now you can just copy the eventual file *example-n.prm* from the parent folder and run the example
+executed. Notice that we here pick explicitly the Intel C++ compiler. Sometimes, in some system, the gnu 
+compiler would be picked by default, but then the program wouldn't work. 
+After succesful compilation, you can just copy the eventual file *example-n.prm* from the parent folder 
+and run the example
 
     cp ../example-n.prm .
     ./example-n
