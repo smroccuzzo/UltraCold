@@ -181,6 +181,11 @@ conditions, add Truncated Wigner noise, and then run in real time, just like in 
 \subsection Results-7 Results
 *******************************************************
 
+We just show an example of the vortex tangle evolution, starting from "box" initial conditions in Fourier space, and
+letting the vortex tangle evolve and decay.
+
+\image html example-7-tangle.png width=800px
+
 *******************************************************
 \subsection Uncommented-7 The plain program
 *******************************************************
