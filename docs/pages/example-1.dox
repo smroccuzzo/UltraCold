@@ -423,13 +423,13 @@ parameters:
 
 We write our ground state solution to a .vtk file, that can be read for plotting using programs like
 <a href="https://www.paraview.org/"> Paraview </a> or <a href="https://visit-dav.github.io/visit-website/index.html">
-Visit</a>, using the class <code>UltraCold::RealSpaceOut::DataWriter</code>:
+Visit</a>, using the class <code>UltraCold::GraphicOutput::DataWriter</code>:
 
 \code{.cpp}
 
     GraphicOutput::DataWriter data_out;
     data_out.set_output_name("ground_state_wave_function");
-    data_out.write_vtk(x,y,z,psi,"psi");
+    data_out.write_vtk(x,y,z,psi,"psi","ASCII");
 
 \endcode
 
@@ -732,7 +732,7 @@ int main() {
 
     GraphicOutput::DataWriter data_out;
     data_out.set_output_name("ground_state_wave_function");
-    data_out.write_vtk(x,y,z,psi,"psi");
+    data_out.write_vtk(x,y,z,psi,"psi","ASCII");
 
     gp_solver.reinit(Vext,psi);
 

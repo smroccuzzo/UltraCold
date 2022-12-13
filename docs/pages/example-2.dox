@@ -261,7 +261,7 @@ int main() {
 
     GraphicOutput::DataWriter output_wave_function;
     output_wave_function.set_output_name("ground_state_wave_function");
-    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function");
+    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function","ASCII");
 
 \endcode
 
@@ -345,10 +345,10 @@ This is exactly what we calculated and output into some .vtk files with the last
         }
 
         output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
-        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations");
+        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations","ASCII");
 
         output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
-        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations");
+        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations","ASCII");
 
     }
 
@@ -522,7 +522,7 @@ int main() {
 
     GraphicOutput::DataWriter output_wave_function;
     output_wave_function.set_output_name("ground_state_wave_function");
-    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function");
+    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function","ASCII");
 
     Vector<double> psi0_real(nx,ny);
     for (int i = 0; i < psi.size() ; ++i) psi0_real[i] = psi[i].real();
@@ -560,10 +560,10 @@ int main() {
         }
 
         output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
-        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations");
+        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations","ASCII");
 
         output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
-        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations");
+        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations","ASCII");
 
     }
 

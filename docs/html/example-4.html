@@ -344,7 +344,7 @@ maximum number of arnoldi iterations = 10000</pre><p >We read the input file as 
 <div class="line">                                                                           std::cout);</div>
 <div class="line"> </div>
 <div class="line">psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
-<div class="line">psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,psi,<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
+<div class="line">psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,psi,<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="ttc" id="aclass_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver_html"><div class="ttname"><a href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html">UltraCold::GPSolvers::DipolarGPSolver</a></div><div class="ttdoc">Class to solve the Gross-Pitaevskii equation for a dipolar Bose gas in two or three space dimensions.</div><div class="ttdef"><b>Definition:</b> GPSolvers.hpp:467</div></div>
 <div class="ttc" id="aclass_ultra_cold_1_1_graphic_output_1_1_data_writer_html_aec73552d1a4ccd5f3111c6268961279b"><div class="ttname"><a href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">UltraCold::GraphicOutput::DataWriter::write_vtk</a></div><div class="ttdeci">void write_vtk(Vector&lt; double &gt; &amp;x_axis, Vector&lt; double &gt; &amp;y_axis, Vector&lt; double &gt; &amp;real_output_vector, const char *vector_name, const char *format)</div><div class="ttdoc">Write an output data file in .vtk format, for real 2D output.</div><div class="ttdef"><b>Definition:</b> DataWriter.cpp:805</div></div>
 </div><!-- fragment --><p >We can now plug the calculated ground-state solution \( \psi_0 \) to the class <a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped dipolar Bose gas.">UltraCold::BogolyubovSolvers::TrappedDipolarBogolyubovSolver</a>, which will calculate for us the energies of the elementary excitations of the system as well as the Bogolyubov amplitudes \( u \) and \( v \). Since we are considering a simple solution of the GPe, without any topological defect like solitons or vortices, the ground-state wave function, despite being defined as a complex Vector, will have only a non-zero real part. We can thus simplify the Bogolyubov equations solving only eigen-problems of halved dimensionality. The class <code><a class="el" href="class_ultra_cold_1_1_bogolyubov_solvers_1_1_trapped_dipolar_bogolyubov_solver.html" title="Class to solve the Bogolyubov equations for a trapped dipolar Bose gas.">UltraCold::BogolyubovSolvers::TrappedDipolarBogolyubovSolver</a></code> will do this automatically for us, provided that we feed a real Vector, representing the ground-state wave function, to its constructor. We thus first copy the calculated ground-state wave-function into a real-valued Vector</p>
@@ -411,10 +411,10 @@ maximum number of arnoldi iterations = 10000</pre><p >We read the input file as 
 <div class="line">                }</div>
 <div class="line"> </div>
 <div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;density_fluctuations_mode_&quot;</span> + std::to_string(i));</div>
-<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,density_fluctuations[i], <span class="stringliteral">&quot;density_fluctuations&quot;</span>);</div>
+<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,density_fluctuations[i], <span class="stringliteral">&quot;density_fluctuations&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;phase_fluctuations_mode_&quot;</span> + std::to_string(i));</div>
-<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,phase_fluctuations[i], <span class="stringliteral">&quot;phase_fluctuations&quot;</span>);</div>
+<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,phase_fluctuations[i], <span class="stringliteral">&quot;phase_fluctuations&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">        }</div>
 <div class="line"> </div>
@@ -587,7 +587,7 @@ The plain program</h2>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html">UltraCold::GraphicOutput::DataWriter</a> psi_out;</div>
 <div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;initial_wave_function&quot;</span>);</div>
-<div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5b26fc2251c281fd95ff72c662e49640">write_slice2d_vtk</a>(x,y,psi,<span class="stringliteral">&quot;xy&quot;</span>,<span class="stringliteral">&quot;initial_wave_function&quot;</span>);</div>
+<div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5b26fc2251c281fd95ff72c662e49640">write_slice2d_vtk</a>(x,y,psi,<span class="stringliteral">&quot;xy&quot;</span>,<span class="stringliteral">&quot;initial_wave_function&quot;</span>,<span class="stringliteral">&quot;ASCII&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_g_p_solvers_1_1_dipolar_g_p_solver.html">GPSolvers::DipolarGPSolver</a> dipolar_gp_solver(x,</div>
 <div class="line">                                                 y,</div>
@@ -604,7 +604,7 @@ The plain program</h2>
 <div class="line">                                                                               std::cout);</div>
 <div class="line"> </div>
 <div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
-<div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,psi,<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>);</div>
+<div class="line">    psi_out.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,psi,<span class="stringliteral">&quot;ground_state_wave_function&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_class" href="class_ultra_cold_1_1_vector.html">Vector&lt;double&gt;</a> psi_real(nx,ny,nz);</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nx * ny * nz; ++i)</div>
@@ -655,10 +655,10 @@ The plain program</h2>
 <div class="line">                }</div>
 <div class="line"> </div>
 <div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;density_fluctuations_mode_&quot;</span> + std::to_string(i));</div>
-<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,density_fluctuations[i], <span class="stringliteral">&quot;density_fluctuations&quot;</span>);</div>
+<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,density_fluctuations[i], <span class="stringliteral">&quot;density_fluctuations&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#a5379ac7b98c084855b372e863c095856">set_output_name</a>(<span class="stringliteral">&quot;phase_fluctuations_mode_&quot;</span> + std::to_string(i));</div>
-<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,phase_fluctuations[i], <span class="stringliteral">&quot;phase_fluctuations&quot;</span>);</div>
+<div class="line">                output_fluctuations.<a class="code hl_function" href="class_ultra_cold_1_1_graphic_output_1_1_data_writer.html#aec73552d1a4ccd5f3111c6268961279b">write_vtk</a>(x,y,z,phase_fluctuations[i], <span class="stringliteral">&quot;phase_fluctuations&quot;</span>,<span class="stringliteral">&quot;BINARY&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">        }</div>
 <div class="line"> </div>

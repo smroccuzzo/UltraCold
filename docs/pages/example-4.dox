@@ -280,7 +280,7 @@ So, we calculate the ground state of the system using the class <code> GPSolvers
                                                                                std::cout);
 
     psi_out.set_output_name("ground_state_wave_function");
-    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function","BINARY");
 
 \endcode
 
@@ -382,10 +382,10 @@ one must find such three frequencies in the calculated energy spectrum.
                 }
 
                 output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
-                output_fluctuations.write_vtk(x,y,z,density_fluctuations[i], "density_fluctuations");
+                output_fluctuations.write_vtk(x,y,z,density_fluctuations[i], "density_fluctuations","BINARY");
 
                 output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
-                output_fluctuations.write_vtk(x,y,z,phase_fluctuations[i], "phase_fluctuations");
+                output_fluctuations.write_vtk(x,y,z,phase_fluctuations[i], "phase_fluctuations","BINARY");
 
         }
 
@@ -601,7 +601,7 @@ int main()
 
     UltraCold::GraphicOutput::DataWriter psi_out;
     psi_out.set_output_name("initial_wave_function");
-    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function");
+    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function","ASCII");
 
     GPSolvers::DipolarGPSolver dipolar_gp_solver(x,
                                                  y,
@@ -618,7 +618,7 @@ int main()
                                                                                std::cout);
 
     psi_out.set_output_name("ground_state_wave_function");
-    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function","BINARY");
 
     Vector<double> psi_real(nx,ny,nz);
     for (int i = 0; i < nx * ny * nz; ++i)
@@ -669,10 +669,10 @@ int main()
                 }
 
                 output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
-                output_fluctuations.write_vtk(x,y,z,density_fluctuations[i], "density_fluctuations");
+                output_fluctuations.write_vtk(x,y,z,density_fluctuations[i], "density_fluctuations","BINARY");
 
                 output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
-                output_fluctuations.write_vtk(x,y,z,phase_fluctuations[i], "phase_fluctuations");
+                output_fluctuations.write_vtk(x,y,z,phase_fluctuations[i], "phase_fluctuations","BINARY");
 
         }
 

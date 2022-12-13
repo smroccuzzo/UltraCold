@@ -177,6 +177,9 @@ void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
     if(iteration_number % write_output_every == 0)
     {
         copy_out_wave_function();
+        GraphicOutput::DataWriter psi_out;
+        psi_out.set_output_name("psi"+std::to_string(iteration_number/write_output_every));
+        psi_out.write_vtk(x_axis,y_axis,wave_function_output,"psi","BINARY");
 
         // Calculate momentum distribution
         ft_output_calculator.compute_forward();
@@ -541,6 +544,9 @@ void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
     if(iteration_number % write_output_every == 0)
     {
         copy_out_wave_function();
+        GraphicOutput::DataWriter psi_out;
+        psi_out.set_output_name("psi"+std::to_string(iteration_number/write_output_every));
+        psi_out.write_vtk(x_axis,y_axis,wave_function_output,"psi","BINARY");
 
         // Calculate momentum distribution
         ft_output_calculator.compute_forward();

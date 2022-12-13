@@ -97,7 +97,7 @@ void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
 
         GraphicOutput::DataWriter data_out;
         data_out.set_output_name("psi"+std::to_string(iteration_number));
-        data_out.write_vtk(x_axis,y_axis,wave_function_output,"psi");
+        data_out.write_vtk(x_axis,y_axis,wave_function_output,"psi","ASCII");
 
     }
 }
@@ -344,7 +344,7 @@ void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
 
         GraphicOutput::DataWriter data_out;
         data_out.set_output_name("psi"+std::to_string(iteration_number));
-        data_out.write_vtk(x_axis,y_axis,wave_function_output,"psi");
+        data_out.write_vtk(x_axis,y_axis,wave_function_output,"psi","ASCII");
 
     }
 }

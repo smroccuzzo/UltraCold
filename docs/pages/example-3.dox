@@ -236,7 +236,7 @@ the initial wave-function. This usually results in a speed-up of the convergence
 
     UltraCold::GraphicOutput::DataWriter psi_out;
     psi_out.set_output_name("initial_wave_function");
-    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function");
+    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function","ASCII");
 
 \endcode
 
@@ -259,7 +259,7 @@ Next, we define our solver class, and run the solver for finding the ground stat
                                                                                std::cout);
 
     psi_out.set_output_name("ground_state_wave_function");
-    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function","ASCII");
 
     return 0;
 
@@ -421,7 +421,7 @@ int main()
 
     UltraCold::GraphicOutput::DataWriter psi_out;
     psi_out.set_output_name("initial_wave_function");
-    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function");
+    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function","ASCII");
 
     GPSolvers::DipolarGPSolver dipolar_gp_solver(x,
                                                   y,
@@ -438,7 +438,7 @@ int main()
                                                                                std::cout);
 
     psi_out.set_output_name("ground_state_wave_function");
-    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function","ASCII");
 
     return 0;
 
