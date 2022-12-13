@@ -1,0 +1,8 @@
+.vscode
+*build*
+*bin*
+*lib*
+TODOs*
+.idea
+/base/bundled/arpack-ng/build/
+*success*

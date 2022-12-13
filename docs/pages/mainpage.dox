@@ -1,0 +1,125 @@
+/**
+
+\mainpage %UltraCold
+
+\tableofcontents
+
+\section About
+
+%UltraCold is a modular and extensible collection of C++ libraries for the study of ultra-cold atomic systems in the
+context of Gross-Pitaevskii theory.  \n
+
+The package contains several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov equations, allowing
+for the description of ultra-cold systems of bosons at the mean-field level, studying their ground-state properties,
+the dynamics, and elementary excitations.
+
+All the solver classes (both for Gross-Pitaevskii and Bogolyubov equations) take advantage of OpenMP parallelization.
+Gpu-accelerated solvers, written in CUDA, for the various flavors of Gross-Pitaevskii equations, are also available.
+
+\section Required Prerequisites and platforms
+
+%UltraCold has been only tested with Intel oneAPI, although it should also work with previous versions
+of Intel Parallel Studio. The Intel oneAPI package can be downloaded **for free** from
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html"> here </a>.
+In particular, UltraCold relies on the
+<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html">
+ Intel oneAPI Base Toolkit</a>
+and on the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html">
+Intel oneAPI HPC Toolkit</a>.
+
+If you also want to take advantage of GPU acceleration, you need CUDA to be installed on your system (as well as, of
+course, an NVIDIA GPU). The package has been tested only with CUDA 11.0, but should work also with some previous
+version.
+
+The package has been tested only on Linux machines, including several laptops/PCs, but also on High Performance
+Computing clusters, including <a href="https://www.hpc.cineca.it/hardware/galileo100"> Galileo100 </a> from the italian
+supercomputing consortium <a href="https://www.cineca.it/"> CINECA </a>, and
+<a href="https://wiki.bwhpc.de/e/Category:BwForCluster_JUSTUS_2"> JUSTUS2 </a> from the
+<a href="https://wiki.bwhpc.de/e/Main_Page"> bwHPC </a> consortium of Baden-Württemberg, Germany.
+
+\section Installation
+
+To get %UltraCold, first clone it into your machine
+
+\code
+git clone https://github.com/smroccuzzo/UltraCold.git
+\endcode
+
+Then, enter the directory %UltraCold, and follow the usual steps required to build a project using
+<a href="https://cmake.org/"> cmake </a>. By default, the build type is *Release*. So, all you have to do is
+\code
+cd UltraCold
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=</your/install/path> ..
+make
+make install
+\endcode
+
+If you want to build also the libraries that use GPU acceleration, you have to pass an additional flag to cmake, as follows
+
+\code
+
+cd UltraCold
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=</your/install/path> -DULTRACOLD_WITH_CUDA=ON ..
+make
+make install
+
+\endcode
+
+Notice that it is typically necessary to set in advance the environment variables required to work with Intel or CUDA
+tools. Both packages are typically distributed with some bash script that set those variables automatically for you.
+Moreover, on most HPC clusters, such variables are set with a command like
+
+\code
+
+module load <my package>
+
+\endcode
+
+but the details depends on cluster you are actually working on.
+
+\section Usage Usage and examples
+
+%UltraCold comes packed with several solver classes for different flavors of Gross-Pitaevskii and Bogolyubov-like
+equations. The complete list of available solvers, as well as other useful classes (e.g. for data output) is
+available under the namespace UltraCold. \n
+
+The \subpage examples section provides several examples of usage of the basic functionalities of the package (as well as
+some physics). Such examples are meant to be used as templates for more complex applications, combining the
+functionality of the package to develop some interesting physics.
+
+\section Contributing
+
+%UltraCold is developed using <a href="https://git-scm.com/"> Git </a> as a version control tool, and
+<a href="https://github.com">GitHub</a> as the central host of the source code.
+
+If you find some issue, and/or have suggestions for additions and/or improvements, please open a
+<a href="https://docs.github.com/en/issues/tracking-your-work-with-issues">GitHub issue</a>.
+
+If you want to actively contribute, after opening an issue, follow this (pretty standard) workflow, based on the
+<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">
+fork and pull model</a>:
+
+- If you already have a GitHub account, <a href="https://github.com/login">sign in</a>. Otherwise,
+<a href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home">create
+one </a> (it's free, and we are pretty confident that it will always be).
+- Fork the %UltraCold project.
+- Make a local clone of your fork to your own computer.
+- Create a new branch on which you will be making changes. This marks the point from which your copy of the project
+starts to differ from that of the main development branch.
+- Start to make your changes, for example by modifying existing files and/or creating new ones. Once you are
+satisfied with your changes, you can commit each change, in such a way that Git can keep track of them. With each commit,
+write a short message describing what your particular set of changes does.
+- When you're finished committing all of your changes to your local repository, you can push them all upstream to your
+GitHub repository.
+- Finally, open a pull request on GitHub to the main development repository (i.e., by now,
+<a href="https://github.com/smroccuzzo/UltraCold">this</a> one).
+
+\section License
+
+%UltraCold is distributed as free software under the GPL3. See also the file LICENSE.md
+
+*/

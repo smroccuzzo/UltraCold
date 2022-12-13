@@ -1,0 +1,6 @@
+# Exclude unwanted folders from Linguist counting
+
+*.f linguist-vendored
+bundled/* linguist-vendored
+bundled/arpack-ng/* linguist-vendored
+docs/* linguist-vendored

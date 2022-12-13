@@ -1,0 +1,449 @@
+/**
+
+\page example-3 example-3
+\tableofcontents
+\author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
+
+\section Title-3 A three-dimensional dipolar Bose gas in a harmonic trap.
+
+*******************************************************
+\subsection Introduction-3 Introduction
+*******************************************************
+
+In this example, we are going to use %UltraCold to study the ground state of a three-dimensional,
+harmonically trapped **dipolar** Bose gas of \f$ ^{164}Dy \f$ atoms, using the solver class
+<code>UltraCold::GPSolvers::DipolarGPSolver</code>.
+
+Bose-Einstein condensates have been obtained in atomic species, like
+<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.210401"> Erbium </a> or
+<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.107.190401"> Dysprosium </a>, possessing a strong
+magnetic dipole moment in their ground state. This implies that, in order to describe the physics of such BECs, it is
+necessary to take into account the effect of magnetic interactions between the atoms. In the typical setup, atoms
+are aligned along a certain direction (say, the x-axis) by an external magnetic field, and their dipole-dipole
+interaction potential has the form
+
+$$
+    V_{dd}({\bf r}-{\bf r}') = \frac{\mu_0\mu^2}{4\pi}\frac{1-3\cos^2(\theta)}{|{\bf r}-{\bf r}'|^3}
+$$
+
+with \f$ \mu_0 \f$ the magnetic permeability in vacuum, \f$ \mu \f$ the magnetic dipole moment and \f$ \theta \f$ the
+angle between the vector distance between dipoles and the polarization direction, i.e. in this case the \f$ x \f$-axis.
+A simple mean-field description has been shown to fail in describing the observed properties of dipolar BECs. Currently,
+the most commonly used model for the description of dipolar BECs takes into account the first-order beyond mean-field
+correction to the ground-state energy of the system in the local density approximation. Such
+<a href = "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.063609"> Lee-Huang-Yang </a> (LHY) correction
+for a uniform system is given by
+
+\f[
+ \frac{E_0}{V}=\frac{1}{2}gn^2\left[1+\frac{128}{15\sqrt{\pi}}\sqrt{na^3}F(\epsilon_{dd})\right]
+\f]
+with
+\f[
+ F(\epsilon_{dd})=\frac{1}{2}\int_0^{\pi}d\theta sin\theta[1+\epsilon_{dd}(3cos^2\theta-1)]^{\frac{5}{2}}
+\f]
+
+Inserting this correction in the local density approximation in a mean-field model, we obtain the extended
+Gross-Pitaevskii equation
+
+\f[
+\begin{align}
+ &i\hbar\frac{\partial}{\partial t}  \Psi({\bf r},t)= \mathcal{H}({\bf r})\,\Psi({\bf r},t)\,,
+\end{align}
+\f]
+
+where the Hamiltonian \f$ H \f$ is
+
+\f[
+ \begin{align}
+  \mathcal{H}({\bf r})=-&\frac{\hbar^2}{2m}\nabla^2+V_{\rm ext}({\bf r})+g|\Psi({\bf r},t)|^2+\gamma
+  (\varepsilon_{dd})|\Psi({\bf r},t)|^3\nonumber\\
+  +& \int d{\bf r'}V_{dd}({\bf r}-{\bf r'})|\Psi({\bf r'},t)|^2\,,
+ \end{align}
+\f]
+
+with \f$ g=4\pi\hbar^2a/m \f$ the coupling constant fixed by the \f$ s \f$-wave scattering length \f$ a \f$ and
+
+\f[
+ \gamma(\varepsilon_{dd})=\frac{16}{3\sqrt{\pi}} ga^{\frac{3}{2}}\,\mbox{Re}\bigg[\!\int_0^{\pi}
+ \!\!\!\!d\theta\sin\theta [1+\varepsilon_{dd}(3\cos^2\theta-1)]^{\frac{5}{2}}\bigg]\,.
+\f]
+
+In the absence of trapping, the system can be fully characterised by the single parameter
+\f$ \varepsilon_{dd}=\mu_0\mu^2/(3g)=a_{dd}/a \f$, i.e., the ratio between the strength of the dipolar and
+the contact interaction, eventually written in terms of the dipolar length \f$ a_{dd} \f$ and the
+scattering length \f$ a \f$.
+
+Among the peculiar effects described by this model, we mention the possibility of describing the so-called
+<a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.93.061603"> quantum droplets </a>, i.e. ultra-dilute,
+self-bound, liquid-like droplets in the Bose-Einstein condensed phase, and
+<a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.041601"> supersolids </a>, i.e. phase-coherent
+systems spontaneously breaking translational invariance, developing spatial periodicity.
+
+In this example, we will use the solver class <code>UltraCold::GPSolvers::DipolarGPSolver</code> to describe a simple
+supersolid state of a dipolar gas in a cigar-shaped harmonic trap.
+
+*******************************************************
+\subsection What-3 Program description
+*******************************************************
+
+We first create an input file containing our mesh and physical parameters, as well as other parameters determining the
+run-time behavior of the system. Such input file will be called <code>example-3.prm</code> and contains the following
+text
+
+\verbatim
+
+# Mesh parameters
+
+xmax = 10.0 # Size of the mesh along the x-axis, in micrometers. The mesh will extend from -xmax to xmax
+ymax = 10.0 # Size of the mesh along the y-axis, in micrometers. The mesh will extend from -ymax to ymax
+zmax = 15.0 # Size of the mesh along the z-axis, in micrometers. The mesh will extend from -zmax to zmax
+
+nx = 64 # Number of points along the x-axis
+ny = 64 # Number of points along the y-axis
+nz = 128 # Number of points along the z-axis
+
+# Physical parameters
+
+scattering length   = 95.0 # Scattering length in units of the Bohr radius
+dipolar_length      = 132.0 # Dipolar length in units of the Bohr radius
+number of particles = 40000  # Total number of atoms
+atomic mass         = 164    # Atomic mass, in atomic mass units
+omegax = 90 # Harmonic frequency along the x-axis, in units of (2pi)Hz
+omegay = 60 # Harmonic frequency along the y-axis, in units of (2pi)Hz
+omegaz = 30 # Harmonic frequency along the z-axis, in units of (2pi)Hz
+
+# Run parameters for gradient descent
+
+number of gradient descent steps = 20000 # maximum number of gradient descent steps
+residual                         = 1.E-6 # Threshold on the norm of the residual
+alpha                            = 1.E-3 # gradient descent step
+beta                             = 0.9   # step for the heavy-ball acceleration method
+
+\endverbatim
+
+Notice that the mesh is anisotropic, as well as the harmonic trap. In particular, we are using a trap elongated along
+the z-axis, and tighter along the x-axis. This is because the dipoles are aligned along the x-direction, and so, due
+to the partially attractive nature of the dipolar potential, they will try to "pile-up" in order to reach the lower
+energy attractive configuration with the dipoles sitting "head-to-tail". This can be partially prevented by using a
+tight harmonic trap along the polarization direction. Nonetheless, in the pure mean-field picture, using these
+parameters, the model would not admit any stable ground-state. Practically, solving the GPe without the LHY correction
+for the lowest energy state would result in a collapsed state, with the full wave-function concentrated in a single
+point of the mesh. Instead, the LHY correction will produce an interesting and stable ground-state configuration.
+
+Let's look at the program. As in previous examples, we first read our input parameter file and set harmonic units
+
+\code{.cpp}
+
+
+#include "UltraCold.hpp"
+#include <random>
+
+using namespace UltraCold;
+
+int main()
+{
+
+    Tools::InputParser ip("example-3.prm");
+
+    ip.read_input_file();
+
+    double xmax = ip.retrieve_double("xmax");
+    double ymax = ip.retrieve_double("ymax");
+    double zmax = ip.retrieve_double("zmax");
+
+    const int nx = ip.retrieve_int("nx");
+    const int ny = ip.retrieve_int("ny");
+    const int nz = ip.retrieve_int("nz");
+
+    double scattering_length         = ip.retrieve_double("scattering length");
+    double dipolar_length            = ip.retrieve_double("dipolar_length");
+    const int    number_of_particles = ip.retrieve_int("number of particles");
+    const double atomic_mass         = ip.retrieve_double("atomic mass");
+    double omegax                    = ip.retrieve_double("omegax");
+    double omegay                    = ip.retrieve_double("omegay");
+    double omegaz                    = ip.retrieve_double("omegaz");
+
+    const int    number_of_gradient_descent_steps = ip.retrieve_int("number of gradient descent steps");
+    const double residual                         = ip.retrieve_double("residual");
+    const double alpha                            = ip.retrieve_double("alpha");
+    const double beta                             = ip.retrieve_double("beta");
+
+    const double hbar        = 0.6347*1.E5;
+    const double bohr_radius = 5.292E-5;
+
+    omegax *= TWOPI;
+    omegay *= TWOPI;
+    omegaz *= TWOPI;
+
+    const double omega_ho = std::cbrt(omegax*omegay*omegaz);
+
+    omegax = omegax/omega_ho;
+    omegay = omegay/omega_ho;
+    omegaz = omegaz/omega_ho;
+
+    const double a_ho = std::sqrt(hbar/(atomic_mass*omega_ho));
+
+    scattering_length *= bohr_radius/a_ho;
+    dipolar_length *= bohr_radius/a_ho;
+
+    xmax = xmax/a_ho;
+    ymax = ymax/a_ho;
+    zmax = zmax/a_ho;
+
+\endcode
+
+Then, we define the mesh, the initial wave-function and the external potential. Notice that we add some random noise to
+the initial wave-function. This usually results in a speed-up of the convergence of the gradient-descent iterations
+
+\code{.cpp}
+
+    double dx = 2 * xmax / nx;
+    double dy = 2 * ymax / ny;
+    double dz = 2 * zmax / nz;
+
+    Vector<double> x(nx), y(ny), z(nz), kx(nx), ky(ny), kz(nz);
+
+    for (int i = 0; i < nx; ++i) x[i] = -xmax + i * dx;
+    for (int i = 0; i < ny; ++i) y[i] = -ymax + i * dy;
+    for (int i = 0; i < nz; ++i) z[i] = -zmax + i * dz;
+    create_mesh_in_Fourier_space(x, y, z, kx, ky, kz);
+
+    Vector<std::complex<double>> psi(nx, ny, nz);
+    Vector<double> Vext(nx, ny, nz);
+
+    std::default_random_engine generator;
+    std::uniform_real_distribution<double> distribution(0,1);
+
+    for (int i = 0; i < nx; ++i)
+        for (int j = 0; j < ny; ++j)
+            for (int k = 0; k < nz; ++k)
+            {
+                double random_number = distribution(generator);
+                psi(i,j,k)  = (1.0+0.1*random_number)*
+                        std::exp(-0.1*(pow(x(i),2) +
+                                       pow(y(j),2) +
+                                       pow(z(k),2)) );
+
+                Vext(i,j,k) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +
+                                    std::pow(omegay,2)*pow(y(j),2) +
+                                    std::pow(omegaz,2)*pow(z(k),2) );
+            }
+
+    double norm = 0.0;
+    for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+    norm *= (dx * dy * dz);
+    for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles / norm);
+
+    UltraCold::GraphicOutput::DataWriter psi_out;
+    psi_out.set_output_name("initial_wave_function");
+    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function");
+
+\endcode
+
+Next, we define our solver class, and run the solver for finding the ground state of our dipolar Bose gas
+
+\code{.cpp}
+
+    GPSolvers::DipolarGPSolver dipolar_gp_solver(x,
+                                                 y,
+                                                 z,
+                                                 psi,
+                                                 Vext,
+                                                 scattering_length,
+                                                 dipolar_length);
+    double chemical_potential;
+    std::tie(psi, chemical_potential) = dipolar_gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                               residual,
+                                                                               alpha,
+                                                                               beta,
+                                                                               std::cout);
+
+    psi_out.set_output_name("ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+
+    return 0;
+
+}
+\endcode
+
+Let's get a look at the results.
+
+*******************************************************
+\subsection Results-3 Results
+*******************************************************
+
+The ground state density profile can be visualized as usual by opening the output file
+<code>ground_state_wave_function.vtk</code>, where we saved the mesh as well as the real and the imaginary part of the
+calculated ground-state wave function. Using, as usual,  <a href="https://www.paraview.org/"> Paraview </a>, one can
+visualize slices of the ground-state density profiles along the three axis
+
+\image html example-3-density-cut-1.png
+\image html example-3-density-cut-2.png
+\image html example-3-density-cut-3.png
+
+Notice that the ground state density profile is characterized by the appearance of equally-spaced density peaks
+"immersed" in a more dilute superfluid background. Such states, characterized by a periodic density modulation of a
+phase-coherent system, are called **supersolids** and have been observed in experiments carried out, respectively,
+in <a href="https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.122.130405"> Pisa </a>,
+<a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.021012"> Innsbruck </a>, and
+<a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011051"> Stuttgart </a>. For a recent review on the
+field, see e.g. <a href="https://iopscience.iop.org/article/10.1088/1361-6633/abc9ab/meta"> here </a>.
+
+*******************************************************
+\subsection Possibilities-3 Possible extensions
+*******************************************************
+
+This program can be extended just like example-1 for the study of the dynamics of the system, considering for example
+the transition from an ordinary superfluid to a supersolid by a ramp in the scattering length.
+
+*******************************************************
+\subsection Uncommented-3 The plain program
+*******************************************************
+
+\code{.cpp}
+
+/*--------------------------------------------------------------------------------
+ *
+ *    This file is part of the UltraCold project.
+ *
+ *    UltraCold is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    any later version.
+ *    UltraCold is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *    You should have received a copy of the GNU General Public License
+ *    along with UltraCold.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *--------------------------------------------------------------------------------*/
+
+/**
+ *
+ * @file example-3.cpp. Full documentation at \subpage example-3.
+ * @brief Supersolid ground state of a trapped dipolar Bose-Einstein condensate.
+ * @author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
+ *
+ */
+
+#include "UltraCold.hpp"
+#include <random>
+
+using namespace UltraCold;
+
+int main()
+{
+
+    Tools::InputParser ip("example-3.prm");
+
+    ip.read_input_file();
+
+    double xmax = ip.retrieve_double("xmax");
+    double ymax = ip.retrieve_double("ymax");
+    double zmax = ip.retrieve_double("zmax");
+
+    const int nx = ip.retrieve_int("nx");
+    const int ny = ip.retrieve_int("ny");
+    const int nz = ip.retrieve_int("nz");
+
+    double scattering_length         = ip.retrieve_double("scattering length");
+    double dipolar_length            = ip.retrieve_double("dipolar_length");
+    const int    number_of_particles = ip.retrieve_int("number of particles");
+    const double atomic_mass         = ip.retrieve_double("atomic mass");
+    double omegax                    = ip.retrieve_double("omegax");
+    double omegay                    = ip.retrieve_double("omegay");
+    double omegaz                    = ip.retrieve_double("omegaz");
+
+    const int    number_of_gradient_descent_steps = ip.retrieve_int("number of gradient descent steps");
+    const double residual                         = ip.retrieve_double("residual");
+    const double alpha                            = ip.retrieve_double("alpha");
+    const double beta                             = ip.retrieve_double("beta");
+
+    const double hbar        = 0.6347*1.E5;
+    const double bohr_radius = 5.292E-5;
+
+    omegax *= TWOPI;
+    omegay *= TWOPI;
+    omegaz *= TWOPI;
+
+    const double omega_ho = std::cbrt(omegax*omegay*omegaz);
+
+    omegax = omegax/omega_ho;
+    omegay = omegay/omega_ho;
+    omegaz = omegaz/omega_ho;
+
+    const double a_ho = std::sqrt(hbar/(atomic_mass*omega_ho));
+
+    scattering_length *= bohr_radius/a_ho;
+    dipolar_length *= bohr_radius/a_ho;
+
+    xmax = xmax/a_ho;
+    ymax = ymax/a_ho;
+    zmax = zmax/a_ho;
+
+    double dx = 2 * xmax / nx;
+    double dy = 2 * ymax / ny;
+    double dz = 2 * zmax / nz;
+
+    Vector<double> x(nx), y(ny), z(nz), kx(nx), ky(ny), kz(nz);
+
+    for (int i = 0; i < nx; ++i) x[i] = -xmax + i * dx;
+    for (int i = 0; i < ny; ++i) y[i] = -ymax + i * dy;
+    for (int i = 0; i < nz; ++i) z[i] = -zmax + i * dz;
+    create_mesh_in_Fourier_space(x, y, z, kx, ky, kz);
+
+    Vector<std::complex<double>> psi(nx, ny, nz);
+    Vector<double> Vext(nx, ny, nz);
+
+    std::default_random_engine generator;
+    std::uniform_real_distribution<double> distribution(0,1);
+
+    for (int i = 0; i < nx; ++i)
+        for (int j = 0; j < ny; ++j)
+            for (int k = 0; k < nz; ++k)
+            {
+                double random_number = distribution(generator);
+                psi(i,j,k)  = (1.0+0.1*random_number)*
+                        std::exp(-0.1*(pow(x(i),2) +
+                                       pow(y(j),2) +
+                                       pow(z(k),2)) );
+
+                Vext(i,j,k) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +
+                                    std::pow(omegay,2)*pow(y(j),2) +
+                                    std::pow(omegaz,2)*pow(z(k),2) );
+            }
+
+    double norm = 0.0;
+    for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+    norm *= (dx * dy * dz);
+    for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles / norm);
+
+    UltraCold::GraphicOutput::DataWriter psi_out;
+    psi_out.set_output_name("initial_wave_function");
+    psi_out.write_slice2d_vtk(x,y,psi,"xy","initial_wave_function");
+
+    GPSolvers::DipolarGPSolver dipolar_gp_solver(x,
+                                                  y,
+                                                  z,
+                                                  psi,
+                                                  Vext,
+                                                  scattering_length,
+                                                  dipolar_length);
+    double chemical_potential;
+    std::tie(psi, chemical_potential) = dipolar_gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                               residual,
+                                                                               alpha,
+                                                                               beta,
+                                                                               std::cout);
+
+    psi_out.set_output_name("ground_state_wave_function");
+    psi_out.write_vtk(x,y,z,psi,"ground_state_wave_function");
+
+    return 0;
+
+}
+
+\endcode
+
+*/

@@ -1,0 +1,576 @@
+/**
+
+\page example-2 example-2
+\tableofcontents
+\author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
+
+\section Title-2 Bogolyubov equations for a two-dimensional Bose gas in a harmonic trap.
+
+*******************************************************
+\subsection Introduction-2 Introduction
+*******************************************************
+
+In the second example, we are going to use %UltraCold to study the elementary excitations on top of the ground state
+of a two-dimensional, harmonically trapped Bose gas, by solving the so-called *Bogolyubov equations*. We will use the
+solver class <code>UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</code>, which
+allows in fact to solve Bogolyubov equations for a simple Bose gas in the presence of an arbitrary external potential.
+
+Starting from the a-dimensional Gross-Pitaevskii equation (GPe) in two space dimensions (assume we have already done
+some dimensional reduction integrating away the z-coordinate. This should lead to a renormalization of the scattering
+length, which we do not implement here because of laziness and because it does not affect, at least qualitatively, the
+physics) in the presence of an external harmonic potential
+
+\f[
+    i\frac{\partial \psi(x,y,t)}{\partial t} =
+    \left[
+        \frac{-\nabla^2}{2}+\frac{1}{2}(\omega_x^2 x^2+\omega^2_y y^2)
+        + 4\pi a  |\psi(x,y,t)|^2
+    \right]\psi(x,y,z,t)
+\f]
+
+one first searches for stationary solutions of the form
+
+\f[
+    \psi({\bf r},t) = \psi({\bf r})e^{-i\frac{\mu}{\hbar}t}
+\f]
+
+obtaining the time-independent eigenvalue problem
+
+\f[
+   \mu \psi({\bf r}) =
+    \left[
+        \frac{-\nabla^2}{2}+\frac{1}{2}(\omega_x^2 x^2+\omega^2_y y^2)
+        + 4\pi a  |\psi({\bf r})|^2
+    \right]\psi({\bf r})
+\f]
+
+The solution \f$ \psi_0 \f$ corresponding to the smallest eigenvalue \f$ \mu \f$ is interpreted as the ground-state of
+the system, and the corresponding eigenvalue \f$ \mu \f$ as the chemical potential. \n
+
+In order to study the elementary excitations of the system on top of a certain ground-state solution, it is common to
+search for solutions of the time-dependent GPe of the form
+
+\f[
+  \psi({\bf r},t) = e^{-i\frac{\mu}{\hbar}t}\left[ \psi_0({\bf r})
+   + \sum_{n=0}^{\infty} \left( u_n({\bf r})e^{-i\omega_n t} + v^*_n({\bf r})e^{i\omega_n t} \right) \right]
+\f]
+
+Plugging this ansatz into the GPe and keeping only terms linear in the functions \f$ u \f$ and \f$ v \f$, one obtains
+the following eigenvalue problem
+
+\f[
+
+ \begin{bmatrix}
+     u \\
+     v
+ \end{bmatrix}
+     =
+ \begin{bmatrix}
+     -\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 4\pi a |\psi_0|^2 - \mu & 4\pi a \psi_0^2 \\
+     - 4\pi a (\psi_0^*)^2 &  -\left(-\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 4 \pi a |\psi_0|^2-\mu\right)
+ \end{bmatrix}
+ \begin{bmatrix}
+     u \\
+     v
+ \end{bmatrix}
+
+\f]
+
+which defines the so-called *Bogolyubov equations*. The solutions of these equations allows to study the energy of the
+elementary excitations of the system (*Bogolyubov modes*), as well as several interesting properties relative to the
+linear response of the system to external perturbations (see any book on Bose-Einstein condensation).
+
+In the case in which the condensate ground-state wave function is real (e.g., in absence of vortices, solitons...) the
+problem can be recast in a more convenient form. In fact, taking the sum and the difference between the two equations,
+one easily finds
+
+\f[
+ \begin{align}
+     & \hat{H}\hat{X} (u+v) = (\hbar\omega)^2 (u+v) \nonumber \\
+     & \hat{X}\hat{H} (u-v) = (\hbar\omega)^2 (u-v) \nonumber \\
+ \end{align}
+\f]
+
+with
+
+\f[
+ \begin{align}
+     & \hat{H} = -\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 4  \pi a |\psi_0|^2 - \mu\nonumber \\
+     & \hat{X} = -\frac{\nabla^2}{2} + V_{ext}({\bf r}) + 12 \pi a |\psi_0|^2 - \mu \nonumber \\
+ \end{align}
+\f]
+
+Now, both equations allow to find the (square) of the energy of the Bogolyubov modes, but solving a system
+of half the dimensionality of the original problem. This typically allows a great saving of computational
+time. The eigenvectors of the two problems correspond to \f$(u+v)\f$ and \f$(u-v)\f$ respectively, so that
+if one is interested in finding the Bogolyubov quasi-particle amplitudes \f$ u \f$ and \f$ v \f$, one also
+needs to solve the second problem, and then set \f$ u = 0.5 \left( (u+v) + (u-v) \right)\f$ and
+\f$ v = 0.5 \left( (u+v) - (u-v) \right)\f$
+
+*******************************************************
+\subsection What-2 Program description
+*******************************************************
+
+For this example, we first need to calculate a ground state solution of the GPe for a certain set of physical and
+mesh parameter. Differently from example-1, we do not need anything special from this calculation, so we don't
+need to derive any class for our <code>UltraCold::GPSolvers::GPSolver</code> base class. Nonetheless, the input
+parameters describing the physics and the mesh can be practically the same as in example-1, except that we remove any
+reference to the z-axis. Our input file, called <code>example-2.prm</code>, will thus contain the following text
+
+\verbatim
+
+# Mesh parameters
+
+xmax = 15.0 # Size of the mesh along the x-axis, in micrometers. The mesh will extend from -xmax to xmax
+ymax = 15.0 # Size of the mesh along the y-axis, in micrometers. The mesh will extend from -ymax to ymax
+
+nx = 128 # Number of points along the x-axis
+ny = 128 # Number of points along the y-axis
+
+# Physical parameters
+
+scattering length   = 100.9  # Initial scattering length in units of the Bohr radius
+number of particles = 40000  # Total number of atoms
+atomic mass         = 87     # Atomic mass, in atomic mass units
+omegax              = 100 # Harmonic frequency along the x-axis, in units of (2pi)Hz
+omegay              = 100 # Harmonic frequency along the y-axis, in units of (2pi)Hz
+
+# Run parameters for gradient descent
+
+number of gradient descent steps = 50000 # maximum number of gradient descent steps
+residual                         = 1.E-8 # Threshold on the norm of the residual
+alpha                            = 1.E-4 # gradient descent step
+beta                             = 0.9   # step for the heavy-ball acceleration method
+
+# Run parameters for Bogolyubov equations
+
+number of modes = 50
+calculate eigenvectors = true
+tolerance = 1.E-12
+maximum number of arnoldi iterations = 1000
+
+\endverbatim
+
+Let's now take a look at the source code contained in the file <code>/examples/example-2/example-2.cpp</code>.
+
+The first lines again includes the header file <code>"UltraCold.hpp"</code> and import the namespace UltraCold
+
+\code{.cpp}
+
+    #include "UltraCold.hpp"
+
+    using namespace UltraCold;
+
+\endcode
+
+As in example-1, we first calculate a ground-state solution of the GPe using the function
+<code> run_gradient_descent(...)</code> from the class UltraCold::GPSolvers::GPSolver. We don't go into much details
+here, since it is practically the same as in example-1
+
+\code{.cpp}
+
+int main() {
+
+    Tools::InputParser ip("../example-2.prm");
+
+    ip.read_input_file();
+
+    double xmax = ip.retrieve_double("xmax");
+    double ymax = ip.retrieve_double("ymax");
+
+    const int nx = ip.retrieve_int("nx");
+    const int ny = ip.retrieve_int("ny");
+
+    double       scattering_length   = ip.retrieve_double("scattering length");
+    const int    number_of_particles = ip.retrieve_int("number of particles");
+    const double atomic_mass         = ip.retrieve_double("atomic mass");
+    double omegax                    = ip.retrieve_double("omegax");
+    double omegay                    = ip.retrieve_double("omegay");
+
+    const int    number_of_gradient_descent_steps = ip.retrieve_int("number of gradient descent steps");
+    const double residual                         = ip.retrieve_double("residual");
+    const double alpha                            = ip.retrieve_double("alpha");
+    const double beta                             = ip.retrieve_double("beta");
+
+    const int number_of_modes = ip.retrieve_int("number of modes");
+    const int maximum_number_arnoldi_iterations = ip.retrieve_int("maximum number of arnoldi iterations");
+    const double tolerance = ip.retrieve_double("tolerance");
+    const bool calculate_eigenvectors = ip.retrieve_bool("calculate eigenvectors");
+
+    const double hbar        = 0.6347*1.E5;
+    const double bohr_radius = 5.292E-5;
+
+    omegax *= TWOPI;
+    omegay *= TWOPI;
+
+    const double omega_ho = std::sqrt(omegax*omegay);
+
+    omegax = omegax/omega_ho;
+    omegay = omegay/omega_ho;
+
+    const double a_ho = std::sqrt(hbar/(atomic_mass*omega_ho));
+
+    scattering_length   *= bohr_radius/a_ho;
+
+    xmax = xmax/a_ho;
+    ymax = ymax/a_ho;
+
+    Vector<double> x(nx);
+    Vector<double> y(ny);
+
+    double dx = 2.*xmax/nx;
+    double dy = 2.*ymax/ny;
+
+    for (size_t i = 0; i < nx; ++i) x(i) = -xmax + i*dx;
+    for (size_t i = 0; i < ny; ++i) y(i) = -ymax + i*dy;
+
+    double dv = dx*dy;
+
+    Vector<std::complex<double>> psi(nx,ny);
+    Vector<double> Vext(nx,ny);
+
+    for (size_t i = 0; i < nx; ++i)
+        for (size_t j = 0; j < ny; ++j)
+            {
+
+                psi(i,j)  = exp(- (pow(x(i),2) + pow(y(j),2)) );
+
+                Vext(i,j) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +
+                                  std::pow(omegay,2)*pow(y(j),2));
+
+            }
+
+    double norm = 0.0;
+    for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+    norm *= dv;
+    for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    GPSolvers::GPSolver gp_solver(x,
+                                  y,
+                                  psi,
+                                  Vext,
+                                  scattering_length);
+
+
+    double chemical_potential;
+    std::tie(psi,chemical_potential) = gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                      residual,
+                                                                      alpha,
+                                                                      beta,
+                                                                      std::cout);
+
+    GraphicOutput::DataWriter output_wave_function;
+    output_wave_function.set_output_name("ground_state_wave_function");
+    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function");
+
+\endcode
+
+We can now plug the calculated ground-state solution \f$ \psi_0 \f$ to the class
+UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver, which will calculate for us the energies of the eigen-modes of
+the system as well as the Bogolyubov amplitudes \f$ u \f$ and \f$ v \f$. Since we are considering a simple solution of
+the GPe, without any topological defect like solitons or vortices, the ground-state wave function, despite being defined
+as a complex Vector, will have only a non-zero real part. We can thus simplify the Bogolyubov equations solving only
+eigen-problems of halved dimensionality. The class <code>UltraCold::BogolyubovSolvers::TrappedBogolyubovSolver</code>
+will do this automatically for us, provided that we feed a real Vector, representing the ground-state wave function,
+to its constructor. We thus first copy the calculated ground-state wave-function into a real-valued Vector
+
+\code{.cpp}
+
+    Vector<double> psi0_real(nx,ny);
+    for (int i = 0; i < psi.size() ; ++i) psi0_real[i] = psi[i].real();
+
+\endcode
+
+then initialize the data structures that will contain the solutions of the Bogolyubov equations
+
+\code{.cpp}
+
+    std::vector<std::complex<double>> eigenvalues(number_of_modes);
+    std::vector< Vector<std::complex<double>> > u(number_of_modes),v(number_of_modes);
+
+\endcode
+
+and, finally, create our solver class and run the solver
+
+\code{.cpp}
+
+    BogolyubovSolvers::TrappedBogolyubovSolver bdg_solver(x,
+                                                          y,
+                                                          psi0_real,
+                                                          Vext,
+                                                          scattering_length,
+                                                          chemical_potential,
+                                                          number_of_modes,
+                                                          tolerance,
+                                                          maximum_number_arnoldi_iterations,
+                                                          calculate_eigenvectors);
+
+    std::tie(eigenvalues,u,v) =  bdg_solver.run();
+
+\endcode
+
+In the context of Bogolyubov theory, several interesting properties can be extracted from the knowledge of \f$ u \f$
+and \f$ v \f$. For example, one can see the density and phase fluctuations associated with each eigen-mode, by looking,
+respectively, at the quantities
+
+\f[
+
+\begin{align}
+
+    & \delta n({\bf r}) = (u({\bf r}) + v({\bf r}))\psi_0({\bf r}) \nonumber \\
+    & \delta \phi({\bf r}) = (u({\bf r}) - v({\bf r}))/\psi_0({\bf r}) \nonumber \\
+
+\end{align}
+
+\f]
+
+This is exactly what we calculated and output into some .vtk files with the last lines of the example
+
+\code{.cpp}
+
+    GraphicOutput::DataWriter                    output_fluctuations;
+    std::vector<Vector< std::complex<double>> > density_fluctuations(number_of_modes);
+    std::vector<Vector< std::complex<double>> > phase_fluctuations(number_of_modes);
+
+    for (int i = 0; i < number_of_modes; ++i)
+    {
+
+        std::cout << eigenvalues[i].real() << " " << eigenvalues[i].imag() << std::endl;
+        density_fluctuations[i].reinit(nx, ny);
+        phase_fluctuations[i].reinit(nx, ny);
+        for (int j = 0; j < nx * ny; ++j)
+        {
+            density_fluctuations[i](j) = (u[i](j) + v[i](j)) * psi0_real(j);
+            phase_fluctuations[i](j)   = (u[i](j) - v[i](j)) / psi0_real(j);
+        }
+
+        output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
+        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations");
+
+        output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
+        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations");
+
+    }
+
+    return 0;
+
+}
+
+\endcode
+
+*******************************************************
+\subsection Results-2 Results
+*******************************************************
+
+The output of the program related to the (first) calculated eigenvalues, corresponding to the energies of the Bogolyubov
+modes in units of \f$ \hbar \omega_{ho} \f$, is the following:
+
+\verbatim
+
+1.6365e-06 0
+0.999999 0
+0.999999 0
+1.41758 0
+1.41758 0
+1.74505 0
+1.74505 0
+2 0
+2.03118 0
+2.03118 0
+2.29579 0
+2.29579 0
+
+\endverbatim
+
+Notice the presence of the two dipole modes, with a frequency approximately equal to one, representing
+the "sloshing" oscillations of the center of mass of the cloud along the x and y directions, and **always** present in
+the presence of harmonic trapping, as well as the presence of the characteristic *breathing* oscillation which, for this
+type of gas, has a frequency equal to \f$ 2\omega_{ho} \f$. Notice also that all the modes are twice degenerate.
+
+We can also have a look at the ground-state density profile, as well as the density and phase fluctuations, plotted from
+the .vtk output using again Paraview:
+
+\image html example-2-fig.png width=50%
+
+We see that most of the modes are surface modes with different angular momenta, while the breathing mode (the fifth
+mode in order from top to bottom, with the frequency of \f$ 2\omega_{ho} \f$) has clearly a compressional character.
+
+
+*******************************************************
+\subsection Uncommented-2 The plain program
+*******************************************************
+
+\code{.cpp}
+
+/*--------------------------------------------------------------------------------
+ *
+ *    This file is part of the UltraCold project.
+ *
+ *    UltraCold is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    any later version.
+ *    UltraCold is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *    You should have received a copy of the GNU General Public License
+ *    along with UltraCold.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *--------------------------------------------------------------------------------*/
+
+/**
+ * @file example-2.cpp. Full documentation at \subpage example-2.
+ * @brief Elementary excitations via Bogolyubov equations in a three-dimensional, harmonically trapped Bose gas.
+ * @author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
+ *
+ */
+
+#include "UltraCold.hpp"
+
+using namespace UltraCold;
+
+int main() {
+
+    Tools::InputParser ip("../example-2.prm");
+
+    ip.read_input_file();
+
+    double xmax = ip.retrieve_double("xmax");
+    double ymax = ip.retrieve_double("ymax");
+
+    const int nx = ip.retrieve_int("nx");
+    const int ny = ip.retrieve_int("ny");
+
+    double       scattering_length   = ip.retrieve_double("scattering length");
+    const int    number_of_particles = ip.retrieve_int("number of particles");
+    const double atomic_mass         = ip.retrieve_double("atomic mass");
+    double omegax                    = ip.retrieve_double("omegax");
+    double omegay                    = ip.retrieve_double("omegay");
+
+    const int    number_of_gradient_descent_steps = ip.retrieve_int("number of gradient descent steps");
+    const double residual                         = ip.retrieve_double("residual");
+    const double alpha                            = ip.retrieve_double("alpha");
+    const double beta                             = ip.retrieve_double("beta");
+
+    const int number_of_modes = ip.retrieve_int("number of modes");
+    const int maximum_number_arnoldi_iterations = ip.retrieve_int("maximum number of arnoldi iterations");
+    const double tolerance = ip.retrieve_double("tolerance");
+    const bool calculate_eigenvectors = ip.retrieve_bool("calculate eigenvectors");
+
+    const double hbar        = 0.6347*1.E5;
+    const double bohr_radius = 5.292E-5;
+
+    omegax *= TWOPI;
+    omegay *= TWOPI;
+
+    const double omega_ho = std::sqrt(omegax*omegay);
+
+    omegax = omegax/omega_ho;
+    omegay = omegay/omega_ho;
+
+    const double a_ho = std::sqrt(hbar/(atomic_mass*omega_ho));
+
+    scattering_length   *= bohr_radius/a_ho;
+
+    xmax = xmax/a_ho;
+    ymax = ymax/a_ho;
+
+    Vector<double> x(nx);
+    Vector<double> y(ny);
+
+    double dx = 2.*xmax/nx;
+    double dy = 2.*ymax/ny;
+
+    for (size_t i = 0; i < nx; ++i) x(i) = -xmax + i*dx;
+    for (size_t i = 0; i < ny; ++i) y(i) = -ymax + i*dy;
+
+    double dv = dx*dy;
+
+    Vector<std::complex<double>> psi(nx,ny);
+    Vector<double> Vext(nx,ny);
+
+    for (size_t i = 0; i < nx; ++i)
+        for (size_t j = 0; j < ny; ++j)
+            {
+
+                psi(i,j)  = exp(- (pow(x(i),2) + pow(y(j),2)) );
+
+                Vext(i,j) = 0.5*( std::pow(omegax,2)*pow(x(i),2) +
+                                  std::pow(omegay,2)*pow(y(j),2));
+
+            }
+
+    double norm = 0.0;
+    for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+    norm *= dv;
+    for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    GPSolvers::GPSolver gp_solver(x,
+                                  y,
+                                  psi,
+                                  Vext,
+                                  scattering_length);
+
+
+    double chemical_potential;
+    std::tie(psi,chemical_potential) = gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                      residual,
+                                                                      alpha,
+                                                                      beta,
+                                                                      std::cout);
+
+    GraphicOutput::DataWriter output_wave_function;
+    output_wave_function.set_output_name("ground_state_wave_function");
+    output_wave_function.write_vtk(x,y,psi,"ground_state_wave_function");
+
+    Vector<double> psi0_real(nx,ny);
+    for (int i = 0; i < psi.size() ; ++i) psi0_real[i] = psi[i].real();
+
+    std::vector<std::complex<double>> eigenvalues(number_of_modes);
+    std::vector< Vector<std::complex<double>> > u(number_of_modes),v(number_of_modes);
+
+    BogolyubovSolvers::TrappedBogolyubovSolver bdg_solver(x,
+                                                          y,
+                                                          psi0_real,
+                                                          Vext,
+                                                          scattering_length,
+                                                          chemical_potential,
+                                                          number_of_modes,
+                                                          tolerance,
+                                                          maximum_number_arnoldi_iterations,
+                                                          calculate_eigenvectors);
+
+    std::tie(eigenvalues,u,v) =  bdg_solver.run();
+
+    GraphicOutput::DataWriter                    output_fluctuations;
+    std::vector<Vector< std::complex<double>> > density_fluctuations(number_of_modes);
+    std::vector<Vector< std::complex<double>> > phase_fluctuations(number_of_modes);
+
+    for (int i = 0; i < number_of_modes; ++i)
+    {
+
+        std::cout << eigenvalues[i].real() << " " << eigenvalues[i].imag() << std::endl;
+        density_fluctuations[i].reinit(nx, ny);
+        phase_fluctuations[i].reinit(nx, ny);
+        for (int j = 0; j < nx * ny; ++j)
+        {
+            density_fluctuations[i](j) = (u[i](j) + v[i](j)) * psi0_real(j);
+            phase_fluctuations[i](j)   = (u[i](j) - v[i](j)) / psi0_real(j);
+        }
+
+        output_fluctuations.set_output_name("density_fluctuations_mode_" + std::to_string(i));
+        output_fluctuations.write_vtk(x, y, density_fluctuations[i], "density_fluctuations");
+
+        output_fluctuations.set_output_name("phase_fluctuations_mode_" + std::to_string(i));
+        output_fluctuations.write_vtk(x, y, phase_fluctuations[i], "phase_fluctuations");
+
+    }
+
+    return 0;
+
+}
+
+\endcode
+
+*/

@@ -1,0 +1,872 @@
+/**
+
+\page example-6 example-6
+\tableofcontents
+\author Santo Maria Roccuzzo (santom.roccuzzo@gmail.com)
+
+\section Title-6 Far from equilibrium dynamics in a 2D dipolar Bose gas, using GPU acceleration.
+
+*******************************************************
+\subsection Introduction-6 Introduction
+*******************************************************
+
+We want to study the far from equilibrium behavior of a 2D dipolar Bose gas. A mean field model for the system can be
+obtained by starting from the Gross-Pitaevskii equation from a 3D dipolar system
+
+\f[
+\begin{equation}
+    i\hbar\frac{\partial }{\partial t}\Psi({\bf r},t) =
+     \left[-\frac{\hbar^2}{2m}\nabla^2+V_{\mathrm{ext}}({\bf r})+g|\Psi({\bf r},t)|^2+ \right.
+     \left. \frac{\mu_0\mu^2}{4\pi} \int d{\bf r}' U_{dd}({\bf r}-{\bf r}') |\Psi({\bf r}',t)|^2 \right] \Psi({\bf r},t)
+\end{equation}
+\f]
+
+and assuming that the system is confined along one direction via a strong harmonic potential. Choosing the z-axis as the
+confinement axis, the wave function can be factorized as
+
+\f[
+\begin{equation}
+    \Psi({\bf r},t) = \phi_0(z)\psi(\boldsymbol{\rho},t)
+\end{equation}
+\f]
+where \f$\phi_0(z)\f$ is the ground state of the harmonic oscillator along the z-axis, and
+\f$\psi({\boldsymbol{\rho}},t)\f$ is the wave function of the condensate, depending on the transverse coordinate
+\f$\boldsymbol{\rho}\f$. Plugging this ansatz into the GPE and integrating out the z direction, one finds an effective
+two-dimensional Gross-Pitaevskii equation
+
+\f[
+\begin{equation}
+        i\hbar\frac{\partial}{\partial t} \psi(\boldsymbol{\rho},t) =
+        \left[-\frac{\hbar^2}{2m}\nabla_{\boldsymbol{\rho}}^2+\frac{g}{\sqrt{2\pi}l_z}|\psi(\boldsymbol{\rho},t)|^2+
+        \Phi_{dd}(\boldsymbol{\rho},t) \right] \psi(\boldsymbol{\rho},t)
+\end{equation}
+\f]
+
+Here, we have introduced the effective planar dipolar potential
+
+\f[
+\begin{equation}
+    \Phi_{dd}(\boldsymbol{\rho},t) = \int U_{dd}^{2D}(\boldsymbol{\rho}-\boldsymbol{\rho}')|\psi(\boldsymbol{\rho},t)|^2
+\end{equation}
+\f]
+
+The analytic form of \f$U_{dd}^{2D}\f$ in real space is not easy to calculate or to interpret. Instead, in Fourier space
+it assumes a simpler form
+
+\f[
+\begin{equation}
+    \tilde{U}_{dd}^{2D}({\bf k}_{\boldsymbol{\rho}}) = \frac{4\pi\mu_0\mu^2}{9\sqrt{2\pi}l_z}
+    [F_\parallel(\tilde{\bf q})\sin^2(\alpha)+F_\perp(\tilde{\bf q})\cos^2(\alpha)]
+\end{equation}
+\f]
+
+with
+
+\f[
+\begin{align}
+    & F_\parallel(\tilde{\bf q}) = -1+3\sqrt{\pi}\frac{\tilde{q}_x^2}{\tilde{q}^2}\mathrm{e}^{\tilde{q}^2}\mathrm{erfc}({\tilde{q})} \nonumber \\
+    & F_\perp(\tilde{\bf q})= 2-3\sqrt{\pi}\tilde{q}^2\mathrm{e}^{\tilde{q}^2}\mathrm{erfc}({\tilde{q})}
+\end{align}
+\f]
+
+and \f$\tilde{\bf q} = \frac{{\bf k}l_z}{\sqrt{2}}\f$, \f$\alpha\f$ being the tilting angle between the direction of
+polarization of the dipoles and the z-axis.
+
+In the absence of transverse trapping, the chemical potential of a quasi-two-dimensional homogeneous dipolar condensate
+is given by
+
+\f[
+\begin{equation}
+    \mu = \frac{g}{\sqrt{2\pi}l_z}n\left[1+\epsilon_{dd}(3\cos^2\alpha-1)\right]
+\end{equation}
+\f]
+
+For any value of the tilting angle $\alpha$, the chemical potential becomes negative for
+\f$\epsilon_{dd}>\frac{1}{3\cos^2\alpha-1}\f$, causing a phonon instability leading to the collapse of the gas.
+
+*******************************************************
+\subsection What-6 Program description
+*******************************************************
+
+The input file for this example will be called <code>example-6.prm</code> and contains the following text
+
+\verbatim
+
+# Mesh parameters
+
+xmax = 40 # Size of the mesh along the x-axis, in micrometers. The mesh will extend from -xmax to xmax
+ymax = 40 # Size of the mesh along the y-axis, in micrometers. The mesh will extend from -ymax to ymax
+
+nx = 1024 # Number of points along the x-axis
+ny = 1024 # Number of points along the y-axis
+
+omegaz = 1000
+
+# Physical parameters
+
+scattering length   = 90.0  # Scattering length in units of the Bohr radius
+dipolar    length   = 132.0  # Dipolar length in units of the Bohr radius
+number of particles = 1000000  # Total number of atoms
+atomic mass         = 164    # Atomic mass, in atomic mass units
+theta = 1.05 # tilt angle in radiant
+
+# Run parameters for gradient descent
+
+number of gradient descent steps = 200 # maximum number of gradient descent steps
+residual                         = 1.E-12 # Threshold on the norm of the residual
+alpha                            = 1.E-3 # gradient descent step
+beta                             = 0.9   # step for the heavy-ball acceleration method
+
+# Run parameters for real-time dynamics
+
+number of real time steps = 50000000 # Total number of time-steps for real time dynamics
+time step                 = 0.001   # Time step for real-time dynamics, in milliseconds
+write output every = 10000
+
+# Initial conditions
+
+box initial conditions = false
+vortex lattice initial conditions = false
+vortex random distribution initial conditions = true
+winding number = 1
+number of imprinted defects = 1000
+
+\endverbatim
+
+At the beginning of the program, we define our solver class with customizable output
+
+\code{.cpp}
+
+#include "UltraCold.hpp"
+#include <iomanip>
+#include <cmath>
+
+using namespace UltraCold;
+
+/////////////////////////////////////////////////////////
+// Our solver class, with customizable real-time output
+/////////////////////////////////////////////////////////
+
+class Dipoles2d : public cudaSolvers::DipolarGPSolver
+{
+public:
+
+    using DipolarGPSolver::DipolarGPSolver;
+
+    void write_operator_splitting_output(size_t iteration_number,
+                                         std::ostream& output_stream) override;
+
+    MKLWrappers::DFtCalculator ft_output_calculator;
+    Vector<std::complex<double>> ft_wave_function;
+    Vector<double> nbar_x;
+    Vector<double> nbar_y;
+
+};
+
+void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
+                                                std::ostream &output_stream)
+{
+
+    if(iteration_number == 0)
+    {
+        ft_wave_function.reinit(nx,ny);
+        nbar_x.reinit(nx);
+        nbar_y.reinit(ny);
+        ft_output_calculator.reinit(wave_function_output,ft_wave_function);
+    }
+    if(iteration_number % write_output_every == 0)
+    {
+        copy_out_wave_function();
+
+        // Calculate momentum distribution
+        ft_output_calculator.compute_forward();
+
+        // Reset nx and ny
+        for(int i = 0; i < nx; ++i) nbar_x(i) = 0.0;
+        for(int i = 0; i < ny; ++i) nbar_y(i) = 0.0;
+
+        // Calculate averages along x and y
+        for(int i = 0; i < nx; ++i)
+            for(int j = 0; j < ny; ++j)
+            {
+                nbar_x(i) += std::pow(std::abs(ft_wave_function(i,j)),2);
+                nbar_y(j) += std::pow(std::abs(ft_wave_function(i,j)),2);
+            }
+
+        std::ofstream momentum_cuts;
+        momentum_cuts.open("nkx"+std::to_string(iteration_number/write_output_every)+".txt",std::ios::out);
+        for(size_t ix = 0; ix < int(nx/2+1); ++ix)
+            momentum_cuts << kx_axis(ix) << " "
+                          << nbar_x(ix)
+                          << std::endl;
+        momentum_cuts.close();
+
+        momentum_cuts.open("nky"+std::to_string(iteration_number/write_output_every)+".txt",std::ios::out);
+        for(size_t iy = 0; iy < int(ny/2+1); ++iy)
+            momentum_cuts << ky_axis(iy) << " "
+                          << nbar_y(iy)
+                          << std::endl;
+
+    }
+}
+
+\endcode
+
+Notice that, in the overridden function for the real time output, we have a call to the function
+
+\code{.cpp}
+copy_out_wave_function();
+\endcode
+
+When invoked, this function makes a copy of the current wave function stored in the GPU memory into an array, accessible
+from the host, called *wave_function_output*, that we use to calculate and output the integrated momentum distributions.
+
+Skipping the usual part on the reading of input parameters, setting the units, and creating the mesh, we jump to the
+more interesting part, i.e. the choice of initial conditions.
+
+If, in the input file, we have
+
+\verbatim
+box initial conditions = true
+\endverbatim
+
+the initial condition for the dynamics will be a "box" in momentum space, i.e. the initial wave function will be
+characterized by a high occupancy of modes up to a certain cut-off in momentum space. Additionally, each mode will
+have a random phase, so that in the end the initial condition will realize an extremely far from equilibrium situation.
+This is achieved in the following piece of code
+
+\code{.cpp}
+   if(box_initial_conditions)
+    {
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+
+        std::uniform_real_distribution<double> phase_distribution(0,TWOPI);
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                double random_phase = phase_distribution(generator);
+                if (std::abs(kx(i)) <= 0.1 / (TWOPI*healing_length) && std::abs(ky(j)) <= 0.1 /(TWOPI*healing_length))
+                    psitilde(i, j) = exp(-ci * random_phase);
+            }
+
+        MKLWrappers::DFtCalculator dft(psi,psitilde);
+        dft.compute_backward();
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+\endcode
+
+If, instead, in the input file we have
+
+\verbatim
+vortex lattice initial conditions = true
+\endverbatim
+
+then the initial condition will be a regular lattice of defects, whose number is specified by
+
+\verbatim
+number of imprinted defects = 10
+\endverbatim
+
+Notice that, in this case, the lattice will contain 10x10 defects, so be careful in not exaggerating. Each imprinted
+defect will have a winding number specified by
+
+\verbatim
+winding number = 6
+\endverbatim
+
+Actually, the lattice will contain alternating sign defects, so that, for example, with the choice of the parameters
+described in the last lines, you will have 10 lines of 10 defects, each containing a vortex with a winding number of 6,
+an anti-vortex with a winding number of -6, and so on.
+The piece of code that realizes all of that is the following one
+
+\code{.cpp}
+   else if(vortex_lattice_initial_conditions)
+    {
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        Vector<double> x_defect_positions(number_of_imprinted_defects);
+        Vector<double> y_defect_positions(number_of_imprinted_defects);
+
+        std::uniform_real_distribution<double> x_displacement(-2*dx,2*dx);
+        std::uniform_real_distribution<double> y_displacement(-2*dy,2*dy);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i)
+            x_defect_positions(i) = -xmax+dx+i*nx/number_of_imprinted_defects*dx;
+
+        beginning = clock::now();
+        d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i)
+            y_defect_positions(i) = -ymax+dy+i*ny/number_of_imprinted_defects*dy;
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                psi(i,j) = sqrt_density;
+
+                for(int i_defect=0; i_defect < number_of_imprinted_defects; ++i_defect)
+                    for(int j_defect=0; j_defect < number_of_imprinted_defects; ++j_defect)
+                    {
+                        double phase = atan2(y(j)-y_defect_positions(j_defect)+y_displacement(generator),
+                                             x(i)-x_defect_positions(i_defect)+x_displacement(generator));
+                        phase *= (i_defect%2 == 0 && j_defect%2 == 0 ||
+                                  i_defect%2 != 0 && j_defect%2 != 0) ? winding_number : -winding_number;
+                        psi(i,j) *= exp(ci*phase);
+                    }
+            }
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+    }
+\endcode
+
+Next, if in the input file we have
+
+\verbatim
+vortex random distribution initial conditions = true
+\endverbatim
+
+the initial condition will simply be a random distribution of vortices and anti-vortices, with a number specified by
+
+\verbatim
+number of imprinted defects = 1000
+\endverbatim
+
+Notice here that there will be, with this choice, 500 vortices and 500 anti-vortices. The piece of code that does that
+is the following
+
+\code{.cpp}
+    else if(vortex_random_distribution_initial_conditions)
+    {
+
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        Vector<double> x_defect_positions(number_of_imprinted_defects);
+        Vector<double> y_defect_positions(number_of_imprinted_defects);
+
+        std::uniform_real_distribution<double> x_defect_distribution(-xmax,xmax);
+        std::uniform_real_distribution<double> y_defect_distribution(-ymax,ymax);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i) x_defect_positions(i) = x_defect_distribution(generator);
+
+        typedef std::chrono::high_resolution_clock clock;
+        beginning = clock::now();
+        d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i) y_defect_positions(i) = y_defect_distribution(generator);
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                psi(i,j) = sqrt_density;
+                for(int i_defect=0; i_defect < number_of_imprinted_defects; ++i_defect)
+                {
+                    double phase = atan2(y(j)-y_defect_positions(i_defect),x(i)-x_defect_positions(i_defect));
+                    phase *= (i_defect%2==0) ? winding_number : -winding_number;
+                    psi(i,j) *= exp(ci*phase);
+                }
+
+            }
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+\endcode
+
+Be sure that only one (or none) of these options is true. If more then one option is true, the different initial
+conditions will just be applied sequentially on a uniform initial wave function, with consequences difficult to predict.
+Finally, if none of these options is true, the initial wave function will just be a uniform one plus some noise on top
+
+\code{.cpp}
+    else
+    {
+
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        std::uniform_real_distribution<double> random_distribution(0,1);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+                psi(i,j) = (1.0+random_distribution(generator))*sqrt_density;
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+\endcode
+
+Once the initial wave function is set, we can define our solver class
+
+\code{.cpp}
+    Dipoles2d gp_solver(x,y,psi,Vext,scattering_length,dipolar_length,theta);
+\endcode
+
+If the initial conditions are either the vortex lattice or the random distribution of defects, the above code only
+writes the correct phase pattern, but not the density pattern. In order to have our vortex lattice or random
+distribution of vortices, we need to take a few step in imaginary time. This is achieved in the following piece of code
+
+\code{.cpp}
+    if(vortex_lattice_initial_conditions || vortex_random_distribution_initial_conditions)
+    {
+        std::fstream gradient_descent_output_stream;
+        gradient_descent_output_stream.open("gradient_descent_output.csv",std::ios::out);
+        double chemical_potential;
+        std::tie(psi,chemical_potential) = gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                          alpha,
+                                                                          beta,
+                                                                          std::cout,
+                                                                          1);
+
+        gradient_descent_output_stream.close();
+        gp_solver.reinit(Vext,psi);
+
+    }
+\endcode
+
+Finally, we add some Truncated Wigner noise on top of this initial wave function and run the simulation in real time
+
+\code{.cpp}
+    gp_solver.set_tw_initial_conditions(false);
+    gp_solver.run_operator_splitting(number_of_real_time_steps,time_step,std::cout,write_output_every);
+
+    return 0;
+
+}
+\endcode
+
+*******************************************************
+\subsection Results-6 Results
+*******************************************************
+
+Starting for example from an initial random distribution of defects, we obtain an interesting dynamics characterized
+by the clustering of equal-sign defects and a slow process of annihilation of opposite sign defects. Screenshots of the
+typical density profile in 2d at different times of the dynamics are the following
+
+\image html example-6-densities.png
+
+while typical screenshots of vortex clustering, including streamlines of the superfluid velocity field, are the
+following
+
+\image html example-6-clusters.png width=800px
+
+while this is how momentum distributions look like before and after rescaling
+
+\image html example-6-momenta.png width=800px
+
+We extract the scaling exponents
+
+\f[
+
+\begin{align}
+& \alpha_x = 0.18 \pm 0.05, \quad \beta_x = 0.20 \pm 0.02 \nonumber \\
+& \alpha_y = 0.19 \pm 0.06, \quad \beta_y = 0.21 \pm 0.02
+\end{align}
+
+\f]
+
+which are isotropic in space and compatible with those found for a non-dipolar system.
+
+*******************************************************
+\subsection Uncommented-6 The plain program
+*******************************************************
+
+\code{.cpp}
+#include "UltraCold.hpp"
+#include <iomanip>
+#include <cmath>
+
+using namespace UltraCold;
+
+/////////////////////////////////////////////////////////
+// Our solver class, with customizable real-time output
+/////////////////////////////////////////////////////////
+
+class Dipoles2d : public cudaSolvers::DipolarGPSolver
+{
+public:
+
+    using DipolarGPSolver::DipolarGPSolver;
+
+    void write_operator_splitting_output(size_t iteration_number,
+                                         std::ostream& output_stream) override;
+
+    MKLWrappers::DFtCalculator ft_output_calculator;
+    Vector<std::complex<double>> ft_wave_function;
+    Vector<double> nbar_x;
+    Vector<double> nbar_y;
+
+};
+
+void Dipoles2d::write_operator_splitting_output(size_t iteration_number,
+                                                std::ostream &output_stream)
+{
+
+    if(iteration_number == 0)
+    {
+        ft_wave_function.reinit(nx,ny);
+        nbar_x.reinit(nx);
+        nbar_y.reinit(ny);
+        ft_output_calculator.reinit(wave_function_output,ft_wave_function);
+    }
+    if(iteration_number % write_output_every == 0)
+    {
+        copy_out_wave_function();
+
+        // Calculate momentum distribution
+        ft_output_calculator.compute_forward();
+
+        // Reset nx and ny
+        for(int i = 0; i < nx; ++i) nbar_x(i) = 0.0;
+        for(int i = 0; i < ny; ++i) nbar_y(i) = 0.0;
+
+        // Calculate averages along x and y
+        for(int i = 0; i < nx; ++i)
+            for(int j = 0; j < ny; ++j)
+            {
+                nbar_x(i) += std::pow(std::abs(ft_wave_function(i,j)),2);
+                nbar_y(j) += std::pow(std::abs(ft_wave_function(i,j)),2);
+            }
+
+        std::ofstream momentum_cuts;
+        momentum_cuts.open("nkx"+std::to_string(iteration_number/write_output_every)+".txt",std::ios::out);
+        for(size_t ix = 0; ix < int(nx/2+1); ++ix)
+            momentum_cuts << kx_axis(ix) << " "
+                          << nbar_x(ix)
+                          << std::endl;
+        momentum_cuts.close();
+
+        momentum_cuts.open("nky"+std::to_string(iteration_number/write_output_every)+".txt",std::ios::out);
+        for(size_t iy = 0; iy < int(ny/2+1); ++iy)
+            momentum_cuts << ky_axis(iy) << " "
+                          << nbar_y(iy)
+                          << std::endl;
+
+    }
+}
+
+int main() {
+
+    // Read input parameters from file "dipolars2d.prm". This must be placed in the same directory as
+    // the executable
+
+    Tools::InputParser ip("example-6.prm");
+
+    ip.read_input_file();
+
+    double xmax = ip.retrieve_double("xmax");
+    double ymax = ip.retrieve_double("ymax");
+
+    const int nx = ip.retrieve_int("nx");
+    const int ny = ip.retrieve_int("ny");
+
+    double scattering_length = ip.retrieve_double("scattering length");
+    double dipolar_length    = ip.retrieve_double("dipolar length");
+    const int    number_of_particles = ip.retrieve_int("number of particles");
+    const double atomic_mass         = ip.retrieve_double("atomic mass");
+    double omegaz                    = ip.retrieve_double("omegaz");
+    double theta = ip.retrieve_double("theta");
+
+    const int    number_of_gradient_descent_steps = ip.retrieve_int("number of gradient descent steps");
+    const double alpha                            = ip.retrieve_double("alpha");
+    const double beta                             = ip.retrieve_double("beta");
+
+    const int    number_of_real_time_steps = ip.retrieve_int("number of real time steps");
+    double time_step                       = ip.retrieve_double("time step");
+
+    const int write_output_every=ip.retrieve_int("write output every");
+
+    const bool box_initial_conditions = ip.retrieve_bool("box initial conditions");
+    const bool vortex_lattice_initial_conditions = ip.retrieve_bool("vortex lattice initial conditions");
+    const bool vortex_random_distribution_initial_conditions =
+            ip.retrieve_bool("vortex random distribution initial conditions");
+    const int winding_number = ip.retrieve_int("winding number");
+    const int number_of_imprinted_defects = ip.retrieve_int("number of imprinted defects");
+
+    // These two constants are for fixing the units
+    const double hbar        = 0.6347*1.E5; // hbar in amu*mum^2/s
+    const double bohr_radius = 5.292E-5;    // bohr radius in mum
+
+    // Lengths are measured in units of the harmonic oscillator length along the z-axis, times as 1/(2 PI omega_z)
+    omegaz *= TWOPI;
+    time_step     = time_step*omegaz/1000.0;
+
+    const double a_ho = std::sqrt(hbar/(atomic_mass*(omegaz)));
+
+    scattering_length *= bohr_radius/a_ho;
+    dipolar_length    *= bohr_radius/a_ho;
+
+    xmax = xmax/a_ho;
+    ymax = ymax/a_ho;
+
+    //////////////////////
+    // Create the mesh
+    /////////////////////
+
+    Vector<double> x(nx);
+    Vector<double> y(ny);
+
+    double dx = 2.*xmax/nx;
+    double dy = 2.*ymax/ny;
+
+    for (size_t i = 0; i < nx; ++i) x(i) = -xmax + i*dx;
+    for (size_t i = 0; i < ny; ++i) y(i) = -ymax + i*dy;
+
+    double dv = dx*dy;
+
+    //////////////////////////////
+    // Create the momentum mesh
+    //////////////////////////////
+
+    Vector<double> kx(nx),ky(ny);
+    create_mesh_in_Fourier_space(x,y,kx,ky);
+
+    ///////////////////////////////////////////////////////////////////
+    // Initialize wave function and external potential
+    // Wave function is initialized in momentum space populating
+    // low momentum modes each with a random phase
+    ///////////////////////////////////////////////////////////////////
+
+    double density = number_of_particles/(4*xmax*ymax);
+
+    Vector<std::complex<double>> psi(nx,ny),psitilde(nx,ny);
+    Vector<double> Vext(nx,ny);
+
+    // Print out some useful parameters
+    double epsilon_dd=dipolar_length/scattering_length;
+    double expected_chemical_potential = sqrt(8*PI)*(scattering_length)*density*(1+epsilon_dd*(3*pow(cos(theta),2)-1));
+    std::cout << "density = " << number_of_particles/(4*xmax*ymax*pow(a_ho,2)) << " mum^{-2}" << std::endl;
+    std::cout << "expected chemical potential   = " << expected_chemical_potential << " hbar omegaz" << std::endl;
+    double healing_length = 1./sqrt(std::abs(expected_chemical_potential));
+    std::cout << "az= " << a_ho << " mum" << std::endl;
+    std::cout << "healing_length    = " << healing_length*a_ho << " mum" << std::endl;
+    std::cout << "mesh size along x = " << 2*xmax*a_ho << " mum" << std::endl;
+    std::cout << "mesh size along y = " << 2*ymax*a_ho << " mum" << std::endl;
+    std::cout << "step size along x = " << dx*a_ho << " mum" << std::endl;
+    std::cout << "step size along y = " << dy*a_ho << " mum" << std::endl;
+    std::cout << "natural time step = " << 1./(expected_chemical_potential * omegaz/1000) << " ms" << std::endl;
+    std::cout << "kxi = " << 1./healing_length << std::endl;
+    std::cout << "dipolar factor = " << (1+epsilon_dd*(3*pow(cos(theta),2)-1)) << std::endl;
+    std::cout << "kxi nodipo = " << sqrt((1+epsilon_dd*(3*pow(cos(theta),2)-1))) * 1./healing_length << std::endl;
+    std::cout << "kmax= " << 1./(2*dx) << std::endl;
+
+    std::default_random_engine generator;
+
+    std::complex<double> ci={0.0,1.0};
+
+    if(box_initial_conditions)
+    {
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+
+        std::uniform_real_distribution<double> phase_distribution(0,TWOPI);
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                double random_phase = phase_distribution(generator);
+                if (std::abs(kx(i)) <= 0.1 / (TWOPI*healing_length) && std::abs(ky(j)) <= 0.1 /(TWOPI*healing_length))
+                    psitilde(i, j) = exp(-ci * random_phase);
+            }
+
+        MKLWrappers::DFtCalculator dft(psi,psitilde);
+        dft.compute_backward();
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+
+    else if(vortex_lattice_initial_conditions)
+    {
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        Vector<double> x_defect_positions(number_of_imprinted_defects);
+        Vector<double> y_defect_positions(number_of_imprinted_defects);
+
+        std::uniform_real_distribution<double> x_displacement(-2*dx,2*dx);
+        std::uniform_real_distribution<double> y_displacement(-2*dy,2*dy);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i)
+            x_defect_positions(i) = -xmax+dx+i*nx/number_of_imprinted_defects*dx;
+
+        beginning = clock::now();
+        d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i)
+            y_defect_positions(i) = -ymax+dy+i*ny/number_of_imprinted_defects*dy;
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                psi(i,j) = sqrt_density;
+
+                for(int i_defect=0; i_defect < number_of_imprinted_defects; ++i_defect)
+                    for(int j_defect=0; j_defect < number_of_imprinted_defects; ++j_defect)
+                    {
+                        double phase = atan2(y(j)-y_defect_positions(j_defect)+y_displacement(generator),
+                                             x(i)-x_defect_positions(i_defect)+x_displacement(generator));
+                        phase *= (i_defect%2 == 0 && j_defect%2 == 0 ||
+                                  i_defect%2 != 0 && j_defect%2 != 0) ? winding_number : -winding_number;
+                        psi(i,j) *= exp(ci*phase);
+                    }
+            }
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+    }
+
+    else if(vortex_random_distribution_initial_conditions)
+    {
+
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        Vector<double> x_defect_positions(number_of_imprinted_defects);
+        Vector<double> y_defect_positions(number_of_imprinted_defects);
+
+        std::uniform_real_distribution<double> x_defect_distribution(-xmax,xmax);
+        std::uniform_real_distribution<double> y_defect_distribution(-ymax,ymax);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i) x_defect_positions(i) = x_defect_distribution(generator);
+
+        typedef std::chrono::high_resolution_clock clock;
+        beginning = clock::now();
+        d = clock::now() - beginning;
+        generator.seed(d.count());
+        for(int i = 0; i < number_of_imprinted_defects; ++i) y_defect_positions(i) = y_defect_distribution(generator);
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+            {
+                psi(i,j) = sqrt_density;
+                for(int i_defect=0; i_defect < number_of_imprinted_defects; ++i_defect)
+                {
+                    double phase = atan2(y(j)-y_defect_positions(i_defect),x(i)-x_defect_positions(i_defect));
+                    phase *= (i_defect%2==0) ? winding_number : -winding_number;
+                    psi(i,j) *= exp(ci*phase);
+                }
+
+            }
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+    else
+    {
+
+        double sqrt_density = std::sqrt(number_of_particles/(4*xmax*ymax));
+
+        std::uniform_real_distribution<double> random_distribution(0,1);
+
+        typedef std::chrono::high_resolution_clock clock;
+        clock::time_point beginning = clock::now();
+        clock::duration d = clock::now() - beginning;
+        generator.seed(d.count());
+
+        for (size_t i = 0; i < nx; ++i)
+            for (size_t j = 0; j < ny; ++j)
+                psi(i,j) = (1.0+random_distribution(generator))*sqrt_density;
+
+        double norm = 0.0;
+        for (size_t i = 0; i < psi.size(); ++i) norm += std::norm(psi[i]);
+        norm *= dv;
+        for (size_t i = 0; i < psi.size(); ++i) psi[i] *= std::sqrt(number_of_particles/norm);
+
+    }
+
+    //////////////////////////////////////////////////
+    // Write the initial wave function in a .vtk file
+    //////////////////////////////////////////////////
+
+    GraphicOutput::DataWriter data_out;
+    data_out.set_output_name("initial_wave_function_gradient_descent");
+    data_out.write_vtk(x,y,psi,"psi","ASCII");
+
+    /////////////////////////////
+    // Initialize the solver
+    /////////////////////////////
+
+    Dipoles2d gp_solver(x,y,psi,Vext,scattering_length,dipolar_length,theta);
+
+    /////////////////////////////////////////////////////////////////////////////////
+    // The output from the short imaginary time propagation will be written in the
+    // file "gradient_descent_output.csv"
+    /////////////////////////////////////////////////////////////////////////////////
+
+    if(vortex_lattice_initial_conditions || vortex_random_distribution_initial_conditions)
+    {
+        std::fstream gradient_descent_output_stream;
+        gradient_descent_output_stream.open("gradient_descent_output.csv",std::ios::out);
+        double chemical_potential;
+        std::tie(psi,chemical_potential) = gp_solver.run_gradient_descent(number_of_gradient_descent_steps,
+                                                                          alpha,
+                                                                          beta,
+                                                                          std::cout,
+                                                                          1);
+
+        gradient_descent_output_stream.close();
+        gp_solver.reinit(Vext,psi);
+
+    }
+
+    ////////////////////////////////////////////////
+    // Run the real time simulation!
+    // The output will be written to the shell
+    ////////////////////////////////////////////////
+
+    gp_solver.set_tw_initial_conditions(false);
+    gp_solver.run_operator_splitting(number_of_real_time_steps,time_step,std::cout,write_output_every);
+
+    return 0;
+
+}
+\endcode
+
+*/
